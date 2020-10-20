@@ -1,0 +1,61 @@
+serpro:
+  type: schema
+  version: $generate
+  issuing_roles:
+    - Serpro
+  attributes:
+    - neoid_pub_key
+    - validade
+receita:
+  type: schema
+  version: $generate
+  issuing_roles:
+    - Receita
+  attributes:
+    - cpf
+    - recibo_ir
+policia:
+  type: schema
+  version: $generate
+  issuing_roles:
+    - Policia
+  attributes:
+    - mae
+    - pai
+    - cidade
+    - uf
+    - rh
+    - dni
+    - rg
+    - via
+    - data_exp
+    - registro_civil
+    - tit_eleitor
+    - nis
+banco:
+  type: schema
+  version: $generate
+  issuing_roles:
+    - Banco
+  attributes:
+    - ag
+    - conta
+    - saldo
+Usuario Valido:
+  type: proof_request
+  description: Usuario com dados validados pelo Serpro
+  revealed_attributes:
+    - {'name':'neoid_pub_key'}
+    - {'name':'validade'}
+Dados Bancarios:
+  type: proof_request
+  description: Dados bancarios publicos
+  revealed_attributes:
+    - {'name':'ag'}
+    - {'name':'conta'}
+Informacoes receita:
+  type: proof_request
+  description: Dados do imposto de renda
+  revealed_attributes:
+    - {'name':'cpf'}
+    - {'name':'recibo_ir'}

@@ -1,0 +1,57 @@
+{% load i18n %}
+{% load static %}
+
+<div class="modal micromodal-slide" id="user-1" aria-hidden="true" >
+			<div class="modal__overlay" tabindex="-1" data-micromodal-close>
+				<div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="user-1-title" style="width:400px;height:540px;">
+					<header class="modal__header">
+						<h2 class="modal__title" id="" user-title"><i class="fa fa-user-plus" aria-hidden="true"></i></h2>
+						<button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
+					</header>
+
+						<form method="POST" action="{% url 'signup' %}" enctype="multipart/form-data" autocomplete="off">
+							{% csrf_token %}
+							<div>
+								<h4><b><label style="font-size:12px;" class="f6 b db mb2 js-name for="id_first_name">{% trans "first name" %}:</label></b></h4>
+								<h4><input size="30" type="text" name="first_name" maxlength="100" id="id_first_name"></h4>
+							</div>
+							<div>
+								<h4><b><label style="font-size:12px;" class="f6 b db mb2 js-name" for="id_last_name">{% trans "last name" %}:</label></b></h4>
+								<h4><input class="input-reset ba b--black-20 pa2 mb2 db w-100 js-nameInput" size="30" type="text" name="last_name" maxlength="200" id="id_last_name"></h4>
+							</div>
+							<div>
+								<h4><b><label style="font-size:12px;" class="f6 b db mb2 js-name for="id_date_birth">{% trans "data of birth" %}:</label></b></h4>
+								<h4><input class="input-reset ba b--black-20 pa2 mb2 db w-100 js-nameInput" size="30" type="text" name="date_birth" maxlength="50" id="id_date_birth"></h4>
+							</div>
+							<div>
+								<h4><b><label style="font-size:12px;" class="f6 b db mb2 js-name for="id_cpf">{% trans "CPF" %}:</label></b></h4>
+								<h4><input class="input-reset ba b--black-20 pa2 mb2 db w-100 js-nameInput" size="30" type="text" name="cpf" maxlength="50" id="id_cpf"></h4>
+							</div>
+							<div>
+								<h4><b><label style="font-size:12px;" class="f6 b db mb2 js-name for="id_email">{% trans "e-mail" %}:</label></b></h4>
+								<h4><input class="input-reset ba b--black-20 pa2 mb2 db w-100 js-nameInput" type="email" name="email" maxlength="254" autofocus required id="id_email"></h4>
+							</div>
+							<div>
+								<h4><b><label style="font-size:12px;" class="f6 b db mb2 js-name for="id_password1">{% trans "password" %}:</label></b></h4>
+								<h4><input class="input-reset ba b--black-20 pa2 mb2 db w-100 js-nameInput" size="30" type="password" name="password1" required id="id_password1"></h4>
+							</div>
+							<div>
+								<h4><b><label style="font-size:12px;" class="f6 b db mb2 js-name for="id_password2">{% trans "password" %}</label></b></h4>
+								<h4><input class="input-reset ba b--black-20 pa2 mb2 db w-100 js-nameInput" size="30" type="password" name="password2" required id="id_password2"></h4>
+							</div>
+							<!--
+							<div>
+								<h4><b><label style="font-size:14px;" class="f6 b db mb2 js-name for="id_mobile_agent">Agente mobile:</label></b><input class="input-reset ba b--black-20 pa2 mb2 db w-100 js-nameInput" size="30" type="checkbox" name="mobile_agent" id="id_mobile_agent"></h4>
+							</div>
+							-->
+							<center>
+								<center><button class='btn' type="submit">{% trans "Sign up" %}</button></center>
+							</center>
+						</form>
+				</div>
+			</div>
+
+				</main>
+
+			</div>
+		</div>

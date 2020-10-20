@@ -1,0 +1,31 @@
+{% load i18n %}
+{% load static %}
+
+<div class="modal micromodal-slide" id="neoid-1" aria-hidden="true">
+	<div class="modal__overlay" tabindex="-1" data-micromodal-close>
+		<div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="neoid-1-title"
+			 style="width:300px;height:320px;">
+			<header class="modal__header">
+				<img src="/static/serpro/neoid.png" alt="NeoID'" style="width:50px;height:50px;">
+				<button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
+			</header>
+			<main class="modal__content" id="neoid-1-content">
+				<form method="post" action="{% url 'oauth2' %}" autocomplete="off">
+					{% csrf_token %}
+					<div class='signin-input-cont'>
+						<h6><label for="id_cpf">CPF:</label></h6>
+						<input type="text" name="cpf" autofocus required id="id_cpf">
+					</div><br><br>
+					<div class='btn-signin-cont'>
+						<input type="hidden" name="code" value="None">
+						<input class='btn btn-signin' type="submit" value=Conectar>
+					</div>
+				</form>
+
+		</div>
+	</div>
+
+	</main>
+
+</div>
+</div>

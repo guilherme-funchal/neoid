@@ -1,0 +1,43 @@
+{% load i18n %}
+{% load static %}
+
+<div class="modal micromodal-slide" id="login-1" aria-hidden="true">
+	<div class="modal__overlay" tabindex="-1" data-micromodal-close>
+		<div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="login-1-title"
+			 style="width:300px;height:350px;">
+			<header class="modal__header">
+				<h2 class="modal__title" id="" login-title"><i class="fa fa-user" aria-hidden="true"></i></h2>
+				<button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
+			</header>
+			<main class="modal__content" id="user-1-content">
+				<form method="post" action="{% url 'login' %}" autocomplete="off">
+					{% csrf_token %}
+
+					<div class='signin-input-cont'>
+						<h6><label for="id_username">Email:</label></h6>
+						<input type="text" name="username" autofocus required id="id_username">
+					</div>
+					<div class='signin-input-cont'>
+						<h6><label for="id_password">Senha:</label></h6>
+						<input type="password" name="password" required id="id_password" >
+						<div class='forgot-pass-link'>
+							<h6><b><a href="/accounts/password_reset/">Esqueceu a senha?</a></b></h6>
+						</div>
+					</div>
+					<div class='btn-signin-cont'>
+						<input type="hidden" name="next" value="/view_dashboard/">
+						<input class='btn btn-signin' type="submit" value=Conectar>
+						<span class='stay-signed-in-cont'>
+							<input type='checkbox'>
+							<h6>Fique conectado</h6>
+						</span>
+					</div>
+				</form>
+
+		</div>
+	</div>
+
+	</main>
+
+</div>
+</div>

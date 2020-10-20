@@ -1,0 +1,47 @@
+serpro:
+  type: schema
+  version: $generate
+  issuing_roles:
+    - Serpro
+  attributes:
+    - email
+    - first_name
+    - last_name
+    - date_birth
+    - cpf
+    - pubkey
+receita:
+  type: schema
+  version: $generate
+  issuing_roles:
+    - Receita
+  attributes:
+    - recibo_ir
+    - ano
+policia:
+  type: schema
+  version: $generate
+  issuing_roles:
+    - Policia
+  attributes:
+    - mae
+    - pai
+    - cidade
+    - uf
+    - rh
+    - dni
+    - rg
+    - via
+    - data_exp
+    - registro_civil
+    - tit_eleitor
+    - nis
+banco:
+  type: schema
+  version: $generate
+  issuing_roles:
+    - Banco
+  attributes:
+    - ag
+    - conta
+    - saldo

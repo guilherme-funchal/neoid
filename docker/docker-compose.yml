@@ -1,0 +1,152 @@
+version: '3'
+services:
+  #
+  # un-managed trustee agent
+  #
+  trustee-agent:
+    image: bcgovimages/aries-cloudagent:py36-1.14-1_0.4.5
+    environment:
+      - GENESIS_URL=${GENESIS_URL}
+      - LEDGER_URL=${LEDGER_URL}
+      - AGENT_WALLET_NAME=${AGENT_WALLET_NAME}
+      - WALLET_TYPE=${WALLET_TYPE:-indy}
+      - POSTGRESQL_WALLET_HOST=${POSTGRESQL_WALLET_HOST}
+      - POSTGRESQL_WALLET_PORT=${POSTGRESQL_WALLET_PORT}
+      - POSTGRESQL_WALLET_USER=${POSTGRESQL_USER}
+      - POSTGRESQL_WALLET_PASSWORD=${POSTGRESQL_PASSWORD}
+      - POSTGRESQL_WALLET_ADMIN_PASSWORD=${POSTGRESQL_ADMIN_PASSWORD}
+      - WALLET_ENCRYPTION_KEY=${WALLET_ENCRYPTION_KEY}
+      - WALLET_SEED=${WALLET_SEED}
+      - WEBHOOK_URL=${WEBHOOK_URL}
+      - AGENT_HTTP_INTERFACE_PORT=${AGENT_HTTP_INTERFACE_PORT}
+      - AGENT_ADMIN_INTERFACE_PORT=${AGENT_ADMIN_INTERFACE_PORT}
+      - AGENT_ENDPOINT=${AGENT_ENDPOINT}
+      - ADMIN_API_KEY=${ADMIN_API_KEY}
+      - AGENT_NAME=${AGENT_NAME}
+    networks:
+      - anon
+    ports:
+      - ${AGENT_HTTP_INTERFACE_PORT}:${AGENT_HTTP_INTERFACE_PORT}
+      - ${AGENT_ADMIN_INTERFACE_PORT}:${AGENT_ADMIN_INTERFACE_PORT}
+    depends_on:
+      - wallet-db
+    entrypoint: /bin/bash
+    command: [
+        "-c",
+        "sleep 4; \
+        curl -d '{\"seed\":\"${WALLET_SEED}\", \"role\":\"TRUST_ANCHOR\", \"alias\":\"${AGENT_NAME}\"}' -X POST ${LEDGER_URL}/register; \
+        sleep 2; \
+        aca-py start \
+        --inbound-transport http '0.0.0.0' ${AGENT_HTTP_INTERFACE_PORT} \
+        --endpoint ${AGENT_ENDPOINT} \
+        --outbound-transport http \
+        --genesis-url '${GENESIS_URL}' \
+        --auto-accept-invites \
+        --auto-accept-requests \
+        --auto-ping-connection \
+        --auto-respond-messages \
+        --auto-respond-credential-proposal \
+        --auto-respond-credential-request \
+        --auto-store-credential \
+        --auto-verify-presentation \
+        --preserve-exchange-records \
+        --wallet-type 'indy' \
+        --wallet-name '${AGENT_WALLET_NAME}' \
+        --wallet-key '${WALLET_ENCRYPTION_KEY}' \
+        --wallet-storage-type '${WALLET_TYPE}' \
+        --wallet-storage-config '{\"url\":\"${POSTGRESQL_WALLET_HOST}:${POSTGRESQL_WALLET_PORT}\",\"max_connections\":5,\"wallet_scheme\":\"MultiWalletSingleTable\"}' \
+        --wallet-storage-creds '{\"account\":\"${POSTGRESQL_USER}\",\"password\":\"${POSTGRESQL_PASSWORD}\",\"admin_account\":\"postgres\",\"admin_password\":\"${POSTGRESQL_ADMIN_PASSWORD}\"}' \
+        --seed '${WALLET_SEED}' \
+        --admin '0.0.0.0' ${AGENT_ADMIN_INTERFACE_PORT} \
+        --admin-api-key ${ADMIN_API_KEY} \
+        --enable-undelivered-queue \
+        --label '${AGENT_NAME}' \
+        --webhook-url ${WEBHOOK_URL}",
+      ]
+
+  # 
+  # aries-django
+  # 
+  aries-django:
+    build:
+      context: ../aries_community_demo
+      dockerfile: Dockerfile
+    environment:
+      - GENESIS_URL=${GENESIS_URL}
+      - LEDGER_URL=${LEDGER_URL}
+      - DJANGO_SETTINGS=${DJANGO_SETTINGS}
+    networks:
+      - anon
+    ports:
+      - 8000:8000
+    volumes:
+      - "..:/home/aries/aries_community_demo"    
+    depends_on:
+      - wallet-db
+    entrypoint: >
+        /bin/bash -c "
+        echo waiting for dependencies ... ${DJANGO_SETTINGS} ...;
+        sleep 10;
+        cd /home/aries/aries_community_demo/aries_community_demo;
+        touch db.sqlite3;
+        DJANGO_SETTINGS_MODULE=aries_community_demo.${DJANGO_SETTINGS} ./reload_db.sh;
+        sleep 15;
+        DJANGO_SETTINGS_MODULE=aries_community_demo.${DJANGO_SETTINGS} ./init_data_docker.sh;
+        sleep 5;
+        DJANGO_SETTINGS_MODULE=aries_community_demo.${DJANGO_SETTINGS} python manage.py runserver 0.0.0.0:8000;"
+
+  # 
+  # aries-django-dev
+  # 
+  aries-django-dev:
+    build:
+      context: ../aries_community_demo
+      dockerfile: Dockerfile-dev
+    environment:
+      - GENESIS_URL=${GENESIS_URL}
+      - LEDGER_URL=${LEDGER_URL}
+      - DJANGO_SETTINGS=${DJANGO_SETTINGS}
+    networks:
+      - anon
+    ports:
+      - 8000:8000
+    volumes:
+      - "..:/home/aries/aries_community_demo"
+    depends_on:
+      - wallet-db
+    entrypoint: >
+        /bin/bash -c "
+        echo waiting for dependencies ... ${DJANGO_SETTINGS} ...;
+        sleep 10;
+        cd /home/aries/aries_community_demo/aries_community_demo;
+        touch db.sqlite3;
+        DJANGO_SETTINGS_MODULE=aries_community_demo.${DJANGO_SETTINGS} ./reload_db.sh;
+        sleep 5;
+        DJANGO_SETTINGS_MODULE=aries_community_demo.${DJANGO_SETTINGS} ./init_data_docker.sh;
+        sleep 5;
+        DJANGO_SETTINGS_MODULE=aries_community_demo.${DJANGO_SETTINGS} python manage.py runserver 0.0.0.0:8000;"
+
+  # 
+  # wallet-db
+  # 
+  wallet-db:
+    image: registry.access.redhat.com/rhscl/postgresql-95-rhel7:9.5
+    environment:
+      - POSTGRESQL_USER=${POSTGRESQL_USER}
+      - POSTGRESQL_PASSWORD=${POSTGRESQL_PASSWORD}
+      - POSTGRESQL_DATABASE=${POSTGRESQL_DATABASE}
+      - POSTGRESQL_ADMIN_PASSWORD=${POSTGRESQL_ADMIN_PASSWORD}
+    networks:
+      - anon
+    ports:
+      - 5432:5432
+    volumes:
+      - aries-wallet-db:/var/lib/pgsql/data     
+    #command:
+    #  postgres -c 'log_statement=all' -c 'logging_collector=on' -c 'log_destination=stderr'
+
+networks:
+  anon:
+
+volumes:
+  aries-wallet-db:

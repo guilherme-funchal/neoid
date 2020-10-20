@@ -1,0 +1,118 @@
+{% extends 'base_landing.html' %}
+
+{% load i18n %}
+{% load static %}
+
+{% block title %}{% trans 'Welcome to self Sovereign Identity System' %}{% endblock %}
+
+{% block main_content %}
+
+	<div class='landing-page-cont'>
+		<div class='atria-logo'>
+
+		</div>
+		<div class="boxed">
+			<div class='sign-in-cont'>
+			<div class='btns-sign-in-cont'>
+				<br>
+				<div>
+					<!--
+					<div class='btn btn-signin-vol'>{% trans 'Individual' %}</div>
+					-->
+					<center>
+					<div class="w3-card-4" style="width:300px;height:350px;">
+       				 <header class="w3-container w3-light-blue">
+                		{% with '/'|add:settings.SITE_ORG|add:'/logo.png' as image_static %}
+							<img src="{% static image_static %}" style="width:70%" align="middle" title = "{{ settings.SITE_ORG }}" >
+						{% endwith %}
+					 </header>
+					<br><br><br>
+        			<div class="w3-container w3-white" style="font-size: 9px">
+					<div class='btn btn-signin-vol' id='login' data-custom-open=login-1>{% trans 'Login' %}</div><br><br>
+					<!--
+					<div class='btn btn-signin-vol' id='neoid' onclick="sendCpf()">{% trans 'NeoID' %}</div><br><br>
+					-->
+					<div class='btn btn-signin-vol' id='neoid' data-custom-open=neoid-1>{% trans 'Neoid' %}</div><br><br>
+					<div class='btn btn-signin-vol' id='user' data-custom-open=user-1>{% trans 'Create Account' %}</div><br><br>
+
+					</center>
+					<br>
+						<!--
+					<div class='btn btn-signin-vol' id='login' data-custom-open=login-1>{% trans 'Organization' %}</div>
+					-->
+					<!--
+					<div class='btn btn-signin-org'>{% trans 'Organization' %}</div>
+					-->
+				</div>
+			</div>
+		</div>
+		<!--
+		<h4><b class='btn-create-account'><a href="{% url 'signup' %}">{% trans 'Create User Account' %}</a></b></h4>
+		-->
+		<br><br>
+		<!--
+		<h4><b class='btn-create-account'><a href="{% url 'org_signup' %}">{% trans 'Create Organization Account' %}</a></b></h4>
+		-->
+
+		</div>
+	</div>
+		{% include "registration/new_login.html" %}
+		{% include "registration/new_signup.html" %}
+		{% include "registration/neoid.html" %}
+	<script>
+		$(document).ready(function() {
+			$(".btn-signin-vol").click(function() {
+				$(".btn-signin-vol").css("opacity", ".6");
+				$(".btn-signin-org").css("opacity", "1");
+
+				$(".signin-dropdown-vol").css("display", "block");
+				$(".signin-dropdown-org").css("display", "none");
+			});
+
+			$(".btn-signin-org").click(function() {
+				$(".btn-signin-org").css("opacity", ".6");
+				$(".btn-signin-vol").css("opacity", "1");
+
+				$(".signin-dropdown-org").css("display", "block");
+				$(".signin-dropdown-vol").css("display", "none");
+			});
+		});
+	</script>
+
+	<script type="text/javascript">
+
+	 MicroModal.init({
+          disableScroll: true,
+          disableFocus: false,
+          awaitOpenAnimation: false,
+          debugMode: true,
+          awaitCloseAnimation: false,
+          awaitOpenAnimation: false,
+          disableFocus: false,
+          disableScroll: true,
+          openClass: 'is-open',
+          onClose: modal => console.info(`${modal.id} is hidden`),
+          onShow: modal => document.getElementById('org').value=event.srcElement.id,
+          openTrigger: 'data-custom-open'
+    });
+
+     function sendCpf(clicked_id) {
+        connection_id = clicked_id
+
+        Swal.fire({
+            input: 'text',
+            inputPlaceholder: 'Digite o CPF',
+            inputAttributes: {
+            'aria-label': '{% trans "Send message" %}'
+            },
+            showCancelButton: true
+        }).then((result) => {
+            if (result.value) {
+                window.location = "{% url 'oauth2' %}?code=None&cpf=" + result.value;
+        }
+    })
+    }
+
+    </script>
+
+{% endblock %}

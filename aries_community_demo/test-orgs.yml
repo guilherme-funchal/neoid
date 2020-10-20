@@ -1,0 +1,36 @@
+serpro:
+  first_name: Servico
+  last_name: Federal
+  email: serpro@serpro.gov.br
+  password: pass12345
+  role: Serpro
+  ico_url: https://www.serpro.gov.br/favicon.ico
+  admin_port: 8051
+  http_port: 8052
+receita:
+  first_name: Receita
+  last_name: Federal
+  email: receita@mail.com
+  password: pass12345
+  role: Receita
+  ico_url: https://receita.economia.gov.br/favicon.ico
+  admin_port: 8053
+  http_port: 8054
+policia:
+  first_name: Policia
+  last_name: Civil
+  email: policia@mail.com
+  password: pass12345
+  role: Policia
+  ico_url: https://www.serpro.gov.br/favicon.ico
+  admin_port: 8055
+  http_port: 8056
+banco:
+  first_name: Banco
+  last_name: Brasil
+  email: bb@bb.com.br
+  password: pass12345
+  role: Banco
+  ico_url: https://bb.com.br/favicon.ico
+  admin_port: 8057
+  http_port: 8058

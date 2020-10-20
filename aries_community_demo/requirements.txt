@@ -1,0 +1,25 @@
+django>=2.1.6,<3
+djangorestframework>=3.9.1,<4
+djangorestframework-bulk>=0.2.1,<1
+django-cors-headers>=2.4.0,<3
+django-filter>=1.1.0
+python-dateutil>=2.7.2
+#-e git+https://github.com/deschler/django-modeltranslation.git#egg=django-modeltranslation
+django-extensions
+markdown
+aiohttp~=3.3.0
+pyyaml
+pyqrcode
+pypng
+pkce
+requests
+urllib3
+pillow
+sweetify
+django-settings-export
+django_token
+django-bootstrap-modal-forms
+django-widget-tweaks
+django-crispy-forms
+pyopenssl
+git+https://github.com/ianco/aries-cloudagent-python#egg=aries-cloudagent

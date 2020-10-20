@@ -1,0 +1,246 @@
+{% load i18n %}
+{% load static %}
+
+
+<div class="w3-white" style="margin-left:300px; margin-top: 50px;">
+    <div class="w3-white">
+        <br>
+
+        {% if not request.session.ACTIVE_ORG %}
+            <div id="chart_div" style="margin-left:200px; margin-top: 50px;"></div>
+        {% endif %}
+
+        <br><br>
+
+        {% for invitation in invitations %}
+        <div class="w3-card-4" style="margin-left:350px;width:35%">
+            <header class="w3-container w3-light-blue">
+                <h1>
+                    <center><i class="fa fa-handshake-o" aria-hidden="true"></center>
+                    </i></h1>
+            </header>
+            <div class="w3-container w3-white" style="font-size: 10px">
+                <div>
+                    <a href=''>
+                        <h2>{{ invitation.partner_name }}</h2>
+                    </a>
+                </div>
+                <div>
+                    <h4>
+                        <a href="{% url 'connection_response' %}?id={{invitation.id}}"><i class="fa fa-check"
+                                                                                          style="color:green"
+                                                                                          aria-hidden="true"
+                                                                                          title="{% trans " Accept"
+                            %}"></i></a>
+                        <a href="{% url 'connection_qr' token=invitation.id %}"><i class="fa fa-qrcode"
+                                                                                   style="color:green"
+                                                                                   aria-hidden="true" title="{% trans "
+                                                                                   Mobile QR" %}"></i></a>
+
+                    </h4>
+                </div>
+            </div>
+        </div>
+        <br>
+        {% endfor %}
+        {% if request.session.ACTIVE_ORG %}
+        <div class="w3-container w3-white" style="font-size: 10px">
+            	<h4>{% trans "User connections" %}
+                <a onclick="invitePerson()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-user"></i>Pessoa</a>
+                <a href="../connection_response" class="w3-bar-item w3-button w3-padding"><i class="fa fa-user-secret"></i>Externo</a></h4>
+            	<table class="blueTable">
+                    <thead>
+                    <tr>
+                        <th style="width:200px"><center>GUID</th></center>
+                        <th style="width:50px"><center>{% trans "Partner" %}</th></center>
+                        <th style="width:200px"><center>{% trans "Status" %}</th></center>
+                        <th style="width:200px"><center>{% trans "Operation" %}</th></center>
+                    </tr>
+                    </thead>
+
+	    <tbody>
+        {% endif %}
+        {% for connection in connections %}
+        {% if request.session.ACTIVE_ORG %}
+                <tr>
+                        <td><a href="{% url 'list_connections_org' %}?connection.guid={{connection.guid}}">
+							</i>{{ connection.guid }}</a>
+						</td>
+                        <td><a href="{% url 'list_connections_org' %}?connection.guid={{connection.guid}}">
+							</i>{{ connection.partner_name }}</a>
+						</td>
+                        <td>{{ connection.status }}</td>
+                        <td>
+                        <button  style="height:20px;width:30px" title={% trans "Credential" %} data-custom-open='modal-{{ connection.guid }}'> <class="w3-bar-item w3-button w3-padding"><i class="fa fa-address-card"></i></button>
+                        <button  style="height:20px;width:30px" title={% trans "Connection" %} id={{ connection.guid }} onclick="removeConnection(this.id)"> <class="w3-bar-item w3-button w3-padding"><i class="fa fa-remove"></i></button>
+                        <button  style="height:20px;width:30px" title={% trans "Message" %} id={{ connection.guid }} onclick="sendMessage(this.id)"> <class="w3-bar-item w3-button w3-padding"><i class="fa fa-pencil-square-o"></i></button>
+                        <button  style="height:20px;width:30px" title={% trans "Proof" %} data-custom-open='proof-{{ connection.guid }}'> <class="w3-bar-item w3-button w3-padding"><i class="fa fa-refresh"></i></button>
+                        <!--
+                        <button  style="height:20px;width:30px" title={% trans "Import" %} id={{ connection.guid }} onclick="importCredential(this.id)"> <class="w3-bar-item w3-button w3-padding"><i class="fa fa-download"></i></button> -->
+                        </div></td>
+                </tr>
+
+    {% endif %}
+    {% endfor %}
+    </tbody>
+	</table>
+    <br>
+ 
+<body onload="draw()">
+
+{% include "aries/pageIncludes/credential.html" %}
+{% include "aries/pageIncludes/proofs.html" %}
+
+<script type="text/javascript">
+    google.charts.setOnLoadCallback(drawChart);
+    MicroModal.init({
+          disableScroll: true,
+          disableFocus: false,
+          awaitOpenAnimation: false,
+          debugMode: true,
+          awaitCloseAnimation: false,
+          awaitOpenAnimation: false,
+          disableFocus: false,
+          disableScroll: true,
+          openClass: 'is-open',
+          openTrigger: 'data-custom-open'
+    });
+
+    function sendMessage(clicked_id) {
+        connection_id = clicked_id
+
+        Swal.fire({
+            input: 'textarea',
+            inputPlaceholder: '{% trans "Send message" %}',
+            inputAttributes: {
+            'aria-label': '{% trans "Send message" %}'
+            },
+            showCancelButton: true
+        }).then((result) => {
+            if (result.value) {
+                window.location = "{% url 'send_message' %}?connection_id=" + connection_id +"&message=" + result.value;
+        }
+    })
+    }
+
+    function invitePerson(clicked_id) {
+        Swal.fire({
+            input: 'email',
+            title: 'Input email address',
+            inputPlaceholder: '{% trans "Enter email address" %}',
+            showCancelButton: true
+        }).then((result) => {
+            if (result.value) {
+                window.location = "{% url 'send_invitation' %}?email=" + result.value;
+        }
+    })
+    }
+
+    function drawChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Name');
+        data.addColumn('string', 'Manager');
+        data.addColumn('string', 'ToolTip');
+
+        // For each orgchart box, provide the name, manager, and tooltip to show.
+        var var1 = '{{ connection.partner_name }}';
+
+
+        data.addRows( {{ data|safe }} );
+
+        // Create the chart.
+        var chart = new google.visualization.OrgChart(document.getElementById('chart_div'));
+        // Draw the chart, setting the allowHtml option to true for the tooltips.
+        chart.draw(data, {'allowHtml':true, 'allowCollapse':true,
+                                            nodeClass: 'myNodeClass',
+                                            selectedNodeClass: 'mySelectedNodeClass'} );
+     }
+
+    function listOrg(connection_id) {
+        my_data = {{ org|safe }};
+
+        Swal.fire({
+            input: 'select',
+            inputOptions: my_data,
+            inputPlaceholder: '{% trans "Organization" %}',
+            showCancelButton: true
+        }).then((result) => {
+            if (result.value) {
+                window.location = "{% url 'send_invitation_org' %}?org=" + result.value;
+            }
+        })
+    }
+    function sendCredential(connection_id) {
+        Swal.fire({
+            title: '{% trans "Send Credential?" %}',
+            text: "",
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            cancelButtonText: '{% trans "No" %}',
+            confirmButtonText: '{% trans "Yes" %}'
+        }).then((result) => {
+            if (result.value) {
+                 window.location = "{% url 'select_credential_offer' %}?connection_id=" + connection_id;
+        }
+    })
+    }
+
+    function importCredential(connection_id) {
+        Swal.fire({
+            title: '{% trans "Import Credential?" %}',
+            text: "",
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            cancelButtonText: '{% trans "No" %}',
+            confirmButtonText: '{% trans "Yes" %}'
+        }).then((result) => {
+            if (result.value) {
+                 window.location = "{% url 'credential_import' %}?connection_id=" + connection_id;
+        }
+    })
+    }
+
+    function listProof(connection_id) {
+        my_data = {{ proof|safe }};
+
+        Swal.fire({
+            input: 'select',
+            inputOptions: my_data,
+            inputPlaceholder: '{% trans "Proofs" %}',
+            showCancelButton: true
+        }).then((result) => {
+            if (result.value) {
+                window.location = "{% url 'select_proof_request' %}?connection_id=" + connection_id + "&proof=" + result.value;
+            }
+        })
+    }
+    function removeConnection(connection_id) {
+        Swal.fire({
+            title: '{% trans "Delete connection?" %}',
+            text: "",
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            cancelButtonText: '{% trans "No" %}',
+            confirmButtonText: '{% trans "Yes" %}'
+        }).then((result) => {
+            if (result.value) {
+                 window.location = "{% url 'remove_connection' %}?connection_id=" + connection_id;
+        }
+    })
+    }
+    function infoConnection(connection_id) {
+        Swal.fire({
+          icon: 'info',
+          title: '{% trans "Information" %}',
+          text: '{% trans "Mandatory connection" %}',
+          footer: '<a href></a>'
+        })
+    }
+
+</script>

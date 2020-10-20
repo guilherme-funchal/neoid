@@ -1,0 +1,41 @@
+{% load i18n %}
+{% load static %}
+{% load filter_tags %}
+
+{% for connection in connections %}
+<div class="modal micromodal-slide" id="proof-{{ connection.guid }}" aria-hidden="true">
+	<div class="modal__overlay" tabindex="-1" data-micromodal-close>
+		<div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="proof-{{ connection.guid }}-title"
+			 style="width:auto;height:auto;">
+			<header class="modal__header">
+				<h2 class="modal__title" id="proof-{{ connection.guid }}-title"><i class="fa fa-refresh" aria-hidden="true"></i></h2>
+				<button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
+			</header>
+			<main class="modal__content" id="proof-{{ connection.guid }}-content">
+             <form method="POST" action="{% url 'select_proof_request' %}" enctype="multipart/form-data" autocomplete="off">
+							{% csrf_token %}
+							<div>
+							    <input type="hidden" name="connection_id" value={{connection.guid}}>
+                            </div>
+				 			<b>{% trans "Partner" %} :</b> {{ connection.partner_name }}<br><br>
+				 			<b>{% trans "Choose a proof" %}:</b>
+				            <label for="proof"></label>
+				 			<select name="proof" id="proof">
+                            {% for proof in proofs %}
+								{% if connection.partner_name == proof.agent %}
+									<div>
+										<option value="{{ proof.proof_req_name }}">{{ proof.proof_req_name }}</option>
+
+									</div>
+								{% endif %}
+                            {% endfor %}
+							</select>
+				 			<br><br><br>
+							<center>
+								<center><button class='btn' type="submit">{% trans "Send" %}</button></center>
+							</center>
+			</form>
+		</div>
+	</div>
+</div>
+{% endfor %}

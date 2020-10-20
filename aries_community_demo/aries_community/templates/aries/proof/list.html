@@ -1,0 +1,180 @@
+{% extends request.session.ARIES_PROFILE %}
+{% load filter_tags %}
+
+{% load i18n %}
+{% block profile_content %}
+
+<body class="w3-white">
+        <div class="w3-white" style="margin-left:300px; margin-top: 50px;">
+<div class="w3-container">
+
+    <div class="w3-card-4" style="width:60%">
+        <header class="w3-container w3-light-blue">
+            <h1><center><i class="fa fa-refresh" aria-hidden="true"></center></i></h1>
+        </header>
+        <div class="w3-container w3-white" style="font-size: 12px">
+            <div class='form-cont' style="width: 100%">
+                <div>
+              <h2 class="h2">{% trans "Organizations" %}</h2>
+                <div class="wrapper">
+                <table class="blueTable">
+		        <thead>
+		        <tr>
+			    <th style="width:10px"><center>{% trans "Organization" %}</th></center>
+                <th style="width:10px"><center>{% trans "Operation" %}</th></center>
+                </tr>
+                </thead>
+                    <tbody>
+                    {% for org in orgs %}
+                        <tr>
+                        <td><center>{{ org.schema_name }}</center></td>
+                        <td><center><button class="button" id='{{ org.schema_name }}' data-custom-open={{ org.schema_name }}-1><i class="fa fa-plus-square"></i></button></center></td>
+                        </tr>
+
+                {% endfor %}
+                </table>
+                </div>
+                <br>
+            <h2 class="h2">{% trans "Evidence consent" %}</h2>
+            <table class="blueTable">
+		    <thead>
+		    <tr>
+			<th style="width:10px"><center>ID</th></center>
+			<th style="width:10px"><center>{% trans "Name" %}</th></center>
+            <th style="width:10px"><center>{% trans "State" %}</th></center>
+            <th style="width:10px"><center>{% trans "Creation" %}</th></center>
+            <th style="width:10px"><center>{% trans "Shelf life" %}</th></center>
+            <th style="width:10px"><center>{% trans "Operation" %}</th></center>
+
+		    </tr>
+		    </thead>
+                <tbody>
+
+                {% for proof in proofs %}
+                        <tr>
+                        <td><center>{{ proof.id  }}</center></td>
+                        <td>{{ proof.proof_req_name  }}</td>
+                        {% if proof.active == True %}
+                            <td><center>Ativo</center></td>
+                        {% else %}
+                            <td><center>Não ativo</center></td>
+                        {% endif %}
+                        <td>{{ proof.creation|date:"d/m/Y h:i" }}</td>
+                        <td>{{ proof.expiration|date:"d/m/Y h:i" }}</td>
+                        <td><center>
+                            <button class="button" id="button" onclick="removeProof({{ proof.id }})"><i class="fa fa-minus-square"></i>
+                            </button>
+                            <button class="button" id="button" onclick="stateProof({{ proof.id }})"><i class="fa fa-check-circle"></i>
+                            </button>
+                        </center></td>
+                        </tr>
+                {% endfor %}
+                {% for org in orgs %}
+                <div class="modal micromodal-slide" id="{{ org }}-1" aria-hidden="true">
+                    <div class="modal__overlay" tabindex="-1" data-micromodal-close>
+                        <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="serpro-1-title">
+                            <header class="modal__header">
+                                <h2 class="modal__title" id=""{{ org }}-title">{% trans "Consent" %}</h2>
+                                <button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
+                            </header>
+                            <main class="modal__content" id="{{ org }}-1-content">
+                                <form class="black-80" action="{% url 'proofs' %}" method="POST">
+                                {% csrf_token %}
+                                <div class="modal__content" id="modal-2-content">
+                                    <div class="measure">
+                                        <label style="font-size:14px;" for="schema" class="f6 b db mb2 js-name">{% trans "Schema" %}</label><br>
+                                        <input size="30" id="schema" name="schema"
+                                               class="input-reset ba b--black-20 pa2 mb2 db w-100 js-nameInput"
+                                               type="text" value={{ org.schema_name }}><br>
+                                        <label style="font-size:14px;" for="proof_req_name" class="f6 b db mb2 js-name">{% trans "Name" %}</label><br>
+                                        <input size="30" id="proof_req_name" name="proof_req_name"
+                                               class="input-reset ba b--black-20 pa2 mb2 db w-100 js-nameInput"
+                                               type="text"><br>
+                                        <label style="font-size:14px;" for="proof_req_description"
+                                               class="f6 b db mb2 js-name">{% trans "Description" %}</label>
+                                        <input size="30" id="proof_req_description" name="proof_req_description"
+                                               class="input-reset ba b--black-20 pa2 mb2 db w-100 js-nameInput"
+                                               type="text"><br>
+                                        <label style="font-size:14px;" for="proof_req_predicates" class="f6 b db mb2 js-name">{% trans "Predicates" %}</label>
+                                        <input size="30" id="proof_req_predicates" name="proof_req_predicates"
+                                               class="input-reset ba b--black-20 pa2 mb2 db w-100 js-nameInput"
+                                               type="text"><br>
+                                        <label style="font-size:14px;" for="proof_req_attrs" class="f6 b db mb2 js-name">{% trans "Attributes" %}</label><br>
+                                        <select id="proof_req_attrs" multiple="multiple" name="proof_req_attrs" style="width:150px;" size="5">
+                                        {% for schema in schemas %}
+                                            {% ifequal schema.org org.schema_name %}
+                                                {% for attr in schema.attr|get_string_as_list %}
+                                                    <option value={{ attr }}>{{ attr }}</option>
+                                                {% endfor %}
+                                            {% endifequal %}
+                                        {% endfor %}
+                                        </select><br>
+                                        <br><br>
+                                    </div>
+                                    <footer class="modal__footer"><input type="submit"
+                                                                         class="modal__btn modal__btn-primary"
+                                                                         value={% trans "Save" %}>
+                                    </footer>
+                                    </form>
+                            </main>
+                            <footer class="modal__footer">
+                            </footer>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                </div>
+                <br/>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+    MicroModal.init({
+          disableScroll: true,
+          disableFocus: false,
+          awaitOpenAnimation: false,
+          debugMode: true,
+          awaitCloseAnimation: false,
+          awaitOpenAnimation: false,
+          disableFocus: false,
+          disableScroll: true,
+          openClass: 'is-open',
+          onClose: modal => console.info(`${modal.id} is hidden`),
+          onShow: modal => document.getElementById('org').value=event.srcElement.id,
+          openTrigger: 'data-custom-open'
+    });
+    function removeProof(id) {
+        Swal.fire({
+            title: '{% trans "Delete proof?" %}',
+            text: "",
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            cancelButtonText: '{% trans "No" %}',
+            confirmButtonText: '{% trans "Yes" %}'
+        }).then((result) => {
+            if (result.value) {
+                 window.location = "{% url 'remove_proof' %}?id=" + id;
+        }
+    })
+    }
+    function stateProof(id) {
+        Swal.fire({
+            title: '{% trans "Change state?" %}',
+            text: "",
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            cancelButtonText: '{% trans "No" %}',
+            confirmButtonText: '{% trans "Yes" %}'
+        }).then((result) => {
+            if (result.value) {
+                 window.location = "{% url 'state_proof' %}?id=" + id;
+        }
+    })
+    }
+    </script>
+    {% endblock %}
