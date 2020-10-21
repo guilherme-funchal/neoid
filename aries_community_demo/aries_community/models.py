@@ -81,12 +81,22 @@ class AriesUser(AbstractBaseUser, PermissionsMixin):
     """
     Simple custom User class with email-based login.
     """
+
     email = models.EmailField(unique=True)
     first_name = models.CharField(max_length=80, blank=True)
     last_name = models.CharField(max_length=150, blank=True)
     date_birth = models.CharField(max_length=150, blank=True)
     cpf = models.CharField(max_length=150, blank=True)
     pubkey = models.CharField(max_length=500, blank=True)
+    rg = models.CharField(max_length=150, blank=True)
+    cidade_emissao = models.CharField(max_length=150, blank=True)
+    estado_emissao = models.CharField(max_length=150, blank=True)
+    inss = models.CharField(max_length=150, blank=True)
+    titulo = models.CharField(max_length=150, blank=True)
+    zona = models.CharField(max_length=150, blank=True)
+    secao = models.CharField(max_length=150, blank=True)
+    natural = models.CharField(max_length=150, blank=True)
+    estado = models.CharField(max_length=150, blank=True)
     photo = models.ImageField(upload_to='media/', blank=True)
     is_staff = models.BooleanField(
         default=False,

@@ -3,6 +3,7 @@ from django.shortcuts import redirect
 from .indy_utils import *
 import OpenSSL
 from .agent_utils import *
+from .models import *
 
 def get_id_from_neoid(code, client_id, code_verifier, redirect_uri, client_secret, address):
     """
@@ -89,6 +90,7 @@ def get_pubkey_neoid(access_token, address, cpf):
     Get pubkey from neoid
     """
     headers = {'Authorization': 'Bearer' + ' ' + access_token }
+
     try:
         response = requests.get(
             address + "/smartcert-api/v0/oauth/certificate-discovery",
@@ -97,7 +99,7 @@ def get_pubkey_neoid(access_token, address, cpf):
         )
         response.raise_for_status()
         data = response.json()
-        print('data->', data["certificates"][0]["certificate"])
+#       print('data->', data["certificates"][0]["certificate"])
         coded_string = data["certificates"][0]["certificate"]
 
         filename = cpf + '.txt'
@@ -106,9 +108,59 @@ def get_pubkey_neoid(access_token, address, cpf):
         fo.close()
         cert = OpenSSL.crypto.load_certificate(OpenSSL.crypto.FILETYPE_PEM, open(filename).read())
         certIssue = cert.get_issuer()
-        print("Issuer: ", certIssue.commonName)
+
         pubkey = OpenSSL.crypto.dump_publickey(OpenSSL.crypto.FILETYPE_PEM, cert.get_pubkey()).decode("utf-8")
+        cert = OpenSSL.crypto.load_certificate(OpenSSL.crypto.FILETYPE_PEM, open(filename).read())
+        certIssue = cert.get_issuer()
+        subject = cert.get_subject().CN
+        compost = subject.split(":")
+        nome = compost[0]
+        nome = nome.split()
+        first_name = nome[0].capitalize()
+        last_name = nome[1].capitalize()
+        cpf = compost[1]
+        val = cert.get_extension(4).get_data()
+        val = str(val)
+        date_birth = val[48:56]
+#        print(date_birth)
+        email = val[234:-1]
+#        print(email)
+        rg = val[67:95]
+#        print(rg)
+        emissao = val[93:96]
+#        print(emissao)
+        estado_emissao = val[96:98]
+#        print(estado_emissao)
+        inss = val[144:156]
+#        print(inss)
+        titulo = val[193:205]
+#        print(titulo)
+        zona = val[205:208]
+#        print(zona)
+        secao = val[208:212]
+#        print(secao)
+        natural = val[212:224]
+#        print(natural)
+        estado = val[224:226]
+
+        dict = {
+            "first_name": first_name,
+            "last_name": last_name,
+            "cpf": cpf,
+            "date_birth": date_birth,
+            "email": email,
+            "rg": rg,
+            "emissao": emissao,
+            "estado_emissao": estado_emissao,
+            "inss": inss,
+            "titulo": titulo,
+            "zona": zona,
+            "secao": secao,
+            "estado": estado,
+            "natural": natural,
+            "pubkey": pubkey
+        }
 
     except:
         raise
-    return pubkey
+    return dict

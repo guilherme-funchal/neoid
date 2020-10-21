@@ -31,7 +31,7 @@ class UserSignUpForm(BaseSignUpForm):
 
     class Meta:
         model = get_user_model()
-        fields = ('first_name', 'last_name', 'date_birth','cpf', 'email', 'photo', 'pubkey', 'password1', 'password2', 'mobile_agent')
+        fields = ('first_name', 'last_name', 'date_birth', 'cpf', 'email', 'photo', 'pubkey', 'password1', 'password2', 'mobile_agent')
 
 
 class OrganizationSignUpForm(BaseSignUpForm):

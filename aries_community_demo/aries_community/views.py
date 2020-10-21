@@ -52,6 +52,8 @@ def user_signup_view(
                 user.groups.add(Group.objects.get(name=USER_ROLE))
             user.save()
 
+            print(user, raw_password, mobile_agent)
+
             # create an Indy agent - derive agent name from email, and re-use raw password
             user = user_provision(user, raw_password, mobile_agent=mobile_agent)
 
@@ -2243,12 +2245,7 @@ def oauth2(request):
 
     try:
         if code == "None":
-            connections = AriesUser.objects.get(cpf=cpf)
-            email = connections.email
-            agent = connections.agent
             request.session['cpf'] = cpf
-            request.session['agent_name'] = email
-            request.session['agent'] = str(agent)
             request.session['agent_type'] = 'user'
 
             response = get_code_neoid(client_id, code_challenge, code_challenge_method, redirect_uri, scope, state, login_hint, address)
@@ -2261,18 +2258,54 @@ def oauth2(request):
             code_verifier_tmp = request.session['code_verifier']
             data = get_token_neoid(client_id, client_secret, code, code_verifier_tmp, redirect_uri, address)
             access_token = data['access_token']
-            pubkey = get_pubkey_neoid(access_token, address, cpf)
-            print('pubkey->', pubkey)
+            dict = get_pubkey_neoid(access_token, address, cpf)
+            password = dict['cpf']
+            email = dict['email']
+            mobile_agent = False
 
+            connections = AriesUser.objects.filter(email=email).all()
+
+            if connections:
+                print('User exist')
+            else:
+                new_user = AriesUser(
+                    email = email,
+                    first_name = dict['first_name'],
+                    last_name = dict['last_name'],
+                    date_birth = dict['date_birth'],
+                    cpf = dict['cpf'],
+                    pubkey = dict['pubkey'],
+                    rg = dict['rg'],
+                    cidade_emissao = dict['emissao'],
+                    estado_emissao = dict['estado_emissao'],
+                    inss = dict['inss'],
+                    titulo = dict['titulo'],
+                    zona = dict['zona'],
+                    secao = dict['secao'],
+                    natural = dict['natural'],
+                    estado = dict['estado']
+                )
+
+                new_user.set_password(password)
+                new_user.save()
+
+                if Group.objects.filter(name=USER_ROLE).exists():
+                    new_user.groups.add(Group.objects.get(name=USER_ROLE))
+                new_user.save()
+
+                user = authenticate(username=email, password=password)
+
+                # create an Indy agent - derive agent name from email, and re-use raw password
+                print(user, password, mobile_agent)
+
+                user = user_provision(user, password, mobile_agent=mobile_agent)
+
+            request.session['agent_name'] = email
             request.session['neoid'] = data
-            cpf_neoid = data['authorized_identification']
+
+            cpf_neoid = dict['cpf']
 
             if cpf == cpf_neoid:
-                define = AriesUser.objects.filter(cpf=cpf).get()
-                define.pubkey = pubkey
-                define.save()
-
-                email = request.session['agent_name']
                 user = authenticate(email=email)
                 login(request, user)
                 return redirect('/view_dashboard/')
