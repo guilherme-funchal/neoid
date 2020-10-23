@@ -10,6 +10,15 @@ serpro:
     - date_birth
     - cpf
     - pubkey
+    - rg
+    - cidade_emissao
+    - estado_emissao
+    - inss
+    - titulo
+    - zona
+    - secao
+    - natural
+    - estado
 receita:
   type: schema
   version: $generate
@@ -18,24 +27,6 @@ receita:
   attributes:
     - recibo_ir
     - ano
-policia:
-  type: schema
-  version: $generate
-  issuing_roles:
-    - Policia
-  attributes:
-    - mae
-    - pai
-    - cidade
-    - uf
-    - rh
-    - dni
-    - rg
-    - via
-    - data_exp
-    - registro_civil
-    - tit_eleitor
-    - nis
 banco:
   type: schema
   version: $generate

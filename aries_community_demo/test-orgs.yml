@@ -16,15 +16,6 @@ receita:
   ico_url: https://receita.economia.gov.br/favicon.ico
   admin_port: 8053
   http_port: 8054
-policia:
-  first_name: Policia
-  last_name: Civil
-  email: policia@mail.com
-  password: pass12345
-  role: Policia
-  ico_url: https://www.serpro.gov.br/favicon.ico
-  admin_port: 8055
-  http_port: 8056
 banco:
   first_name: Banco
   last_name: Brasil
