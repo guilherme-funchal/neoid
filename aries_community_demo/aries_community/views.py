@@ -216,6 +216,7 @@ def profile_view(
 # expects a agent to be opened in the current session
     (agent, agent_type, agent_owner) = agent_for_current_session(request)
 
+
     if agent_type == 'user':
         connections = AriesUser.objects.filter(email=agent_owner).all()
     else:
@@ -1538,7 +1539,8 @@ def form_response(request):
 
 
 def list_wallet_credentials(
-    request
+    request,
+    template='aries/credential/list.html',
     ):
     """
     List all credentials in the current wallet.
@@ -1548,7 +1550,10 @@ def list_wallet_credentials(
         (agent, agent_type, agent_owner) = agent_for_current_session(request)
 
         credentials = fetch_credentials(agent)
-        
+
+        for credential in credentials:
+            print('=====>', credential)
+
         test = settings.REVOCATION
         cred = len(credentials)
 
@@ -1583,7 +1588,7 @@ def list_wallet_credentials(
                 partner_name = partner_name[2]
                 credentials[count]['schema_id'] = partner_name
                 count += 1
-        return render(request, 'aries/credential/list.html', {'agent_name': agent.agent_name, 'credentials': credentials})
+        return render(request, template, {'agent_name': agent.agent_name, 'credentials': credentials})
     except:
         raise
     finally:
@@ -1688,6 +1693,8 @@ def handle_remove_credentials(
     
     try:
         connection_id = request.GET.get('connection_id', None)
+        print('connection_id->', connection_id)
+
         credentials = remove_credential(agent, connection_id)
 
         handle_alert(request, message=trans('Credential removed'), type='success')
