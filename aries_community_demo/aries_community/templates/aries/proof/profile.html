@@ -1,0 +1,78 @@
+{% extends request.session.ARIES_PROFILE %}
+
+{% load i18n %}
+{% load static %}
+{% block profile_content %}
+
+<body class="w3-white">
+<div class="w3-main" style="margin-left:270px; margin-top: 50px;">
+    <div class="w3-white">
+        <div class="w3-white">
+            <div class="w3-card-4" style="margin-left:60px;width:35%">
+            <header class="w3-container w3-light-blue">
+                <h1><center><i class="fa fa-user" aria-hidden="true"></i></h1>
+            </header>
+            <div class='newsfeed-posted-info'>
+            <div class="w3-white" >
+                    {% for connection in connections %}
+                        {% if connection.photo  %}
+                            <center><img src='/media/{{ connection.photo }}'/></center>
+                        {% endif %}
+                        <center><b><h3>{{ connection.first_name }} {{ connection.last_name }}</b><br></h3></center>
+                <div style="font-size: 10px; margin-left:30px">
+                    <b>Email</b>
+                    <h4>{{ connection.email }}</h4>
+                    <b>{% trans "Date of birth" %}</b>
+                    <h4>{{ connection.date_birth }}</h4>
+                    <b>{% trans "Last login" %}</b>
+                    <h4>{{ connection.last_login }}</h4>
+                </div>
+            </div>
+        <footer class="w3-container w3-light-blue">
+            <h3>
+                <center>
+                    <a href="{% url 'update_user' %}">
+                        <i class="fa fa-pencil-square-o"></i></a>
+                    <a href="{% url 'aries_wallet' %}">
+                        <i class="fa fa-wallet"></i></a>
+                    <div class='fa fa-key' id='modal' data-custom-open=modal-1></div>
+                </center>
+            </h3>
+        </footer>
+    </div>
+    <div class="modal micromodal-slide" id="modal-1" aria-hidden="true">
+	    <div class="modal__overlay" tabindex="-1" data-micromodal-close>
+		    <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title"
+			style="width:auto;height:auto;">
+			<header class="modal__header">
+                <img src="/static/serpro/neoid.png" alt="NeoID'" style="width:50px;height:50px;">
+				<button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
+			</header>
+			<main class="modal__content" id="modal-1-content">
+                {% if connection.pubkey  %}
+                    <label>{{ connection.pubkey }}</label>
+                {% else %}
+				    <h3>{% trans "Not exist" %}</h3>
+                {% endif %}
+		    </div>
+	    </div>
+    </div>
+    {% endfor %}
+<script type="text/javascript">
+
+	 MicroModal.init({
+          disableScroll: true,
+          disableFocus: false,
+          awaitOpenAnimation: false,
+          debugMode: true,
+          awaitCloseAnimation: false,
+          awaitOpenAnimation: false,
+          disableFocus: false,
+          disableScroll: true,
+          openClass: 'is-open',
+          onClose: modal => console.info(`${modal.id} is hidden`),
+          onShow: modal => document.getElementById('org').value=event.srcElement.id,
+          openTrigger: 'data-custom-open'
+    });
+</script>
+{% endblock %}
