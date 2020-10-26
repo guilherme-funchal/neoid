@@ -21,6 +21,8 @@ from .forms import *
 from .registration_utils import *
 from .agent_utils import *
 from .neoid import *
+import json
+from django.core.serializers.json import DjangoJSONEncoder
 
 USER_ROLE = getattr(settings, "DEFAULT_USER_ROLE", 'User')
 ORG_ROLE = getattr(settings, "DEFAULT_ORG_ROLE", 'Admin')
@@ -308,7 +310,6 @@ def list_connections(
 
             #        data_source += "['" + connection.partner_name + "','" + agent_owner + "', ''],"
 
-            print('connection.partner_name->', connection.partner_name, org)
 
             credentials = IndyCredentialDefinition.objects.get(
             creddef_name=connection.partner_name + "-o_" + connection.partner_name)
@@ -324,7 +325,6 @@ def list_connections(
             else:
                 data_source += ",[{'v':'" + connection.partner_name + "', 'f':'Organização<div><br>" + \
                                '<img src ='+ img +' title = "o_serpro" alt = "o_serpro" /><br><br>' \
-                               '<a href="../select_credential_proposal?connection_id='+ connection.guid  +'&connection_partner_name='+connection.partner_name+'"    class="w3-bar-item w3-button w3-padding"><i class="fa fa-id-card"></i></a>' \
                                '<button  id=' + connection.guid + ' onclick="removeConnection(this.id)"> <class="w3-bar-item w3-button w3-padding"><i class="fa fa-remove"></i></button>' \
                                + "</div>'},'" + agent_owner + "','']"
 
@@ -406,11 +406,23 @@ def list_connections(
 #    for org in data:
 #        data = IndySchema.objects.get(schema_name=org)
 #        schs.append({"org": data.schema_name, "attr": data.schema})
-    orgs = IndySchema.objects.all()
 
-    for o in orgs:
-        schemas.append({"org": o.schema_name, "attr": o.schema})
-        print(o.schema_name, o.schema)
+
+#   schemas = IndySchema.objects.all().values('schema_name', 'schema')
+
+
+
+
+    credentials = IndySchema.objects.all()
+    cont = 0
+    schemas = []
+    for credential in credentials:
+        schema_attrs = credentials[cont].schema_template
+        credential_name = credentials[cont].schema_name
+        schema_attrs = json.loads(schema_attrs)
+        schemas.append({"name": credential_name, "schema_attrs": schema_attrs})
+        cont = cont + 1
+
 
     if agent_type == 'user':
         return render(request, template,{'agent_name': agent.agent_name, 'connections': connections, 'invitations': invitations, 'data': data, 'org': org, 'proof': proof, 'field': field, 'field2': field2, 'schemas': schemas})
@@ -1406,8 +1418,6 @@ def handle_view_proof(
     (agent, agent_type, agent_owner) = agent_for_current_session(request)
     conversation_id = request.GET.get('conversation_id', None)
     conversations = AgentConversation.objects.filter(guid=conversation_id, connection__agent=agent).all()
-    print('conversations->', conversations)
-
 
     # TODO validate conversation id
     conversation = conversations[0]
@@ -1417,8 +1427,6 @@ def handle_view_proof(
     screen = {}
 
     test = settings.REVOCATION
-
-    print('requested_proof->', requested_proof)
 
     if agent_type == 'org':
         if test == True:
@@ -1788,65 +1796,46 @@ def handle_send_message(request):
 
 
 
-def handle_credential_proposal(
-        request,
-        template='aries/form_response.html'
-):
+def handle_credential_proposal(request):
     """
-    Send a Credential Offer.
+    Send a Credential proposal.
     """
 
-    if request.method == 'POST':
-        form = SendCredentialProposalForm(request.POST)
-        if not form.is_valid():
-            return render(request, 'aries/form_response.html', {'msg': 'Form error', 'msg_txt': str(form.errors)})
-        else:
-            print('request->', request)
+    data = request.POST
+    connection_id = request.POST.get("connection_id")
+    cred_def_id = request.POST.get("cred_def_id")
+    partner_name = request.POST.get("partner_name")
+    credential_name = request.POST.get("credential_name")
+    schema_attrs = request.POST.get("schema_attrs")
 
-            cd = form.cleaned_data
-            connection_id = cd.get('connection_id')
-            cred_def_id = cd.get('cred_def')
-            credential_name = cd.get('credential_name')
-            partner_name = cd.get('partner_name')
-            schema_attrs = cd.get('schema_attrs')
-            schema_attrs = json.loads(schema_attrs)
+    cred_attrs = []
+    for attr, value in data.items():
+        if not attr.find("schema_attr_"):
+            attr = attr.replace("schema_attr_", "")
+            cred_attrs.append({"name": attr, "value": value})
 
+    (agent, agent_type, agent_owner) = agent_for_current_session(request)
+    connections = AgentConnection.objects.filter(guid=connection_id).all()
 
-            cred_attrs = []
-            for attr in schema_attrs:
-                field_name = 'schema_attr_' + attr
-                field_value = request.POST.get(field_name)
-                cred_attrs.append({"name": attr, "value": request.POST.get(field_name)})
+    # TODO validate connection id
+    my_connection = connections[0]
 
-            (agent, agent_type, agent_owner) = agent_for_current_session(request)
-            connections = AgentConnection.objects.filter(guid=connection_id).all()
+    cred_defs = IndyCredentialDefinition.objects.filter(agent='o_' + partner_name).all()
 
+    cred_def_id = cred_defs[0].ledger_creddef_id
+    schema_name = cred_defs[0].ledger_schema
+    cred_def = cred_defs[0]
+    schema = IndySchema.objects.filter(schema_name=schema_name).all()
 
-            # TODO validate connection id
-            my_connection = connections[0]
-            
-
-            cred_defs = IndyCredentialDefinition.objects.filter(ledger_creddef_id=cred_def_id, agent='o_'+partner_name).all()
-            schema_name = cred_defs[0].ledger_schema
-            cred_def = cred_defs[0]
-            schema = IndySchema.objects.filter(schema_name=schema_name).all()
-
-            try:
-
-                print('===>',agent, my_connection, cred_attrs, cred_def_id, schema, connection_id)
-
-                my_conversation = send_credential_proposal(agent, my_connection, cred_attrs, cred_def_id, schema, connection_id)
-#               return render(request, template, {'msg': trans('Updated conversation for') + ' ' + agent.agent_name})
-                handle_alert(request, message=trans('Credential proposal sent'), type='success')
-                return redirect('/connections/')
-            except:
-                # ignore errors for now
-                print(" >>> Failed to update conversation for", agent.agent_name)
-                return render(request, 'aries/form_response.html',
-                              {'msg': 'Failed to update conversation for' + ' ' + agent.agent_name})
-
-    else:
-        return render(request, 'aries/form_response.html', {'msg': 'Method not allowed'})
+    try:
+        my_conversation = send_credential_proposal(agent, my_connection, cred_attrs, cred_def_id, schema, connection_id)
+        handle_alert(request, message=trans('Credential proposal sent'), type='success')
+        return redirect('/connections/')
+    except:
+        # ignore errors for now
+        print(" >>> Failed to update conversation for", agent.agent_name)
+        handle_alert(request, message=trans('Credential proposal not sent'), type='error')
+        return redirect('/connections/')
 
 
 def handle_select_credential_proposal(
