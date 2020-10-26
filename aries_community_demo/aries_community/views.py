@@ -309,10 +309,16 @@ def list_connections(
             #        data_source += "['" + connection.partner_name + "','" + agent_owner + "', ''],"
 
             print('connection.partner_name->', connection.partner_name, org)
+
+            credentials = IndyCredentialDefinition.objects.get(
+            creddef_name=connection.partner_name + "-o_" + connection.partner_name)
+            schema_attrs = credentials.creddef_template
+            credential_name = credentials.creddef_name
+            schema_attrs = json.loads(schema_attrs)
+
             if onboard == connection.partner_name:
                 data_source += ",[{'v':'" + connection.partner_name + "', 'f':'Organização<div><br>" + \
                                '<img src =' + img + ' title = "o_serpro" alt = "o_serpro" /><br><br>' \
-                               '<a href="../select_credential_proposal?connection_id=' + connection.guid + '&connection_partner_name=' + connection.partner_name + '"    class="w3-bar-item w3-button w3-padding"><i class="fa fa-id-card"></i></a>' \
                                '<button  id=' + connection.guid + ' onclick="infoConnection(this.id)"> <class="w3-bar-item w3-button w3-padding"><i class="fa fa-info-circle"></i></button>' \
                                + "</div>'},'" + agent_owner + "','']"
             else:
@@ -326,6 +332,8 @@ def list_connections(
         proof = {}
         field = {}
         field2 = {}
+
+
     else:
         data_source += "[{'v':'" + agent_owner + "', 'f':'" + agent_owner + "<div><br>" \
                        + \
@@ -348,9 +356,7 @@ def list_connections(
 
 
         proofs = IndyProofRequest.objects.filter(active="True", expiration__gte=datetime.now()).all()
-
         credentials = fetch_credentials(agent)
-
         initialize_agent = False
 
         proof = {}
@@ -368,7 +374,6 @@ def list_connections(
                 proof[prf.proof_req_name] = ""
 
         credentials = IndyCredentialDefinition.objects.get(agent__agent_name=agent.agent_name)
-
         credential = credentials.creddef_template
         attribs = json.loads(credential)
 
@@ -396,8 +401,19 @@ def list_connections(
 
     data = data_source
 
+    schemas = []
+#    data = IndySchema.objects.all()
+#    for org in data:
+#        data = IndySchema.objects.get(schema_name=org)
+#        schs.append({"org": data.schema_name, "attr": data.schema})
+    orgs = IndySchema.objects.all()
+
+    for o in orgs:
+        schemas.append({"org": o.schema_name, "attr": o.schema})
+        print(o.schema_name, o.schema)
+
     if agent_type == 'user':
-        return render(request, template,{'agent_name': agent.agent_name, 'connections': connections, 'invitations': invitations, 'data': data, 'org': org, 'proof': proof, 'field': field, 'field2': field2})
+        return render(request, template,{'agent_name': agent.agent_name, 'connections': connections, 'invitations': invitations, 'data': data, 'org': org, 'proof': proof, 'field': field, 'field2': field2, 'schemas': schemas})
     else:
         credentials = IndyCredentialDefinition.objects.filter(agent__agent_name=agent.agent_name).all()
         schema_attrs = credentials[0].creddef_template
