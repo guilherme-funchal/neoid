@@ -7,16 +7,14 @@
 <!-- Sidebar/menu -->
 
 <nav class="w3-sidebar w3-collapse w3-light-gray" style="z-index:3;width:300px;margin-top:0px;" id="mySidebar">
-  <div class="w3-container">
-      <h5><a href="{% url 'view_dashboard' %}" >{% trans "Dashboard" %}</a></h5>
-  </div>
 	<div class="w3-bar-block">
+		<hr>
+		<a href="{% url 'view_dashboard' %}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-thermometer-three-quarters"></i>  {% trans "Dashboard" %}</a>
 		<a href="{% url 'connections' %}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-retweet"></i>  {% trans "Connections" %}</a>
 		<a href="{% url 'conversations' %}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-commenting"></i>  {% trans "Conversations" %}</a>
 		<a href="{% url 'credentials' %}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-id-card"></i> {% trans "Credentials" %}</a>
         <a href="{% url 'proofs' %}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-share-alt"></i> {% trans "Proofs" %}</a>
 		<a href="{% url 'aries_profile' %}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cog"></i>  {% trans "Settings" %}</a>
-		<a class="w3-bar-item w3-button w3-padding" data-toggle="modal" data-custom-open='teste-1'><i class="fa fa-cog"></i>  {% trans "Settings" %}</a>
 		<a href="{% url 'logout' %}?next={% url 'login' %}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-times"></i> {% trans "Exit" %}</a>
 	</div>
 	<a data-toggle="modal" data-custom-open='modal-{{ credential.referent }}'>
@@ -28,74 +26,8 @@
     -->
 </nav>
 
-<div class="modal micromodal-slide" id="teste-1" aria-hidden="true">
-	    <div class="modal__overlay" tabindex="-1" data-micromodal-close>
-		    <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="teste-1-title"
-			style="width:auto;height:auto;">
-			<header class="modal__header">
-				<button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
-			</header>
-			<main class="modal__content" id="teste-1-content">
-					{% for connection in connections %}
-                    <b>Email</b> : {{ connection.email }}<br>
-					<b>CPF</b> : {{ connection.cpf }}<br>
-                    <b>{% trans "Date of birth" %}</b> : {{ connection.date_birth }}<br>
-                    <b>{% trans "Last login" %}</b> : {{ connection.last_login }}<br>
-					{% endfor %}
-					<footer><center><br>
-						<button  style="height:30px;width:30px" data-custom-open='modal-1'> <class="w3-bar-item w3-button w3-padding"><i class="fa fa-key"></i></button>
-						<button  style="height:30px;width:30px" data-custom-open='user-1'> <class="w3-bar-item w3-button w3-padding"><i class="fa fa-pencil-square-o"></i></button>
-					</center></footer>
-                </div>
-		    </div>
-	    </div>
-</div>
-
-<div class="modal micromodal-slide" id="modal-1" aria-hidden="true">
-	    <div class="modal__overlay" tabindex="-1" data-micromodal-close>
-		    <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title"
-			style="width:auto;height:auto;">
-			<header class="modal__header">
-                <img src="/static/serpro/neoid.png" alt="NeoID'" style="width:50px;height:50px;">
-				<button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
-			</header>
-			<main class="modal__content" id="modal-1-content">
-                {% if connection.pubkey  %}
-                    <label>{{ connection.pubkey }}</label>
-                {% else %}
-				    <h3>{% trans "Not exist" %}</h3>
-                {% endif %}
-		    </div>
-	    </div>
-</div>
-
-<div class="modal micromodal-slide" id="user-1" aria-hidden="true">
-	    <div class="modal__overlay" tabindex="-1" data-micromodal-close>
-		    <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="user-1-title"
-			style="width:auto;height:auto;">
-			<header class="modal__header">
-				<button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
-			</header>
-			<main class="modal__content" id="user-1-content">
-			<form action="{% url 'update_user' %}" method="POST" enctype="multipart/form-data">
-                          {% csrf_token %}
-                          {% for field in form %}
-                            <div>
-                              {% if not field.is_hidden %}
-                                <p class="w3-medium"><b>{{ field.label_tag }}</p></b>
-                              {% endif %}
-                                <p class="w3-medium">{{ field }}</p>
-                              {% for error in field.errors %}
-                                <p style="color: red">{{ error }}</p>
-                              {% endfor %}
-                            </div>
-                          {% endfor %}
-                        <button class='btn' type="submit">{% trans "Submit" %}</button>
-                    </form>
-		    </div>
-	    </div>
-</div>
 <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
 
 <!-- <div class="w3-main" style="margin-left:300px;margin-top:43px;"> -->
 				{% block profile_content %}
