@@ -97,7 +97,9 @@
 							<td>
 								{% if settings.REVOCATION == True %}
 									<center>
-									<button style="height:20px;width:30px" class="button" onclick="revokeCredencial('conversation_id={{conversation.guid}}','&rev_reg_id={{ conversation.rev_reg_id }}', '&cred_rev_id={{ conversation.cred_rev_id }}')"><i class="fa fa-scissors" title="{% trans "Revoke" %}"></i>
+									<button style="height:20px;width:30px"
+											onclick="revokeCredencial('conversation_id={{conversation.guid}}','&rev_reg_id={{ conversation.rev_reg_id }}','&cred_rev_id={{ conversation.cred_rev_id }}');">
+									<i class="fa fa-scissors" title="{% trans 'Revoke' %}"></i>
 									</button>
 									</center>
 								{% else %}
@@ -259,7 +261,7 @@
 	{% endfor %}
 	</tbody>
 	</table>
-</div>
+
 
 <script>
     function removeCredencial(conversation_id) {

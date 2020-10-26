@@ -1,7 +1,6 @@
 {% load i18n %}
 {% load static %}
 
-
 <div class="w3-white" style="margin-left:300px; margin-top: 50px;">
     <div class="w3-white">
         <br>
@@ -80,16 +79,61 @@
                         </div></td>
                 </tr>
 
-    {% endif %}
-    {% endfor %}
+        {% endif %}
+        {% endfor %}
+        {% if not request.session.ACTIVE_ORG %}
+        <div class="w3-container w3-white" style="font-size: 10px">
+            	<h4>{% trans "Connections" %}
+                <a onclick="invitePerson()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-university"></i>{% trans "Organization" %}</a>
+                <a href="../connection_response" class="w3-bar-item w3-button w3-padding"><i class="fa fa-user-secret"></i>Externo</a></h4>
+            	<table class="blueTable">
+                    <thead>
+                    <tr>
+                        <th style="width:200px"><center>GUID</th></center>
+                        <th style="width:50px"><center>{% trans "Organization" %}</th></center>
+                        <th style="width:200px"><center>{% trans "Status" %}</th></center>
+                        <th style="width:200px"><center>{% trans "Operation" %}</th></center>
+                    </tr>
+                    </thead>
+
+	    <tbody>
+        {% endif %}
+
+        {% for connection in connections %}
+        {% if not request.session.ACTIVE_ORG %}
+                <tr>
+                        <td>{{ connection.guid }}</td>
+                        <td>{{ connection.partner_name }}</td>
+                        <td>{{ connection.status }}</td>
+                        <td>
+                        <button  style="height:20px;width:30px" title={% trans "Credential" %} data-custom-open='modal-{{ connection.guid }}'> <class="w3-bar-item w3-button w3-padding"><i class="fa fa-address-card"></i></button>
+                        <button  style="height:20px;width:30px" title={% trans "Connection" %} id={{ connection.guid }} onclick="removeConnection(this.id)"> <class="w3-bar-item w3-button w3-padding"><i class="fa fa-remove"></i></button>
+                        <button  style="height:20px;width:30px" title={% trans "Message" %} id={{ connection.guid }} onclick="sendMessage(this.id)"> <class="w3-bar-item w3-button w3-padding"><i class="fa fa-pencil-square-o"></i></button>
+                        <!--
+                        <button  style="height:20px;width:30px" title={% trans "Import" %} id={{ connection.guid }} onclick="importCredential(this.id)"> <class="w3-bar-item w3-button w3-padding"><i class="fa fa-download"></i></button> -->
+                        </div></td>
+                </tr>
+
+        {% endif %}
+        {% endfor %}
     </tbody>
 	</table>
-    <br>
- 
-<body onload="draw()">
 
-{% include "aries/pageIncludes/credential.html" %}
-{% include "aries/pageIncludes/proofs.html" %}
+
+
+    {% for schema in schemas %}
+            {{ schema.org }}
+    {% endfor %}
+
+    <br>
+
+    {% if request.session.ACTIVE_ORG %}
+        {% include "aries/pageIncludes/credential.html" %}
+        {% include "aries/pageIncludes/proofs.html" %}
+    {% else %}
+        {% include "aries/pageIncludes/credential-proposal.html" %}
+    {% endif %}
+
 
 <script type="text/javascript">
     google.charts.setOnLoadCallback(drawChart);
