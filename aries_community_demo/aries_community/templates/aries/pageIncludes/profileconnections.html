@@ -103,11 +103,13 @@
         {% if not request.session.ACTIVE_ORG %}
                 <tr>
                         <td>{{ connection.guid }}</td>
-                        <td>{{ connection.partner_name }}</td>
-                        <td>{{ connection.status }}</td>
+                        <td><center>{{ connection.partner_name }}</center></td>
+                        <td><center>{{ connection.status }}</center></td>
                         <td>
                         <button  style="height:20px;width:30px" title={% trans "Credential" %} data-custom-open='modal-{{ connection.guid }}'> <class="w3-bar-item w3-button w3-padding"><i class="fa fa-address-card"></i></button>
-                        <button  style="height:20px;width:30px" title={% trans "Connection" %} id={{ connection.guid }} onclick="removeConnection(this.id)"> <class="w3-bar-item w3-button w3-padding"><i class="fa fa-remove"></i></button>
+                        {% if settings.ONBOARD.ORG != connection.partner_name %}
+                            <button  style="height:20px;width:30px" title={% trans "Connection" %} id={{ connection.guid }} onclick="removeConnection(this.id)"> <class="w3-bar-item w3-button w3-padding"><i class="fa fa-remove"></i></button>
+                        {% endif %}
                         <button  style="height:20px;width:30px" title={% trans "Message" %} id={{ connection.guid }} onclick="sendMessage(this.id)"> <class="w3-bar-item w3-button w3-padding"><i class="fa fa-pencil-square-o"></i></button>
                         <!--
                         <button  style="height:20px;width:30px" title={% trans "Import" %} id={{ connection.guid }} onclick="importCredential(this.id)"> <class="w3-bar-item w3-button w3-padding"><i class="fa fa-download"></i></button> -->
@@ -118,14 +120,6 @@
         {% endfor %}
     </tbody>
 	</table>
-
-
-
-    {% for schema in schemas %}
-            {{ schema.org }}
-    {% endfor %}
-
-    <br>
 
     {% if request.session.ACTIVE_ORG %}
         {% include "aries/pageIncludes/credential.html" %}
