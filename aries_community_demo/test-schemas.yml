@@ -11,7 +11,7 @@ serpro:
     - cpf
     - pubkey
     - rg
-    - cidade_emissao
+    - emissao
     - estado_emissao
     - inss
     - titulo
