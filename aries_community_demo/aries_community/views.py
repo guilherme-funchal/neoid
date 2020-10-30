@@ -14,15 +14,14 @@ from urllib3.exceptions import InsecureRequestWarning #added
 import requests
 requests.packages.urllib3.disable_warnings(category=InsecureRequestWarning)
 
-from django.views.decorators.csrf import csrf_exempt
+#from django.views.decorators.csrf import csrf_exempt
 from .forms import *
 #from .models import *
 #from .wallet_utils import *
 from .registration_utils import *
-from .agent_utils import *
+#from .agent_utils import *
 from .neoid import *
 import json
-from django.core.serializers.json import DjangoJSONEncoder
 
 USER_ROLE = getattr(settings, "DEFAULT_USER_ROLE", 'User')
 ORG_ROLE = getattr(settings, "DEFAULT_ORG_ROLE", 'Admin')
@@ -53,8 +52,6 @@ def user_signup_view(
             if Group.objects.filter(name=USER_ROLE).exists():
                 user.groups.add(Group.objects.get(name=USER_ROLE))
             user.save()
-
-            print(user, raw_password, mobile_agent)
 
             # create an Indy agent - derive agent name from email, and re-use raw password
             user = user_provision(user, raw_password, mobile_agent=mobile_agent)
@@ -400,18 +397,6 @@ def list_connections(
         data_source += "]"
 
     data = data_source
-
-    schemas = []
-#    data = IndySchema.objects.all()
-#    for org in data:
-#        data = IndySchema.objects.get(schema_name=org)
-#        schs.append({"org": data.schema_name, "attr": data.schema})
-
-
-#   schemas = IndySchema.objects.all().values('schema_name', 'schema')
-
-
-
 
     credentials = IndySchema.objects.all()
     cont = 0
@@ -979,10 +964,8 @@ def handle_credential_offer(
     partner_name = request.POST.get("partner_name")
 
     connections = AgentConnection.objects.filter(guid=connection_id, agent=agent).all()
-
     my_connection = connections[0]
 
-    print('my_connection->', my_connection)
 
     cred_defs = IndyCredentialDefinition.objects.filter(creddef_name=credential_name, agent=agent).all()
     cred_def = cred_defs[0]
@@ -1031,7 +1014,7 @@ def handle_credential_import(
     cred_def_id = cred_def.ledger_creddef_id
 
     user = AriesUser.objects.filter(email=email).all()
-    print('user->', user)
+
 
 def handle_alert(request, message, type):
     if type == 'success':
@@ -1148,7 +1131,6 @@ def handle_select_proof_request(
         requested_predicates = {}
 
         try:
-            print('entrei aqui...')
             conversation = send_proof_request(agent, connection, proof.proof_req_name, requested_attrs, requested_predicates)
             handle_alert(request, message=trans('Proof request was sent'), type='success')
             return redirect('/connections/')
@@ -1574,9 +1556,9 @@ def list_wallet_credentials(
         (agent, agent_type, agent_owner) = agent_for_current_session(request)
 
         credentials = fetch_credentials(agent)
+        print('credentials->', credentials)
 
-        for credential in credentials:
-            print('=====>', credential)
+#        for credential in credentials:
 
         test = settings.REVOCATION
         cred = len(credentials)
@@ -1717,10 +1699,7 @@ def handle_remove_credentials(
     
     try:
         connection_id = request.GET.get('connection_id', None)
-        print('connection_id->', connection_id)
-
         credentials = remove_credential(agent, connection_id)
-
         handle_alert(request, message=trans('Credential removed'), type='success')
         return redirect('/credentials/')
 
@@ -2111,7 +2090,6 @@ def handle_view_dashboard(
             their_agent = target_org[0].agent
 
             filter = AgentConnection.objects.filter(agent=agent, partner_name=org)
-            print(filter)
 
             if not filter:
                 return handle_connection_request_organization(request, org)
@@ -2140,36 +2118,27 @@ def handle_view_dashboard(
 
     conversations = AgentConversation.objects.filter(connection__agent=agent).all()
 
-    proposal_sent = 0
     credential_acked = 0
-    proposal_received = 0
+    proposal_sent = 0
     proposal_acked = 0
     offer_received = 0
     request_received = 0
     request_sent = 0
     presentation_sent = 0
     presentation_acked = 0
+    proposal_received = 0
+    proof_verified = 0
 
     for conversation in conversations:
             if conversation.status == 'credential_acked':
                 credential_acked = credential_acked + 1
-            if  conversation.status == 'proposal_sent':
+            if conversation.status == 'proposal_sent':
                 proposal_sent = proposal_sent + 1
-            if  conversation.status == 'proposal_received':
-                proposal_received = proposal_received + 1
-            if  conversation.status == 'proposal_acked':
-                proposal_acked = proposal_acked + 1
-            if conversation.status == 'offer_received':
-                offer_received = offer_received + 1
-            if conversation.status == 'offer_received':
-                offer_received = offer_received+ 1
-            if conversation.status == 'request_received':
-                request_received = request_received + 1
-            if  conversation.status == 'request_sent':
-                request_sent = request_sent + 1
-            if  conversation.status == 'presentation_sent':
-                presentation_sent = presentation_sent + 1
-            if  conversation.status == 'presentation_acked':
+            if conversation.status == 'proposal_received':
+                proposal_received = proposal_sent + 1
+            if conversation.status == 'verified':
+                presentation_acked = presentation_acked + 1
+            if conversation.status == 'presentation_acked':
                 presentation_acked = presentation_acked + 1
 
     count_message = len(conversations)
@@ -2177,6 +2146,12 @@ def handle_view_dashboard(
     count_connections = len(connections)
     credentials = fetch_credentials(agent)
     count_credentials = len(credentials)
+
+    data = "["
+    data += "['Credencial reconhecida'" + ', ' + str(credential_acked) + ']' + ','
+    data += "['Proposta enviada'" + ', ' + str(proposal_sent) + ']' + ','
+    data += "['Proposta recebida'" + ', ' + str(proposal_received) + ']' + ','
+    data += "]"
 
     return render(request, template, {'agent_name': agent.agent_name,
                                       'count_message': count_message,
@@ -2190,8 +2165,8 @@ def handle_view_dashboard(
                                       'request_sent' : request_sent,
                                       'presentation_sent' : presentation_sent,
                                       'presentation_acked' : presentation_acked,
-                                      'count_credentials': count_credentials})
-
+                                      'count_credentials': count_credentials,
+                                      'data' : data})
 
 
 def handle_cred_revoke(request):
@@ -2288,7 +2263,7 @@ def oauth2(request):
                     cpf = dict['cpf'],
                     pubkey = dict['pubkey'],
                     rg = dict['rg'],
-                    cidade_emissao = dict['emissao'],
+                    emissao = dict['emissao'],
                     estado_emissao = dict['estado_emissao'],
                     inss = dict['inss'],
                     titulo = dict['titulo'],
@@ -2308,7 +2283,6 @@ def oauth2(request):
                 user = authenticate(username=email, password=password)
 
                 # create an Indy agent - derive agent name from email, and re-use raw password
-                print(user, password, mobile_agent)
 
                 user = user_provision(user, password, mobile_agent=mobile_agent)
 
@@ -2337,9 +2311,7 @@ def handle_proofs(request, template='aries/proof/list.html'):
     (agent, agent_type, agent_owner) = agent_for_current_session(request)
 
     if request.method == 'POST':
-        print(request.POST.get)
         proof_req_name = request.POST.get("proof_req_name")
-
         test = IndyProofRequest.objects.filter(proof_req_name = proof_req_name)
 
         if not test:

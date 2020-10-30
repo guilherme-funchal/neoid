@@ -89,7 +89,7 @@ class AriesUser(AbstractBaseUser, PermissionsMixin):
     cpf = models.CharField(max_length=150, blank=True)
     pubkey = models.CharField(max_length=500, blank=True)
     rg = models.CharField(max_length=150, blank=True)
-    cidade_emissao = models.CharField(max_length=150, blank=True)
+    emissao = models.CharField(max_length=150, blank=True)
     estado_emissao = models.CharField(max_length=150, blank=True)
     inss = models.CharField(max_length=150, blank=True)
     titulo = models.CharField(max_length=150, blank=True)
@@ -237,6 +237,7 @@ class AgentConnection(models.Model):
     invitation = models.TextField(max_length=4000, blank=True)
     invitation_url = models.TextField(max_length=4000, blank=True)
     status = models.CharField(max_length=80, blank=True)
+    creation = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
         return self.agent.agent_name + ":" + self.partner_name + ", " +  self.guid

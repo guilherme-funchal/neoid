@@ -125,9 +125,9 @@ def get_pubkey_neoid(access_token, address, cpf):
 #        print(date_birth)
         email = val[234:-1]
 #        print(email)
-        rg = val[67:95]
+        rg = val[67:93]
 #        print(rg)
-        emissao = val[93:96]
+        emissao = val[93:98]
 #        print(emissao)
         estado_emissao = val[96:98]
 #        print(estado_emissao)

@@ -1,28 +1,28 @@
-import asyncio
-import aiohttp
-import urllib
-import json
+#import asyncio
+#import aiohttp
+#import json
+#from pathlib import Path
+#from tempfile import gettempdir
+#import random
+#import uuid
+#import hashlib
+#import base58
+#from timeit import default_timer
+
 import os
-from pathlib import Path
-from tempfile import gettempdir
-import random
-import uuid
+import urllib
 import threading
 import subprocess
 import time
 import requests
-import hashlib
-import base58
-from timeit import default_timer
 import os.path
 
-from django.shortcuts import redirect
-from django.conf import settings
+#from django.shortcuts import redirect
+#from django.conf import settings
+#from .models import *
+#from .utils import *
 
 from rest_framework.response import Response
-
-from .models import *
-from .utils import *
 from .indy_utils import *
 
 
@@ -96,7 +96,7 @@ def aries_provision_config(
 #           "--admin-insecure-mode",
             "--auto-respond-messages",
             "--auto-respond-presentation-request",
-#           "--auto-respond-credential-offer",
+            "--auto-respond-credential-offer",
             "--auto-respond-credential-request",
             "--auto-respond-presentation-proposal",
         ])
@@ -1033,7 +1033,7 @@ def fetch_credentials(agent, initialize_agent=False):
             headers=get_ADMIN_REQUEST_HEADERS(agent)
         )
         response.raise_for_status()
-
+#       print('response->', response.json()["results"])
         credentials = response.json()["results"]
     except:
         raise
@@ -1088,7 +1088,7 @@ def send_proof_request(agent, connection, proof_req_name, proof_attrs, proof_pre
         )
         response.raise_for_status()
         my_proof_request = response.json()
-        print('my_proof_request->', my_proof_request)
+
 
         conversation = AgentConversation(
             connection = connection,
