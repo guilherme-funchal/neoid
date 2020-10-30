@@ -137,8 +137,10 @@
 			<th style="width:50px"><center>{% trans "Third" %}</th></center>
 			<th style="width:30px"><center>{% trans "Signal" %}</th></center>
 			<th style="width:100px"><center>{% trans "Type" %}</th></center>
-			<th style="width:200px"><center>{% trans "Operation" %}</th></center>
+			<th style="width:50px"><center>{% trans "Operation" %}</th></center>
 			<th style="width:200px"><center>{% trans "Status" %}</th></center>
+			<th style="width:100px"><center>{% trans "Date" %}</th></center>
+			<th style="width:50px"><center>{% trans "Connection" %}</th></center>
 		</tr>
 		</thead>
 
@@ -161,6 +163,12 @@
 							-->
 						</td></button></center>
 						<td>{% trans "Request received" %}</td>
+						<td>{{ conversation.creation|date:"d/m/Y h:i" }}</td>
+						{% if not request.session.ACTIVE_ORG %}
+							<td>{{ conversation.connection.partner_name }}</td>
+						{% else %}
+							<center><td>-</td></center>
+						{% endif %}
 		          	{% endif %}
 					{% if conversation.status == 'request_sent' %}
 						<td><i class="fa fa-eye-slash" aria-hidden="true">&nbsp;</i>{{ conversation.connection.guid }}</td>
@@ -169,6 +177,12 @@
 						<td>{{ conversation.conversation_type }}</td>
 						<td><center><i class="fa fa-stop-circle" aria-hidden="true" style="color:red" title="Nothing"></center></td>
 						<td>{% trans "Request sent" %}</td>
+						<td>{{ conversation.creation|date:"d/m/Y h:i" }}</td>
+						{% if not request.session.ACTIVE_ORG %}
+							<td>{{ conversation.connection.partner_name }}</td>
+						{% else %}
+							<center><td>-</td></center>
+						{% endif %}
 		          	{% endif %}
 					{% if conversation.status == 'verified' %}
 						<td><i class="fa fa-eye" aria-hidden="true">
@@ -180,6 +194,12 @@
 						<td>{{ conversation.conversation_type }}</td>
 						<td><center><i class="fa fa-stop-circle" aria-hidden="true" style="color:red" title="Nothing"></i></center></td>
 						<td>{% trans "Verified" %}</td>
+						<td>{{ conversation.creation|date:"d/m/Y h:i" }}</td>
+						{% if not request.session.ACTIVE_ORG %}
+							<td>{{ conversation.connection.partner_name }}</td>
+						{% else %}
+							<center><td>-</td></center>
+						{% endif %}
 		          	{% endif %}
 					{% if conversation.status == 'credential_revoked' %}
 						<td><i class="fa fa-eye" aria-hidden="true">
@@ -191,6 +211,12 @@
 						<td>{{ conversation.conversation_type }}</td>
 						<td><center><i class="fa fa-stop-circle" aria-hidden="true" style="color:red" title="Nothing"></i></center></td>
 						<td>{% trans "Revoked" %}</td>
+						<td>{{ conversation.creation|date:"d/m/Y h:i" }}</td>
+						{% if not request.session.ACTIVE_ORG %}
+							<td>{{ conversation.connection.partner_name }}</td>
+						{% else %}
+							<center><td>-</td></center>
+						{% endif %}
 		          	{% endif %}
 					{% if conversation.status == 'presentation_acked' %}
 						<td><i class="fa fa-eye" aria-hidden="true">
@@ -202,6 +228,12 @@
 						<td>{{ conversation.conversation_type }}</td>
 						<td><center><i class="fa fa-stop-circle" aria-hidden="true" style="color:red" title="Nothing"></i></center></td>
 						<td>{% trans "Presentation acked" %}</td>
+						<td>{{ conversation.creation|date:"d/m/Y h:i" }}</td>
+						{% if not request.session.ACTIVE_ORG %}
+							<td>{{ conversation.connection.partner_name }}</td>
+						{% else %}
+							<center><td>-</td></center>
+						{% endif %}
 		          	{% endif %}
 					{% if conversation.status == 'presentation_sent' %}
 						<td><i class="fa fa-eye-slash" aria-hidden="true">&nbsp;</i>{{ conversation.connection.guid }}</td>
@@ -210,6 +242,12 @@
 						<td>{{ conversation.conversation_type }}</td>
 						<td><center><i class="fa fa-stop-circle" aria-hidden="true" style="color:red" title="Nothing"></i></center></td>
 						<td>{% trans "Presentation sent" %}</td>
+						<td>{{ conversation.creation|date:"d/m/Y h:i" }}</td>
+						{% if not request.session.ACTIVE_ORG %}
+							<td>{{ conversation.connection.partner_name }}</td>
+						{% else %}
+							<center><td>-</td></center>
+						{% endif %}
 		          	{% endif %}
 					{% if conversation.status == 'Accepted' %}
 						{% if conversation.conversation_type == 'ProofRequest' %}
@@ -222,6 +260,12 @@
 								<a href=""{% url 'view_proof' %}?conversation_id={{conversation.guid}}" class="w3-bar-item w3-button w3-padding">  <i class="fa fa-check" style="color:green"></i>{% trans "Completed" %}</a>
 							</td>
 							<td>{% trans "Accepted" %}</td>
+							<td>{{ conversation.creation|date:"d/m/Y h:i" }}</td>
+							{% if not request.session.ACTIVE_ORG %}
+								<td>{{ conversation.connection.partner_name }}</td>
+							{% else %}
+								<center><td>-</td></center>
+							{% endif %}
 						{% endif %}
 		      		{% endif %}
 				</tr>

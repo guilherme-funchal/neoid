@@ -53,6 +53,7 @@
                         <th style="width:200px"><center>GUID</th></center>
                         <th style="width:50px"><center>{% trans "Partner" %}</th></center>
                         <th style="width:200px"><center>{% trans "Status" %}</th></center>
+                        <th style="width:200px"><center>{% trans "Data" %}</th></center>
                         <th style="width:200px"><center>{% trans "Operation" %}</th></center>
                     </tr>
                     </thead>
@@ -67,8 +68,10 @@
 						</td>
                         <td><a href="{% url 'list_connections_org' %}?connection.guid={{connection.guid}}">
 							</i>{{ connection.partner_name }}</a>
-						</td>
-                        <td>{{ connection.status }}</td>
+                        </td>
+                        <td><center>{{ connection.status }}</center></td>
+                        </td>
+                        <td><center>{{ connection.creation|date:"d/m/Y h:i" }}</center></td>
                         <td>
                         <button  style="height:20px;width:30px" title={% trans "Credential" %} data-custom-open='modal-{{ connection.guid }}'> <class="w3-bar-item w3-button w3-padding"><i class="fa fa-address-card"></i></button>
                         <button  style="height:20px;width:30px" title={% trans "Connection" %} id={{ connection.guid }} onclick="removeConnection(this.id)"> <class="w3-bar-item w3-button w3-padding"><i class="fa fa-remove"></i></button>
@@ -92,6 +95,7 @@
                         <th style="width:200px"><center>GUID</th></center>
                         <th style="width:50px"><center>{% trans "Organization" %}</th></center>
                         <th style="width:200px"><center>{% trans "Status" %}</th></center>
+                        <th style="width:200px"><center>{% trans "Data" %}</th></center>
                         <th style="width:200px"><center>{% trans "Operation" %}</th></center>
                     </tr>
                     </thead>
@@ -105,6 +109,7 @@
                         <td>{{ connection.guid }}</td>
                         <td><center>{{ connection.partner_name }}</center></td>
                         <td><center>{{ connection.status }}</center></td>
+                        <td><center>{{ connection.creation|date:"d/m/Y h:i" }}</center></td>
                         <td>
                         <button  style="height:20px;width:30px" title={% trans "Credential" %} data-custom-open='modal-{{ connection.guid }}'> <class="w3-bar-item w3-button w3-padding"><i class="fa fa-address-card"></i></button>
                         {% if settings.ONBOARD.ORG != connection.partner_name %}
