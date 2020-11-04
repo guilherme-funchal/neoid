@@ -4,6 +4,7 @@ from django.shortcuts import render
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated, AllowAny
 
+import operator
 import pyqrcode
 import sweetify
 import pkce
@@ -1424,8 +1425,10 @@ def handle_view_proof(
             screen[attr] = value
 
         html = '<h4><p style="text-align:left;">'
-        for x, y in screen.items():
-            html += '- ' + str(x) + '<br>'
+
+#        for x, y in screen.items():
+        for x, y in sorted(screen.items(), key=lambda x: x[0]):
+            html += '- ' + str(x).upper() + '<br>'
         html += '</p>'
         sweetify.success(request, title='', html=html, persistent=True, backdrop=False, icon='info', width=600)
         return redirect('/conversations/')
@@ -1447,23 +1450,31 @@ def handle_view_proof(
 
             if test == True:
                 html = '<h4><p style="text-align:left;">'
-
-                for x, y in screen.items():
-                    html += '<b>' + x + '</b>' + ' : ' + y['raw'] + '<br>'
+#               for x, y in screen.items():
+# Order screen dict
+                for x, y in sorted(screen.items(), key=lambda x: x[0]):
+                    html += '<b>' + x.upper()  + '</b>' + ' : ' + y['raw'] + '<br>'
                 html += '</p>'
             sweetify.success(request, title='', html=html, persistent=True, backdrop=False, icon='info', width=600)
             return redirect('/conversations/')
         if value.find("{}") == 0:
+
             for attr, value in requested_proof["presentation"]["requested_proof"]["self_attested_attrs"].items():
                 attr = attr.replace('_referent', '')
                 attr = attr.capitalize()
                 screen[attr] = value
 
             if test == True:
+                print('aqui3')
                 html = '<h4><p style="text-align:left;">'
-                for x, y in screen.items():
-                    html += '<b>' + x + '</b>' + ' : ' + y + '<br>'
+
+#               for x, y in screen.items():
+# Order screen dict
+                for x, y in sorted(screen.items(), key=lambda x: x[0]):
+                    x = x.upper()
+                    html += '<b>' +  x + '</b>' + ' : ' + y + '<br>'
                 html += '</p>'
+
 
             sweetify.success(request, title='', html=html, persistent=True, backdrop=False, icon='info', width=600)
             return redirect('/conversations/')
@@ -1494,8 +1505,9 @@ def handle_view_proof_sent(
         screen[attr] = value
 
     html = '<h4><p style="text-align:left;">'
-    for x, y in screen.items():
-        html += '<b>' + x + '</b>' + ' : ' + y + '<br>'
+#    for x, y in screen.items():
+    for x, y in sorted(screen.items(), key=lambda x: x[0]):
+        html += '<b>' + x.upper() + '</b>' + ' : ' + y + '<br>'
     html += '</p>'
     sweetify.success(request, title='', html=html, persistent=True, backdrop=False, icon='info', width=600)
     return redirect('/conversations/')
@@ -1523,9 +1535,9 @@ def handle_view_credential(
         rev_reg_id_cred = credential['rev_reg_id']
         if rev_reg_id == rev_reg_id_cred:
             html = '<h4><p style="text-align:left;">'
-            html += '<b>' + 'Emissor' + '</b>' + ' : ' + org + '<br>'
+            html += '<b>' + 'EMISSOR' + '</b>' + ' : ' + org + '<br>'
             for attr, value in credential["attrs"].items():
-                html += '<b>' + attr + '</b>' + ' : ' + value + '<br>'
+                html += '<b>' + attr.upper()  + '</b>' + ' : ' + value + '<br>'
             html += '</p>'
 
     sweetify.success(request, title='', html=html, persistent=True, backdrop=False, icon='info', width=400)
@@ -1969,8 +1981,9 @@ def handle_cred_proposal_show(
         # TODO validate connection id
 
         html = '<h4><p style="text-align:left;">'
-        for x, y in cred_attrs.items():
-            html += '<b>' + x + '</b>' + ' : ' + y + '<br>'
+#       for x, y in cred_attrs.items():
+        for x, y in sorted(cred_attrs.items(), key=lambda x: x[0]):
+            html += '<b>' + x.upper() + '</b>' + ' : ' + y + '<br>'
         html += '</p>'
 
         sweetify.success(request, title='', html=html, persistent=True, backdrop=False, icon='info', width=600)
@@ -2151,6 +2164,7 @@ def handle_view_dashboard(
     data += "['Credencial reconhecida'" + ', ' + str(credential_acked) + ']' + ','
     data += "['Proposta enviada'" + ', ' + str(proposal_sent) + ']' + ','
     data += "['Proposta recebida'" + ', ' + str(proposal_received) + ']' + ','
+    data += "['Prova recebida'" + ', ' + str(presentation_acked) + ']' + ','
     data += "]"
 
     return render(request, template, {'agent_name': agent.agent_name,
@@ -2368,7 +2382,7 @@ def handle_proofs(request, template='aries/proof/list.html'):
         for prf in proofs:
             proof[prf.proof_req_name] = prf.proof_req_name
 
-        return render(request, template, {'proofs': proofs, 'orgs': orgs, 'schemas': schemas})
+        return render(request, template, {'proofs': proofs, 'orgs': orgs, 'schemas': schemas, 'agent': agent_owner})
 
 def handle_proof_remove(request):
     """
