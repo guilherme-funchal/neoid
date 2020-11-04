@@ -648,3 +648,24 @@ msgstr "Conexão obrigatória"
 
 msgid "Activity"
 msgstr "Atividade"
+
+msgid "first_name"
+msgstr "primeiro nome"
+
+msgid "last_name"
+msgstr "ultimo nome"
+
+msgid "data_birth"
+msgstr "data de nascimento"
+
+msgid "secao"
+msgstr "seção"
+
+msgid "titulo"
+msgstr "título"
+
+msgid "estado_emissao"
+msgstr "estado emisssão"
+
+msgid "emissao"
+msgstr "emissão"
