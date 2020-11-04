@@ -59,8 +59,8 @@
                         {% else %}
                             <td><center>Não ativo</center></td>
                         {% endif %}
-                        <td>{{ proof.creation|date:"d/m/Y h:i" }}</td>
-                        <td>{{ proof.expiration|date:"d/m/Y h:i" }}</td>
+                        <td><center>{{ proof.creation|date:"d/m/Y h:i" }}</center></td>
+                        <td><center>{{ proof.expiration|date:"d/m/Y h:i" }}</center></td>
                         <td><center>
                             <button class="button" id="button" onclick="removeProof({{ proof.id }})"><i class="fa fa-minus-square"></i>
                             </button>
@@ -87,14 +87,14 @@
                                                class="input-reset ba b--black-20 pa2 mb2 db w-100 js-nameInput"
                                                type="text" value={{ org.schema_name }}><br>
                                         <label style="font-size:14px;" for="proof_req_name" class="f6 b db mb2 js-name">{% trans "Name" %}</label><br>
-                                        <input size="30" id="proof_req_name" name="proof_req_name"
+                                        <input size="100" id="proof_req_name" name="proof_req_name"
                                                class="input-reset ba b--black-20 pa2 mb2 db w-100 js-nameInput"
-                                               type="text"><br>
+                                               type="text" value="DadosPessoais{{ org.schema_name|title }}"><br>
                                         <label style="font-size:14px;" for="proof_req_description"
                                                class="f6 b db mb2 js-name">{% trans "Description" %}</label>
                                         <input size="30" id="proof_req_description" name="proof_req_description"
                                                class="input-reset ba b--black-20 pa2 mb2 db w-100 js-nameInput"
-                                               type="text"><br>
+                                               type="text" value="Dados Pessoais do esquema {{ org.schema_name|title }}"><br>
                                         <label style="font-size:14px;" for="proof_req_predicates" class="f6 b db mb2 js-name">{% trans "Predicates" %}</label>
                                         <input size="30" id="proof_req_predicates" name="proof_req_predicates"
                                                class="input-reset ba b--black-20 pa2 mb2 db w-100 js-nameInput"
