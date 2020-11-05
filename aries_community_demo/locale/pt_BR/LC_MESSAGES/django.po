@@ -442,8 +442,8 @@ msgstr "Inválida"
 msgid "Validation"
 msgstr "Validação"
 
-msgid "Welcome to self Sovereign Identity System"
-msgstr "Bemvindo ao sistema de identidade auto-soberana"
+msgid "Welcome to System"
+msgstr "Bemvindo ao sistema"
 
 msgid "Signal"
 msgstr "Sinalização"
