@@ -7,6 +7,11 @@ make
 
 make altinstall
 
+sudo add-apt-repository ppa:deadsnakes/ppa
+apt install python3.8
+
+
+
 2)python3.7 -m pip install --upgrade pip
 
 3)Install VENV
