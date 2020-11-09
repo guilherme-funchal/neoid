@@ -193,6 +193,7 @@ ALERT_REVOKED_CREDENTIALS = True
 NEOID = {
     'CLIENT_ID' : "70e17ae0-30fb-456b-be68-bea32573a9e2",
     'REDIRECT_URI' : "/oauth2/",
+    'REDIRECT_HOST' : "http://localhost:8000",
     'ADDRESS' : "https://homneoid.estaleiro.serpro.gov.br",
     'CLIENT_SECRET' : "YTcwY2ZjY2QtNWYzZS00NWIxLWI1NTYtNTNiM2M4NWE4MWNj",
 }
