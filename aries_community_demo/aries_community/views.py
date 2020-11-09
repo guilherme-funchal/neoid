@@ -2237,7 +2237,7 @@ def oauth2(request):
     headers = {'Content-type': 'application/x-www-form-urlencoded'}
     client_id = settings.NEOID['CLIENT_ID']
     code_challenge_method = "S256"
-    redirect_uri = "http://localhost:8000" + settings.NEOID['REDIRECT_URI']
+    redirect_uri = settings.NEOID['REDIRECT_HOST']  + settings.NEOID['REDIRECT_URI']
     address = settings.NEOID['ADDRESS']
     client_secret = settings.NEOID['CLIENT_SECRET']
     state = "aut"
