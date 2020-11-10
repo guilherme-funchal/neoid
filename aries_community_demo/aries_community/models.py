@@ -251,7 +251,7 @@ class AgentConversation(models.Model):
     status = models.CharField(max_length=80, blank=True)
     rev_reg_id = models.CharField(max_length=200, blank=True)
     cred_rev_id = models.CharField(max_length=80, blank=True)
-    revoked = models.CharField(max_length=10, blank=True)
+    revoked = models.CharField(max_length=80, blank=True)
     creation = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
