@@ -249,7 +249,7 @@ class AgentConversation(models.Model):
     connection = models.ForeignKey(AgentConnection, on_delete=models.CASCADE)
     conversation_type = models.CharField(max_length=30)
     status = models.CharField(max_length=80, blank=True)
-    rev_reg_id = models.CharField(max_length=80, blank=True)
+    rev_reg_id = models.CharField(max_length=200, blank=True)
     cred_rev_id = models.CharField(max_length=80, blank=True)
     revoked = models.CharField(max_length=10, blank=True)
     creation = models.DateTimeField(default=timezone.now)
