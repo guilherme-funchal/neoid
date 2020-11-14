@@ -1,3 +1,4 @@
+<pre>
 1)Install Python3.6
 apt-get update
 add-apt-repository ppa:deadsnakes/ppa
@@ -30,7 +31,7 @@ cd indy-sdk/experimental/plugins/postgres_storage
 apt-get install -y    build-essential    pkg-config    cmake    libssl-dev    libsqlite3-dev    libzmq3-dev    libncursesw5-dev
 cargo build
 cp indy-sdk/experimental/plugins/postgres_storage/target/debug/libindystrgpostgres.so /usr/local/lib
-
+<pre>
 
 
 
