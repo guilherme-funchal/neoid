@@ -40,20 +40,23 @@ ldconfig
 apt install checkinstall
 apt-get install libzmqpp-de libzmq5 libzmq3-dev 
 cargo build
-
+cp targget/debug/libindy.so /usr/local/lib/
+cp targget/debug/libindy.so /usr/lib/
 
 5)Modulo Python Indy
 pip3 install python3-indy
 
+6)Instalar Rust
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
-6)Biblioteca "libindystrgpostgres.so"
+7)Biblioteca "libindystrgpostgres.so"
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 apt install carg python3.6-gdbm
 git clone https://github.com/hyperledger/indy-sdk.git
 cd indy-sdk/experimental/plugins/postgres_storage
 apt-get install -y    build-essential    pkg-config    cmake    libssl-dev    libsqlite3-dev    libzmq3-dev    libncursesw5-dev
 cargo build
-cp indy-sdk/experimental/plugins/postgres_storage/target/debug/libindystrgpostgres.so /usr/local/lib
+cp indy-sdk/experimental/plugins/postgres_storage/target/debug/libindystrgpostgres.so /usr/local/lib/python3.6/dist-packages/
 <pre>
 
 
