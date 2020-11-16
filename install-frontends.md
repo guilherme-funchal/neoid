@@ -107,9 +107,16 @@ aries-cloudagent==0.5.3
 git+https://github.com/ianco/aries-cloudagent-python#egg=aries-cloudagent
 </pre>
 
-9)Ajuste das configurações do Django  no arquivo aries_community_demo/aries_community_demo/settings.py
+9)Criação das bases de dados no Postgres
+su - postgres
+CREATE DATABASE banco-de-dados-django;
+CREATE DATABASE banco-de-dados-wallets;
+GRANT ALL PRIVILEGES ON DATABASE banco-de-dados-django TO usuario;
+GRANT ALL PRIVILEGES ON DATABASE banco-de-dados-wallets TO usuario;
 
-9.1)Servidor de Blockchain e configurações de Wallet
+10)Ajuste das configurações do Django  no arquivo aries_community_demo/aries_community_demo/settings.py
+
+10.1)Servidor de Blockchain e configurações de Wallet
 <pre>
 ARIES_CONFIG = {
     'storage_config': {'url': 'Ip ou nome:5432'},
@@ -128,7 +135,7 @@ ARIES_CONFIG = {
 }
 </pre>
 
-9.2)Configuração de base de uso do Django
+10.2)Configuração de base de uso do Django
 <pre>
 DATABASES = {
         'default': {
@@ -143,13 +150,13 @@ DATABASES = {
 </pre>
 
 
-10)Criação da base de dados do Django
+11)Criação da base de dados do Django
 <pre>
 cd aries_community_demo
 ./reload_db.sh
 </pre>
 
-11)Popular a base do Django com os esquemas 
+12)Popular a base do Django com os esquemas 
 <pre>
 cd aries_community_demo
 python3 manage.py loads_orgs ./trustee-org-docker.yml
@@ -157,7 +164,7 @@ python3 manage.py loads_schemas ./test-schemas.yml 1
 python3 manage.py loads_orgs ./test-orgs.yml
 </pre>
 
-12)Subir servidor Django
+13)Subir servidor Django
 <pre>
 python3 manage.py runserver 0.0.0.0:8000
 </pre>
