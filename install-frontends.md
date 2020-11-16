@@ -104,6 +104,7 @@ requests_oauthlib
 django-settings-export
 aries-cloudagent==0.5.3
 git+https://github.com/ianco/aries-cloudagent-python#egg=aries-cloudagent
+</pre>
 
 9)Ajuste das configurações do Django  no arquivo aries_community_demo/aries_community_demo/settings.py
 
