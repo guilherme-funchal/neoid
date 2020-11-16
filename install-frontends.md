@@ -105,7 +105,54 @@ django-settings-export
 aries-cloudagent==0.5.3
 git+https://github.com/ianco/aries-cloudagent-python#egg=aries-cloudagent
 
+9)Ajuste das configurações do Django  no arquivo aries_community_demo/aries_community_demo/settings.py
+
+9.1)Servidor de Blockchain e configurações de Wallet
+<pre>
+ARIES_CONFIG = {
+    'storage_config': {'url': 'Ip ou nome:5432'},
+    'storage_credentials': {'account': 'usuario', 'password': 'senha', 'admin_account': 'usuario', 'admin_password': 'senha'},
+    'register_dids': True,
+    'ledger_url': 'http://IP-ou-NOME:9000',
+    'genesis_url': 'http://IP-ou-NOME:9000/genesis',
+    'default_enterprise_seed': '000000000000o_anon_solutions_inc',
+    'default_institution_seed': '00000000000000000000000000000000',
+    'managed_agent_host': 'localhost',
+    'webhook_host': 'localhost',
+    'webhook_port': '8000',
+    'webhook_root': '',
+    #Path do ACA-PY local
+    'aca_py_bin_path': '/usr/local/bin',
+}
+</pre>
+
+9.2)Configuração de base de uso do Django
+<pre>
+DATABASES = {
+        'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'nome-do-banco',
+        'USER': 'usuario',
+        'PASSWORD': 'senha',
+        'HOST': 'IP-ou-NOME',
+        'PORT': '5432',
+        }
+}
+</pre>
 
 
+10)Criação da base de dados do Django
+<pre>
+cd aries_community_demo
+./reload_db.sh
+</pre>
+
+11)Popular a base do Django com os esquemas 
+<pre>
+cd aries_community_demo
+python3 manage.py loads_orgs ./trustee-org-docker.yml
+python3 manage.py loads_schemas ./test-schemas.yml 1
+python3 manage.py loads_orgs ./test-orgs.yml
+</pre>
 
 
