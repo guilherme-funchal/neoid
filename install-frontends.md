@@ -14,7 +14,7 @@ python3 get-pip.py --force-reinstall
 </pre>
 
 3)Inclusão de Python3 
-</pre>
+<pre>
 update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.6
 update-alternatives --config python3
 rm /usr/bin/python3
@@ -27,6 +27,7 @@ apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 68DB5E88
 add-apt-repository "deb https://repo.sovrin.org/deb xenial stable
 apt-get install libindy-crypto libindy-crypto-dev python3-indy-crypto indy-plenum indy-node indy-anoncreds
 </pre>
+
 Se não funcionar compilar : 
 <pre>
 wget https://download.libsodium.org/libsodium/releases/libsodium-1.0.18.tar.gz
@@ -156,4 +157,7 @@ python3 manage.py loads_schemas ./test-schemas.yml 1
 python3 manage.py loads_orgs ./test-orgs.yml
 </pre>
 
-
+12)Subir servidor Django
+<pre>
+python3 manage.py runserver 0.0.0.0:8000
+</pre>
