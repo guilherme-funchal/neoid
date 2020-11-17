@@ -24,7 +24,7 @@ ln -s python3.6 /usr/bin/python3
 4)Install pacote Indy
 <pre>
 apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 68DB5E88
-add-apt-repository "deb https://repo.sovrin.org/deb xenial stable
+add-apt-repository "deb https://repo.sovrin.org/deb xenial stable"
 apt-get install libindy-crypto libindy-crypto-dev python3-indy-crypto indy-plenum indy-node indy-anoncreds
 </pre>
 
