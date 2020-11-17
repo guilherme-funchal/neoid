@@ -168,3 +168,70 @@ python3 manage.py loads_orgs ./test-orgs.yml
 <pre>
 python3 manage.py runserver 0.0.0.0:8000
 </pre>
+
+14)Servidor Gnunicorn
+<pre>
+pip3 install gunicorn setproctitle
+nohup gunicorn aries_community_demo.wsgi:application --bind 0.0.0.0:8000 &
+</pre>
+
+15)Proxypass com Nginx
+<pre>
+apt-get install nginx
+</pre>
+
+15.1)Configurar o site com os seguintes paramentros : 
+<pre>
+/etc/nginx/sites-enabled/default
+
+server {
+   listen 80;
+   return 301 https://$host$request_uri;
+}
+
+server {
+
+    listen 443;
+    server_name proxy;
+
+    ssl_certificate           /etc/nginx/cert.crt;
+    ssl_certificate_key       /etc/nginx/cert.key;
+
+    ssl on;
+    ssl_session_cache  builtin:1000  shared:SSL:10m;
+    ssl_protocols  TLSv1 TLSv1.1 TLSv1.2;
+    ssl_ciphers HIGH:!aNULL:!eNULL:!EXPORT:!CAMELLIA:!DES:!MD5:!PSK:!RC4;
+    ssl_prefer_server_ciphers on;
+
+    access_log            /var/log/nginx/access.log;
+
+    location /static/ {
+        alias /var/www/html/static/;
+    }
+
+
+
+    location / {
+
+      proxy_read_timeout 300s;
+      proxy_connect_timeout 75s;
+      proxy_send_timeout 300s;
+      send_timeout 300s;
+      proxy_set_header        Host $host;
+      proxy_set_header        X-Real-IP $remote_addr;
+      proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
+      proxy_set_header        X-Forwarded-Proto $scheme;
+
+      # Fix the “It appears that your reverse proxy set up is broken" error.
+      proxy_pass          http://IP-INTERNO:8000;
+      proxy_redirect      http://IP-INTERNO:8000 https://IP-EXTERNO;
+    }
+  }
+
+</pre>
+
+15.2)Gerar certificado
+
+<pre>
+openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/nginx/cert.key -out /etc/nginx/cert.crt
+</pre>
