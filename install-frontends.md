@@ -40,18 +40,12 @@ make install
 
 git clone https://github.com/hyperledger/indy-sdk.git
 cd indy-sdk/libindy/
-apt install pkg-config
-apt-get install zmq
-apt-get install zmq-sys
-apt-get install libtool pkg-config build-essential autoconf automake uuid-dev
-apt-get libzmq
+apt-get install libzmqpp-dev libzmq5 libzmq3-dev libtool pkg-config build-essential autoconf automake uuid-dev zmq-sys zmq checkinstall libzmq
 checkinstall
 ldconfig
-apt install checkinstall
-apt-get install libzmqpp-de libzmq5 libzmq3-dev 
+
 cargo build
 cp targget/debug/libindy.so /usr/local/lib/
-cp targget/debug/libindy.so /usr/lib/
 </pre>
 
 5)Modulo Python Indy
