@@ -30,6 +30,7 @@ apt-get install libindy-crypto libindy-crypto-dev python3-indy-crypto indy-plenu
 
 Se não funcionar compilar : 
 <pre>
+apt-get install gcc
 wget https://download.libsodium.org/libsodium/releases/libsodium-1.0.18.tar.gz
 tar -xf libsodium-1.0.18.tar.gz 
 cd libsodium-1.0.18/
