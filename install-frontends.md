@@ -40,6 +40,7 @@ make install
 
 git clone https://github.com/hyperledger/indy-sdk.git
 cd indy-sdk/libindy/
+apt get cmake
 apt-get install libzmqpp-dev libzmq5 libzmq3-dev libtool pkg-config build-essential autoconf automake uuid-dev zmq-sys zmq checkinstall libzmq
 checkinstall
 ldconfig
