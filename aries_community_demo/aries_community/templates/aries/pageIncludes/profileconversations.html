@@ -205,7 +205,8 @@
 						{% endif %}
 						<td><center><i class="fa fa-circle" aria-hidden="true" style="color:green" title="request_sent"></i></center></td>
 						<td>{{ conversation.conversation_type }}</td>
-						<td><center><i class="fa fa-stop-circle" aria-hidden="true" style="color:red" title="Nothing"></center></td>
+						<td><center>
+							<i class="fa fa-stop-circle" aria-hidden="true" style="color:red" title="Nothing"></center></td>
 						<td>{% trans "Request sent" %}</td>
 						<td>{{ conversation.creation|date:"d/m/Y h:i" }}</td>
 		          	{% endif %}
@@ -221,7 +222,9 @@
 						{% endif %}
 						<td><center><i class="fa fa-circle" aria-hidden="true" style="color:green" title="verified"></i></center></td>
 						<td>{{ conversation.conversation_type }}</td>
-						<td><center><i class="fa fa-stop-circle" aria-hidden="true" style="color:red" title="Nothing"></i></center></td>
+						<td><center>
+							<button style="height:20px;width:30px"><a onclick="removeProof('conversation_id={{conversation.guid}}')"><i class="fa fa-trash" title="{% trans "Delete" %}"></i>
+							</center></td>
 						<td>{% trans "Verified" %}</td>
 						<td>{{ conversation.creation|date:"d/m/Y h:i" }}</td>
 		          	{% endif %}
@@ -341,6 +344,22 @@
         }).then((result) => {
             if (result.value) {
                  window.location = "{% url 'cred_proposal_delete' %}?" + conversation_id;
+        }
+    })
+    }
+	function removeProof(conversation_id) {
+        Swal.fire({
+            title: '{% trans "Delete proof" %}',
+            text: "",
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            cancelButtonText: '{% trans "No" %}',
+            confirmButtonText: '{% trans "Yes" %}'
+        }).then((result) => {
+            if (result.value) {
+                 window.location = "{% url 'remove_proof' %}?" + conversation_id;
         }
     })
     }
