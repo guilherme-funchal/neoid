@@ -121,6 +121,7 @@ def org_signup_view(
 ###############################################################
 TOPIC_CONNECTIONS = "connections"
 TOPIC_CONNECTIONS_ACTIVITY = "connections_actvity"
+TOPIC_REVOGATION = "revocation_registry"
 TOPIC_CREDENTIALS = "issue_credential"
 TOPIC_PRESENTATIONS = "present_proof"
 TOPIC_GET_ACTIVE_MENU = "get-active-menu"
@@ -129,7 +130,7 @@ TOPIC_PROBLEM_REPORT = "problem-report"
 TOPIC_MESSAGE = "basicmessages"
 
 
-@api_view(['GET', 'POST'])
+@api_view(['GET', 'POST', 'PUT'])
 @permission_classes([AllowAny])
 def agent_cb_view(
     request,
@@ -154,6 +155,10 @@ def agent_cb_view(
         return handle_agent_connections_activity_callback(agent, topic, payload)
 
     elif topic == TOPIC_CREDENTIALS:
+        # handle credentials callbacks
+        return handle_agent_credentials_callback(agent, topic, payload)
+
+    elif topic == TOPIC_REVOGATION:
         # handle credentials callbacks
         return handle_agent_credentials_callback(agent, topic, payload)
 
@@ -858,9 +863,7 @@ def list_conversations(
     (agent, agent_type, agent_owner) = agent_for_current_session(request)
     conversations = AgentConversation.objects.filter(connection__agent=agent).all()
     messages = AgentMessage.objects.filter(connection__agent=agent).all()
-
     agent_type = request.session['agent_type']
-
     return render(request, template, {'agent_name': agent.agent_name, 'conversations': conversations, 'agent_type': agent_type, 'messages': messages})
 
 def handle_select_credential_offer(
@@ -965,10 +968,11 @@ def handle_credential_offer(
     partner_name = request.POST.get("partner_name")
 
     connections = AgentConnection.objects.filter(guid=connection_id, agent=agent).all()
+
     my_connection = connections[0]
 
-
     cred_defs = IndyCredentialDefinition.objects.filter(creddef_name=credential_name, agent=agent).all()
+
     cred_def = cred_defs[0]
     cred_def_id = cred_def.ledger_creddef_id
 
@@ -981,9 +985,14 @@ def handle_credential_offer(
 
     partner_credentials = AgentConversation.objects.filter(connection=my_connection, conversation_type='CredExchange').exclude(status='credential_revoked').all()
 
+    print('partner_credentials->', partner_credentials)
+
     try:
         if len(partner_credentials) == 0:
+            print('my_conversation->', agent, my_connection, cred_attrs, cred_def_id)
             my_conversation = send_credential_offer(agent, my_connection, cred_attrs, cred_def_id)
+            print('my_conversation->', my_conversation)
+
             handle_alert(request, message=trans('Updated conversation'), type='success')
             return redirect('/connections/')
         else:
@@ -1401,19 +1410,20 @@ def handle_view_proof(
     (agent, agent_type, agent_owner) = agent_for_current_session(request)
     conversation_id = request.GET.get('conversation_id', None)
     conversations = AgentConversation.objects.filter(guid=conversation_id, connection__agent=agent).all()
+    
+
 
     # TODO validate conversation id
     conversation = conversations[0]
 
     requested_proof = get_agent_conversation(agent, conversation_id, PROOF_REQ_CONVERSATION)
-
     screen = {}
-
     test = settings.REVOCATION
 
     if agent_type == 'org':
         if test == True:
             revoked = requested_proof["verified"]
+            
             if revoked == 'false':
                 conversation.status = "credential_revoked"
                 conversation.save()
@@ -1465,7 +1475,6 @@ def handle_view_proof(
                 screen[attr] = value
 
             if test == True:
-                print('aqui3')
                 html = '<h4><p style="text-align:left;">'
 
 #               for x, y in screen.items():
@@ -1498,6 +1507,9 @@ def handle_view_proof_sent(
     conversation = conversations[0]
 
     requested_proof = get_agent_conversation(agent, conversation_id, PROOF_REQ_CONVERSATION)
+
+    print('requested_proof->', requested_proof)
+
     screen = {}
 
     for attr, value in requested_proof["presentation"]["requested_proof"]["self_attested_attrs"].items():
@@ -1624,6 +1636,10 @@ def handle_remove_connection(request):
     connection_id = request.GET.get('connection_id', None)
     connection = AgentConnection.objects.filter(guid=connection_id, agent=agent).get()
     partner_name= connection.partner_name
+    guid_partner_name = connection.guid
+    state = get_agent_connection(agent, guid_partner_name)
+    print('state->', state)
+
     agent_name = connection.agent.agent_name
     invitation = connection.invitation
     guid = connection.guid
@@ -1634,6 +1650,9 @@ def handle_remove_connection(request):
 
         if guid_partner_agent_owner is not None and connection is not None:
             connection.delete()
+            state = delete_connection_record(agent, guid_partner_name)
+            print('state->', state)
+
             guid_partner_agent_owner.delete()
             handle_alert(request, message=trans('Connection removed'), type='success')
             return redirect('/connections/')
@@ -2201,10 +2220,8 @@ def handle_cred_revoke(request):
         revoke_status = get_revoke_registry(agent, rev_reg_id)
         connections = AgentConversation.objects.filter(guid=conversation_id).get()
         conversation_id = connections.connection.guid
-
-        message = trans('Revoked credential') + " " + conversation_id + " " + agent_owner + " " + cred_rev_id + " " + rev_reg_id
+        message = trans('Revoked credential') + " " + conversation_id + " " + agent_owner + " " + cred_rev_id + " " + rev_reg_i
         message_status = send_simple_message(agent, conversation_id, message)
-
         conversations = AgentConversation.objects.filter(rev_reg_id=rev_reg_id, cred_rev_id=cred_rev_id).all()
 
         for conversation in conversations:
@@ -2237,7 +2254,7 @@ def oauth2(request):
     headers = {'Content-type': 'application/x-www-form-urlencoded'}
     client_id = settings.NEOID['CLIENT_ID']
     code_challenge_method = "S256"
-    redirect_uri = settings.NEOID['REDIRECT_HOST']  + settings.NEOID['REDIRECT_URI']
+    redirect_uri = settings.NEOID['REDIRECT_HOST'] + settings.NEOID['REDIRECT_URI']
     address = settings.NEOID['ADDRESS']
     client_secret = settings.NEOID['CLIENT_SECRET']
     state = "aut"
