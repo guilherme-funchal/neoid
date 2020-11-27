@@ -1176,7 +1176,10 @@ def handle_agent_proof_callback(agent, topic, payload):
     """
     # handle callbacks during proof request protocol handshake
     state = payload["state"]
+    print('state->', state)
+
     proof_request_id = payload["presentation_exchange_id"]
+
     connection_id = payload["connection_id"]
 
     connection = AgentConnection.objects.filter(agent=agent, guid=connection_id).get()
@@ -1446,3 +1449,28 @@ def get_revoke_registry(agent, revocation_registry_id, initialize_agent=False):
         if agent_started:
             stop_agent(agent)
     return revoke_status
+
+
+def remove_proof(agent, conversation_id, initialize_agent=False):
+    """
+    Fetch credentials from the agent (wallet).
+    """
+
+    # start the agent if requested (and necessary)
+    (agent, agent_started) = start_agent_if_necessary(agent, initialize_agent)
+
+    proofs = None
+
+    try:
+        response = requests.delete(
+            agent.admin_endpoint
+            + "/present-proof/records/" + conversation_id,
+            headers=get_ADMIN_REQUEST_HEADERS(agent)
+        )
+        response.raise_for_status()
+    except:
+        raise
+    finally:
+        if agent_started:
+            stop_agent(agent)
+    return proofs

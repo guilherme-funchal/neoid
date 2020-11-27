@@ -33,6 +33,7 @@ urlpatterns = [
     path('message_remove/', handle_message_remove, name='message_remove'),
     path('cred_proposal_show/', handle_cred_proposal_show, name='cred_proposal_show'),
     path('cred_proposal_delete/', handle_cred_proposal_delete, name='cred_proposal_delete'),
+    path('remove_proof/', handle_remove_proof, name='remove_proof'),
     path('remove_connection/', handle_remove_connection, name='remove_connection'),
     path('select_proof_request/', handle_select_proof_request, name='select_proof_request'),
     path('send_proof_request/', handle_send_proof_request, name='send_proof_request'),

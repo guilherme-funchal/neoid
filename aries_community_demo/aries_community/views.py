@@ -1410,13 +1410,12 @@ def handle_view_proof(
     (agent, agent_type, agent_owner) = agent_for_current_session(request)
     conversation_id = request.GET.get('conversation_id', None)
     conversations = AgentConversation.objects.filter(guid=conversation_id, connection__agent=agent).all()
-    
-
 
     # TODO validate conversation id
     conversation = conversations[0]
 
     requested_proof = get_agent_conversation(agent, conversation_id, PROOF_REQ_CONVERSATION)
+  
     screen = {}
     test = settings.REVOCATION
 
@@ -2098,6 +2097,28 @@ def handle_cred_proposal_delete(request):
     finally:
         pass
 
+def handle_remove_proof(request):
+#    """
+#    Remove proof
+#    """
+
+    (agent, agent_type, agent_owner) = agent_for_current_session(request)
+
+    try:
+        conversation_id = request.GET.get('conversation_id', None)
+        proofs = remove_proof(agent, conversation_id)
+        proofs = AgentConversation.objects.filter(guid=conversation_id).delete()
+
+        handle_alert(request, message=trans('Proof remove'), type='success')
+        return redirect('/conversations/')
+    except:
+        raise
+    finally:
+        pass
+
+
+
+
 def handle_view_dashboard(
     request,
     template='aries/conversation/list_dashboard.html',
@@ -2220,7 +2241,7 @@ def handle_cred_revoke(request):
         revoke_status = get_revoke_registry(agent, rev_reg_id)
         connections = AgentConversation.objects.filter(guid=conversation_id).get()
         conversation_id = connections.connection.guid
-        message = trans('Revoked credential') + " " + conversation_id + " " + agent_owner + " " + cred_rev_id + " " + rev_reg_i
+        message = trans('Revoked credential') + " " + conversation_id + " " + agent_owner + " " + cred_rev_id + " " + rev_reg_id
         message_status = send_simple_message(agent, conversation_id, message)
         conversations = AgentConversation.objects.filter(rev_reg_id=rev_reg_id, cred_rev_id=cred_rev_id).all()
 
