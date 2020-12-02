@@ -1,4 +1,4 @@
-# Termos utilizados
+# Conceitos
 
 **Node**<br>
 Um servidor de rede de computadores executando uma instância do código necessário para operar um razão distribuído ou blockchain. 
@@ -28,18 +28,31 @@ Uma credencial que inclui uma prova do emissor. Normalmente, essa prova é na fo
 usa Provas de Conhecimento Zero por padrão e geralmente pode ser verificada pela Chave Pública do Emissor armazenada na Definição de Credencial no Razão do Sovrin. 
 Com base na definição fornecida pelo Grupo de Trabalho de Reivindicações Verificáveis do W3C.
 
+**Governança**
+O próximo passo na escada do fortalecimento e aumento da confiança é estabelecer uma Autoridade de Governança formal e publicar uma Estrutura de Governança oficial. Este é o passo que a Fundação Sovrin deu a partir de setembro de 2016, com sua incorporação formal, após a qual o Grupo de Trabalho da Estrutura de Governança do Sovrin tem trabalhado desde então.
+
+**Issuer**
+A entidade que emite uma credencial a um titular. Com base na definição fornecida pelo Grupo de Trabalho de Reivindicações Verificáveis do W3C
+
 **Wallet**<br>
 Um módulo de software e, opcionalmente, um módulo de hardware associado, para armazenar e acessar com segurança Chaves Privadas, Segredos de Link, outro material 
 de chave criptográfica sensível e outros Dados Privados usados por uma Entidade. Uma Carteira é acessada por um Agente. Na infraestrutura do Sovrin, as carteiras 
 implementam os padrões DKMS emergentes para gerenciamento de chaves criptográficas descentralizadas e interoperáveis.
 
-https://raw.githubusercontent.com/sovrin-foundation/sovrin/stable/sovrin/pool_transactions_live_genesis
+Origem : https://raw.githubusercontent.com/sovrin-foundation/sovrin/stable/sovrin/pool_transactions_live_genesis
 
 Fonte : https://docs.google.com/document/d/1gfIz5TT0cNp2kxGMLFXr19x1uoZsruUe_0glHst2fZ8/edit#
 
-# Redes da BCGov
+# Redes da BCGov 
+Redes públicas que podem ser utilizados para teste : 
+1. http://test.bcovrin.vonx.io
+1. http://greenlight.bcovrin.vonx.io
+1. https://raw.githubusercontent.com/sovrin-foundation/sovrin/stable/sovrin/pool_transactions_sandbox_genesis
 
 
+# Indyscan
+O indyscan-daemon verifica o razão para novas transações. As transações são armazenadas no Elasticsearch. indyscan-api fornece um wrapper de API HTTP fácil de usar em torno do Elasticsearch. indyscan-webapp conversa com a api e exibe a transação do razão como páginas html.
 
+O blockchain público IndyScan for Sovrin está implantado em :
 
-
+1. https://indyscan.io/home/SOVRIN_MAINNET
