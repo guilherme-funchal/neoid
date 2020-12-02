@@ -206,7 +206,8 @@
 						<td><center><i class="fa fa-circle" aria-hidden="true" style="color:green" title="request_sent"></i></center></td>
 						<td>{{ conversation.conversation_type }}</td>
 						<td><center>
-							<i class="fa fa-stop-circle" aria-hidden="true" style="color:red" title="Nothing"></center></td>
+							<button style="height:20px;width:30px"><a onclick="removeProof('conversation_id={{conversation.guid}}')"><i class="fa fa-trash" title="{% trans "Delete" %}"></i>
+							</center></td>
 						<td>{% trans "Request sent" %}</td>
 						<td>{{ conversation.creation|date:"d/m/Y h:i" }}</td>
 		          	{% endif %}
@@ -240,7 +241,8 @@
 						{% endif %}
 						<td><center><i class="fa fa-exclamation-triangle" style="color:red"></i></center></td>
 						<td>{{ conversation.conversation_type }}</td>
-						<td><center><i class="fa fa-stop-circle" aria-hidden="true" style="color:red" title="Nothing"></i></center></td>
+					     <td><center>
+							<button style="height:20px;width:30px"><a onclick="removeProof('conversation_id={{conversation.guid}}')"><i class="fa fa-trash" title="{% trans "Delete" %}"></i></center></td>
 						<td>{% trans "Revoked" %}</td>
 						<td>{{ conversation.creation|date:"d/m/Y h:i" }}</td>
 		          	{% endif %}
@@ -256,7 +258,9 @@
 						{% endif %}
 						<td><center><i class="fa fa-circle" aria-hidden="true" style="color:green" title="Presentation acked"></i></center></td>
 						<td>{{ conversation.conversation_type }}</td>
-						<td><center><i class="fa fa-stop-circle" aria-hidden="true" style="color:red" title="Nothing"></i></center></td>
+						<td><center>
+							<button style="height:20px;width:30px"><a onclick="removeProof('conversation_id={{conversation.guid}}')"><i class="fa fa-trash" title="{% trans "Delete" %}"></i>
+						</center></td>
 						<td>{% trans "Presentation acked" %}</td>
 						<td>{{ conversation.creation|date:"d/m/Y h:i" }}</td>
 		          	{% endif %}
@@ -269,7 +273,8 @@
 						{% endif %}
 						<td><center><i class="fa fa-circle" aria-hidden="true" style="color:green" title="Presentation acked"></i></center></td>
 						<td>{{ conversation.conversation_type }}</td>
-						<td><center><i class="fa fa-stop-circle" aria-hidden="true" style="color:red" title="Nothing"></i></center></td>
+					    <td><center>
+							<button style="height:20px;width:30px"><a onclick="removeProof('conversation_id={{conversation.guid}}')"><i class="fa fa-trash" title="{% trans "Delete" %}"></i></center></td>
 						<td>{% trans "Presentation sent" %}</td>
 						<td>{{ conversation.creation|date:"d/m/Y h:i" }}</td>
 		          	{% endif %}
