@@ -152,7 +152,10 @@ cd aries_community_demo
 ./reload_db.sh
 </pre>
 
-12)Popular a base do Django com os esquemas 
+12)Iniciar o agente trustee
+./start_trustee_local.sh
+
+13)Popular a base do Django com os esquemas 
 <pre>
 cd aries_community_demo
 python3 manage.py loads_orgs ./trustee-org-docker.yml
@@ -160,23 +163,23 @@ python3 manage.py loads_schemas ./test-schemas.yml 1
 python3 manage.py loads_orgs ./test-orgs.yml
 </pre>
 
-13)Subir servidor Django
+14)Subir servidor Django
 <pre>
 python3 manage.py runserver 0.0.0.0:8000
 </pre>
 
-14)Servidor Gnunicorn
+15)Servidor Gnunicorn
 <pre>
 pip3 install gunicorn setproctitle
 nohup gunicorn aries_community_demo.wsgi:application --bind 0.0.0.0:8000 &
 </pre>
 
-15)Proxypass com Nginx
+16)Proxypass com Nginx
 <pre>
 apt-get install nginx
 </pre>
 
-15.1)Configurar o site com os seguintes paramentros : 
+16.1)Configurar o site com os seguintes paramentros : 
 <pre>
 /etc/nginx/sites-enabled/default
 
@@ -226,7 +229,7 @@ server {
 
 </pre>
 
-15.2)Gerar certificado
+16.2)Gerar certificado
 
 <pre>
 openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/nginx/cert.key -out /etc/nginx/cert.crt
