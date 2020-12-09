@@ -1,10 +1,12 @@
 Instalar a von-network no Ubuntu 18.04
 
 1. instalar o indy
+<pre>
 pip3 install python3-indy
+</pre>
 
 1. Instalar o rockesdb
-
+<pre>
 $ apt-get install build-essential libsnappy-dev zlib1g-dev libbz2-dev libgflags-dev liblz4-dev
 $ git clone https://github.com/facebook/rocksdb.git
 $ cd rocksdb
@@ -21,9 +23,12 @@ $ virtualenv pyrocks_test
 $ cd pyrocks_test
 $ . bin/active
 $ pip install python-rocksdb
+</pre>
 
 1. Instalar o indy-plenum
+<pre>
 pip3 install indy-plenum
+</pre>
 
 1. Alterar o /usr/local/lib/python3.7/dist-packages/plenum/common/util.py linha 349
 remover linha 349 : 
