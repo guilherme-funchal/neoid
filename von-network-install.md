@@ -44,12 +44,12 @@ else:
 loop.call_soon(ensure_future, callback(*args, **kwargs))
 <pre>
 
-4. Instalar o indy node
+5. Instalar o indy node
 <pre>
 pip3 install indy_node
 </pre>
 
-5.Incluir o script start_node no /usr/bin
+6.Incluir o script start_node no /usr/bin
 
 <pre>
 #!/usr/bin/python3.7
@@ -74,7 +74,7 @@ if __name__ == "__main__":
 
 </pre>
 
-6.Incluir o script von_generate_transactions  no /usr/bin
+7.Incluir o script von_generate_transactions  no /usr/bin
 
 <pre>
 #!/bin/bash
