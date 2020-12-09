@@ -25,3 +25,16 @@ $ pip install python-rocksdb
 3)Instalar o indy-plenum
 pip3 install indy-plenum
 
+4)Alterar o /usr/local/lib/python3.7/dist-packages/plenum/common/util.py linha 349
+remover linha 349 : 
+<pre>
+loop.call_soon(asyncio.async, callback(*args, **kwargs))
+</pre>
+Incluir :
+<pre>
+if hasattr(asyncio, 'ensure_future'):
+  ensure_future = asyncio.ensure_future
+else:
+  ensure_future =  getattr(asyncio, "async")
+loop.call_soon(ensure_future, callback(*args, **kwargs))
+<pre>
