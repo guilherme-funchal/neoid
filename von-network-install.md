@@ -42,7 +42,7 @@ if hasattr(asyncio, 'ensure_future'):
 else:
   ensure_future =  getattr(asyncio, "async")
 loop.call_soon(ensure_future, callback(*args, **kwargs))
-<pre>
+</pre>
 
 5. Instalar o indy node
 <pre>
