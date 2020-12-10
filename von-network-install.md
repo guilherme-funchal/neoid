@@ -7,24 +7,19 @@ pip3 install python3-indy
 
 2. Instalar o rockesdb
 <pre>
-$ apt-get install build-essential libsnappy-dev zlib1g-dev libbz2-dev libgflags-dev liblz4-dev
-$ git clone https://github.com/facebook/rocksdb.git
-$ cd rocksdb
-$ mkdir build && cd build
-$ cmake ..
-$ make
-$ cd ..
-$ export CPLUS_INCLUDE_PATH=${CPLUS_INCLUDE_PATH}${CPLUS_INCLUDE_PATH:+:}`pwd`/include/
-$ export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}${LD_LIBRARY_PATH:+:}`pwd`/build/
-$ export LIBRARY_PATH=${LIBRARY_PATH}${LIBRARY_PATH:+:}`pwd`/build/
+sudo apt-get update
+sudo apt-get install apt-transport-https ca-certificates
+apt-key adv --keyserver keyserver.ubuntu.com --recv-keys CE7709D068DB5E88
+sudo add-apt-repository "deb https://repo.sovrin.org/deb xenial master"
 
-$ apt-get install python-virtualenv python-dev
-$ virtualenv pyrocks_test
-$ cd pyrocks_test
-$ . bin/active
-$ pip install python-rocksdb
+sudo apt-get update
+sudo apt-get install libbz2-dev \
+    zlib1g-dev \
+    liblz4-dev \
+    libsnappy-dev \
+    rocksdb=5.8.8
+
 </pre>
-
 3. Instalar o indy-plenum
 <pre>
 pip3 install indy-plenum
