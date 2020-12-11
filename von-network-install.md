@@ -3,6 +3,8 @@
 1. instalar o indy
 <pre>
 pip3 install python3-indy
+pip3 install indy-plenum
+pip3 install indy_node
 </pre>
 
 2. Instalar o rockesdb
@@ -21,31 +23,8 @@ sudo apt-get install libbz2-dev \
     liblz4-dev
 
 </pre>
-3. Instalar o indy-plenum
-<pre>
-pip3 install indy-plenum
-</pre>
 
-4. Alterar o /usr/local/lib/python3.7/dist-packages/plenum/common/util.py linha 349
-remover linha 349 : 
-<pre>
-loop.call_soon(asyncio.async, callback(*args, **kwargs))
-</pre>
-Incluir :
-<pre>
-if hasattr(asyncio, 'ensure_future'):
-  ensure_future = asyncio.ensure_future
-else:
-  ensure_future =  getattr(asyncio, "async")
-loop.call_soon(ensure_future, callback(*args, **kwargs))
-</pre>
-
-5. Instalar o indy node
-<pre>
-pip3 install indy_node
-</pre>
-
-6.Incluir o script start_node no /usr/bin
+3.Incluir o script start_node no /usr/bin
 
 <pre>
 #!/usr/bin/python3.7
@@ -70,7 +49,7 @@ if __name__ == "__main__":
 
 </pre>
 
-7.Incluir o script von_generate_transactions  no /usr/bin
+4.Incluir o script von_generate_transactions  no /usr/bin
 
 <pre>
 #!/bin/bash
@@ -202,7 +181,7 @@ fi
 echo -e "================================================================================================"\\n
 </pre>
 
-8. Inclusão de arquivos aml.json e taa.json no diretório "/home/indy/config/"
+5. Inclusão de arquivos aml.json e taa.json no diretório "/home/indy/config/"
 
 aml.json
 <pre>
@@ -229,3 +208,14 @@ taa.json
 }
 </pre>
 
+6. Compilar o lib-crypto
+<pre>
+git clone https://github.com/hyperledger/indy-crypto.git
+cd ./indy-crypto/libindy-crypto
+cargo build
+cd ..
+</pre>
+
+7.Incluir o diretório "/home/indy/ledger/sandbox/"
+
+8.Incluir o arquivo de configuração /etc/indy/indy_config.py 
