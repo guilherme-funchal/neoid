@@ -17,7 +17,8 @@ sudo apt-get install libbz2-dev \
     zlib1g-dev \
     liblz4-dev \
     libsnappy-dev \
-    rocksdb=5.8.8
+    rocksdb \
+    liblz4-dev
 
 </pre>
 3. Instalar o indy-plenum
