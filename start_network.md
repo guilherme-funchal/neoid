@@ -42,7 +42,7 @@ start_indy_node Node1 0.0.0.0 9701 0.0.0.0 9702
 
 
 
-1.Iniciarlizar os nodes
+*1.Iniciarlizar os nodes*
 
 init_indy_keys --name <Nome do Node>
 
