@@ -26,29 +26,6 @@ sudo apt-get install libbz2-dev \
 
 3.Incluir o script start_node no /usr/bin
 
-<pre>
-#!/usr/bin/python3.7
-
-import sys
-
-
-from indy_node.utils.node_runner import run_node
-from indy_common.config_util import getConfig
-
-
-if __name__ == "__main__":
-    if len(sys.argv) < 6:
-        raise Exception("Provide name and two pairs of IP/port for running the node "
-                        "and client stacks in form 'node_name node_ip node_port client_ip client_port'")
-
-    config = getConfig()
-    self_name = sys.argv[1]
-    run_node(config, self_name,
-             node_ip=sys.argv[2], node_port=int(sys.argv[3]),
-             client_ip=sys.argv[4], client_port=int(sys.argv[5]))
-
-</pre>
-
 4.Incluir o script von_generate_transactions  no /usr/bin
 
 5. Inclusão de arquivos aml.json e taa.json no diretório "/home/indy/config/"
@@ -78,19 +55,37 @@ taa.json
 }
 </pre>
 
-6. Compilar o lib-crypto
+6. Instalar o lib-crypto
 <pre>
-git clone https://github.com/hyperledger/indy-crypto.git
-cd ./indy-crypto/libindy-crypto
-git checkout -b v0.4.5
-cd libindy-crypto
-cargo build
-cd target/debug 
-cp libindy_crypto.so /usr/local/lib/
-
-cd ..
+apt-get install libindy_crypto
+cp /usr/lib/libindy_crypto.so /usr/local/lib/
 </pre>
 
 7.Incluir o diretório "/home/indy/ledger/sandbox/"
 
-8.Incluir o arquivo de configuração /etc/indy/indy_config.py 
+8.Incluir o arquivo de configuração /etc/indy/indy_config.py
+
+<pre>
+NETWORK_NAME = 'sandbox'
+LEDGER_DIR = '/home/indy/ledger'
+LOG_DIR = '/home/indy/log'
+KEYS_DIR = LEDGER_DIR
+GENESIS_DIR = LEDGER_DIR
+BACKUP_DIR = '/home/indy/backup'
+PLUGINS_DIR = '/home/indy/plugins'
+NODE_INFO_DIR = LEDGER_DIR
+CLI_BASE_DIR = '/home/indy/.indy-cli/'
+CLI_NETWORK_DIR = '/home/indy/.indy-cli/networks'i
+</pre>
+
+9.Incluir o arquivo de configuração /etc/indy/indy_config.py
+
+<pre>
+NODE_NAME=Nome-do-node
+NODE_IP=0.0.0.0
+NODE_PORT=porta
+NODE_CLIENT_IP=0.0.0.0
+NODE_CLIENT_PORT=porta
+CLIENT_CONNECTIONS_LIMIT=500
+</pre>
+
