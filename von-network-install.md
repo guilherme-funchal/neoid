@@ -1,6 +1,6 @@
 # Instalar a von-network no Ubuntu 18.04
 
-1. instalar o indy
+**1. instalar o indy**
 <pre>
 mkdir -p /home/indy
 pip3 install python3-indy
@@ -8,7 +8,7 @@ pip3 install indy-plenum
 pip3 install indy_node
 </pre>
 
-2. Instalar o rockesdb
+**2. Instalar o rockesdb**
 <pre>
 sudo apt-get update
 sudo apt-get install apt-transport-https ca-certificates
@@ -25,11 +25,11 @@ sudo apt-get install libbz2-dev \
 
 </pre>
 
-3.Incluir o script start_node no /usr/bin
+**3.Incluir o script start_node no /usr/bin**
 
-4.Incluir o script von_generate_transactions  no /usr/bin
+**4.Incluir o script von_generate_transactions  no /usr/bin**
 
-5. Inclusão de arquivos aml.json e taa.json no diretório "/home/indy/config/"
+**5. Inclusão de arquivos aml.json e taa.json no diretório "/home/indy/config/"**
 
 aml.json
 <pre>
@@ -56,15 +56,15 @@ taa.json
 }
 </pre>
 
-6. Instalar o lib-crypto
+**6. Instalar o lib-crypto**
 <pre>
 apt-get install libindy_crypto
 cp /usr/lib/libindy_crypto.so /usr/local/lib/
 </pre>
 
-7.Incluir o diretório "/home/indy/ledger/sandbox/"
+**7.Incluir o diretório "/home/indy/ledger/sandbox/"**
 
-8.Incluir o arquivo de configuração /etc/indy/indy_config.py
+**8.Incluir o arquivo de configuração /etc/indy/indy_config.py**
 
 <pre>
 NETWORK_NAME = 'sandbox'
@@ -79,7 +79,7 @@ CLI_BASE_DIR = '/home/indy/.indy-cli/'
 CLI_NETWORK_DIR = '/home/indy/.indy-cli/networks'i
 </pre>
 
-9.Incluir o arquivo de configuração /etc/indy/indy_config.py
+**9.Incluir o arquivo de configuração /etc/indy/indy_config.py**
 
 <pre>
 NODE_NAME=Nome-do-node
@@ -90,7 +90,7 @@ NODE_CLIENT_PORT=porta
 CLIENT_CONNECTIONS_LIMIT=500
 </pre>
 
-10.Instalar o webservice para a rede
+**10.Instalar o webservice para a rede**
 <pre>
 cd /home/indy
 git clone https://github.com/bcgov/von-network.git
