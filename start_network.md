@@ -22,7 +22,7 @@ start_indy_node Node1 0.0.0.0 9701 0.0.0.0 9702
 start_indy_node Node2 0.0.0.0 9703 0.0.0.0 9704
 </pre>
 
-**4. Iniciar o servidor Web
+**4. Iniciar o servidor Web**
 
 <pre>
 cd von-network
