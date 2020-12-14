@@ -41,3 +41,13 @@ generate_indy_pool_transactions --nodes 4 --clients 0 --nodeNum 1 --ips 127.0.0.
 start_indy_node Node1 0.0.0.0 9701 0.0.0.0 9702
 
 
+
+1.Iniciarlizar os nodes
+
+init_indy_keys --name <Nome do Node>
+
+Exemplo :
+<pre>
+init_indy_keys --name Node1
+</pre>
+obs.:Cada node usado deve ser inicializado
