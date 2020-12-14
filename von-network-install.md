@@ -68,7 +68,10 @@ apt-get install libindy_crypto
 cp /usr/lib/libindy_crypto.so /usr/local/lib/
 </pre>
 
-**7.Incluir o diretório "/home/indy/ledger/sandbox/"**
+**7.Incluir o diretório sandbox**
+<pre>
+mkdir -p /home/indy/ledger/sandbox
+</pre>
 
 **8.Incluir o arquivo de configuração /etc/indy/indy_config.py**
 
