@@ -158,3 +158,4 @@ Obs.: Somente na instância que será a usada para rodar o Ledger Browser
 Abrir o browser no endereço http://endereço-ip:9000 e o browser irá abrir a página :
 
 
+![Ledger-browser](ledger.png)
