@@ -51,3 +51,11 @@ Exemplo :
 init_indy_keys --name Node1
 </pre>
 obs.:Cada node usado deve ser inicializado
+
+2.Geração do pool de transações
+generate_indy_pool_transactions --nodes <quantidade-de-nodes> --clients 5 --nodeNum <numero do node> --ips 'endereços IP' --network=<nome-da-rede>
+
+Exemplo : 
+<pre>
+generate_indy_pool_transactions --nodes 2 --clients 5 --nodeNum 1 --ips '192.168.2.8,192.168.2.27' --network=sandbox
+</pre>
