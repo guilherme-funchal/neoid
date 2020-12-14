@@ -26,8 +26,14 @@ sudo apt-get install libbz2-dev \
 </pre>
 
 **3.Incluir o script start_node no /usr/bin**
+<pre>
+cp /home/indy/scripts/start_node /usr/bin
+</pre>
 
 **4.Incluir o script von_generate_transactions  no /usr/bin**
+<pre>
+cp /home/indy/bind/von_generate_transactions /usr/bin
+</pre>
 
 **5. Inclusão de arquivos aml.json e taa.json no diretório "/home/indy/config/"**
 
