@@ -153,7 +153,7 @@ PORT=9000 python3 -m server.server
 </pre>
 Obs.: Somente na instância que será a usada para rodar o Ledger Browser
 
-**2.5 Abrir o site do ledger Browser
+**2.5 Abrir o site do ledger Browser**
 
 Abrir o browser no endereço http://endereço-ip:9000 e o browser irá abrir a página :
 
