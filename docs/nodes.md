@@ -105,7 +105,7 @@ cd /home/indy
 git clone https://github.com/bcgov/von-network.git
 </pre>
 
-#Iniciar os nodes
+# Iniciar os nodes
 
 **1.Iniciarlizar os nodes**
 
