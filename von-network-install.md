@@ -2,6 +2,7 @@
 
 1. instalar o indy
 <pre>
+mkdir -p /home/indy
 pip3 install python3-indy
 pip3 install indy-plenum
 pip3 install indy_node
@@ -87,5 +88,11 @@ NODE_PORT=porta
 NODE_CLIENT_IP=0.0.0.0
 NODE_CLIENT_PORT=porta
 CLIENT_CONNECTIONS_LIMIT=500
+</pre>
+
+10.Instalar o webservice para a rede
+<pre>
+cd /home/indy
+git clone https://github.com/bcgov/von-network.git
 </pre>
 
