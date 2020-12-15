@@ -3,9 +3,13 @@
 **1.1 instalar o indy**
 <pre>
 mkdir -p /home/indy
-pip3 install python3-indy
-pip3 install indy-plenum
-pip3 install indy_node
+mkdir -p /home/indy/ledger/sandbox
+mkdir -p /home/indy/config/
+mkdir -p /etc/indy/
+cd /home/indy
+git clone https://github.com/bcgov/von-network.git
+apt install python3-pip
+
 </pre>
 
 **1.2 Instalar o rockesdb**
@@ -25,53 +29,41 @@ sudo apt-get install libbz2-dev \
 
 </pre>
 
-**1.3 Incluir o script start_node no /usr/bin**
+**1.3 Instalar os pacotes do Indy**
+pip3 install python3-indy
+pip3 install indy-plenum
+pip3 install indy_node
+
+**Obs.:Importante observar que o comando pip aponte para pip3, se não houver basta criar um link simbólico.**
+
+**1.4 Incluir o script start_node no /usr/bin**
 <pre>
-cp /home/indy/scripts/start_node /usr/bin
+cp /home/indy/von-network/scripts/start_node /usr/bin
 </pre>
 
-**1.4 Incluir o script von_generate_transactions  no /usr/bin**
+**1.5 Incluir o script von_generate_transactions  no /usr/bin**
 <pre>
-cp /home/indy/bind/von_generate_transactions /usr/bin
+cp /home/indy/von-network/bin/von_generate_transactions /usr/bin
 </pre>
 
-**1.5 Inclusão de arquivos aml.json e taa.json no diretório "/home/indy/config/"**
+**1.6 Inclusão de arquivos aml.json e taa.json no diretório "/home/indy/config/"**
 
 aml.json
 <pre>
-{
-  "version": "1.0",
-  "context": "http://aml-context-descr",
-  "aml": {
-     "product_eula": "The agreement was included in the software product’s terms and conditions as part of a license to the end user.",
-     "service_agreement": "The agreement was included in the terms and conditions the user accepted as part of contracting a service.",
-     "at_submission": "The agreement was reviewed by the user and accepted at the time of submission of this transaction.",
-     "for_session": "The agreement was reviewed by the user and accepted at some point in the user’s session prior to submission.",
-     "wallet_agreement": "The agreement was reviewed by the user and this affirmation was persisted in the user’s wallet for use during submission.",
-     "on_file": "An authorized person accepted the agreement, and such acceptance is on file with the user’s organization."
-  }
-}
+cp /home/indy/von-network/config/sample_aml.json /home/indy/config/aml.json
 </pre>
 
 taa.json
 <pre>
-{
-  "version": "1.1",
-  "text": "TAA Goes *Here*\n\n- got it",
-  "ratification_ts": 1597654073
-}
+cp /home/indy/von-network/config/sample_taa.json /home/indy/config/taa.json
 </pre>
 
-**1.6 Instalar o lib-crypto**
+**1.7 Instalar o lib-crypto**
 <pre>
 apt-get install libindy_crypto
 cp /usr/lib/libindy_crypto.so /usr/local/lib/
 </pre>
 
-**1.7 Incluir o diretório sandbox**
-<pre>
-mkdir -p /home/indy/ledger/sandbox
-</pre>
 
 **1.8 Incluir o arquivo de configuração /etc/indy/indy_config.py**
 
@@ -88,7 +80,7 @@ CLI_BASE_DIR = '/home/indy/.indy-cli/'
 CLI_NETWORK_DIR = '/home/indy/.indy-cli/networks'i
 </pre>
 
-**1.9 Incluir o arquivo de configuração /etc/indy/indy_config.py**
+**1.9 Incluir o arquivo de configuração /etc/indy/indy.env**
 
 <pre>
 NODE_NAME=Nome-do-node
@@ -148,7 +140,7 @@ obs.:Cada node usado deve ser iniciado na console de cada instância.
 **2.4 Iniciar o servidor Web**
 
 <pre>
-cd von-network
+cd /home/indy/von-network
 PORT=9000 python3 -m server.server
 </pre>
 Obs.: Somente na instância que será a usada para rodar o Ledger Browser
