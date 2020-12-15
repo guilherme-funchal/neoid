@@ -1,0 +1,18 @@
+[Unit]
+Description=Indy Node
+Requires=indy-node-control.service
+
+[Service]
+EnvironmentFile=/etc/indy/indy.env
+ExecStart=/usr/bin/env python3 -O /usr/local/bin/start_indy_node ${NODE_NAME} ${NODE_IP} ${NODE_PORT} ${NODE_CLIENT_IP} ${NODE_CLIENT_PORT}
+User=indy
+Group=indy
+Restart=on-failure
+RestartSec=10
+StartLimitBurst=10
+StartLimitInterval=200
+TimeoutSec=300
+LimitNOFILE=65536:131072
+
+[Install]
+WantedBy=multi-user.target
