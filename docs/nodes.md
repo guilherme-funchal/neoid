@@ -35,7 +35,7 @@ cp /home/indy/scripts/start_node /usr/bin
 cp /home/indy/bind/von_generate_transactions /usr/bin
 </pre>
 
-**5. Inclusão de arquivos aml.json e taa.json no diretório "/home/indy/config/"**
+**1.5 Inclusão de arquivos aml.json e taa.json no diretório "/home/indy/config/"**
 
 aml.json
 <pre>
@@ -62,18 +62,18 @@ taa.json
 }
 </pre>
 
-**6. Instalar o lib-crypto**
+**1.6 Instalar o lib-crypto**
 <pre>
 apt-get install libindy_crypto
 cp /usr/lib/libindy_crypto.so /usr/local/lib/
 </pre>
 
-**7.Incluir o diretório sandbox**
+**1.7 Incluir o diretório sandbox**
 <pre>
 mkdir -p /home/indy/ledger/sandbox
 </pre>
 
-**8.Incluir o arquivo de configuração /etc/indy/indy_config.py**
+**1.8 Incluir o arquivo de configuração /etc/indy/indy_config.py**
 
 <pre>
 NETWORK_NAME = 'sandbox'
@@ -88,7 +88,7 @@ CLI_BASE_DIR = '/home/indy/.indy-cli/'
 CLI_NETWORK_DIR = '/home/indy/.indy-cli/networks'i
 </pre>
 
-**9.Incluir o arquivo de configuração /etc/indy/indy_config.py**
+**1.9 Incluir o arquivo de configuração /etc/indy/indy_config.py**
 
 <pre>
 NODE_NAME=Nome-do-node
@@ -99,7 +99,7 @@ NODE_CLIENT_PORT=porta
 CLIENT_CONNECTIONS_LIMIT=500
 </pre>
 
-**10.Instalar o webservice para a rede**
+**1.10 Instalar o webservice para a rede**
 <pre>
 cd /home/indy
 git clone https://github.com/bcgov/von-network.git
