@@ -97,6 +97,36 @@ cd /home/indy
 git clone https://github.com/bcgov/von-network.git
 </pre>
 
+**1.18 Criação do serviço indy no ubuntu**
+Criar arquivo “/lib/systemd/system/indy-node.service” com o conteúdo : 
+<pre>
+[Unit]
+Description=Indy Node
+Requires=indy-node-control.service
+
+[Service]
+EnvironmentFile=/etc/indy/indy.env
+ExecStart=/usr/bin/env python3 -O /usr/local/bin/start_indy_node ${NODE_NAME} ${NODE_IP} ${NODE_PORT} ${NODE_CLIENT_IP} ${NODE_CLIENT_PORT}
+User=indy
+Group=indy
+Restart=on-failure
+RestartSec=10
+StartLimitBurst=10
+StartLimitInterval=200
+TimeoutSec=300
+LimitNOFILE=65536:131072
+
+[Install]
+
+WantedBy=multi-user.target
+</pre>
+
+Para habilitar utilizar o comando :
+
+<pre>
+#systemctl enable indy-node
+</pre>
+
 # 2.Iniciar os nodes
 
 **2.1 Iniciarlizar os nodes**
