@@ -99,3 +99,15 @@ curl -X GET "http://{{ Endereço IP }}:{{ Porta }}/multitenancy/wallet/{{ wallet
 <pre>
 curl -X GET "http://172.17.0.1:8031/multitenancy/wallet/4f4874b1-acb1-4a85-8157-7b0b48372be0" -H "accept: application/json"
 </pre>
+
+## 7. Criando uma sub wallet
+<pre>
+curl -X POST "http://{{ Endereço IP }}:{{ Porta }}/multitenancy/wallet" 
+-H "accept: application/json" -H "Content-Type: application/json" 
+-d "{ \"key_management_mode\": \"managed\", \"label\": \"Label\", \"wallet_key\": \"Senha\", \"wallet_name\": \"Nome\", \"wallet_type\": \"indy\"}"
+
+</pre>
+
+<pre>
+curl -X POST "http://172.17.0.1:8021/multitenancy/wallet" -H "accept: application/json" -H "Content-Type: application/json" -d "{ \"key_management_mode\": \"managed\", \"label\": \"Alice\", \"wallet_key\": \"MySecretKey123\", \"wallet_name\": \"MyNewWallet\", \"wallet_type\": \"indy\"}"
+</pre>
