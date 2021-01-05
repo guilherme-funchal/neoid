@@ -37,7 +37,7 @@ curl -X GET "http://{{ Endereço IP }}:{{ Porta }}/credentials" -H "accept: appl
 curl -X GET "http://172.17.0.1:8031/credentials" 
 -H "accept: application/json" 
 -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiI0ZjQ4NzRiMS1hY2IxLTRhODUtODE1Ny03YjBiNDgzNzJiZTAifQ.eCQcaIwaJYoAcG-xJ901U5DSJDyvJJiRoRF8FTVTBF8"
-<pre>
+</pre>
 
 
 ## 4. Envio de proposta de credencial
@@ -45,7 +45,6 @@ curl -X GET "http://172.17.0.1:8031/credentials"
 curl -X POST "http://{{ Endereço IP }}:{{ Porta }}/issue-credential/records/{{ connection_id }}/send-offer" 
 -H "accept: application/json" 
 -H "Authorization: Bearer {{ Token }}"
-
 </pre>
 
 
