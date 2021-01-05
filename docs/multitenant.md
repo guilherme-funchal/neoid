@@ -88,3 +88,12 @@ $ curl -X GET "http://172.17.0.1:8031/multitenancy/wallets" -H "accept: applicat
 "key_management_mode": "managed", 
 "updated_at": "2021-01-05 14:04:48.541702Z"}]}
 </pre>
+
+
+## 6. Obtendo apenas uma sub wallet
+
+curl -X GET "http://{{ Endereço IP }}:{{ Porta }}/multitenancy/wallet/{{ wallet_id }}" -H "accept: application/json"
+
+<pre>
+curl -X GET "http://172.17.0.1:8031/multitenancy/wallet/4f4874b1-acb1-4a85-8157-7b0b48372be0" -H "accept: application/json"
+</pre>
