@@ -64,6 +64,7 @@ curl -X GET "http://{{ Endereço IP }}:{{ Porta }}/multitenancy/wallets" -H "acc
 **Exemplo :**
 <pre>
 $ curl -X GET "http://172.17.0.1:8021/multitenancy/wallets" -H "accept: application/json"
+
 {"results": [{
 "key_management_mode": "managed", 
 "updated_at": "2021-01-05 14:04:45.293416Z", 
