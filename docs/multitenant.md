@@ -32,7 +32,7 @@ curl -X POST "http://172.17.0.1:8031/connections/d199d2d6-c164-46a1-b7bb-6062a23
 curl -X GET "http://{{ Endereço IP }}:{{ Porta }}/credentials" -H "accept: application/json"
 </pre>
 
-
+**Exemplo :**
 <pre>
 curl -X GET "http://172.17.0.1:8031/credentials" 
 -H "accept: application/json" 
@@ -47,7 +47,7 @@ curl -X POST "http://{{ Endereço IP }}:{{ Porta }}/issue-credential/records/{{ 
 -H "Authorization: Bearer {{ Token }}"
 </pre>
 
-
+**Exemplo :**
 <pre>
 curl -X POST "http://172.17.0.1:8021/issue-credential/records/d239b8bf-d275-476a-aaf6-99e508604371/send-offer" 
 -H "accept: application/json" 
