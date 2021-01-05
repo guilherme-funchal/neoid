@@ -26,4 +26,15 @@ curl -X POST "http://172.17.0.1:8031/connections/d199d2d6-c164-46a1-b7bb-6062a23
 -d "{ \"content\": \"Teste\"}"
 </pre>
 
-## 2. 
+## 3. Listando credenciais na Wallet
+
+<pre>
+curl -X GET "http://{{ Endereço IP }}:{{ Porta }}/credentials" -H "accept: application/json"
+</pre>
+
+
+<pre>
+curl -X GET "http://172.17.0.1:8031/credentials" 
+-H "accept: application/json" 
+-H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiI0ZjQ4NzRiMS1hY2IxLTRhODUtODE1Ny03YjBiNDgzNzJiZTAifQ.eCQcaIwaJYoAcG-xJ901U5DSJDyvJJiRoRF8FTVTBF8"
+<pre>
