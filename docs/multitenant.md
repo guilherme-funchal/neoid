@@ -53,3 +53,35 @@ curl -X POST "http://172.17.0.1:8021/issue-credential/records/d239b8bf-d275-476a
 -H "accept: application/json" 
 -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiI1MDI3YmE4MS1jMjJiLTQ5NDMtYjNkZS0xOGIwOGJjZWU2MzEifQ.s_wqtCRIBj0rS7e7UClxHcG8RUY7-WybqiIQ-loLXq8"
 </pre>
+
+## 5. Lista as wallets do Agent
+<pre>
+curl -X GET "http://{{ Endereço IP }}:{{ Porta }}/multitenancy/wallets" -H "accept: application/json"
+</pre>
+
+**Exemplo :**
+<pre>
+$ curl -X GET "http://172.17.0.1:8021/multitenancy/wallets" -H "accept: application/json"
+{"results": [{
+"key_management_mode": "managed", 
+"updated_at": "2021-01-05 14:04:45.293416Z", 
+"wallet_id": "5027ba81-c22b-4943-b3de-18b08bcee631", 
+"settings": {"wallet.type": "indy", 
+"wallet.name": "Faber.initial", 
+"default_label": "Faber.initial", 
+"wallet.id": "5027ba81-c22b-4943-b3de-18b08bcee631"}, 
+"created_at": "2021-01-05 14:04:45.293416Z"}]}
+
+$ curl -X GET "http://172.17.0.1:8031/multitenancy/wallets" -H "accept: application/json"
+
+{"results": [{
+"created_at": "2021-01-05 14:04:48.541702Z", 
+"settings": {
+"wallet.type": "indy", 
+"wallet.name": "Alice.initial", 
+"default_label": "Alice.initial", 
+"wallet.id": "4f4874b1-acb1-4a85-8157-7b0b48372be0"}, 
+"wallet_id": "4f4874b1-acb1-4a85-8157-7b0b48372be0", 
+"key_management_mode": "managed", 
+"updated_at": "2021-01-05 14:04:48.541702Z"}]}
+</pre>
