@@ -108,6 +108,8 @@ curl -X POST "http://{{ Endereço IP }}:{{ Porta }}/multitenancy/wallet"
 
 </pre>
 
+**Exemplo :**
+
 <pre>
 curl -X POST "http://172.17.0.1:8021/multitenancy/wallet" -H "accept: application/json" -H "Content-Type: application/json" -d "{ \"key_management_mode\": \"managed\", \"label\": \"Alice\", \"wallet_key\": \"MySecretKey123\", \"wallet_name\": \"MyNewWallet\", \"wallet_type\": \"indy\"}"
 </pre>
