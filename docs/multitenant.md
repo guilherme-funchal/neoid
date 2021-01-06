@@ -99,24 +99,38 @@ Get /credential/revoked/
 **Exemplo :**
 <pre>
 curl -X GET "http://172.17.0.1:8031/credential/revoked/c3706d85-91b9-4969-95a2-4125fc9750c7" 
--H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJjYjZkOTc3Yy00NmY5LTQxNmYtYjRmYi1lYjdiMDUzYTA5ZDMifQ.2EGp1lZkzenZRMRCsMh1CzYBwtqiIdh1yPULA89pNEk"
+-H "accept: application/json" 
+-H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJjYjZkOTc3Yy00NmY5LTQxNmYtYjRmYi1lYjdiMDUzYTA5ZDMifQ.2EGp1lZkzenZRMRCsMh1CzYBwtqiIdh1yPULA89pNEk"
 </pre>
 
 ### 4.3 Obter uma credencial da carteira por id
 
-Get /credential/{{ Token }}
+Get /credential/{{ credential_id }}
 
 **Exemplo :**
 <pre>
+curl -X GET "http://172.17.0.1:8031/credential/b4c8e92e-ec58-4446-8765-ea6c9e077fb3" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJmMmEwMDI5NC02NGRmLTRmMzgtYTY2Zi1kNzg3OGE2N2JlNjkifQ.K0hwyvTcFvC3c18reBWTcKG4Fk6mNUSxknVCiUbYjaE"
+</pre>
+
+**Resultado :**
+<pre>
+{"referent": "b4c8e92e-ec58-4446-8765-ea6c9e077fb3", 
+"attrs": {"age": "24", "date": "2018-05-28", "degree": "Maths", "timestamp": "1609939047", "name": "Alice Smith"}, 
+"schema_id": "2Y4xCxUYA35FEMSC5ofGTh:2:degree schema:67.95.15", 
+"cred_def_id": "2Y4xCxUYA35FEMSC5ofGTh:3:CL:106:Faber.initial.degree_schema", 
+"rev_reg_id": null, "cred_rev_id": null}r
 </pre>
 
 
 ### 4.4 Remova uma credencial da carteira por id
 
-Get /credential/{{ Token }}
+Get /credential/{{ credential_id }}
 
 **Exemplo :**
 <pre>
+curl -X DELETE "http://172.17.0.1:8031/credential/b4c8e92e-ec58-4446-8765-ea6c9e077fb3" 
+-H "accept: application/json"
+-H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJmMmEwMDI5NC02NGRmLTRmMzgtYTY2Zi1kNzg3OGE2N2JlNjkifQ.K0hwyvTcFvC3c18reBWTcKG4Fk6mNUSxknVCiUbYjaE"
 </pre>
 
 ### 4.5 Obter credenciais da carteira
@@ -125,6 +139,21 @@ Get /credential/mime-types/{{ connection_id }}
 
 **Exemplo :**
 <pre>
+curl -X GET "http://172.17.0.1:8031/credentials" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJmMmEwMDI5NC02NGRmLTRmMzgtYTY2Zi1kNzg3OGE2N2JlNjkifQ.K0hwyvTcFvC3c18reBWTcKG4Fk6mNUSxknVCiUbYjaE"
+</pre>
+
+**Resultado :**
+<pre>
+{"results": [{
+"referent": "01eacf8b-797d-4b1c-9fb6-21ee03cab9fc", 
+"attrs": {"age": "24", "date": "2018-05-28",
+"name": "Alice Smith", 
+"timestamp": "1609940569", 
+"degree": "Maths"}, 
+"schema_id": "2Y4xCxUYA35FEMSC5ofGTh:2:degree schema:67.95.15", 
+"cred_def_id": "2Y4xCxUYA35FEMSC5ofGTh:3:CL:106:Faber.initial.degree_schema", 
+"rev_reg_id": null, 
+"cred_rev_id": null}]}
 </pre>
 
 ## 5.Did exchange
