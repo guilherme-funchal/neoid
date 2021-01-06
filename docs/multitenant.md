@@ -33,14 +33,50 @@ curl -X POST "http://172.17.0.1:8031/connections/d199d2d6-c164-46a1-b7bb-6062a23
 
 ## 2.Connection
 
-## 3.Credentials
+## 3.Credential definition
 
-## 4.Did exchange
+### 3.1 Envia uma definição de credencial para o razão
 
-## 5.Introduction
+<pre>
+curl -X POST "http://{{ Endereço IP }}:{{ Porta }}/credential-definitions" -H "accept: application/json" -H "Authorization: Bearer {{ Token }}" -H "Content-Type: application/json" -d "{ \"revocation_registry_size\": 1000, \"schema_id\": \"{{ identificador do schema }}\", \"support_revocation\": false, \"tag\": \"default\"}"
+</pre>
 
-## 6.Issue credential
-### 6.1. Envio de proposta de credencial
+**Exemplo :**
+<pre>
+curl -X POST "http://172.17.0.1:8021/credential-definitions" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJkMTVjZTBiZC0xNDQzLTQxNzktOGNmNy1jOGJhNzJmZTY1ZGEifQ.s1AKvJb1eLZ4jd7NyG0sgtRtxhkxX5PR-UlUbAdcnnA" -H "Content-Type: application/json" -d "{ \"revocation_registry_size\": 1000, \"schema_id\": \"WgWxqztrNooG92RXvxSTWv:2:schema_name:1.0\", \"support_revocation\": false, \"tag\": \"default\"}"
+</pre>
+
+### 3.2 Pesquise por definições de credenciais correspondentes que o agente originou
+
+<pre>
+curl -X GET "http://{{ Endereço IP }}:{{ Porta }}/credential-definitions/created" -H "accept: application/json" -H "Authorization: Bearer {{ Token }}"
+</pre>
+
+**Exemplo :**
+<pre>
+curl -X GET "http://172.17.0.1:8021/credential-definitions/created" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJkMTVjZTBiZC0xNDQzLTQxNzktOGNmNy1jOGJhNzJmZTY1ZGEifQ.s1AKvJb1eLZ4jd7NyG0sgtRtxhkxX5PR-UlUbAdcnnA"
+</pre>
+
+### 3.3  Obtém uma definição de credencial do razão
+
+<pre>
+curl -X GET "http://{{ Endereço IP }}:{{ Porta }}/credential-definitions/{{ credential_definition_id }}" -H "accept: application/json" -H "Authorization: Bearer {{ Token }}
+</pre>
+
+**Exemplo :**
+
+<pre>
+curl -X GET "http://172.17.0.1:8021/credential-definitions/M786j533KXeifEnGd3gQLx%3A3%3ACL%3A94%3AFaber.initial.degree_schema" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJkMTVjZTBiZC0xNDQzLTQxNzktOGNmNy1jOGJhNzJmZTY1ZGEifQ.s1AKvJb1eLZ4jd7NyG0sgtRtxhkxX5PR-UlUbAdcnnA"
+</pre>
+
+## 4.Credential
+
+## 5.Did exchange
+
+## 6.Introduction
+
+## 7.Issue credential
+### 7.1. Envio de proposta de credencial
 <pre>
 curl -X POST "http://{{ Endereço IP }}:{{ Porta }}/issue-credential/records/{{ connection_id }}/send-offer" 
 -H "accept: application/json" 
@@ -55,24 +91,24 @@ curl -X POST "http://172.17.0.1:8021/issue-credential/records/d239b8bf-d275-476a
 </pre>
 
 
-## 7.Ledger
+## 8.Ledger
 
-## 8.Multitenancy
+## 9.Multitenancy
 
-## 9.Out of band
+## 10.Out of band
 
-## 10.Proof presentation
+## 11.Proof presentation
 
-## 11.Revocation
+## 12.Revocation
 
-## 12.Schema
+## 13.Schema
 
-## 13.Server
+## 14.Server
 
-## 14.Trustping
+## 15.Trustping
 
-## 15.Wallet
-### 15.1. Listando credenciais na Wallet
+## 16.Wallet
+### 16.1. Listando credenciais na Wallet
 
 <pre>
 curl -X GET "http://{{ Endereço IP }}:{{ Porta }}/credentials" -H "accept: application/json"
@@ -85,7 +121,7 @@ curl -X GET "http://172.17.0.1:8031/credentials"
 -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiI0ZjQ4NzRiMS1hY2IxLTRhODUtODE1Ny03YjBiNDgzNzJiZTAifQ.eCQcaIwaJYoAcG-xJ901U5DSJDyvJJiRoRF8FTVTBF8"
 </pre>
 
-### 15.2. Lista as wallets do Agent
+### 16.2. Lista as wallets do Agent
 <pre>
 curl -X GET "http://{{ Endereço IP }}:{{ Porta }}/multitenancy/wallets" -H "accept: application/json"
 </pre>
@@ -119,7 +155,7 @@ $ curl -X GET "http://172.17.0.1:8031/multitenancy/wallets" -H "accept: applicat
 </pre>
 
 
-### 15.3. Obtendo apenas uma sub wallet
+### 16.3. Obtendo apenas uma sub wallet
 <pre>
 curl -X GET "http://{{ Endereço IP }}:{{ Porta }}/multitenancy/wallet/{{ wallet_id }}" -H "accept: application/json"
 </pre>
@@ -129,7 +165,7 @@ curl -X GET "http://{{ Endereço IP }}:{{ Porta }}/multitenancy/wallet/{{ wallet
 curl -X GET "http://172.17.0.1:8031/multitenancy/wallet/4f4874b1-acb1-4a85-8157-7b0b48372be0" -H "accept: application/json"
 </pre>
 
-### 15.4. Criando uma sub wallet
+### 16.4. Criando uma sub wallet
 <pre>
 curl -X POST "http://{{ Endereço IP }}:{{ Porta }}/multitenancy/wallet" 
 -H "accept: application/json" -H "Content-Type: application/json" 
@@ -144,7 +180,7 @@ curl -X POST "http://172.17.0.1:8021/multitenancy/wallet" -H "accept: applicatio
 </pre>
 
 
-## 16.Keylist
+## 17.Keylist
 
 
 
