@@ -177,7 +177,7 @@ Get /schemas/{schema_id}
 curl -X GET "http://172.17.0.1:8031/schemas/2Y4xCxUYA35FEMSC5ofGTh%3A2%3Adegree%20schema%3A67.95.15" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJmMmEwMDI5NC02NGRmLTRmMzgtYTY2Zi1kNzg3OGE2N2JlNjkifQ.K0hwyvTcFvC3c18reBWTcKG4Fk6mNUSxknVCiUbYjaE"
 </pre>
 
-**Resposta : **
+**Resposta :**
 
 <pre>
 {"schema": 
@@ -197,7 +197,7 @@ Get /features
 curl -X GET "http://172.17.0.1:8021/features" -H "accept: application/json"
 </pre>
 
-**Resposta : **
+**Resposta :**
 
 <pre>
 {
@@ -240,7 +240,7 @@ Get /plugins
 curl -X GET "http://172.17.0.1:8031/plugins" -H "accept: application/json"
 </pre>
 
-**Resposta : **
+**Resposta :**
 <pre>
 {
   "result": [
@@ -283,7 +283,7 @@ Get /status
 curl -X GET "http://172.17.0.1:8031/status" -H "accept: application/json"
 </pre>
 
-**Resposta : **
+**Resposta :**
 <pre>
 {"version": "0.6.0-pre", 
 "label": "Alice.Agent", "
@@ -306,7 +306,7 @@ Get /status/live
 curl -X GET "http://172.17.0.1:8031/status/live" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJmMmEwMDI5NC02NGRmLTRmMzgtYTY2Zi1kNzg3OGE2N2JlNjkifQ.K0hwyvTcFvC3c18reBWTcKG4Fk6mNUSxknVCiUbYjaE"
 </pre>
 
-**Resposta : **
+**Resposta :**
 
 <pre>
 {"alive": true}
@@ -320,7 +320,7 @@ Get /status/ready
 curl -X GET "http://172.17.0.1:8031/status/ready" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJmMmEwMDI5NC02NGRmLTRmMzgtYTY2Zi1kNzg3OGE2N2JlNjkifQ.K0hwyvTcFvC3c18reBWTcKG4Fk6mNUSxknVCiUbYjaE"
 </pre>
 
-**Resposta : **
+**Resposta :**
 
 <pre>
 {"ready": true}
