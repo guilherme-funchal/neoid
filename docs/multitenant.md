@@ -29,13 +29,6 @@ http://{{ Endereço IP }}:8021/api/doc
 ### 1.1. Enviar mensagem entre conexões Faber e Alice : 
 Post /connections/{{ connection_id }}/send-message
 
-<pre>
-curl -X POST "http://{{ Endereço IP }}:8031/connections/{{ connection_id }}/send-message" 
--H "accept: application/json" 
--H "Authorization: Bearer {{ Token }}" 
--H "Content-Type: application/json" 
--d "{ \"content\": \"Mensagem\"}"
-</pre>
 
 **Exemplo :**
 
@@ -54,12 +47,6 @@ curl -X POST "http://172.17.0.1:8031/connections/d199d2d6-c164-46a1-b7bb-6062a23
 ### 3.1 Envia uma definição de credencial para o razão
 Post /credential-definitions
 
-<pre>
-curl -X POST "http://{{ Endereço IP }}:{{ Porta }}/credential-definitions" 
--H "accept: application/json" -H "Authorization: Bearer {{ Token }}" 
--H "Content-Type: application/json" 
--d "{ \"revocation_registry_size\": 1000, \"schema_id\": \"{{ identificador do schema }}\", \"support_revocation\": false, \"tag\": \"default\"}"
-</pre>
 
 **Exemplo :**
 <pre>
@@ -72,12 +59,6 @@ curl -X POST "http://172.17.0.1:8021/credential-definitions"
 ### 3.2 Pesquise por definições de credenciais correspondentes que o agente originou
 Post /credential-definitions/created
 
-<pre>
-curl -X GET "http://{{ Endereço IP }}:{{ Porta }}/credential-definitions/created" 
--H "accept: application/json" 
--H "Authorization: Bearer {{ Token }}"
-</pre>
-
 **Exemplo :**
 <pre>
 curl -X GET "http://172.17.0.1:8021/credential-definitions/created" 
@@ -88,11 +69,6 @@ curl -X GET "http://172.17.0.1:8021/credential-definitions/created"
 ### 3.3  Obtém uma definição de credencial do razão
 Get /credential-definitions/{{ credential_definition_id }}
 
-<pre>
-curl -X GET "http://{{ Endereço IP }}:{{ Porta }}/credential-definitions/{{ credential_definition_id }}" 
--H "accept: application/json" 
--H "Authorization: Bearer {{ Token }}
-</pre>
 
 **Exemplo :**
 
@@ -108,12 +84,6 @@ curl -X GET "http://172.17.0.1:8021/credential-definitions/M786j533KXeifEnGd3gQL
 
 Get /credential/mime-types/{{ credential_id }}
 
-<pre>
-http://{{ Endereço IP }}:{{ Porta }}/credential/mime-types/{{ credential_id }}
-curl -X GET "" -H "accept: application/json" -H "Authorization: Bearer 
-{{ Token }}
-</pre>
-
 **Exemplo :**
 <pre>
 curl -X GET "http://172.17.0.1:8021/credential/mime-types/5111d8d2-7314-4a55-a081-dd313108a419" 
@@ -126,12 +96,6 @@ curl -X GET "http://172.17.0.1:8021/credential/mime-types/5111d8d2-7314-4a55-a08
 
 Get /credential/revoked/
 
-<pre>
-http://{{ Endereço IP }}:{{ Porta }}/credential/revoked/
-curl -X GET "" -H "accept: application/json" -H "Authorization: Bearer 
-{{ Token }}
-</pre>
-
 **Exemplo :**
 <pre>
 curl -X GET "http://172.17.0.1:8031/credential/revoked/c3706d85-91b9-4969-95a2-4125fc9750c7" 
@@ -142,12 +106,6 @@ curl -X GET "http://172.17.0.1:8031/credential/revoked/c3706d85-91b9-4969-95a2-4
 
 Get /credential/{{ Token }}
 
-<pre>
-http://{{ Endereço IP }}:{{ Porta }}/credential/{{ Token }}
-curl -X GET "" -H "accept: application/json" -H "Authorization: Bearer 
-{{ Token }}
-</pre>
-
 **Exemplo :**
 <pre>
 </pre>
@@ -157,12 +115,6 @@ curl -X GET "" -H "accept: application/json" -H "Authorization: Bearer
 
 Get /credential/{{ Token }}
 
-<pre>
-http://{{ Endereço IP }}:{{ Porta }}/credential/{{ Token }}
-curl -X GET "" -H "accept: application/json" -H "Authorization: Bearer 
-{{ Token }}
-</pre>
-
 **Exemplo :**
 <pre>
 </pre>
@@ -170,11 +122,6 @@ curl -X GET "" -H "accept: application/json" -H "Authorization: Bearer
 ### 4.5 Obter credenciais da carteira
 
 Get /credential/mime-types/{{ connection_id }}
-<pre>
-http://{{ Endereço IP }}:{{ Porta }}/credential/mime-types/{{ connection_id }}
-curl -X GET "" -H "accept: application/json" -H "Authorization: Bearer 
-{{ Token }}
-</pre>
 
 **Exemplo :**
 <pre>
@@ -187,12 +134,6 @@ curl -X GET "" -H "accept: application/json" -H "Authorization: Bearer
 ## 7.Issue credential
 ### 7.1. Envio de proposta de credencial
 Post /issue-credential/records/{{ connection_id }}/send-offer
-
-<pre>
-curl -X POST "http://{{ Endereço IP }}:{{ Porta }}/issue-credential/records/{{ connection_id }}/send-offer" 
--H "accept: application/json" 
--H "Authorization: Bearer {{ Token }}"
-</pre>
 
 **Exemplo :**
 <pre>
@@ -216,16 +157,24 @@ curl -X POST "http://172.17.0.1:8021/issue-credential/records/d239b8bf-d275-476a
 
 ## 14.Server
 
-## 15.Trustping
+## 15.Trustping 
+
+### 15.1 Envie um ping de confiança para uma conexão
+Post /connections/{conn_id}/send-ping
+
+<pre>
+curl -X POST "http://172.17.0.1:8031/connections/1f412482-9b16-4484-b99c-9c7095104f39/send-ping" -H "accept: application/json" -H "Content-Type: application/json" -d "{ \"comment\": \"string\"}" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiI0M2Q2YWZhMi04NjQzLTRiMTctYTQzYS03MzNkYjBmODE5MDcifQ.4piqFm98kVs9zh4OdeER_mYbHHCOKw4jhqWGPrSbHLM"
+
+Resposta :
+
+{"thread_id": "31080d88-1937-4af8-82ba-dbfc792d8343"}
+
+</pre>
 
 ## 16.Wallet
 ### 16.1. Listando credenciais na Wallet
 
 Get /credentials
-
-<pre>
-curl -X GET "http://{{ Endereço IP }}:{{ Porta }}/credentials" -H "accept: application/json"
-</pre>
 
 **Exemplo :**
 <pre>
@@ -237,10 +186,6 @@ curl -X GET "http://172.17.0.1:8031/credentials"
 ### 16.2. Lista as wallets do Agent
 
 Get /multitenancy/wallets
-
-<pre>
-curl -X GET "http://{{ Endereço IP }}:{{ Porta }}/multitenancy/wallets" -H "accept: application/json"
-</pre>
 
 **Exemplo :**
 <pre>
@@ -275,30 +220,23 @@ $ curl -X GET "http://172.17.0.1:8031/multitenancy/wallets" -H "accept: applicat
 
 Get /multitenancy/wallet/{{ wallet_id }}
 
-<pre>
-curl -X GET "http://{{ Endereço IP }}:{{ Porta }}/multitenancy/wallet/{{ wallet_id }}" -H "accept: application/json"
-</pre>
-
 **Exemplo :**
 <pre>
-curl -X GET "http://172.17.0.1:8031/multitenancy/wallet/4f4874b1-acb1-4a85-8157-7b0b48372be0" -H "accept: application/json"
+curl -X GET "http://172.17.0.1:8031/multitenancy/wallet/4f4874b1-acb1-4a85-8157-7b0b48372be0" 
+-H "accept: application/json"
 </pre>
 
 ### 16.4. Criando uma sub wallet
 
 Post /multitenancy/wallet
 
-<pre>
-curl -X POST "http://{{ Endereço IP }}:{{ Porta }}/multitenancy/wallet" 
--H "accept: application/json" -H "Content-Type: application/json" 
--d "{ \"key_management_mode\": \"managed\", \"label\": \"Label\", \"wallet_key\": \"Senha\", \"wallet_name\": \"Nome\", \"wallet_type\": \"indy\"}"
-
-</pre>
-
 **Exemplo :**
 
 <pre>
-curl -X POST "http://172.17.0.1:8021/multitenancy/wallet" -H "accept: application/json" -H "Content-Type: application/json" -d "{ \"key_management_mode\": \"managed\", \"label\": \"Alice\", \"wallet_key\": \"MySecretKey123\", \"wallet_name\": \"MyNewWallet\", \"wallet_type\": \"indy\"}"
+curl -X POST "http://172.17.0.1:8021/multitenancy/wallet" 
+-H "accept: application/json" 
+-H "Content-Type: application/json" 
+-d "{ \"key_management_mode\": \"managed\", \"label\": \"Alice\", \"wallet_key\": \"MySecretKey123\", \"wallet_name\": \"MyNewWallet\", \"wallet_type\": \"indy\"}"
 </pre>
 
 
@@ -309,17 +247,13 @@ curl -X POST "http://172.17.0.1:8021/multitenancy/wallet" -H "accept: applicatio
 Get /mediation/keylists
 
 <pre>
-curl -X GET "http://{{ Endereço IP }}:{{ Porta }}/mediation/keylists?role=client" 
--H "accept: application/json" 
--H "Authorization: Bearer {{ Token }}"
-</pre>
-
-<pre>
 curl -X GET "http://172.17.0.1:8031/mediation/keylists?role=client" 
 -H "accept: application/json" 
 -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiI0M2Q2YWZhMi04NjQzLTRiMTctYTQzYS03MzNkYjBmODE5MDcifQ.4piqFm98kVs9zh4OdeER_mYbHHCOKw4jhqWGPrSbHLM"
 
-curl -X GET "http://172.17.0.1:8031/mediation/keylists?role=server" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiI0M2Q2YWZhMi04NjQzLTRiMTctYTQzYS03MzNkYjBmODE5MDcifQ.4piqFm98kVs9zh4OdeER_mYbHHCOKw4jhqWGPrSbHLM"
+curl -X GET "http://172.17.0.1:8031/mediation/keylists?role=server" 
+-H "accept: application/json" 
+-H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiI0M2Q2YWZhMi04NjQzLTRiMTctYTQzYS03MzNkYjBmODE5MDcifQ.4piqFm98kVs9zh4OdeER_mYbHHCOKw4jhqWGPrSbHLM"
 </pre>
 
 ### 17.2 Envie a consulta da lista de chaves para o mediador
