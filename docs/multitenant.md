@@ -1,4 +1,4 @@
-# Usando o Curl para teste do ACA-Py 
+# Usando o Curl para teste do ACA-Py e Hyperledger Indy
 
 ### versão 0.6.0 Multitenant
 
