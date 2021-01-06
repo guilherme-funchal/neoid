@@ -114,7 +114,44 @@ curl -X GET "http://172.17.0.1:8031/connections/ef9743bd-ddda-44ac-854d-671b522b
 "their_did": "45uU7QVdZMDMV6gFazwuYN"}
 </pre>
 
+### 2.6 Remover um registro de conexão existente
+Delete /connections/{conn_id}
 
+<pre>
+curl -X DELETE "http://172.17.0.1:8031/connections/ef9743bd-ddda-44ac-854d-671b522bfdc3" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJmMmEwMDI5NC02NGRmLTRmMzgtYTY2Zi1kNzg3OGE2N2JlNjkifQ.K0hwyvTcFvC3c18reBWTcKG4Fk6mNUSxknVCiUbYjaE"
+</pre>
+
+### 2.7 Aceite um convite de conexão armazenado
+Post /connections/{conn_id}/accept-invitation
+
+<pre>
+
+</pre>
+
+### 2.8 Aceite uma solicitação de conexão armazenada
+Post /connections/{conn_id}/accept-request
+
+<pre>
+
+</pre>
+
+### 2.9 Atribuir outra conexão como a conexão de entrada
+
+<pre>
+
+</pre>
+
+### 2.10 Buscar metadados da conexão
+
+<pre>
+
+</pre>
+
+### 2.11 Definir metadados da conexão
+
+<pre>
+
+</pre>
 
 ## 3.Credential definition
 
