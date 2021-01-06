@@ -38,35 +38,48 @@ curl -X POST "http://172.17.0.1:8031/connections/d199d2d6-c164-46a1-b7bb-6062a23
 ### 3.1 Envia uma definição de credencial para o razão
 
 <pre>
-curl -X POST "http://{{ Endereço IP }}:{{ Porta }}/credential-definitions" -H "accept: application/json" -H "Authorization: Bearer {{ Token }}" -H "Content-Type: application/json" -d "{ \"revocation_registry_size\": 1000, \"schema_id\": \"{{ identificador do schema }}\", \"support_revocation\": false, \"tag\": \"default\"}"
+curl -X POST "http://{{ Endereço IP }}:{{ Porta }}/credential-definitions" 
+-H "accept: application/json" -H "Authorization: Bearer {{ Token }}" 
+-H "Content-Type: application/json" 
+-d "{ \"revocation_registry_size\": 1000, \"schema_id\": \"{{ identificador do schema }}\", \"support_revocation\": false, \"tag\": \"default\"}"
 </pre>
 
 **Exemplo :**
 <pre>
-curl -X POST "http://172.17.0.1:8021/credential-definitions" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJkMTVjZTBiZC0xNDQzLTQxNzktOGNmNy1jOGJhNzJmZTY1ZGEifQ.s1AKvJb1eLZ4jd7NyG0sgtRtxhkxX5PR-UlUbAdcnnA" -H "Content-Type: application/json" -d "{ \"revocation_registry_size\": 1000, \"schema_id\": \"WgWxqztrNooG92RXvxSTWv:2:schema_name:1.0\", \"support_revocation\": false, \"tag\": \"default\"}"
+curl -X POST "http://172.17.0.1:8021/credential-definitions" 
+-H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJkMTVjZTBiZC0xNDQzLTQxNzktOGNmNy1jOGJhNzJmZTY1ZGEifQ.s1AKvJb1eLZ4jd7NyG0sgtRtxhkxX5PR-UlUbAdcnnA" 
+-H "Content-Type: application/json" 
+-d "{ \"revocation_registry_size\": 1000, \"schema_id\": \"WgWxqztrNooG92RXvxSTWv:2:schema_name:1.0\", \"support_revocation\": false, \"tag\": \"default\"}"
 </pre>
 
 ### 3.2 Pesquise por definições de credenciais correspondentes que o agente originou
 
 <pre>
-curl -X GET "http://{{ Endereço IP }}:{{ Porta }}/credential-definitions/created" -H "accept: application/json" -H "Authorization: Bearer {{ Token }}"
+curl -X GET "http://{{ Endereço IP }}:{{ Porta }}/credential-definitions/created" 
+-H "accept: application/json" 
+-H "Authorization: Bearer {{ Token }}"
 </pre>
 
 **Exemplo :**
 <pre>
-curl -X GET "http://172.17.0.1:8021/credential-definitions/created" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJkMTVjZTBiZC0xNDQzLTQxNzktOGNmNy1jOGJhNzJmZTY1ZGEifQ.s1AKvJb1eLZ4jd7NyG0sgtRtxhkxX5PR-UlUbAdcnnA"
+curl -X GET "http://172.17.0.1:8021/credential-definitions/created" 
+-H "accept: application/json" 
+-H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJkMTVjZTBiZC0xNDQzLTQxNzktOGNmNy1jOGJhNzJmZTY1ZGEifQ.s1AKvJb1eLZ4jd7NyG0sgtRtxhkxX5PR-UlUbAdcnnA"
 </pre>
 
 ### 3.3  Obtém uma definição de credencial do razão
 
 <pre>
-curl -X GET "http://{{ Endereço IP }}:{{ Porta }}/credential-definitions/{{ credential_definition_id }}" -H "accept: application/json" -H "Authorization: Bearer {{ Token }}
+curl -X GET "http://{{ Endereço IP }}:{{ Porta }}/credential-definitions/{{ credential_definition_id }}" 
+-H "accept: application/json" 
+-H "Authorization: Bearer {{ Token }}
 </pre>
 
 **Exemplo :**
 
 <pre>
-curl -X GET "http://172.17.0.1:8021/credential-definitions/M786j533KXeifEnGd3gQLx%3A3%3ACL%3A94%3AFaber.initial.degree_schema" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJkMTVjZTBiZC0xNDQzLTQxNzktOGNmNy1jOGJhNzJmZTY1ZGEifQ.s1AKvJb1eLZ4jd7NyG0sgtRtxhkxX5PR-UlUbAdcnnA"
+curl -X GET "http://172.17.0.1:8021/credential-definitions/M786j533KXeifEnGd3gQLx%3A3%3ACL%3A94%3AFaber.initial.degree_schema" 
+-H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJkMTVjZTBiZC0xNDQzLTQxNzktOGNmNy1jOGJhNzJmZTY1ZGEifQ.s1AKvJb1eLZ4jd7NyG0sgtRtxhkxX5PR-UlUbAdcnnA"
 </pre>
 
 ## 4.Credential
