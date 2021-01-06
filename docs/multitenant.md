@@ -155,6 +155,40 @@ curl -X POST "http://172.17.0.1:8021/issue-credential/records/d239b8bf-d275-476a
 
 ## 13.Schema
 
+### 13.1 Envia um esquema para o razão
+Post /schemas
+
+<pre>
+curl -X POST "http://172.17.0.1:8031/schemas" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJmMmEwMDI5NC02NGRmLTRmMzgtYTY2Zi1kNzg3OGE2N2JlNjkifQ.K0hwyvTcFvC3c18reBWTcKG4Fk6mNUSxknVCiUbYjaE" -H "Content-Type: application/json" -d "{ \"attributes\": [ \"score\" ], \"schema_name\": \"prefs\", \"schema_version\": \"1.0\"}"
+</pre>
+
+### 13.2 Pesquise o esquema correspondente que o agente originou
+
+Get /schemas/created
+
+<pre>
+curl -X GET "http://172.17.0.1:8031/schemas/created?schema_id=2Y4xCxUYA35FEMSC5ofGTh%3A2%3Adegree%20schema%3A67.95.15" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJmMmEwMDI5NC02NGRmLTRmMzgtYTY2Zi1kNzg3OGE2N2JlNjkifQ.K0hwyvTcFvC3c18reBWTcKG4Fk6mNUSxknVCiUbYjaE"
+</pre>
+
+### 13.3 Obtém um esquema do livro-razão
+Get /schemas/{schema_id}
+
+<pre>
+curl -X GET "http://172.17.0.1:8031/schemas/2Y4xCxUYA35FEMSC5ofGTh%3A2%3Adegree%20schema%3A67.95.15" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJmMmEwMDI5NC02NGRmLTRmMzgtYTY2Zi1kNzg3OGE2N2JlNjkifQ.K0hwyvTcFvC3c18reBWTcKG4Fk6mNUSxknVCiUbYjaE"
+</pre>
+
+**Resposta : **
+
+<pre>
+{"schema": 
+{"ver": "1.0", 
+"id": "2Y4xCxUYA35FEMSC5ofGTh:2:degree schema:67.95.15", 
+"name": "degree schema", 
+"version": "67.95.15", 
+"attrNames": ["age", "timestamp", "date", "degree", "name"], "seqNo": 106}
+}
+</pre>
+
 ## 14.Server
 
 ### 14.1 Query supported features
