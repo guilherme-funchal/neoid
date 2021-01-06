@@ -8,6 +8,21 @@
 ./run_demo alice --multitenant
 </pre>
 
+
+### Abrindo o Swagger UI 
+
+1. Abrir a URL conforme abaixo :
+
+http://{{ Endereço IP }}:8021/api/doc
+
+2. Efetuar o login clicando no botão abaixo :
+
+![Login1](swegger1.png)
+
+3.Inserir o valor de Token JWT gerado conforme abaixo :
+
+![Login2](swagger1-1.png)
+
 ## action-menu
 
 ## 1.basicmessage
