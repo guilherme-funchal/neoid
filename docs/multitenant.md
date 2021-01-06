@@ -93,7 +93,28 @@ curl -X POST "http://172.17.0.1:8021/connections/create-invitation" -H "accept: 
 Post /connections/create-static
 
 <pre>
+curl -X POST "http://172.17.0.1:8021/connections/create-static" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiI1MWY1MzAwYS1hZTNkLTQyNjktOGNjMC05MmU5Njc3OGQzMGYifQ.v38pl0TbiKQc_wTkrID1ljJoXkGS-Wm3f7j82LIaDI0" -H "Content-Type: application/json" -d "{ \"alias\": \"alice\", \"my_did\": \"WgWxqztrNooG92RXvxSTWv\", \"my_seed\": \"000000000000000000000000000Alice\", \"their_did\": \"WgWxqztrNooG92RXvxSTWv\", \"their_endpoint\": \"http://172.17.0.1:8021\", \"their_label\": \"alice\", \"their_seed\": \"alice\", \"their_verkey\": \"alice\"}"
+</pre>
 
+**Resposta :**
+<pre>
+{"my_did": "WgWxqztrNooG92RXvxSTWv", 
+"my_verkey": "GRow3SpMJJ8K53oFk1549fSCPtdt55gaV1uGwErSw2Ae", 
+"my_endpoint": "http://172.17.0.1:8020", 
+"their_did": "WgWxqztrNooG92RXvxSTWv", 
+"their_verkey": "alice", 
+"record": 
+{"state": "active", 
+"routing_state": "none", 
+"updated_at": "2021-01-06 19:40:55.812576Z",
+"my_did": "WgWxqztrNooG92RXvxSTWv", 
+"invitation_mode": "static", 
+"alias": "alice", 
+"connection_id": "50d1eeee-867a-461e-9218-6e3b39287088", 
+"their_label": "alice", 
+"accept": "manual", 
+"their_did": "WgWxqztrNooG92RXvxSTWv",
+"created_at": "2021-01-06 19:40:55.812576Z"}}
 </pre>
 
 ### 2.4 Receba um novo convite de conexão
