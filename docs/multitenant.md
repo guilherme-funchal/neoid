@@ -653,7 +653,7 @@ Get /present-proof/records/{pres_ex_id}
 
 </pre>
 
-### 1.4 Remover um registro de troca de apresentação existente
+### 12.4. Remover um registro de troca de apresentação existente
 Delete /present-proof/records/{pres_ex_id}
 
 **Exemplo :**
