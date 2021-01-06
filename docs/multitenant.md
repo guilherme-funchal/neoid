@@ -629,6 +629,87 @@ curl -X POST "http://172.17.0.1:8031/out-of-band/receive-invitation" -H "accept:
 
 ## 12.Proof presentation
 
+### 12.1. Cria uma solicitação de apresentação não vinculada a nenhuma proposta ou conexão existente
+Post /present-proof/create-request
+
+**Exemplo :**
+<pre>
+
+</pre>
+
+### 12.3. Obter todos os registros de troca à prova de presente
+Get /present-proof/records
+
+**Exemplo :**
+<pre>
+
+</pre>
+
+### 12.3. Buscar um único registro de troca de apresentação
+Get /present-proof/records/{pres_ex_id}
+
+**Exemplo :**
+<pre>
+
+</pre>
+
+### 1.4 Remover um registro de troca de apresentação existente
+Delete /present-proof/records/{pres_ex_id}
+
+**Exemplo :**
+<pre>
+
+</pre>
+
+### 12.5. Obter credenciais para um pedido de apresentação na carteira
+Get /present-proof/records/{pres_ex_id}/credentials
+
+**Exemplo :**
+<pre>
+
+</pre>
+
+### 12.6. Envia uma prova de apresentação
+Post /present-proof/records/{pres_ex_id}/send-presentation
+
+**Exemplo :**
+<pre>
+
+</pre>
+
+### 12.7. Envia um pedido de apresentação em referência a uma proposta
+Post /present-proof/records/{pres_ex_id}/send-request
+
+**Exemplo :**
+<pre>
+
+</pre>
+
+### 12.8. Verifique uma apresentação recebida
+Post /present-proof/records/{pres_ex_id}/verify-presentation
+
+**Exemplo :**
+<pre>
+
+</pre>
+
+### 12.9. Envia uma proposta de apresentação
+Post /present-proof/send-proposal
+
+**Exemplo :**
+<pre>
+
+</pre>
+
+### 12.10. Envia uma solicitação de apresentação gratuita não vinculada a nenhuma proposta
+Post /present-proof​/send-request
+
+**Exemplo :**
+<pre>
+
+</pre>
+
+
 ## 13.Revocation
 
 ## 14.Schema
