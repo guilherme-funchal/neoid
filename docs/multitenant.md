@@ -73,8 +73,21 @@ curl -X GET "http://172.17.0.1:8031/connections?invitation_key=HZfZf1zx1jEzsqFGS
 Post /connections/create-invitation
 
 <pre>
-
+curl -X POST "http://172.17.0.1:8021/connections/create-invitation" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiI1MWY1MzAwYS1hZTNkLTQyNjktOGNjMC05MmU5Njc3OGQzMGYifQ.v38pl0TbiKQc_wTkrID1ljJoXkGS-Wm3f7j82LIaDI0" -H "Content-Type: application/json" -d "{ \"metadata\": {}, \"recipient_keys\": [ \"H3C2AVvLMv6gmMNam3uVAjZpfkcJCwDwnZn6z3wXmqPV\" ], \"routing_keys\": [ \"H3C2AVvLMv6gmMNam3uVAjZpfkcJCwDwnZn6z3wXmqPV\" ], \"service_endpoint\": \"http://172.17.0.1:8020\"}"
 </pre>
+
+**Resposta :**
+<pre>
+{"connection_id": "4ff72769-0192-43d1-b0c4-64984cef0aff", 
+"invitation": {"@type": "did:sov:BzCbsNYhMrjHiqZDTUASHg;spec/connections/1.0/invitation", 
+"@id": "23ae0e3e-3654-4111-9064-11e705c604ad", 
+"routingKeys": ["H3C2AVvLMv6gmMNam3uVAjZpfkcJCwDwnZn6z3wXmqPV"], 
+"serviceEndpoint": "http://172.17.0.1:8020", 
+"label": "Faber.initial", 
+"recipientKeys": ["H3C2AVvLMv6gmMNam3uVAjZpfkcJCwDwnZn6z3wXmqPV"]}, 
+"invitation_url": "http://172.17.0.1:8020?c_i=eyJAdHlwZSI6ICJkaWQ6c292OkJ6Q2JzTlloTXJqSGlxWkRUVUFTSGc7c3BlYy9jb25uZWN0aW9ucy8xLjAvaW52aXRhdGlvbiIsICJAaWQiOiAiMjNhZTBlM2UtMzY1NC00MTExLTkwNjQtMTFlNzA1YzYwNGFkIiwgInJvdXRpbmdLZXlzIjogWyJIM0MyQVZ2TE12NmdtTU5hbTN1VkFqWnBma2NKQ3dEd25abjZ6M3dYbXFQViJdLCAic2VydmljZUVuZHBvaW50IjogImh0dHA6Ly8xNzIuMTcuMC4xOjgwMjAiLCAibGFiZWwiOiAiRmFiZXIuaW5pdGlhbCIsICJyZWNpcGllbnRLZXlzIjogWyJIM0MyQVZ2TE12NmdtTU5hbTN1VkFqWnBma2NKQ3dEd25abjZ6M3dYbXFQViJdfQ=="}
+</pre>
+
 
 ### 2.3 Crie uma nova conexão estática
 Post /connections/create-static
