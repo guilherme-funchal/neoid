@@ -274,5 +274,30 @@ curl -X POST "http://172.17.0.1:8021/multitenancy/wallet" -H "accept: applicatio
 
 ## 17.Keylist
 
+### 17.1 Recuperar listas de chaves por conexão ou função
 
+Get /mediation/keylists
 
+<pre>
+curl -X GET "http://{{ Endereço IP }}:{{ Porta }}/mediation/keylists?role=client" -H "accept: application/json" -H "Authorization: Bearer {{ Token }}"
+</pre>
+
+<pre>
+curl -X GET "http://172.17.0.1:8031/mediation/keylists?role=client" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiI0M2Q2YWZhMi04NjQzLTRiMTctYTQzYS03MzNkYjBmODE5MDcifQ.4piqFm98kVs9zh4OdeER_mYbHHCOKw4jhqWGPrSbHLM"
+
+curl -X GET "http://172.17.0.1:8031/mediation/keylists?role=server" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiI0M2Q2YWZhMi04NjQzLTRiMTctYTQzYS03MzNkYjBmODE5MDcifQ.4piqFm98kVs9zh4OdeER_mYbHHCOKw4jhqWGPrSbHLM"
+</pre>
+
+### 17.2 Envie a consulta da lista de chaves para o mediador
+Post /mediation/keylists/{mediation_id}/send-keylist-query
+
+<pre>
+curl -X GET "http://{{ Endereço IP }}:{{ Porta }}/mediation/keylists/{mediation_id}/send-keylist-query" -H "accept: application/json" -H "Authorization: Bearer {{ Token }}"
+</pre>
+
+### 17.3 atualizar a lista de chaves.
+Post /mediation/keylists/{mediation_id}/send-keylist-update
+
+<pre>
+curl -X GET "http://{{ Endereço IP }}:{{ Porta }}/mediation/keylists/{mediation_id}/send-keylist-update" -H "accept: application/json" -H "Authorization: Bearer {{ Token }}"
+</pre>
