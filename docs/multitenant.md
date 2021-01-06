@@ -269,10 +269,124 @@ curl -X GET "http://172.17.0.1:8031/credentials" -H "accept: application/json" -
 
 ## 5.Did exchange
 
+### 5.1 Receba um novo convite de conexão
+Post /didexchange/receive-invitation
+
+**Exemplo :**
+<pre>
+
+</pre>
+
+### 5.2 Aceite um convite de conexão armazenado
+Post /didexchange/{conn_id}/accept-invitation
+
+**Exemplo :**
+<pre>
+
+</pre>
+
+### 5.3 Aceite uma solicitação de conexão armazenada
+Post /didexchange/{conn_id}/accept-request
+
+**Exemplo :**
+<pre>
+
+</pre>
+
 ## 6.Introduction
 
 ## 7.Issue credential
-### 7.1. Envio de proposta de credencial
+### 7.1. Envie ao titular uma credencial, automatizando todo o fluxo
+Post /issue-credential/create
+
+**Exemplo :**
+<pre>
+
+
+</pre>
+
+### 7.2. Obter todos os registros de troca de credenciais
+Get /issue-credential/records
+
+**Exemplo :**
+<pre>
+
+
+</pre>
+
+### 7.3. Buscar um único registro de troca de credencial
+Get /issue-credential/records/{cred_ex_id}
+
+**Exemplo :**
+<pre>
+
+
+</pre>
+
+### 7.4. Remover um registro de troca de credencial existente
+Delete /issue-credential/records/{cred_ex_id}
+
+**Exemplo :**
+<pre>
+
+
+</pre>
+
+### 7.5. Enviar uma credencial ao titular
+Post /issue-credential/records/{cred_ex_id}/issue
+
+**Exemplo :**
+<pre>
+
+
+</pre>
+
+### 7.6. Envie um relatório de problema para troca de credencial
+Post /issue-credential/records/{cred_ex_id}/problem-report
+
+**Exemplo :**
+<pre>
+
+
+</pre>
+
+### 7.7. Enviar ao titular uma oferta de credencial em referência a uma proposta com visualização
+Post /issue-credential/records/{cred_ex_id}/send-offer
+
+**Exemplo :**
+<pre>
+
+
+</pre>
+
+### 7.8. Enviar ao emissor um pedido de credencial
+Post /issue-credential/records/{cred_ex_id}/send-request
+
+**Exemplo :**
+<pre>
+
+
+</pre>
+
+### 7.9. Armazene uma credencial recebida
+Post ​/issue-credential​/records​/{cred_ex_id}​/store
+
+**Exemplo :**
+<pre>
+
+
+</pre>
+
+### 7.10. Envie ao titular uma credencial, automatizando todo o fluxo
+Post /issue-credential/send
+
+**Exemplo :**
+<pre>
+
+
+</pre>
+
+### 7.11. Envio de proposta de credencial
 Post /issue-credential/records/{{ connection_id }}/send-offer
 
 **Exemplo :**
@@ -282,14 +396,218 @@ curl -X POST "http://172.17.0.1:8021/issue-credential/records/d239b8bf-d275-476a
 -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiI1MDI3YmE4MS1jMjJiLTQ5NDMtYjNkZS0xOGIwOGJjZWU2MzEifQ.s_wqtCRIBj0rS7e7UClxHcG8RUY7-WybqiIQ-loLXq8"
 </pre>
 
+### 7.12. Envie ao emissor uma proposta de credencial
+Post /issue-credential/send-proposal
+
+**Exemplo :**
+<pre>
+
+
+</pre>
+
 
 ## 8.Ledger
 
-## 9.Multitenancy
+### 8.1. Obtenha o ponto de extremidade para um DID do razão
+Get /ledger/did-endpoint
 
-## 10.Out of band
+**Exemplo :**
+<pre>
 
-### 10.1 Crie um novo convite de conexão
+
+</pre>
+
+### 8.2. Obtenha o verkey para um DID do razão
+Get /ledger/did-verkey
+
+**Exemplo :**
+<pre>
+
+
+</pre>
+
+### 8.3. Obtenha a função do registro do NYM de um DID público
+Get /ledger/get-nym-role
+
+**Exemplo :**
+<pre>
+
+
+</pre>
+
+### 8.4. Envie um registro NYM para o razão.
+Post /ledger/register-nym
+
+**Exemplo :**
+<pre>
+
+
+</pre>
+
+### 8.5. Gire o par de chaves para DID público.
+Patch /ledger/rotate-public-did-keypair
+
+**Exemplo :**
+<pre>
+
+
+</pre>
+
+### 8.6. Busque o acordo do autor da transação atual, se houver
+Get /ledger/taa
+
+**Exemplo :**
+<pre>
+
+
+</pre>
+
+### 8.7. Aceite o contrato do autor da transação
+Post /ledger/taa/accept
+
+**Exemplo :**
+<pre>
+
+
+</pre>
+
+## 9.mediation
+
+### 9.1. Solicitar mediação da conexão
+Post /mediation/request/{conn_id}
+
+**Exemplo :**
+<pre>
+
+
+</pre>
+
+### 9.2. Solicitações de mediação de consulta, lista de retorno de todos os registros de mediação
+Get /mediation/requests
+
+**Exemplo :**
+<pre>
+
+
+</pre>
+
+### 9.3. Recuperar registro de solicitação de mediação
+Get /mediation/requests/{mediation_id}
+
+**Exemplo :**
+<pre>
+
+
+</pre>
+
+
+### 9.4. Excluir solicitação de mediação por ID
+Delete /mediation/requests/{mediation_id}
+
+**Exemplo :**
+<pre>
+
+
+</pre>
+
+### 9.5. Negar um pedido de mediação armazenado
+Post /mediation/requests/{mediation_id}/deny
+
+**Exemplo :**
+<pre>
+
+
+</pre>
+
+### 9.6. Conceder mediação recebida
+Post /mediation/requests/{mediation_id}/grant
+
+**Exemplo :**
+<pre>
+
+
+</pre>
+
+## 10.Multitenancy
+
+### 10.1. Criar wallet
+Post /multitenancy/wallet
+
+**Exemplo :**
+<pre>
+curl -X POST "http://172.17.0.1:8021/multitenancy/wallet" -H "accept: application/json" -H "Content-Type: application/json" -d "{ \"key_management_mode\": \"managed\", \"label\": \"Alice\", \"wallet_key\": \"MySecretKey123\", \"wallet_name\": \"MyNewWallet\", \"wallet_type\": \"indy\"}"
+</pre>
+
+**Resposta :**
+<pre>
+{"key_management_mode": "managed", "wallet_id": "729ecda2-3229-48e3-ac12-7ce7e82e433a", "settings": {"wallet.type": "indy", "wallet.name": "MyNewWallet1", "default_label": "Alice", "wallet.id": "729ecda2-3229-48e3-ac12-7ce7e82e433a"}, "created_at": "2021-01-06 17:58:49.231591Z", "updated_at": "2021-01-06 17:58:49.231591Z", "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiI3MjllY2RhMi0zMjI5LTQ4ZTMtYWMxMi03Y2U3ZTgyZTQzM2EifQ.kNhkvUGVPcEEp8y4Ulg0YY-pUPmadrbMThi7EnPbWoc"}
+</pre>
+
+### 10.2. Obtenha uma única subwallet
+Get /multitenancy/wallet/{wallet_id}
+
+**Exemplo :**
+<pre>
+curl -X GET "http://172.17.0.1:8021/multitenancy/wallet/729ecda2-3229-48e3-ac12-7ce7e82e433a" -H "accept: application/json"
+</pre>
+
+**Resposta :**
+<pre>
+{"key_management_mode": "managed", "wallet_id": "729ecda2-3229-48e3-ac12-7ce7e82e433a", "settings": {"wallet.type": "indy", "wallet.name": "MyNewWallet1", "default_label": "Alice", "wallet.id": "729ecda2-3229-48e3-ac12-7ce7e82e433a"}, "created_at": "2021-01-06 17:58:49.231591Z", "updated_at": "2021-01-06 17:58:49.231591Z"}
+</pre>
+
+### 10.3. Remove uma sub wallet
+Post /multitenancy​/wallet​/{wallet_id}​/remove
+
+**Exemplo :**
+<pre>
+curl -X POST "http://172.17.0.1:8021/multitenancy/wallet/729ecda2-3229-48e3-ac12-7ce7e82e433a/remove" -H "accept: application/json" -H "Content-Type: application/json" -d "{ \"wallet_key\": \"MySecretKey123\"}"
+</pre>
+
+### 10.4. Obtenha o token de autenticação para um subwallet
+Post /multitenancy/wallet/{wallet_id}/token
+
+**Exemplo :**
+<pre>
+curl -X POST "http://172.17.0.1:8021/multitenancy/wallet/60fd663c-e246-4dd2-97ca-a3e22ef2385e/token" -H "accept: application/json" -H "Content-Type: application/json" -d "{ \"wallet_key\": \"MySecretKey123\"}"
+</pre>
+
+**Resposta :**
+<pre>
+{"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiI2MGZkNjYzYy1lMjQ2LTRkZDItOTdjYS1hM2UyMmVmMjM4NWUifQ.VysFhjz9CfhcjQNH2qxNDU3ifbBTr0--dFgJbBmblTg"}
+</pre>
+
+### 10.5. List all subwallets
+Get /multitenancy/wallets
+
+**Exemplo :**
+<pre>
+curl -X GET "http://172.17.0.1:8021/multitenancy/wallets" -H "accept: application/json"
+</pre>
+
+**Resposta :**
+<pre>
+{
+  "results": [
+    {
+      "key_management_mode": "managed",
+      "wallet_id": "98d96530-e27b-4540-b7a1-cb66748e12d7",
+      "settings": {
+        "wallet.type": "indy",
+        "wallet.name": "MyNewWallet",
+        "default_label": "Alice",
+        "wallet.id": "98d96530-e27b-4540-b7a1-cb66748e12d7"
+      },
+      "created_at": "2021-01-06 17:57:57.811745Z",
+      "updated_at": "2021-01-06 17:57:57.811745Z"
+    }
+  ]
+}
+</pre>
+
+## 11.Out of band
+
+### 11.1 Crie um novo convite de conexão
 Post /out-of-band/create-invitation
 
 **Exemplo :**
@@ -299,7 +617,7 @@ curl -X POST "http://172.17.0.1:8031/out-of-band/create-invitation" -H "accept: 
 -d "{ \"attachments\": [ { \"id\": \"string\", \"type\": \"string\" } ], \"include_handshake\": true, \"metadata\": {}, \"use_public_did\": true}"
 </pre>
 
-### 10.2 receba um novo convite de conexão
+### 11.2 receba um novo convite de conexão
 Post /out-of-band/receive-invitation
 
 **Exemplo :**
@@ -309,13 +627,13 @@ curl -X POST "http://172.17.0.1:8031/out-of-band/receive-invitation" -H "accept:
 -d "{ \"attachments\": [ { \"id\": \"string\", \"type\": \"string\" } ], \"include_handshake\": true, \"metadata\": {}, \"use_public_did\": true}"
 </pre>
 
-## 11.Proof presentation
+## 12.Proof presentation
 
-## 12.Revocation
+## 13.Revocation
 
-## 13.Schema
+## 14.Schema
 
-### 13.1 Envia um esquema para o razão
+### 14.1 Envia um esquema para o razão
 Post /schemas
 
 **Exemplo :**
@@ -323,7 +641,7 @@ Post /schemas
 curl -X POST "http://172.17.0.1:8031/schemas" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJmMmEwMDI5NC02NGRmLTRmMzgtYTY2Zi1kNzg3OGE2N2JlNjkifQ.K0hwyvTcFvC3c18reBWTcKG4Fk6mNUSxknVCiUbYjaE" -H "Content-Type: application/json" -d "{ \"attributes\": [ \"score\" ], \"schema_name\": \"prefs\", \"schema_version\": \"1.0\"}"
 </pre>
 
-### 13.2 Pesquise o esquema correspondente que o agente originou
+### 14.2 Pesquise o esquema correspondente que o agente originou
 
 Get /schemas/created
 
@@ -332,7 +650,7 @@ Get /schemas/created
 curl -X GET "http://172.17.0.1:8031/schemas/created?schema_id=2Y4xCxUYA35FEMSC5ofGTh%3A2%3Adegree%20schema%3A67.95.15" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJmMmEwMDI5NC02NGRmLTRmMzgtYTY2Zi1kNzg3OGE2N2JlNjkifQ.K0hwyvTcFvC3c18reBWTcKG4Fk6mNUSxknVCiUbYjaE"
 </pre>
 
-### 13.3 Obtém um esquema do livro-razão
+### 14.3 Obtém um esquema do livro-razão
 Get /schemas/{schema_id}
 
 **Exemplo :**
@@ -352,9 +670,9 @@ curl -X GET "http://172.17.0.1:8031/schemas/2Y4xCxUYA35FEMSC5ofGTh%3A2%3Adegree%
 }
 </pre>
 
-## 14.Server
+## 15.Server
 
-### 14.1 Query supported features
+### 15.1 Query supported features
 Get /features
 
 **Exemplo :**
@@ -398,7 +716,7 @@ curl -X GET "http://172.17.0.1:8021/features" -H "accept: application/json"
 
 </pre>
 
-### 14.2 Pega a lista de plugins carregados
+### 15.2 Pega a lista de plugins carregados
 Get /plugins
 
 **Exemplo :**
@@ -434,7 +752,7 @@ curl -X GET "http://172.17.0.1:8031/plugins" -H "accept: application/json"
 }
 </pre>
 
-### 14.3 Desligar servidor
+### 15.3 Desligar servidor
 Get /shutdown
 
 **Exemplo :**
@@ -443,7 +761,7 @@ curl -X GET "http://172.17.0.1:8031/shutdown" -H "accept: application/json"
 </pre>
 
 
-### 14.4 Obter o status do servidor
+### 15.4 Obter o status do servidor
 Get /status
 
 **Exemplo :**
@@ -467,7 +785,7 @@ conductor":
 }}
 </pre>
 
-### 14.5 Verificação de vivo
+### 15.5 Verificação de vivo
 Get /status/live
 
 **Exemplo :**
@@ -482,7 +800,7 @@ curl -X GET "http://172.17.0.1:8031/status/live" -H "accept: application/json" -
 </pre>
 
 
-### 14.6 Verificação de pronto
+### 15.6 Verificação de pronto
 Get /status/ready
 
 **Exemplo :**
@@ -496,7 +814,7 @@ curl -X GET "http://172.17.0.1:8031/status/ready" -H "accept: application/json" 
 {"ready": true}
 </pre>
 
-### 14.7 Reset nas estatísticas
+### 15.7 Reset nas estatísticas
 Post /status/reset
 
 **Exemplo :**
@@ -504,9 +822,9 @@ Post /status/reset
 curl -X POST "http://172.17.0.1:8031/status/reset" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJmMmEwMDI5NC02NGRmLTRmMzgtYTY2Zi1kNzg3OGE2N2JlNjkifQ.K0hwyvTcFvC3c18reBWTcKG4Fk6mNUSxknVCiUbYjaE"
 </pre>
 
-## 15.Trustping 
+## 16.Trustping 
 
-### 15.1 Envie um ping de confiança para uma conexão
+### 16.1 Envie um ping de confiança para uma conexão
 Post /connections/{conn_id}/send-ping
 
 **Exemplo :**
@@ -519,8 +837,8 @@ Resposta :
 
 </pre>
 
-## 16.Wallet
-### 16.1. Listando credenciais na Wallet
+## 17.Wallet
+### 17.1. Listando credenciais na Wallet
 
 Get /credentials
 
@@ -531,7 +849,7 @@ curl -X GET "http://172.17.0.1:8031/credentials"
 -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiI0ZjQ4NzRiMS1hY2IxLTRhODUtODE1Ny03YjBiNDgzNzJiZTAifQ.eCQcaIwaJYoAcG-xJ901U5DSJDyvJJiRoRF8FTVTBF8"
 </pre>
 
-### 16.2. Lista as wallets do Agent
+### 17.2. Lista as wallets do Agent
 
 Get /multitenancy/wallets
 
@@ -564,7 +882,7 @@ $ curl -X GET "http://172.17.0.1:8031/multitenancy/wallets" -H "accept: applicat
 </pre>
 
 
-### 16.3. Obtendo apenas uma sub wallet
+### 17.3. Obtendo apenas uma sub wallet
 
 Get /multitenancy/wallet/{{ wallet_id }}
 
@@ -574,7 +892,7 @@ curl -X GET "http://172.17.0.1:8031/multitenancy/wallet/4f4874b1-acb1-4a85-8157-
 -H "accept: application/json"
 </pre>
 
-### 16.4. Criando uma sub wallet
+### 17.4. Criando uma sub wallet
 
 Post /multitenancy/wallet
 
@@ -588,9 +906,9 @@ curl -X POST "http://172.17.0.1:8021/multitenancy/wallet"
 </pre>
 
 
-## 17.Keylist
+## 18.Keylist
 
-### 17.1 Recuperar listas de chaves por conexão ou função
+### 18.1 Recuperar listas de chaves por conexão ou função
 
 Get /mediation/keylists
 
@@ -604,7 +922,7 @@ curl -X GET "http://172.17.0.1:8031/mediation/keylists?role=server"
 -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiI0M2Q2YWZhMi04NjQzLTRiMTctYTQzYS03MzNkYjBmODE5MDcifQ.4piqFm98kVs9zh4OdeER_mYbHHCOKw4jhqWGPrSbHLM"
 </pre>
 
-### 17.2 Envie a consulta da lista de chaves para o mediador
+### 18.2 Envie a consulta da lista de chaves para o mediador
 Post /mediation/keylists/{mediation_id}/send-keylist-query
 
 <pre>
@@ -613,7 +931,7 @@ curl -X GET "http://{{ Endereço IP }}:{{ Porta }}/mediation/keylists/{mediation
 -H "Authorization: Bearer {{ Token }}"
 </pre>
 
-### 17.3 atualizar a lista de chaves.
+### 18.3 atualizar a lista de chaves.
 Post /mediation/keylists/{mediation_id}/send-keylist-update
 
 <pre>
