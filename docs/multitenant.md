@@ -84,6 +84,66 @@ curl -X GET "http://172.17.0.1:8021/credential-definitions/M786j533KXeifEnGd3gQL
 
 ## 4.Credential
 
+### 4.1 Obter tipos de atributos MIME da carteira
+
+<pre>
+http://{{ Endereço IP }}:{{ Porta }}/credential/mime-types/{{ credential_id }}
+curl -X GET "" -H "accept: application/json" -H "Authorization: Bearer 
+{{ Token }}
+</pre>
+
+**Exemplo :**
+<pre>
+curl -X GET "http://172.17.0.1:8021/credential/mime-types/5111d8d2-7314-4a55-a081-dd313108a419" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJkMTVjZTBiZC0xNDQzLTQxNzktOGNmNy1jOGJhNzJmZTY1ZGEifQ.s1AKvJb1eLZ4jd7NyG0sgtRtxhkxX5PR-UlUbAdcnnA"
+</pre>
+
+
+### 4.2 Consultar status de revogação de credencial por id
+<pre>
+http://{{ Endereço IP }}:{{ Porta }}/credential/revoked/
+curl -X GET "" -H "accept: application/json" -H "Authorization: Bearer 
+{{ Token }}
+</pre>
+
+**Exemplo :**
+<pre>
+curl -X GET "http://172.17.0.1:8031/credential/revoked/c3706d85-91b9-4969-95a2-4125fc9750c7" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJjYjZkOTc3Yy00NmY5LTQxNmYtYjRmYi1lYjdiMDUzYTA5ZDMifQ.2EGp1lZkzenZRMRCsMh1CzYBwtqiIdh1yPULA89pNEk"
+</pre>
+
+### 4.3 Obter uma credencial da carteira por id
+<pre>
+http://{{ Endereço IP }}:{{ Porta }}/credential/{{ Token }}
+curl -X GET "" -H "accept: application/json" -H "Authorization: Bearer 
+{{ Token }}
+</pre>
+
+**Exemplo :**
+<pre>
+</pre>
+
+
+### 4.4 Remova uma credencial da carteira por id
+<pre>
+http://{{ Endereço IP }}:{{ Porta }}/credential/{{ Token }}
+curl -X GET "" -H "accept: application/json" -H "Authorization: Bearer 
+{{ Token }}
+</pre>
+
+**Exemplo :**
+<pre>
+</pre>
+
+### 4.5 Obter credenciais da carteira
+<pre>
+http://{{ Endereço IP }}:{{ Porta }}/credential/mime-types/5111d8d2-7314-4a55-a081-dd313108a419
+curl -X GET "" -H "accept: application/json" -H "Authorization: Bearer 
+{{ Token }}
+</pre>
+
+**Exemplo :**
+<pre>
+</pre>
+
 ## 5.Did exchange
 
 ## 6.Introduction
