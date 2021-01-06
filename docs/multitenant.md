@@ -157,6 +157,148 @@ curl -X POST "http://172.17.0.1:8021/issue-credential/records/d239b8bf-d275-476a
 
 ## 14.Server
 
+### 14.1 Query supported features
+Get /features
+<pre>
+curl -X GET "http://172.17.0.1:8021/features" -H "accept: application/json"
+</pre>
+
+**Resposta : **
+
+<pre>
+{
+  "results": {
+    "did:sov:BzCbsNYhMrjHiqZDTUASHg;spec/discover-features/1.0": {},
+    "did:sov:BzCbsNYhMrjHiqZDTUASHg;spec/present-proof/1.0": {},
+    "https://didcomm.org/action-menu/1.0": {},
+    "did:sov:BzCbsNYhMrjHiqZDTUASHg;spec/out-of-band/1.0": {},
+    "did:sov:BzCbsNYhMrjHiqZDTUASHg;spec/didexchange/1.0": {},
+    "https://didcomm.org/present-proof/1.0": {},
+    "https://didcomm.org/introduction-service/0.1": {},
+    "https://didcomm.org/routing/1.0": {},
+    "did:sov:BzCbsNYhMrjHiqZDTUASHg;spec/issue-credential/1.0": {},
+    "https://didcomm.org/coordinate-mediation/1.0": {},
+    "https://didcomm.org/basicmessage/1.0": {},
+    "https://didcomm.org/discover-features/1.0": {},
+    "did:sov:BzCbsNYhMrjHiqZDTUASHg;spec/routing/1.0": {},
+    "did:sov:BzCbsNYhMrjHiqZDTUASHg;spec/trust_ping/1.0": {},
+    "did:sov:BzCbsNYhMrjHiqZDTUASHg;spec/notification/1.0": {},
+    "https://didcomm.org/didexchange/1.0": {},
+    "https://didcomm.org/out-of-band/1.0": {},
+    "https://didcomm.org/connections/1.0": {},
+    "did:sov:BzCbsNYhMrjHiqZDTUASHg;spec/basicmessage/1.0": {},
+    "did:sov:BzCbsNYhMrjHiqZDTUASHg;spec/introduction-service/0.1": {},
+    "did:sov:BzCbsNYhMrjHiqZDTUASHg;spec/connections/1.0": {},
+    "https://didcomm.org/issue-credential/1.0": {},
+    "did:sov:BzCbsNYhMrjHiqZDTUASHg;spec/action-menu/1.0": {},
+    "https://didcomm.org/notification/1.0": {},
+    "https://didcomm.org/trust_ping/1.0": {},
+    "did:sov:BzCbsNYhMrjHiqZDTUASHg;spec/coordinate-mediation/1.0": {}
+  }
+}
+
+</pre>
+
+### 14.2 Pega a lista de plugins carregados
+Get /plugins
+
+<pre>
+curl -X GET "http://172.17.0.1:8031/plugins" -H "accept: application/json"
+</pre>
+
+**Resposta : **
+<pre>
+{
+  "result": [
+    "aries_cloudagent.holder",
+    "aries_cloudagent.ledger",
+    "aries_cloudagent.messaging.credential_definitions",
+    "aries_cloudagent.messaging.schemas",
+    "aries_cloudagent.multitenant.admin",
+    "aries_cloudagent.protocols.actionmenu",
+    "aries_cloudagent.protocols.basicmessage",
+    "aries_cloudagent.protocols.connections",
+    "aries_cloudagent.protocols.coordinate_mediation",
+    "aries_cloudagent.protocols.didexchange",
+    "aries_cloudagent.protocols.discovery",
+    "aries_cloudagent.protocols.introduction",
+    "aries_cloudagent.protocols.issue_credential",
+    "aries_cloudagent.protocols.out_of_band",
+    "aries_cloudagent.protocols.present_proof",
+    "aries_cloudagent.protocols.problem_report",
+    "aries_cloudagent.protocols.routing",
+    "aries_cloudagent.protocols.trustping",
+    "aries_cloudagent.revocation",
+    "aries_cloudagent.wallet"
+  ]
+}
+</pre>
+
+### 14.3 Desligar servidor
+Get /shutdown
+
+<pre>
+curl -X GET "http://172.17.0.1:8031/shutdown" -H "accept: application/json"
+</pre>
+
+
+### 14.4 Obter o status do servidor
+Get /status
+
+<pre>
+curl -X GET "http://172.17.0.1:8031/status" -H "accept: application/json"
+</pre>
+
+**Resposta : **
+<pre>
+{"version": "0.6.0-pre", 
+"label": "Alice.Agent", "
+conductor": 
+{
+"in_sessions": 0,
+"out_encode": 0, 
+"out_deliver": 0, 
+"task_active": 1, 
+"task_done": 15, 
+"task_failed": 0, 
+"task_pending": 0
+}}
+</pre>
+
+### 14.5 Verificação de vivo
+Get /status/live
+
+<pre>
+curl -X GET "http://172.17.0.1:8031/status/live" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJmMmEwMDI5NC02NGRmLTRmMzgtYTY2Zi1kNzg3OGE2N2JlNjkifQ.K0hwyvTcFvC3c18reBWTcKG4Fk6mNUSxknVCiUbYjaE"
+</pre>
+
+**Resposta : **
+
+<pre>
+{"alive": true}
+</pre>
+
+
+### 14.6 Verificação de pronto
+Get /status/ready
+
+<pre>
+curl -X GET "http://172.17.0.1:8031/status/ready" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJmMmEwMDI5NC02NGRmLTRmMzgtYTY2Zi1kNzg3OGE2N2JlNjkifQ.K0hwyvTcFvC3c18reBWTcKG4Fk6mNUSxknVCiUbYjaE"
+</pre>
+
+**Resposta : **
+
+<pre>
+{"ready": true}
+</pre>
+
+### 14.7 Reset nas estatísticas
+Post /status/reset
+
+<pre>
+curl -X POST "http://172.17.0.1:8031/status/reset" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJmMmEwMDI5NC02NGRmLTRmMzgtYTY2Zi1kNzg3OGE2N2JlNjkifQ.K0hwyvTcFvC3c18reBWTcKG4Fk6mNUSxknVCiUbYjaE"
+<pre>
+
 ## 15.Trustping 
 
 ### 15.1 Envie um ping de confiança para uma conexão
