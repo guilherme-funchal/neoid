@@ -42,6 +42,80 @@ curl -X POST "http://172.17.0.1:8031/connections/d199d2d6-c164-46a1-b7bb-6062a23
 
 ## 2.Connection
 
+
+### 2.1 Consultar conexões de agente para agente
+Get /connections
+
+<pre>
+curl -X GET "http://172.17.0.1:8031/connections?invitation_key=HZfZf1zx1jEzsqFGS7tX1hf9Jw4MBDBZFtvhPK3UGeve" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJmMmEwMDI5NC02NGRmLTRmMzgtYTY2Zi1kNzg3OGE2N2JlNjkifQ.K0hwyvTcFvC3c18reBWTcKG4Fk6mNUSxknVCiUbYjaE"
+</pre>
+
+**Resultado :**
+<pre>
+{"results": [{
+"state": "active", 
+"invitation_mode": "once", 
+"their_label": "Faber.initial", 
+"created_at": "2021-01-06 12:57:01.078389Z", 
+"their_role": "inviter", 
+"connection_id": "ef9743bd-ddda-44ac-854d-671b522bfdc3", 
+"request_id": "3dcc517d-3ad6-4d4a-b18b-65f9d81efa16",
+"updated_at": "2021-01-06 12:57:01.362119Z", 
+"accept": "auto", 
+"invitation_key": "HZfZf1zx1jEzsqFGS7tX1hf9Jw4MBDBZFtvhPK3UGeve", 
+"routing_state": "none", 
+"my_did": "JrDRaYRFiqz75TATYixWMT", 
+"their_did": "45uU7QVdZMDMV6gFazwuYN"}]}r
+</pre>
+
+### 2.2 Crie um novo convite de conexão
+
+Post /connections/create-invitation
+
+<pre>
+
+</pre>
+
+### 2.3 Crie uma nova conexão estática
+Post /connections/create-static
+
+<pre>
+
+</pre>
+
+### 2.4 Receba um novo convite de conexão
+Post /connections/receive-invitation
+
+<pre>
+
+</pre>
+
+### 2.5 Buscar um único registro de conexão
+Post /connections/{conn_id}
+
+<pre>
+curl -X GET "http://172.17.0.1:8031/connections/ef9743bd-ddda-44ac-854d-671b522bfdc3" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJmMmEwMDI5NC02NGRmLTRmMzgtYTY2Zi1kNzg3OGE2N2JlNjkifQ.K0hwyvTcFvC3c18reBWTcKG4Fk6mNUSxknVCiUbYjaE"
+</pre>
+
+**Resultado :**
+<pre>
+{"state": "active", 
+"invitation_mode": "once", 
+"their_label": "Faber.initial", 
+"created_at": "2021-01-06 12:57:01.078389Z",
+"their_role": "inviter", 
+"connection_id": "ef9743bd-ddda-44ac-854d-671b522bfdc3", 
+"request_id": "3dcc517d-3ad6-4d4a-b18b-65f9d81efa16", 
+"updated_at": "2021-01-06 12:57:01.362119Z", 
+"accept": "auto", 
+"invitation_key": "HZfZf1zx1jEzsqFGS7tX1hf9Jw4MBDBZFtvhPK3UGeve", 
+"routing_state": "none", 
+"my_did": "JrDRaYRFiqz75TATYixWMT", 
+"their_did": "45uU7QVdZMDMV6gFazwuYN"}
+</pre>
+
+
+
 ## 3.Credential definition
 
 ### 3.1 Envia uma definição de credencial para o razão
