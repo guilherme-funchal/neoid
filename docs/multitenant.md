@@ -149,6 +149,26 @@ curl -X POST "http://172.17.0.1:8021/issue-credential/records/d239b8bf-d275-476a
 
 ## 10.Out of band
 
+### 10.1 Crie um novo convite de conexão
+Post /out-of-band/create-invitation
+
+**Exemplo :**
+<pre>
+curl -X POST "http://172.17.0.1:8031/out-of-band/create-invitation" -H "accept: application/json" -H "Authorization: Bearer  eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJmMmEwMDI5NC02NGRmLTRmMzgtYTY2Zi1kNzg3OGE2N2JlNjkifQ.K0hwyvTcFvC3c18reBWTcKG4Fk6mNUSxknVCiUbYjaE" 
+-H "Content-Type: application/json" 
+-d "{ \"attachments\": [ { \"id\": \"string\", \"type\": \"string\" } ], \"include_handshake\": true, \"metadata\": {}, \"use_public_did\": true}"
+</pre>
+
+### 10.2 receba um novo convite de conexão
+Post /out-of-band/receive-invitation
+
+**Exemplo :**
+<pre>
+curl -X POST "http://172.17.0.1:8031/out-of-band/receive-invitation" -H "accept: application/json" -H "Authorization: Bearer  eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJmMmEwMDI5NC02NGRmLTRmMzgtYTY2Zi1kNzg3OGE2N2JlNjkifQ.K0hwyvTcFvC3c18reBWTcKG4Fk6mNUSxknVCiUbYjaE" 
+-H "Content-Type: application/json" 
+-d "{ \"attachments\": [ { \"id\": \"string\", \"type\": \"string\" } ], \"include_handshake\": true, \"metadata\": {}, \"use_public_did\": true}"
+</pre>
+
 ## 11.Proof presentation
 
 ## 12.Revocation
@@ -158,6 +178,7 @@ curl -X POST "http://172.17.0.1:8021/issue-credential/records/d239b8bf-d275-476a
 ### 13.1 Envia um esquema para o razão
 Post /schemas
 
+**Exemplo :**
 <pre>
 curl -X POST "http://172.17.0.1:8031/schemas" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJmMmEwMDI5NC02NGRmLTRmMzgtYTY2Zi1kNzg3OGE2N2JlNjkifQ.K0hwyvTcFvC3c18reBWTcKG4Fk6mNUSxknVCiUbYjaE" -H "Content-Type: application/json" -d "{ \"attributes\": [ \"score\" ], \"schema_name\": \"prefs\", \"schema_version\": \"1.0\"}"
 </pre>
@@ -166,6 +187,7 @@ curl -X POST "http://172.17.0.1:8031/schemas" -H "accept: application/json" -H "
 
 Get /schemas/created
 
+**Exemplo :**
 <pre>
 curl -X GET "http://172.17.0.1:8031/schemas/created?schema_id=2Y4xCxUYA35FEMSC5ofGTh%3A2%3Adegree%20schema%3A67.95.15" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJmMmEwMDI5NC02NGRmLTRmMzgtYTY2Zi1kNzg3OGE2N2JlNjkifQ.K0hwyvTcFvC3c18reBWTcKG4Fk6mNUSxknVCiUbYjaE"
 </pre>
@@ -173,6 +195,7 @@ curl -X GET "http://172.17.0.1:8031/schemas/created?schema_id=2Y4xCxUYA35FEMSC5o
 ### 13.3 Obtém um esquema do livro-razão
 Get /schemas/{schema_id}
 
+**Exemplo :**
 <pre>
 curl -X GET "http://172.17.0.1:8031/schemas/2Y4xCxUYA35FEMSC5ofGTh%3A2%3Adegree%20schema%3A67.95.15" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJmMmEwMDI5NC02NGRmLTRmMzgtYTY2Zi1kNzg3OGE2N2JlNjkifQ.K0hwyvTcFvC3c18reBWTcKG4Fk6mNUSxknVCiUbYjaE"
 </pre>
@@ -193,6 +216,8 @@ curl -X GET "http://172.17.0.1:8031/schemas/2Y4xCxUYA35FEMSC5ofGTh%3A2%3Adegree%
 
 ### 14.1 Query supported features
 Get /features
+
+**Exemplo :**
 <pre>
 curl -X GET "http://172.17.0.1:8021/features" -H "accept: application/json"
 </pre>
@@ -236,6 +261,7 @@ curl -X GET "http://172.17.0.1:8021/features" -H "accept: application/json"
 ### 14.2 Pega a lista de plugins carregados
 Get /plugins
 
+**Exemplo :**
 <pre>
 curl -X GET "http://172.17.0.1:8031/plugins" -H "accept: application/json"
 </pre>
@@ -271,6 +297,7 @@ curl -X GET "http://172.17.0.1:8031/plugins" -H "accept: application/json"
 ### 14.3 Desligar servidor
 Get /shutdown
 
+**Exemplo :**
 <pre>
 curl -X GET "http://172.17.0.1:8031/shutdown" -H "accept: application/json"
 </pre>
@@ -279,6 +306,7 @@ curl -X GET "http://172.17.0.1:8031/shutdown" -H "accept: application/json"
 ### 14.4 Obter o status do servidor
 Get /status
 
+**Exemplo :**
 <pre>
 curl -X GET "http://172.17.0.1:8031/status" -H "accept: application/json"
 </pre>
@@ -302,6 +330,7 @@ conductor":
 ### 14.5 Verificação de vivo
 Get /status/live
 
+**Exemplo :**
 <pre>
 curl -X GET "http://172.17.0.1:8031/status/live" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJmMmEwMDI5NC02NGRmLTRmMzgtYTY2Zi1kNzg3OGE2N2JlNjkifQ.K0hwyvTcFvC3c18reBWTcKG4Fk6mNUSxknVCiUbYjaE"
 </pre>
@@ -316,6 +345,7 @@ curl -X GET "http://172.17.0.1:8031/status/live" -H "accept: application/json" -
 ### 14.6 Verificação de pronto
 Get /status/ready
 
+**Exemplo :**
 <pre>
 curl -X GET "http://172.17.0.1:8031/status/ready" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJmMmEwMDI5NC02NGRmLTRmMzgtYTY2Zi1kNzg3OGE2N2JlNjkifQ.K0hwyvTcFvC3c18reBWTcKG4Fk6mNUSxknVCiUbYjaE"
 </pre>
@@ -329,6 +359,7 @@ curl -X GET "http://172.17.0.1:8031/status/ready" -H "accept: application/json" 
 ### 14.7 Reset nas estatísticas
 Post /status/reset
 
+**Exemplo :**
 <pre>
 curl -X POST "http://172.17.0.1:8031/status/reset" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJmMmEwMDI5NC02NGRmLTRmMzgtYTY2Zi1kNzg3OGE2N2JlNjkifQ.K0hwyvTcFvC3c18reBWTcKG4Fk6mNUSxknVCiUbYjaE"
 </pre>
@@ -338,6 +369,7 @@ curl -X POST "http://172.17.0.1:8031/status/reset" -H "accept: application/json"
 ### 15.1 Envie um ping de confiança para uma conexão
 Post /connections/{conn_id}/send-ping
 
+**Exemplo :**
 <pre>
 curl -X POST "http://172.17.0.1:8031/connections/1f412482-9b16-4484-b99c-9c7095104f39/send-ping" -H "accept: application/json" -H "Content-Type: application/json" -d "{ \"comment\": \"string\"}" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiI0M2Q2YWZhMi04NjQzLTRiMTctYTQzYS03MzNkYjBmODE5MDcifQ.4piqFm98kVs9zh4OdeER_mYbHHCOKw4jhqWGPrSbHLM"
 
