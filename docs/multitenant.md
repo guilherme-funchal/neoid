@@ -709,8 +709,122 @@ Post /present-proof​/send-request
 
 </pre>
 
+## 13. Revocation
+### 13.1. Obtenha o registro de revogação ativo atual por ID de definição de credencial
+Get /revocation​/active-registry​/{cred_def_id}
 
-## 13.Revocation
+**Exemplo :**
+<pre>
+
+</pre>
+
+### 13.2. Limpar revogações pendentes
+Post /revocation​/clear-pending-revocations
+
+**Exemplo :**
+<pre>
+
+</pre>
+
+### 13.3. Cria um novo registro de revogação
+Post /revocation​/create-registry
+
+**Exemplo :**
+<pre>
+
+</pre>
+
+### 13.4. Obter status de revogação de credencial
+Get /revocation​/credential-record
+
+**Exemplo :**
+<pre>
+
+</pre>
+
+### 13.5. Publicar revogações pendentes no razão
+Post /revocation​/publish-revocations
+
+**Exemplo :**
+<pre>
+
+</pre>
+
+### 13.6. Pesquisar registros de revogação correspondentes que o agente atual criou
+Get /revocation​/registries​/created
+
+**Exemplo :**
+<pre>
+
+</pre>
+
+### 13.7. Obter registro de revogação por id de registro de revogação
+Get /revocation​/registry​/{rev_reg_id}
+
+**Exemplo :**
+<pre>
+
+</pre>
+
+### 13.8. Atualize o registro de revogação com o novo URI público em seu arquivo caudas
+Patch /revocation​/registry​/{rev_reg_id}
+
+**Exemplo :**
+<pre>
+
+</pre>
+
+### 13.9. Enviar definição de registro de revogação para o razão
+Post /revocation​/registry​/{rev_reg_id}​/definition
+
+**Exemplo :**
+<pre>
+
+</pre>
+
+### 13.10. Enviar entrada do registro de revogação para o razão
+Post /revocation​/registry​/{rev_reg_id}​/entry
+
+**Exemplo :**
+<pre>
+
+</pre>
+
+### 13.11. Obtenha o número de credenciais emitidas no registro de revogação
+Get /revocation​/registry​/{rev_reg_id}​/issued
+
+**Exemplo :**
+<pre>
+
+</pre>
+
+### 13.12. Definir o estado do registro de revogação manualmente
+Patch /revocation​/registry​/{rev_reg_id}​/set-state
+
+**Exemplo :**
+<pre>
+
+</pre>
+
+### 13.13. Carregar arquivo local tails para o servidor
+Put /revocation​/registry​/{rev_reg_id}​/tails-file
+
+**Exemplo :**
+<pre>
+
+</pre>
+
+### 13.14. Baixar arquivo tails
+Get /revocation​/registry​/{rev_reg_id}​/tails-file
+
+
+### 13.15. Revogar uma credencial emitida
+Post /revocation​/revoke
+
+**Exemplo :**
+<pre>
+
+</pre>
 
 ## 14.Schema
 
