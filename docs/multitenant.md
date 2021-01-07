@@ -178,13 +178,13 @@ Post /connections/{conn_id}/accept-request
 ### 2.10 Buscar metadados da conexão
 
 <pre>
-
+curl -X GET "http://172.17.0.1:8031/connections/8efcea04-f922-4a35-91b5-5827d37967d0/metadata" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiI0MmM0OTc2OC02ZDM5LTRhZmYtYjliZi04MTlkYzdhZTUxNzYifQ.AbH_NDLt3G5zaKGh6s603IVpWBTXbO3omjM9LxWv-es"
 </pre>
 
 ### 2.11 Definir metadados da conexão
 
 <pre>
-
+curl -X POST "http://172.17.0.1:8031/connections/8efcea04-f922-4a35-91b5-5827d37967d0/metadata" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiI0MmM0OTc2OC02ZDM5LTRhZmYtYjliZi04MTlkYzdhZTUxNzYifQ.AbH_NDLt3G5zaKGh6s603IVpWBTXbO3omjM9LxWv-es" -H "Content-Type: application/json" -d "{ \"metadata\": {}}
 </pre>
 
 ## 3.Credential definition
