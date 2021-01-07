@@ -431,8 +431,11 @@ Post /issue-credential/send-proposal
 
 **Exemplo :**
 <pre>
-
-
+curl -X POST "http://172.17.0.1:8031/issue-credential/send-proposal" 
+-H "accept: application/json" 
+-H "Content-Type: application/json" 
+-d "{ \"auto_remove\": true, \"comment\": \"string\", \"connection_id\": \"5d19d6e4-e2a1-424e-b7ed-310aef5f7287\", \"cred_def_id\": \"WgWxqztrNooG92RXvxSTWv:3:CL:20:tag\", \"credential_proposal\": { \"@type\": \"issue-credential/1.0/credential-preview\", \"attributes\": [ { \"mime-type\": \"image/jpeg\", \"name\": \"favourite_drink\", \"value\": \"martini\" } ] }, \"issuer_did\": \"WgWxqztrNooG92RXvxSTWv\", \"schema_id\": \"WgWxqztrNooG92RXvxSTWv:2:schema_name:1.0\", \"schema_issuer_did\": \"WgWxqztrNooG92RXvxSTWv\", \"schema_name\": \"preferences\", \"schema_version\": \"1.0\", \"trace\": false}" 
+-H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiIwMzM0ZTE3OC01OTg4LTQ5YjktYjM0Ni1kMDI4NzE5MDhjYjUifQ.YcWZ3ckVXFP1U6BwSgImfeBdRwPaURvhMno2uyTiIe4"
 </pre>
 
 
