@@ -445,8 +445,12 @@ Get /ledger/did-endpoint
 
 **Exemplo :**
 <pre>
+curl -X GET "http://172.17.0.1:8021/ledger/did-endpoint?did=VWcuij6MDYDLUv8nvMmKP9" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiIwZmFiNGEwMy01MjFiLTRhOTctYmQ4YS02OTA2NDFkN2U2ODEifQ.aBHKbOgQnv3JLE4exhX0RKfF9H20fJLYhXdZUvODwAE"
+</pre>
 
-
+**Resposta :**
+<pre>
+{"endpoint": "http://172.17.0.1:8020"}
 </pre>
 
 ### 8.2. Obtenha o verkey para um DID do razão
@@ -454,8 +458,12 @@ Get /ledger/did-verkey
 
 **Exemplo :**
 <pre>
+curl -X GET "http://172.17.0.1:8021/ledger/did-verkey?did=VWcuij6MDYDLUv8nvMmKP9" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiIwZmFiNGEwMy01MjFiLTRhOTctYmQ4YS02OTA2NDFkN2U2ODEifQ.aBHKbOgQnv3JLE4exhX0RKfF9H20fJLYhXdZUvODwAE"
+</pre>
 
-
+**Resposta :**
+<pre>
+{"verkey": "GYHAJG5YovSXBjS1pShdFizePPMswp7rctQBeNga28S5"}
 </pre>
 
 ### 8.3. Obtenha a função do registro do NYM de um DID público
@@ -463,8 +471,12 @@ Get /ledger/get-nym-role
 
 **Exemplo :**
 <pre>
+curl -X GET "http://172.17.0.1:8021/ledger/get-nym-role?did=VWcuij6MDYDLUv8nvMmKP9" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiIwZmFiNGEwMy01MjFiLTRhOTctYmQ4YS02OTA2NDFkN2U2ODEifQ.aBHKbOgQnv3JLE4exhX0RKfF9H20fJLYhXdZUvODwAE"
+</pre>
 
-
+**Resposta :**
+<pre>
+{"role": "ENDORSER"}
 </pre>
 
 ### 8.4. Envie um registro NYM para o razão.
@@ -490,8 +502,12 @@ Get /ledger/taa
 
 **Exemplo :**
 <pre>
+curl -X GET "http://172.17.0.1:8021/ledger/taa" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiIwZmFiNGEwMy01MjFiLTRhOTctYmQ4YS02OTA2NDFkN2U2ODEifQ.aBHKbOgQnv3JLE4exhX0RKfF9H20fJLYhXdZUvODwAE"
+</pre>
 
-
+**Resposta :**
+<pre>
+{"result": {"aml_record": null, "taa_record": null, "taa_required": false, "taa_accepted": null}}
 </pre>
 
 ### 8.7. Aceite o contrato do autor da transação
