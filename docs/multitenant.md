@@ -445,7 +445,8 @@ Get /ledger/did-endpoint
 
 **Exemplo :**
 <pre>
-curl -X GET "http://172.17.0.1:8021/ledger/did-endpoint?did=VWcuij6MDYDLUv8nvMmKP9" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiIwZmFiNGEwMy01MjFiLTRhOTctYmQ4YS02OTA2NDFkN2U2ODEifQ.aBHKbOgQnv3JLE4exhX0RKfF9H20fJLYhXdZUvODwAE"
+curl -X GET "http://172.17.0.1:8021/ledger/did-endpoint?did=VWcuij6MDYDLUv8nvMmKP9" 
+-H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiIwZmFiNGEwMy01MjFiLTRhOTctYmQ4YS02OTA2NDFkN2U2ODEifQ.aBHKbOgQnv3JLE4exhX0RKfF9H20fJLYhXdZUvODwAE"
 </pre>
 
 **Resposta :**
@@ -458,7 +459,8 @@ Get /ledger/did-verkey
 
 **Exemplo :**
 <pre>
-curl -X GET "http://172.17.0.1:8021/ledger/did-verkey?did=VWcuij6MDYDLUv8nvMmKP9" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiIwZmFiNGEwMy01MjFiLTRhOTctYmQ4YS02OTA2NDFkN2U2ODEifQ.aBHKbOgQnv3JLE4exhX0RKfF9H20fJLYhXdZUvODwAE"
+curl -X GET "http://172.17.0.1:8021/ledger/did-verkey?did=VWcuij6MDYDLUv8nvMmKP9" 
+-H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiIwZmFiNGEwMy01MjFiLTRhOTctYmQ4YS02OTA2NDFkN2U2ODEifQ.aBHKbOgQnv3JLE4exhX0RKfF9H20fJLYhXdZUvODwAE"
 </pre>
 
 **Resposta :**
@@ -471,7 +473,9 @@ Get /ledger/get-nym-role
 
 **Exemplo :**
 <pre>
-curl -X GET "http://172.17.0.1:8021/ledger/get-nym-role?did=VWcuij6MDYDLUv8nvMmKP9" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiIwZmFiNGEwMy01MjFiLTRhOTctYmQ4YS02OTA2NDFkN2U2ODEifQ.aBHKbOgQnv3JLE4exhX0RKfF9H20fJLYhXdZUvODwAE"
+curl -X GET "http://172.17.0.1:8021/ledger/get-nym-role?did=VWcuij6MDYDLUv8nvMmKP9" 
+-H "accept: application/json" 
+-H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiIwZmFiNGEwMy01MjFiLTRhOTctYmQ4YS02OTA2NDFkN2U2ODEifQ.aBHKbOgQnv3JLE4exhX0RKfF9H20fJLYhXdZUvODwAE"
 </pre>
 
 **Resposta :**
@@ -484,8 +488,8 @@ Post /ledger/register-nym
 
 **Exemplo :**
 <pre>
-
-
+curl -X POST "http://172.17.0.1:8021/ledger/register-nym?did=VWcuij6MDYDLUv8nvMmKP9&verkey=GYHAJG5YovSXBjS1pShdFizePPMswp7rctQBeNga28S5&role=ENDORSER" -H "accept: application/json" 
+-H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiIwZmFiNGEwMy01MjFiLTRhOTctYmQ4YS02OTA2NDFkN2U2ODEifQ.aBHKbOgQnv3JLE4exhX0RKfF9H20fJLYhXdZUvODwAE"
 </pre>
 
 ### 8.5. Gire o par de chaves para DID público.
@@ -493,8 +497,8 @@ Patch /ledger/rotate-public-did-keypair
 
 **Exemplo :**
 <pre>
-
-
+curl -X PATCH "http://172.17.0.1:8021/ledger/rotate-public-did-keypair" 
+-H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiIwZmFiNGEwMy01MjFiLTRhOTctYmQ4YS02OTA2NDFkN2U2ODEifQ.aBHKbOgQnv3JLE4exhX0RKfF9H20fJLYhXdZUvODwAE"
 </pre>
 
 ### 8.6. Busque o acordo do autor da transação atual, se houver
@@ -502,7 +506,9 @@ Get /ledger/taa
 
 **Exemplo :**
 <pre>
-curl -X GET "http://172.17.0.1:8021/ledger/taa" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiIwZmFiNGEwMy01MjFiLTRhOTctYmQ4YS02OTA2NDFkN2U2ODEifQ.aBHKbOgQnv3JLE4exhX0RKfF9H20fJLYhXdZUvODwAE"
+curl -X GET "http://172.17.0.1:8021/ledger/taa" 
+-H "accept: application/json" 
+-H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiIwZmFiNGEwMy01MjFiLTRhOTctYmQ4YS02OTA2NDFkN2U2ODEifQ.aBHKbOgQnv3JLE4exhX0RKfF9H20fJLYhXdZUvODwAE"
 </pre>
 
 **Resposta :**
