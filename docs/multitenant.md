@@ -696,7 +696,7 @@ Get /present-proof/records
 
 **Exemplo :**
 <pre>
-
+curl -X GET "http://172.17.0.1:8031/present-proof/records?connection_id=7f91f6fe-4699-4ecf-868d-1aa7d7e24744" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJkZGUwYzdlMS0zOWMwLTQyNGMtOGJlYy02MmZiMmRlMjE4MWQifQ.Kr2l2FFOiY_DoMmZ_N8I_amo1P4kXARMblC1CuwOG4E"
 </pre>
 
 ### 12.3. Buscar um único registro de troca de apresentação
@@ -704,7 +704,7 @@ Get /present-proof/records/{pres_ex_id}
 
 **Exemplo :**
 <pre>
-
+curl -X GET "http://172.17.0.1:8031/present-proof/records/fd17de3a-5198-4fdc-ab45-a794f2786558" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJkZGUwYzdlMS0zOWMwLTQyNGMtOGJlYy02MmZiMmRlMjE4MWQifQ.Kr2l2FFOiY_DoMmZ_N8I_amo1P4kXARMblC1CuwOG4E"
 </pre>
 
 ### 12.4. Remover um registro de troca de apresentação existente
@@ -712,7 +712,7 @@ Delete /present-proof/records/{pres_ex_id}
 
 **Exemplo :**
 <pre>
-
+curl -X DELETE "http://172.17.0.1:8031/present-proof/records/fd17de3a-5198-4fdc-ab45-a794f2786558" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJkZGUwYzdlMS0zOWMwLTQyNGMtOGJlYy02MmZiMmRlMjE4MWQifQ.Kr2l2FFOiY_DoMmZ_N8I_amo1P4kXARMblC1CuwOG4E"
 </pre>
 
 ### 12.5. Obter credenciais para um pedido de apresentação na carteira
@@ -720,7 +720,24 @@ Get /present-proof/records/{pres_ex_id}/credentials
 
 **Exemplo :**
 <pre>
+curl -X GET "http://172.17.0.1:8031/present-proof/records/6f8229d6-86cf-4516-a23e-f1f2014761c0/credentials" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJkZGUwYzdlMS0zOWMwLTQyNGMtOGJlYy02MmZiMmRlMjE4MWQifQ.Kr2l2FFOiY_DoMmZ_N8I_amo1P4kXARMblC1CuwOG4E"
+</pre>
 
+**Resultado :**
+<pre>
+[{
+"cred_info": 
+{
+"referent": "f1da556f-cd70-4c82-9bcd-919c27d002cf", 
+"attrs": {"name": "Alice Smith", "age": "24", "date": "2018-05-28", "timestamp": "1610044239", "degree": "Maths"}, 
+"schema_id": "EbPC6bZWbET89R44zWhNAF:2:degree schema:56.81.41", 
+"cred_def_id": "EbPC6bZWbET89R44zWhNAF:3:CL:142:Faber.initial.degree_schema", 
+"rev_reg_id": null, 
+"cred_rev_id": null
+}, 
+"interval": null, 
+"presentation_referents": ["0_degree_uuid", "0_name_uuid", "0_age_GE_uuid", "0_date_uuid"]
+}]
 </pre>
 
 ### 12.6. Envia uma prova de apresentação
