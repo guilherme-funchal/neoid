@@ -344,8 +344,7 @@ Get /issue-credential/records
 
 **Exemplo :**
 <pre>
-
-
+curl -X GET "http://172.17.0.1:8031/issue-credential/records" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiIwMzM0ZTE3OC01OTg4LTQ5YjktYjM0Ni1kMDI4NzE5MDhjYjUifQ.YcWZ3ckVXFP1U6BwSgImfeBdRwPaURvhMno2uyTiIe4"
 </pre>
 
 ### 7.3. Buscar um único registro de troca de credencial
@@ -353,8 +352,7 @@ Get /issue-credential/records/{cred_ex_id}
 
 **Exemplo :**
 <pre>
-
-
+curl -X GET "http://172.17.0.1:8031/issue-credential/records/c614d249-719c-4302-b272-72d8adc440c4" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiIwMzM0ZTE3OC01OTg4LTQ5YjktYjM0Ni1kMDI4NzE5MDhjYjUifQ.YcWZ3ckVXFP1U6BwSgImfeBdRwPaURvhMno2uyTiIe4"
 </pre>
 
 ### 7.4. Remover um registro de troca de credencial existente
@@ -362,8 +360,7 @@ Delete /issue-credential/records/{cred_ex_id}
 
 **Exemplo :**
 <pre>
-
-
+curl -X DELETE "http://172.17.0.1:8031/issue-credential/records/c614d249-719c-4302-b272-72d8adc440c4" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiIwMzM0ZTE3OC01OTg4LTQ5YjktYjM0Ni1kMDI4NzE5MDhjYjUifQ.YcWZ3ckVXFP1U6BwSgImfeBdRwPaURvhMno2uyTiIe4"
 </pre>
 
 ### 7.5. Enviar uma credencial ao titular
@@ -380,8 +377,7 @@ Post /issue-credential/records/{cred_ex_id}/problem-report
 
 **Exemplo :**
 <pre>
-
-
+curl -X POST "http://172.17.0.1:8031/issue-credential/records/c614d249-719c-4302-b272-72d8adc440c4/problem-report" -H "accept: application/json" -H "Content-Type: application/json" -d "{ \"explain_ltxt\": \"string\"}" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiIwMzM0ZTE3OC01OTg4LTQ5YjktYjM0Ni1kMDI4NzE5MDhjYjUifQ.YcWZ3ckVXFP1U6BwSgImfeBdRwPaURvhMno2uyTiIe4"
 </pre>
 
 ### 7.7. Enviar ao titular uma oferta de credencial em referência a uma proposta com visualização
