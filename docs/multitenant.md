@@ -403,8 +403,7 @@ Post ​/issue-credential​/records​/{cred_ex_id}​/store
 
 **Exemplo :**
 <pre>
-
-
+curl -X POST "http://172.17.0.1:8031/issue-credential/records/3177e7d0-1c0b-4c2a-847e-b170aab858a5/store" -H "accept: application/json" -H "Content-Type: application/json" -d "{ \"credential_id\": \"string\"}" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiIwMzM0ZTE3OC01OTg4LTQ5YjktYjM0Ni1kMDI4NzE5MDhjYjUifQ.YcWZ3ckVXFP1U6BwSgImfeBdRwPaURvhMno2uyTiIe4"
 </pre>
 
 ### 7.10. Envie ao titular uma credencial, automatizando todo o fluxo
