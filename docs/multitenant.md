@@ -23,10 +23,19 @@ http://{{ Endereço IP }}:8021/api/doc
 
 ![Login2](swagger1-1.png)
 
-## action-menu
+## 1.action-menu
+### 1.1
+### 1.2
+### 1.3
+### 1.4
+### 1..5 Envie um menu de ação para uma conexão
+Post /action-menu/{conn_id}/send-menu 
 
-## 1.basicmessage
-### 1.1. Enviar mensagem entre conexões Faber e Alice : 
+<pre>
+curl -X POST "http://172.17.0.1:8031/action-menu/f1ad2b46-aff5-4043-8a59-5907124e74d9/send-menu" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJkMjFjZTNmZi0wNWU5LTRhZWQtYWE0ZS1lNzNhNjQ5NjkzNmIifQ.ncetke6si8Dkzr1wo_PPfAJkMJY4FRaeMQOt03Scew4" -H "Content-Type: application/json" -d "{ \"menu\": { \"description\": \"User preferences for window settings\", \"errormsg\": \"Error: item not present\", \"options\": [ { \"description\": \"Window display preferences\", \"disabled\": \"False\", \"form\": { \"description\": \"Window preference settings\", \"params\": [ { \"default\": \"0\", \"description\": \"Delay in seconds before starting\", \"name\": \"delay\", \"required\": \"False\", \"title\": \"Delay in seconds\", \"type\": \"int\" } ], \"submit-label\": \"Send\", \"title\": \"Preferences\" }, \"name\": \"window_prefs\", \"title\": \"Window Preferences\" } ], \"title\": \"My Menu\" }}"
+<pre>
+## 2.basicmessage
+### 2.1. Enviar mensagem entre conexões Faber e Alice : 
 Post /connections/{{ connection_id }}/send-message
 
 
@@ -40,10 +49,10 @@ curl -X POST "http://172.17.0.1:8031/connections/d199d2d6-c164-46a1-b7bb-6062a23
 -d "{ \"content\": \"Teste\"}"
 </pre>
 
-## 2.Connection
+## 3.Connection
 
 
-### 2.1 Consultar conexões de agente para agente
+### 3.1 Consultar conexões de agente para agente
 Get /connections
 
 <pre>
@@ -68,7 +77,7 @@ curl -X GET "http://172.17.0.1:8031/connections?invitation_key=HZfZf1zx1jEzsqFGS
 "their_did": "45uU7QVdZMDMV6gFazwuYN"}]}r
 </pre>
 
-### 2.2 Crie um novo convite de conexão
+### 3.2 Crie um novo convite de conexão
 
 Post /connections/create-invitation
 
@@ -92,7 +101,7 @@ curl -X POST "http://172.17.0.1:8021/connections/create-invitation"
 </pre>
 
 
-### 2.3 Crie uma nova conexão estática
+### 3.3 Crie uma nova conexão estática
 Post /connections/create-static
 
 <pre>
@@ -123,14 +132,14 @@ curl -X POST "http://172.17.0.1:8021/connections/create-static"
 "created_at": "2021-01-06 19:40:55.812576Z"}}
 </pre>
 
-### 2.4 Receba um novo convite de conexão
+### 3.4 Receba um novo convite de conexão
 Post /connections/receive-invitation
 
 <pre>
 
 </pre>
 
-### 2.5 Buscar um único registro de conexão
+### 3.5 Buscar um único registro de conexão
 Post /connections/{conn_id}
 
 <pre>
@@ -156,7 +165,7 @@ curl -X GET "http://172.17.0.1:8031/connections/ef9743bd-ddda-44ac-854d-671b522b
 "their_did": "45uU7QVdZMDMV6gFazwuYN"}
 </pre>
 
-### 2.6 Remover um registro de conexão existente
+### 3.6 Remover um registro de conexão existente
 Delete /connections/{conn_id}
 
 <pre>
@@ -165,27 +174,27 @@ curl -X DELETE "http://172.17.0.1:8031/connections/ef9743bd-ddda-44ac-854d-671b5
 -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJmMmEwMDI5NC02NGRmLTRmMzgtYTY2Zi1kNzg3OGE2N2JlNjkifQ.K0hwyvTcFvC3c18reBWTcKG4Fk6mNUSxknVCiUbYjaE"
 </pre>
 
-### 2.7 Aceite um convite de conexão armazenado
+### 3.7 Aceite um convite de conexão armazenado
 Post /connections/{conn_id}/accept-invitation
 
 <pre>
 
 </pre>
 
-### 2.8 Aceite uma solicitação de conexão armazenada
+### 3.8 Aceite uma solicitação de conexão armazenada
 Post /connections/{conn_id}/accept-request
 
 <pre>
 
 </pre>
 
-### 2.9 Atribuir outra conexão como a conexão de entrada
+### 3.9 Atribuir outra conexão como a conexão de entrada
 
 <pre>
 
 </pre>
 
-### 2.10 Buscar metadados da conexão
+### 3.10 Buscar metadados da conexão
 
 <pre>
 curl -X GET "http://172.17.0.1:8031/connections/8efcea04-f922-4a35-91b5-5827d37967d0/metadata" 
@@ -193,7 +202,7 @@ curl -X GET "http://172.17.0.1:8031/connections/8efcea04-f922-4a35-91b5-5827d379
 -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiI0MmM0OTc2OC02ZDM5LTRhZmYtYjliZi04MTlkYzdhZTUxNzYifQ.AbH_NDLt3G5zaKGh6s603IVpWBTXbO3omjM9LxWv-es"
 </pre>
 
-### 2.11 Definir metadados da conexão
+### 3.11 Definir metadados da conexão
 
 <pre>
 curl -X POST "http://172.17.0.1:8031/connections/8efcea04-f922-4a35-91b5-5827d37967d0/metadata" 
@@ -203,9 +212,9 @@ curl -X POST "http://172.17.0.1:8031/connections/8efcea04-f922-4a35-91b5-5827d37
 -d "{ \"metadata\": {}}
 </pre>
 
-## 3.Credential definition
+## 4.Credential definition
 
-### 3.1 Envia uma definição de credencial para o razão
+### 4.1 Envia uma definição de credencial para o razão
 Post /credential-definitions
 
 
@@ -217,7 +226,7 @@ curl -X POST "http://172.17.0.1:8021/credential-definitions"
 -d "{ \"revocation_registry_size\": 1000, \"schema_id\": \"WgWxqztrNooG92RXvxSTWv:2:schema_name:1.0\", \"support_revocation\": false, \"tag\": \"default\"}"
 </pre>
 
-### 3.2 Pesquise por definições de credenciais correspondentes que o agente originou
+### 4.2 Pesquise por definições de credenciais correspondentes que o agente originou
 Post /credential-definitions/created
 
 **Exemplo :**
@@ -227,7 +236,7 @@ curl -X GET "http://172.17.0.1:8021/credential-definitions/created"
 -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJkMTVjZTBiZC0xNDQzLTQxNzktOGNmNy1jOGJhNzJmZTY1ZGEifQ.s1AKvJb1eLZ4jd7NyG0sgtRtxhkxX5PR-UlUbAdcnnA"
 </pre>
 
-### 3.3  Obtém uma definição de credencial do razão
+### 4.3  Obtém uma definição de credencial do razão
 Get /credential-definitions/{{ credential_definition_id }}
 
 
@@ -239,9 +248,9 @@ curl -X GET "http://172.17.0.1:8021/credential-definitions/M786j533KXeifEnGd3gQL
 -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJkMTVjZTBiZC0xNDQzLTQxNzktOGNmNy1jOGJhNzJmZTY1ZGEifQ.s1AKvJb1eLZ4jd7NyG0sgtRtxhkxX5PR-UlUbAdcnnA"
 </pre>
 
-## 4.Credential
+## 5.Credential
 
-### 4.1 Obter tipos de atributos MIME da carteira
+### 5.1 Obter tipos de atributos MIME da carteira
 
 Get /credential/mime-types/{{ credential_id }}
 
@@ -253,7 +262,7 @@ curl -X GET "http://172.17.0.1:8021/credential/mime-types/5111d8d2-7314-4a55-a08
 </pre>
 
 
-### 4.2 Consultar status de revogação de credencial por id
+### 5.2 Consultar status de revogação de credencial por id
 
 Get /credential/revoked/
 
@@ -264,7 +273,7 @@ curl -X GET "http://172.17.0.1:8031/credential/revoked/c3706d85-91b9-4969-95a2-4
 -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJjYjZkOTc3Yy00NmY5LTQxNmYtYjRmYi1lYjdiMDUzYTA5ZDMifQ.2EGp1lZkzenZRMRCsMh1CzYBwtqiIdh1yPULA89pNEk"
 </pre>
 
-### 4.3 Obter uma credencial da carteira por id
+### 5.3 Obter uma credencial da carteira por id
 
 Get /credential/{{ credential_id }}
 
@@ -285,7 +294,7 @@ curl -X GET "http://172.17.0.1:8031/credential/b4c8e92e-ec58-4446-8765-ea6c9e077
 </pre>
 
 
-### 4.4 Remova uma credencial da carteira por id
+### 5.4 Remova uma credencial da carteira por id
 
 Get /credential/{{ credential_id }}
 
@@ -296,7 +305,7 @@ curl -X DELETE "http://172.17.0.1:8031/credential/b4c8e92e-ec58-4446-8765-ea6c9e
 -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJmMmEwMDI5NC02NGRmLTRmMzgtYTY2Zi1kNzg3OGE2N2JlNjkifQ.K0hwyvTcFvC3c18reBWTcKG4Fk6mNUSxknVCiUbYjaE"
 </pre>
 
-### 4.5 Obter credenciais da carteira
+### 5.5 Obter credenciais da carteira
 
 Get /credential/mime-types/{{ connection_id }}
 
@@ -321,9 +330,9 @@ curl -X GET "http://172.17.0.1:8031/credentials"
 "cred_rev_id": null}]}
 </pre>
 
-## 5.Did exchange
+## 6.Did exchange
 
-### 5.1 Receba um novo convite de conexão
+### 6.1 Receba um novo convite de conexão
 Post /didexchange/receive-invitation
 
 **Exemplo :**
@@ -331,7 +340,7 @@ Post /didexchange/receive-invitation
 
 </pre>
 
-### 5.2 Aceite um convite de conexão armazenado
+### 6.2 Aceite um convite de conexão armazenado
 Post /didexchange/{conn_id}/accept-invitation
 
 **Exemplo :**
@@ -339,7 +348,7 @@ Post /didexchange/{conn_id}/accept-invitation
 
 </pre>
 
-### 5.3 Aceite uma solicitação de conexão armazenada
+### 6.3 Aceite uma solicitação de conexão armazenada
 Post /didexchange/{conn_id}/accept-request
 
 **Exemplo :**
@@ -347,10 +356,10 @@ Post /didexchange/{conn_id}/accept-request
 
 </pre>
 
-## 6.Introduction
+## 7.Introduction
 
-## 7.Issue credential
-### 7.1. Envie ao titular uma credencial, automatizando todo o fluxo
+## 8.Issue credential
+### 8.1. Envie ao titular uma credencial, automatizando todo o fluxo
 Post /issue-credential/create
 
 **Exemplo :**
@@ -359,7 +368,7 @@ Post /issue-credential/create
 
 </pre>
 
-### 7.2. Obter todos os registros de troca de credenciais
+### 8.2. Obter todos os registros de troca de credenciais
 Get /issue-credential/records
 
 **Exemplo :**
@@ -369,7 +378,7 @@ curl -X GET "http://172.17.0.1:8031/issue-credential/records"
 -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiIwMzM0ZTE3OC01OTg4LTQ5YjktYjM0Ni1kMDI4NzE5MDhjYjUifQ.YcWZ3ckVXFP1U6BwSgImfeBdRwPaURvhMno2uyTiIe4"
 </pre>
 
-### 7.3. Buscar um único registro de troca de credencial
+### 8.3. Buscar um único registro de troca de credencial
 Get /issue-credential/records/{cred_ex_id}
 
 **Exemplo :**
@@ -379,7 +388,7 @@ curl -X GET "http://172.17.0.1:8031/issue-credential/records/c614d249-719c-4302-
 -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiIwMzM0ZTE3OC01OTg4LTQ5YjktYjM0Ni1kMDI4NzE5MDhjYjUifQ.YcWZ3ckVXFP1U6BwSgImfeBdRwPaURvhMno2uyTiIe4"
 </pre>
 
-### 7.4. Remover um registro de troca de credencial existente
+### 8.4. Remover um registro de troca de credencial existente
 Delete /issue-credential/records/{cred_ex_id}
 
 **Exemplo :**
@@ -389,7 +398,7 @@ curl -X DELETE "http://172.17.0.1:8031/issue-credential/records/c614d249-719c-43
 -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiIwMzM0ZTE3OC01OTg4LTQ5YjktYjM0Ni1kMDI4NzE5MDhjYjUifQ.YcWZ3ckVXFP1U6BwSgImfeBdRwPaURvhMno2uyTiIe4"
 </pre>
 
-### 7.5. Enviar uma credencial ao titular
+### 8.5. Enviar uma credencial ao titular
 Post /issue-credential/records/{cred_ex_id}/issue
 
 **Exemplo :**
@@ -398,7 +407,7 @@ Post /issue-credential/records/{cred_ex_id}/issue
 
 </pre>
 
-### 7.6. Envie um relatório de problema para troca de credencial
+### 8.6. Envie um relatório de problema para troca de credencial
 Post /issue-credential/records/{cred_ex_id}/problem-report
 
 **Exemplo :**
@@ -409,7 +418,7 @@ curl -X POST "http://172.17.0.1:8031/issue-credential/records/c614d249-719c-4302
 -d "{ \"explain_ltxt\": \"string\"}" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiIwMzM0ZTE3OC01OTg4LTQ5YjktYjM0Ni1kMDI4NzE5MDhjYjUifQ.YcWZ3ckVXFP1U6BwSgImfeBdRwPaURvhMno2uyTiIe4"
 </pre>
 
-### 7.7. Enviar ao titular uma oferta de credencial em referência a uma proposta com visualização
+### 8.7. Enviar ao titular uma oferta de credencial em referência a uma proposta com visualização
 Post /issue-credential/records/{cred_ex_id}/send-offer
 
 **Exemplo :**
@@ -418,7 +427,7 @@ Post /issue-credential/records/{cred_ex_id}/send-offer
 
 </pre>
 
-### 7.8. Enviar ao emissor um pedido de credencial
+### 8.8. Enviar ao emissor um pedido de credencial
 Post /issue-credential/records/{cred_ex_id}/send-request
 
 **Exemplo :**
@@ -427,7 +436,7 @@ Post /issue-credential/records/{cred_ex_id}/send-request
 
 </pre>
 
-### 7.9. Armazene uma credencial recebida
+### 8.9. Armazene uma credencial recebida
 Post ​/issue-credential​/records​/{cred_ex_id}​/store
 
 **Exemplo :**
@@ -439,7 +448,7 @@ curl -X POST "http://172.17.0.1:8031/issue-credential/records/3177e7d0-1c0b-4c2a
 -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiIwMzM0ZTE3OC01OTg4LTQ5YjktYjM0Ni1kMDI4NzE5MDhjYjUifQ.YcWZ3ckVXFP1U6BwSgImfeBdRwPaURvhMno2uyTiIe4"
 </pre>
 
-### 7.10. Envie ao titular uma credencial, automatizando todo o fluxo
+### 8.10. Envie ao titular uma credencial, automatizando todo o fluxo
 Post /issue-credential/send
 
 **Exemplo :**
@@ -448,7 +457,7 @@ Post /issue-credential/send
 
 </pre>
 
-### 7.11. Envio de proposta de credencial
+### 8.11. Envio de proposta de credencial
 Post /issue-credential/records/{{ connection_id }}/send-offer
 
 **Exemplo :**
@@ -458,7 +467,7 @@ curl -X POST "http://172.17.0.1:8021/issue-credential/records/d239b8bf-d275-476a
 -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiI1MDI3YmE4MS1jMjJiLTQ5NDMtYjNkZS0xOGIwOGJjZWU2MzEifQ.s_wqtCRIBj0rS7e7UClxHcG8RUY7-WybqiIQ-loLXq8"
 </pre>
 
-### 7.12. Envie ao emissor uma proposta de credencial
+### 8.12. Envie ao emissor uma proposta de credencial
 Post /issue-credential/send-proposal
 
 **Exemplo :**
@@ -471,9 +480,9 @@ curl -X POST "http://172.17.0.1:8031/issue-credential/send-proposal"
 </pre>
 
 
-## 8.Ledger
+## 9.Ledger
 
-### 8.1. Obtenha o ponto de extremidade para um DID do razão
+### 9.1. Obtenha o ponto de extremidade para um DID do razão
 Get /ledger/did-endpoint
 
 **Exemplo :**
@@ -487,7 +496,7 @@ curl -X GET "http://172.17.0.1:8021/ledger/did-endpoint?did=VWcuij6MDYDLUv8nvMmK
 {"endpoint": "http://172.17.0.1:8020"}
 </pre>
 
-### 8.2. Obtenha o verkey para um DID do razão
+### 9.2. Obtenha o verkey para um DID do razão
 Get /ledger/did-verkey
 
 **Exemplo :**
@@ -501,7 +510,7 @@ curl -X GET "http://172.17.0.1:8021/ledger/did-verkey?did=VWcuij6MDYDLUv8nvMmKP9
 {"verkey": "GYHAJG5YovSXBjS1pShdFizePPMswp7rctQBeNga28S5"}
 </pre>
 
-### 8.3. Obtenha a função do registro do NYM de um DID público
+### 9.3. Obtenha a função do registro do NYM de um DID público
 Get /ledger/get-nym-role
 
 **Exemplo :**
@@ -516,7 +525,7 @@ curl -X GET "http://172.17.0.1:8021/ledger/get-nym-role?did=VWcuij6MDYDLUv8nvMmK
 {"role": "ENDORSER"}
 </pre>
 
-### 8.4. Envie um registro NYM para o razão.
+### 9.4. Envie um registro NYM para o razão.
 Post /ledger/register-nym
 
 **Exemplo :**
@@ -526,7 +535,7 @@ curl -X POST "http://172.17.0.1:8021/ledger/register-nym?did=VWcuij6MDYDLUv8nvMm
 -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiIwZmFiNGEwMy01MjFiLTRhOTctYmQ4YS02OTA2NDFkN2U2ODEifQ.aBHKbOgQnv3JLE4exhX0RKfF9H20fJLYhXdZUvODwAE"
 </pre>
 
-### 8.5. Gire o par de chaves para DID público.
+### 9.5. Gire o par de chaves para DID público.
 Patch /ledger/rotate-public-did-keypair
 
 **Exemplo :**
@@ -536,7 +545,7 @@ curl -X PATCH "http://172.17.0.1:8021/ledger/rotate-public-did-keypair"
 -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiIwZmFiNGEwMy01MjFiLTRhOTctYmQ4YS02OTA2NDFkN2U2ODEifQ.aBHKbOgQnv3JLE4exhX0RKfF9H20fJLYhXdZUvODwAE"
 </pre>
 
-### 8.6. Busque o acordo do autor da transação atual, se houver
+### 9.6. Busque o acordo do autor da transação atual, se houver
 Get /ledger/taa
 
 **Exemplo :**
@@ -551,7 +560,7 @@ curl -X GET "http://172.17.0.1:8021/ledger/taa"
 {"result": {"aml_record": null, "taa_record": null, "taa_required": false, "taa_accepted": null}}
 </pre>
 
-### 8.7. Aceite o contrato do autor da transação
+### 9.7. Aceite o contrato do autor da transação
 Post /ledger/taa/accept
 
 **Exemplo :**
@@ -560,9 +569,9 @@ Post /ledger/taa/accept
 
 </pre>
 
-## 9.mediation
+## 10.mediation
 
-### 9.1. Solicitar mediação da conexão
+### 10.1. Solicitar mediação da conexão
 Post /mediation/request/{conn_id}
 
 **Exemplo :**
@@ -571,7 +580,7 @@ Post /mediation/request/{conn_id}
 
 </pre>
 
-### 9.2. Solicitações de mediação de consulta, lista de retorno de todos os registros de mediação
+### 10.2. Solicitações de mediação de consulta, lista de retorno de todos os registros de mediação
 Get /mediation/requests
 
 **Exemplo :**
@@ -580,7 +589,7 @@ Get /mediation/requests
 
 </pre>
 
-### 9.3. Recuperar registro de solicitação de mediação
+### 10.3. Recuperar registro de solicitação de mediação
 Get /mediation/requests/{mediation_id}
 
 **Exemplo :**
@@ -590,7 +599,7 @@ Get /mediation/requests/{mediation_id}
 </pre>
 
 
-### 9.4. Excluir solicitação de mediação por ID
+### 10.4. Excluir solicitação de mediação por ID
 Delete /mediation/requests/{mediation_id}
 
 **Exemplo :**
@@ -599,7 +608,7 @@ Delete /mediation/requests/{mediation_id}
 
 </pre>
 
-### 9.5. Negar um pedido de mediação armazenado
+### 10.5. Negar um pedido de mediação armazenado
 Post /mediation/requests/{mediation_id}/deny
 
 **Exemplo :**
@@ -608,7 +617,7 @@ Post /mediation/requests/{mediation_id}/deny
 
 </pre>
 
-### 9.6. Conceder mediação recebida
+### 10.6. Conceder mediação recebida
 Post /mediation/requests/{mediation_id}/grant
 
 **Exemplo :**
@@ -617,9 +626,9 @@ Post /mediation/requests/{mediation_id}/grant
 
 </pre>
 
-## 10.Multitenancy
+## 11.Multitenancy
 
-### 10.1. Criar wallet
+### 11.1. Criar wallet
 Post /multitenancy/wallet
 
 **Exemplo :**
@@ -635,7 +644,7 @@ curl -X POST "http://172.17.0.1:8021/multitenancy/wallet"
 {"key_management_mode": "managed", "wallet_id": "729ecda2-3229-48e3-ac12-7ce7e82e433a", "settings": {"wallet.type": "indy", "wallet.name": "MyNewWallet1", "default_label": "Alice", "wallet.id": "729ecda2-3229-48e3-ac12-7ce7e82e433a"}, "created_at": "2021-01-06 17:58:49.231591Z", "updated_at": "2021-01-06 17:58:49.231591Z", "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiI3MjllY2RhMi0zMjI5LTQ4ZTMtYWMxMi03Y2U3ZTgyZTQzM2EifQ.kNhkvUGVPcEEp8y4Ulg0YY-pUPmadrbMThi7EnPbWoc"}
 </pre>
 
-### 10.2. Obtenha uma única subwallet
+### 11.2. Obtenha uma única subwallet
 Get /multitenancy/wallet/{wallet_id}
 
 **Exemplo :**
@@ -649,7 +658,7 @@ curl -X GET "http://172.17.0.1:8021/multitenancy/wallet/729ecda2-3229-48e3-ac12-
 {"key_management_mode": "managed", "wallet_id": "729ecda2-3229-48e3-ac12-7ce7e82e433a", "settings": {"wallet.type": "indy", "wallet.name": "MyNewWallet1", "default_label": "Alice", "wallet.id": "729ecda2-3229-48e3-ac12-7ce7e82e433a"}, "created_at": "2021-01-06 17:58:49.231591Z", "updated_at": "2021-01-06 17:58:49.231591Z"}
 </pre>
 
-### 10.3. Remove uma sub wallet
+### 11.3. Remove uma sub wallet
 Post /multitenancy​/wallet​/{wallet_id}​/remove
 
 **Exemplo :**
@@ -660,7 +669,7 @@ curl -X POST "http://172.17.0.1:8021/multitenancy/wallet/729ecda2-3229-48e3-ac12
 -d "{ \"wallet_key\": \"MySecretKey123\"}"
 </pre>
 
-### 10.4. Obtenha o token de autenticação para um subwallet
+### 11.4. Obtenha o token de autenticação para um subwallet
 Post /multitenancy/wallet/{wallet_id}/token
 
 **Exemplo :**
@@ -676,7 +685,7 @@ curl -X POST "http://172.17.0.1:8021/multitenancy/wallet/60fd663c-e246-4dd2-97ca
 {"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiI2MGZkNjYzYy1lMjQ2LTRkZDItOTdjYS1hM2UyMmVmMjM4NWUifQ.VysFhjz9CfhcjQNH2qxNDU3ifbBTr0--dFgJbBmblTg"}
 </pre>
 
-### 10.5. List all subwallets
+### 11.5. List all subwallets
 Get /multitenancy/wallets
 
 **Exemplo :**
@@ -705,9 +714,9 @@ curl -X GET "http://172.17.0.1:8021/multitenancy/wallets"
 }
 </pre>
 
-## 11.Out of band
+## 12.Out of band
 
-### 11.1 Crie um novo convite de conexão
+### 12.1 Crie um novo convite de conexão
 Post /out-of-band/create-invitation
 
 **Exemplo :**
@@ -719,7 +728,7 @@ curl -X POST "http://172.17.0.1:8031/out-of-band/create-invitation"
 -d "{ \"attachments\": [ { \"id\": \"string\", \"type\": \"string\" } ], \"include_handshake\": true, \"metadata\": {}, \"use_public_did\": true}"
 </pre>
 
-### 11.2 receba um novo convite de conexão
+### 12.2 receba um novo convite de conexão
 Post /out-of-band/receive-invitation
 
 **Exemplo :**
@@ -731,9 +740,9 @@ curl -X POST "http://172.17.0.1:8031/out-of-band/receive-invitation"
 -d "{ \"attachments\": [ { \"id\": \"string\", \"type\": \"string\" } ], \"include_handshake\": true, \"metadata\": {}, \"use_public_did\": true}"
 </pre>
 
-## 12.Proof presentation
+## 13.Proof presentation
 
-### 12.1. Cria uma solicitação de apresentação não vinculada a nenhuma proposta ou conexão existente
+### 13.1. Cria uma solicitação de apresentação não vinculada a nenhuma proposta ou conexão existente
 Post /present-proof/create-request
 
 **Exemplo :**
@@ -741,7 +750,7 @@ Post /present-proof/create-request
 
 </pre>
 
-### 12.3. Obter todos os registros de troca à prova de presente
+### 13.3. Obter todos os registros de troca à prova de presente
 Get /present-proof/records
 
 **Exemplo :**
@@ -751,7 +760,7 @@ curl -X GET "http://172.17.0.1:8031/present-proof/records?connection_id=7f91f6fe
 -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJkZGUwYzdlMS0zOWMwLTQyNGMtOGJlYy02MmZiMmRlMjE4MWQifQ.Kr2l2FFOiY_DoMmZ_N8I_amo1P4kXARMblC1CuwOG4E"
 </pre>
 
-### 12.3. Buscar um único registro de troca de apresentação
+### 13.3. Buscar um único registro de troca de apresentação
 Get /present-proof/records/{pres_ex_id}
 
 **Exemplo :**
@@ -761,7 +770,7 @@ curl -X GET "http://172.17.0.1:8031/present-proof/records/fd17de3a-5198-4fdc-ab4
 -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJkZGUwYzdlMS0zOWMwLTQyNGMtOGJlYy02MmZiMmRlMjE4MWQifQ.Kr2l2FFOiY_DoMmZ_N8I_amo1P4kXARMblC1CuwOG4E"
 </pre>
 
-### 12.4. Remover um registro de troca de apresentação existente
+### 13.4. Remover um registro de troca de apresentação existente
 Delete /present-proof/records/{pres_ex_id}
 
 **Exemplo :**
@@ -771,7 +780,7 @@ curl -X DELETE "http://172.17.0.1:8031/present-proof/records/fd17de3a-5198-4fdc-
 -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJkZGUwYzdlMS0zOWMwLTQyNGMtOGJlYy02MmZiMmRlMjE4MWQifQ.Kr2l2FFOiY_DoMmZ_N8I_amo1P4kXARMblC1CuwOG4E"
 </pre>
 
-### 12.5. Obter credenciais para um pedido de apresentação na carteira
+### 13.5. Obter credenciais para um pedido de apresentação na carteira
 Get /present-proof/records/{pres_ex_id}/credentials
 
 **Exemplo :**
@@ -798,7 +807,7 @@ curl -X GET "http://172.17.0.1:8031/present-proof/records/6f8229d6-86cf-4516-a23
 }]
 </pre>
 
-### 12.6. Envia uma prova de apresentação
+### 13.6. Envia uma prova de apresentação
 Post /present-proof/records/{pres_ex_id}/send-presentation
 
 **Exemplo :**
@@ -806,7 +815,7 @@ Post /present-proof/records/{pres_ex_id}/send-presentation
 
 </pre>
 
-### 12.7. Envia um pedido de apresentação em referência a uma proposta
+### 13.7. Envia um pedido de apresentação em referência a uma proposta
 Post /present-proof/records/{pres_ex_id}/send-request
 
 **Exemplo :**
@@ -814,7 +823,7 @@ Post /present-proof/records/{pres_ex_id}/send-request
 
 </pre>
 
-### 12.8. Verifique uma apresentação recebida
+### 13.8. Verifique uma apresentação recebida
 Post /present-proof/records/{pres_ex_id}/verify-presentation
 
 **Exemplo :**
@@ -822,7 +831,7 @@ Post /present-proof/records/{pres_ex_id}/verify-presentation
 
 </pre>
 
-### 12.9. Envia uma proposta de apresentação
+### 13.9. Envia uma proposta de apresentação
 Post /present-proof/send-proposal
 
 **Exemplo :**
@@ -830,7 +839,7 @@ Post /present-proof/send-proposal
 
 </pre>
 
-### 12.10. Envia uma solicitação de apresentação gratuita não vinculada a nenhuma proposta
+### 13.10. Envia uma solicitação de apresentação gratuita não vinculada a nenhuma proposta
 Post /present-proof​/send-request
 
 **Exemplo :**
@@ -838,8 +847,8 @@ Post /present-proof​/send-request
 
 </pre>
 
-## 13. Revocation
-### 13.1. Obtenha o registro de revogação ativo atual por ID de definição de credencial
+## 14. Revocation
+### 14.1. Obtenha o registro de revogação ativo atual por ID de definição de credencial
 Get /revocation​/active-registry​/{cred_def_id}
 
 **Exemplo :**
@@ -866,7 +875,7 @@ Get /revocation​/active-registry​/{cred_def_id}
 "tailsLocation": "http://729eb267dac9.ngrok.io/LAm2sZX5hgQo57s7TB2HR8:4:LAm2sZX5hgQo57s7TB2HR8:3:CL:40:Faber.initial.degree_schema:CL_ACCUM:c5731da5-7062-4331-a83f-5c24b64a3311"}}}
 </pre>
 
-### 13.2. Limpar revogações pendentes
+### 14.2. Limpar revogações pendentes
 Post /revocation​/clear-pending-revocations
 
 **Exemplo :**
@@ -876,7 +885,7 @@ curl -X POST "http://172.17.0.1:8021/revocation/clear-pending-revocations"
 -d "{ \"purge\": { \"additionalProp1\": [ \"12345\" ], \"additionalProp2\": [ \"12345\" ], \"additionalProp3\": [ \"12345\" ] }}"
 </pre>
 
-### 13.3. Cria um novo registro de revogação
+### 14.3. Cria um novo registro de revogação
 Post /revocation​/create-registry
 
 **Exemplo :**
@@ -893,7 +902,7 @@ curl -X POST "http://172.17.0.1:8021/revocation/create-registry"
 {"result": {"record_id": "03ac1cc3-48c1-4085-8df8-036949246abc", "updated_at": "2021-01-08 12:14:05.535939Z", "state": "generated", "cred_def_id": "2mArThE9e4QndCZvD7JRCK:3:CL:51:Faber.initial.degree_schema", "revoc_reg_def": {"ver": "1.0", "id": "2mArThE9e4QndCZvD7JRCK:4:2mArThE9e4QndCZvD7JRCK:3:CL:51:Faber.initial.degree_schema:CL_ACCUM:03ac1cc3-48c1-4085-8df8-036949246abc", "revocDefType": "CL_ACCUM", "tag": "03ac1cc3-48c1-4085-8df8-036949246abc", "credDefId": "2mArThE9e4QndCZvD7JRCK:3:CL:51:Faber.initial.degree_schema", "value": {"issuanceType": "ISSUANCE_BY_DEFAULT", "maxCredNum": 1000, "publicKeys": {"accumKey": {"z": "1 019C27CCA8A107489B2B4E3A798A86CA2F4C0E7CDE009F531065F217F23B143D 1 1F783F441C694C191F80B42F286CEB2A33B7B389CB68A736D10FF5A1956ED390 1 0F99395E287D8B23ED6BA1C68C2FDF875562AF8936535A5582B0058C1CB90F5A 1 112477EAD2388390D8A5BD32F09E06B74CDE5ABA50578B8A0847DFE5F0E2D2CB"}}, "tailsHash": "5PHTce3vFRgj3h2F6P2SxKywv2JfbA8DTUjkfgfSV1us", "tailsLocation": "/home/indy/.indy_client/tails/.hopper/5PHTce3vFRgj3h2F6P2SxKywv2JfbA8DTUjkfgfSV1us"}}, "created_at": "2021-01-08 12:14:03.249287Z", "tails_local_path": "/home/indy/.indy_client/tails/2mArThE9e4QndCZvD7JRCK:4:2mArThE9e4QndCZvD7JRCK:3:CL:51:Faber.initial.degree_schema:CL_ACCUM:03ac1cc3-48c1-4085-8df8-036949246abc/5PHTce3vFRgj3h2F6P2SxKywv2JfbA8DTUjkfgfSV1us", "revoc_reg_entry": {"ver": "1.0", "value": {"accum": "21 52F2BD277F4A8ACBD760E933E6B57E24AF11F3A9CEC5B89822D3F61308067CA7 4 10ADE1ED92C6128CE79D5EB69468B9C051E39EB7BB5623BF0852D0CA4F7689EB"}}, "tag": "03ac1cc3-48c1-4085-8df8-036949246abc", "revoc_def_type": "CL_ACCUM", "tails_hash": "5PHTce3vFRgj3h2F6P2SxKywv2JfbA8DTUjkfgfSV1us", "revoc_reg_id": "2mArThE9e4QndCZvD7JRCK:4:2mArThE9e4QndCZvD7JRCK:3:CL:51:Faber.initial.degree_schema:CL_ACCUM:03ac1cc3-48c1-4085-8df8-036949246abc", "max_cred_num": 1000, "pending_pub": [], "issuer_did": "2mArThE9e4QndCZvD7JRCK"}}
 </pre>
 
-### 13.4. Obter status de revogação de credencial
+### 14.4. Obter status de revogação de credencial
 Get /revocation​/credential-record
 
 **Exemplo :**
@@ -908,7 +917,7 @@ curl -X GET "http://172.17.0.1:8021/revocation/credential-record?cred_rev_id=1&r
 {"result": {"record_id": "aab91121-8713-4415-bf38-31e87d613af2", "updated_at": "2021-01-08 11:43:00.893762Z", "state": "issued", "cred_def_id": "2mArThE9e4QndCZvD7JRCK:3:CL:51:Faber.initial.degree_schema", "cred_rev_id": "1", "created_at": "2021-01-08 11:43:00.893762Z", "cred_ex_id": "e994d940-d387-4835-a71a-f5e041bd3d3c", "rev_reg_id": "2mArThE9e4QndCZvD7JRCK:4:2mArThE9e4QndCZvD7JRCK:3:CL:51:Faber.initial.degree_schema:CL_ACCUM:ee3784c7-c314-4f47-8127-26b244c030b7"}}
 </pre>
 
-### 13.5. Publicar revogações pendentes no razão
+### 14.5. Publicar revogações pendentes no razão
 Post /revocation​/publish-revocations
 
 **Exemplo :**
@@ -920,7 +929,7 @@ curl -X POST "http://172.17.0.1:8021/revocation/publish-revocations"
 -d "{ \"rrid2crid\": { \"additionalProp1\": [ \"12345\" ] }}"
 </pre>
 
-### 13.6. Pesquisar registros de revogação correspondentes que o agente atual criou
+### 14.6. Pesquisar registros de revogação correspondentes que o agente atual criou
 Get /revocation/registries/created
 
 **Exemplo :**
@@ -935,7 +944,7 @@ curl -X GET "http://172.17.0.1:8021/revocation/registries/created?cred_def_id=LA
 {"rev_reg_ids": ["LAm2sZX5hgQo57s7TB2HR8:4:LAm2sZX5hgQo57s7TB2HR8:3:CL:40:Faber.initial.degree_schema:CL_ACCUM:9811f770-adfc-4e11-873e-82fd71158efe", "LAm2sZX5hgQo57s7TB2HR8:4:LAm2sZX5hgQo57s7TB2HR8:3:CL:40:Faber.initial.degree_schema:CL_ACCUM:c5731da5-7062-4331-a83f-5c24b64a3311"]}
 </pre>
 
-### 13.7. Obter registro de revogação por id de registro de revogação
+### 14.7. Obter registro de revogação por id de registro de revogação
 Get /revocation​/registry​/{rev_reg_id}
 
 **Exemplo :**
@@ -950,7 +959,7 @@ curl -X GET "http://172.17.0.1:8021/revocation/registries/created"
 {"rev_reg_ids": ["2mArThE9e4QndCZvD7JRCK:4:2mArThE9e4QndCZvD7JRCK:3:CL:51:Faber.initial.degree_schema:CL_ACCUM:03ac1cc3-48c1-4085-8df8-036949246abc", "2mArThE9e4QndCZvD7JRCK:4:2mArThE9e4QndCZvD7JRCK:3:CL:51:Faber.initial.degree_schema:CL_ACCUM:2933955d-6a2c-472c-9424-23a375b5a137", "2mArThE9e4QndCZvD7JRCK:4:2mArThE9e4QndCZvD7JRCK:3:CL:51:Faber.initial.degree_schema:CL_ACCUM:ee3784c7-c314-4f47-8127-26b244c030b7", "2mArThE9e4QndCZvD7JRCK:4:2mArThE9e4QndCZvD7JRCK:3:CL:51:Faber.initial.degree_schema:CL_ACCUM:5eda3bf6-1c19-4b70-8693-8eb8e542cfbb"]}
 </pre>
 
-### 13.8. Atualize o registro de revogação com o novo URI público em seu arquivo caudas
+### 14.8. Atualize o registro de revogação com o novo URI público em seu arquivo caudas
 Patch /revocation​/registry​/{rev_reg_id}
 
 **Exemplo :**
@@ -967,7 +976,7 @@ curl -X PATCH "http://172.17.0.1:8021/revocation/registry/2mArThE9e4QndCZvD7JRCK
 {"result": {"record_id": "ee3784c7-c314-4f47-8127-26b244c030b7", "updated_at": "2021-01-08 12:37:53.836873Z", "state": "active", "cred_def_id": "2mArThE9e4QndCZvD7JRCK:3:CL:51:Faber.initial.degree_schema", "revoc_reg_def": {"ver": "1.0", "id": "2mArThE9e4QndCZvD7JRCK:4:2mArThE9e4QndCZvD7JRCK:3:CL:51:Faber.initial.degree_schema:CL_ACCUM:ee3784c7-c314-4f47-8127-26b244c030b7", "revocDefType": "CL_ACCUM", "tag": "ee3784c7-c314-4f47-8127-26b244c030b7", "credDefId": "2mArThE9e4QndCZvD7JRCK:3:CL:51:Faber.initial.degree_schema", "value": {"issuanceType": "ISSUANCE_BY_DEFAULT", "maxCredNum": 100, "publicKeys": {"accumKey": {"z": "1 00D9B88A9AB17C39449247D2926165CA49C8E9B3FD6A63046687FEC8FE788516 1 112F36283FD96F48CD9DD041F19A44B6351FC702E55618974229609EA58FBFDB 1 1C1222B559E2A1415494BF93758BFCDBB059A9789D83747256700440982ABAFC 1 18FFD561CBAE2B27C70A7F796B7AAF2AD7B0EF16B5F5E5C13529A644B768ED6C"}}, "tailsHash": "7kiapiYv4QP96bfC1DLHWBVbNr2VpvR2yPTe4kXa9NsM", "tailsLocation": "http://192.168.56.133:6543/revocation/registry/WgWxqztrNooG92RXvxSTWv:4:WgWxqztrNooG92RXvxSTWv:3:CL:20:tag:CL_ACCUM:0/tails-file"}}, "created_at": "2021-01-08 11:36:37.636679Z", "tails_local_path": "/home/indy/.indy_client/tails/2mArThE9e4QndCZvD7JRCK:4:2mArThE9e4QndCZvD7JRCK:3:CL:51:Faber.initial.degree_schema:CL_ACCUM:ee3784c7-c314-4f47-8127-26b244c030b7/7kiapiYv4QP96bfC1DLHWBVbNr2VpvR2yPTe4kXa9NsM", "revoc_reg_entry": {"ver": "1.0", "value": {"accum": "21 8B852ACB8185E41A6CEA3882B0AF209DB60EC95482AF52A1B6D75DC11783734D 4 12D539945D341522A7B164B25623B4144D76DAD0B8247745DB3DEA3F93B3EE38"}}, "tag": "ee3784c7-c314-4f47-8127-26b244c030b7", "revoc_def_type": "CL_ACCUM", "tails_hash": "7kiapiYv4QP96bfC1DLHWBVbNr2VpvR2yPTe4kXa9NsM", "revoc_reg_id": "2mArThE9e4QndCZvD7JRCK:4:2mArThE9e4QndCZvD7JRCK:3:CL:51:Faber.initial.degree_schema:CL_ACCUM:ee3784c7-c314-4f47-8127-26b244c030b7", "max_cred_num": 100, "pending_pub": [], "issuer_did": "2mArThE9e4QndCZvD7JRCK", "tails_public_uri": "http://192.168.56.133:6543/revocation/registry/WgWxqztrNooG92RXvxSTWv:4:WgWxqztrNooG92RXvxSTWv:3:CL:20:tag:CL_ACCUM:0/tails-file"}}
 </pre>
 
-### 13.9. Enviar definição de registro de revogação para o razão
+### 14.9. Enviar definição de registro de revogação para o razão
 Post /revocation/registry/{rev_reg_id}​/definition
 
 **Exemplo :**
@@ -977,7 +986,7 @@ curl -X POST "http://172.17.0.1:8021/revocation/registry/2mArThE9e4QndCZvD7JRCK%
 -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiI4ZmQ1YTlhYi01MjlhLTRmNzQtOWNiYS1kYmZjYjEwMTIxYjIifQ.5AXaNQk1P-PO_RHAWr_N_igtYwz0yEq2oaGlWhERcJo"
 </pre>
 
-### 13.10. Enviar entrada do registro de revogação para o razão
+### 14.10. Enviar entrada do registro de revogação para o razão
 Post /revocation​/registry​/{rev_reg_id}​/entry
 
 **Exemplo :**
@@ -987,7 +996,7 @@ curl -X POST "http://172.17.0.1:8021/revocation/registry/2mArThE9e4QndCZvD7JRCK%
 -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiI4ZmQ1YTlhYi01MjlhLTRmNzQtOWNiYS1kYmZjYjEwMTIxYjIifQ.5AXaNQk1P-PO_RHAWr_N_igtYwz0yEq2oaGlWhERcJo"
 </pre>
 
-### 13.11. Obtenha o número de credenciais emitidas no registro de revogação
+### 14.11. Obtenha o número de credenciais emitidas no registro de revogação
 Get /revocation​/registry​/{rev_reg_id}​/issued
 
 **Exemplo :**
@@ -1002,7 +1011,7 @@ curl -X GET "http://172.17.0.1:8021/revocation/registry/5k8nbJA5Cx9RbJqb4E7Qw7%3
 {"result": 2}
 </pre>
 
-### 13.12. Definir o estado do registro de revogação manualmente
+### 14.12. Definir o estado do registro de revogação manualmente
 Patch /revocation​/registry​/{rev_reg_id}​/set-state
 
 **Estados possíveis :**
@@ -1024,7 +1033,7 @@ curl -X PATCH "http://172.17.0.1:8021/revocation/registry/5k8nbJA5Cx9RbJqb4E7Qw7
 {"result": {"tails_hash": "5J441HWb4z7GF9iv2j9x6z19Pi7gZQ4mKkpMVQzXpqMx", "revoc_reg_id": "5k8nbJA5Cx9RbJqb4E7Qw7:4:5k8nbJA5Cx9RbJqb4E7Qw7:3:CL:61:Faber.initial.degree_schema:CL_ACCUM:8bab36e2-5164-4fb9-950a-76d716698deb", "record_id": "8bab36e2-5164-4fb9-950a-76d716698deb", "state": "posted", "updated_at": "2021-01-08 12:48:36.415779Z", "revoc_reg_def": {"ver": "1.0", "id": "5k8nbJA5Cx9RbJqb4E7Qw7:4:5k8nbJA5Cx9RbJqb4E7Qw7:3:CL:61:Faber.initial.degree_schema:CL_ACCUM:8bab36e2-5164-4fb9-950a-76d716698deb", "revocDefType": "CL_ACCUM", "tag": "8bab36e2-5164-4fb9-950a-76d716698deb", "credDefId": "5k8nbJA5Cx9RbJqb4E7Qw7:3:CL:61:Faber.initial.degree_schema", "value": {"issuanceType": "ISSUANCE_BY_DEFAULT", "maxCredNum": 100, "publicKeys": {"accumKey": {"z": "1 1B00F03A074C6208216294C526F1D21B19EFF773973CEBCBB178C0D7B5FC4D92 1 055C0CBEBC308D29ABF6EA349467D009EB4641A67C749C45911929EE6484A186 1 223B80BF315BCB9A2205BAA89A77D5DFC3E570F658B2568BD45D22B77EC62FEC 1 1D85366BD1D96CA1E6D2196189B1124F2E649C78371AE24F9EE76FF3576392A6"}}, "tailsHash": "5J441HWb4z7GF9iv2j9x6z19Pi7gZQ4mKkpMVQzXpqMx", "tailsLocation": "http://73007dd583c4.ngrok.io/5k8nbJA5Cx9RbJqb4E7Qw7:4:5k8nbJA5Cx9RbJqb4E7Qw7:3:CL:61:Faber.initial.degree_schema:CL_ACCUM:8bab36e2-5164-4fb9-950a-76d716698deb"}}, "tails_public_uri": "http://73007dd583c4.ngrok.io/5k8nbJA5Cx9RbJqb4E7Qw7:4:5k8nbJA5Cx9RbJqb4E7Qw7:3:CL:61:Faber.initial.degree_schema:CL_ACCUM:8bab36e2-5164-4fb9-950a-76d716698deb", "pending_pub": [], "max_cred_num": 100, "revoc_def_type": "CL_ACCUM", "created_at": "2021-01-08 12:43:17.889136Z", "revoc_reg_entry": {"ver": "1.0", "value": {"accum": "21 109C12E0E5F8C8D20257B8FC01843B723FA683D1873B2FB835529A8461E990871 21 11DCE82754E37CD01BE08E14FB5EA91C2BE1AD014AC6E072B2EB2DF4E6EF58255 6 6C8507D343F09291DCDB3089D441B4E8F8BAF68AD0D132B24E3B1EF8EF24EE67 4 2F9462E4E38452C7126F11CF93B3923A35CE5446987D91871FD230EF9ECAB667"}}, "tails_local_path": "/home/indy/.indy_client/tails/5k8nbJA5Cx9RbJqb4E7Qw7:4:5k8nbJA5Cx9RbJqb4E7Qw7:3:CL:61:Faber.initial.degree_schema:CL_ACCUM:8bab36e2-5164-4fb9-950a-76d716698deb/5J441HWb4z7GF9iv2j9x6z19Pi7gZQ4mKkpMVQzXpqMx", "tag": "8bab36e2-5164-4fb9-950a-76d716698deb", "issuer_did": "5k8nbJA5Cx9RbJqb4E7Qw7", "cred_def_id": "5k8nbJA5Cx9RbJqb4E7Qw7:3:CL:61:Faber.initial.degree_schema"}}
 </pre>
 
-### 13.13. Carregar arquivo local tails para o servidor
+### 14.13. Carregar arquivo local tails para o servidor
 Put /revocation​/registry​/{rev_reg_id}​/tails-file
 
 **Exemplo :**
@@ -1034,7 +1043,7 @@ curl -X PUT "http://172.17.0.1:8021/revocation/registry/5k8nbJA5Cx9RbJqb4E7Qw7%3
 -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiIyM2RmYjU2NC1mODRhLTRmMTgtYTdkNy02YTg2MGU1NTM0MzMifQ.rrNi_Wyac10aUuZv73E35p5JRt7ivla_3kNKLoGF0mU"
 </pre>
 
-### 13.14. Baixar arquivo tails
+### 14.14. Baixar arquivo tails
 Get /revocation​/registry​/{rev_reg_id}​/tails-file
 
 **Exemplo :**
@@ -1044,7 +1053,7 @@ curl -X GET "http://172.17.0.1:8021/revocation/registry/5k8nbJA5Cx9RbJqb4E7Qw7%3
 -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiIyM2RmYjU2NC1mODRhLTRmMTgtYTdkNy02YTg2MGU1NTM0MzMifQ.rrNi_Wyac10aUuZv73E35p5JRt7ivla_3kNKLoGF0mU" --output teste.tmp
 </pre>
 
-### 13.15. Revogar uma credencial emitida
+### 14.15. Revogar uma credencial emitida
 Post /revocation​/revoke
 
 **Exemplo :**
@@ -1054,9 +1063,9 @@ curl -X GET "http://172.17.0.1:8021/revocation/registry/5k8nbJA5Cx9RbJqb4E7Qw7%3
 -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiIyM2RmYjU2NC1mODRhLTRmMTgtYTdkNy02YTg2MGU1NTM0MzMifQ.rrNi_Wyac10aUuZv73E35p5JRt7ivla_3kNKLoGF0mU" --output teste.tmp
 </pre>
 
-## 14.Schema
+## 15.Schema
 
-### 14.1 Envia um esquema para o razão
+### 15.1 Envia um esquema para o razão
 Post /schemas
 
 **Exemplo :**
@@ -1067,7 +1076,7 @@ curl -X POST "http://172.17.0.1:8031/schemas"
 -d "{ \"attributes\": [ \"score\" ], \"schema_name\": \"prefs\", \"schema_version\": \"1.0\"}"
 </pre>
 
-### 14.2 Pesquise o esquema correspondente que o agente originou
+### 15.2 Pesquise o esquema correspondente que o agente originou
 
 Get /schemas/created
 
@@ -1078,7 +1087,7 @@ curl -X GET "http://172.17.0.1:8031/schemas/created?schema_id=2Y4xCxUYA35FEMSC5o
 -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJmMmEwMDI5NC02NGRmLTRmMzgtYTY2Zi1kNzg3OGE2N2JlNjkifQ.K0hwyvTcFvC3c18reBWTcKG4Fk6mNUSxknVCiUbYjaE"
 </pre>
 
-### 14.3 Obtém um esquema do livro-razão
+### 15.3 Obtém um esquema do livro-razão
 Get /schemas/{schema_id}
 
 **Exemplo :**
@@ -1100,9 +1109,9 @@ curl -X GET "http://172.17.0.1:8031/schemas/2Y4xCxUYA35FEMSC5ofGTh%3A2%3Adegree%
 }
 </pre>
 
-## 15.Server
+## 16.Server
 
-### 15.1 Query supported features
+### 16.1 Query supported features
 Get /features
 
 **Exemplo :**
@@ -1147,7 +1156,7 @@ curl -X GET "http://172.17.0.1:8021/features"
 
 </pre>
 
-### 15.2 Pega a lista de plugins carregados
+### 16.2 Pega a lista de plugins carregados
 Get /plugins
 
 **Exemplo :**
@@ -1184,7 +1193,7 @@ curl -X GET "http://172.17.0.1:8031/plugins"
 }
 </pre>
 
-### 15.3 Desligar servidor
+### 16.3 Desligar servidor
 Get /shutdown
 
 **Exemplo :**
@@ -1194,7 +1203,7 @@ curl -X GET "http://172.17.0.1:8031/shutdown"
 </pre>
 
 
-### 15.4 Obter o status do servidor
+### 16.4 Obter o status do servidor
 Get /status
 
 **Exemplo :**
@@ -1219,7 +1228,7 @@ conductor":
 }}
 </pre>
 
-### 15.5 Verificação de vivo
+### 16.5 Verificação de vivo
 Get /status/live
 
 **Exemplo :**
@@ -1236,7 +1245,7 @@ curl -X GET "http://172.17.0.1:8031/status/live"
 </pre>
 
 
-### 15.6 Verificação de pronto
+### 16.6 Verificação de pronto
 Get /status/ready
 
 **Exemplo :**
@@ -1252,7 +1261,7 @@ curl -X GET "http://172.17.0.1:8031/status/ready"
 {"ready": true}
 </pre>
 
-### 15.7 Reset nas estatísticas
+### 16.7 Reset nas estatísticas
 Post /status/reset
 
 **Exemplo :**
@@ -1262,9 +1271,9 @@ curl -X POST "http://172.17.0.1:8031/status/reset"
 -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJmMmEwMDI5NC02NGRmLTRmMzgtYTY2Zi1kNzg3OGE2N2JlNjkifQ.K0hwyvTcFvC3c18reBWTcKG4Fk6mNUSxknVCiUbYjaE"
 </pre>
 
-## 16.Trustping 
+## 17.Trustping 
 
-### 16.1 Envie um ping de confiança para uma conexão
+### 17.1 Envie um ping de confiança para uma conexão
 Post /connections/{conn_id}/send-ping
 
 **Exemplo :**
@@ -1280,8 +1289,8 @@ Resposta :
 
 </pre>
 
-## 17.Wallet
-### 17.1. Listando credenciais na Wallet
+## 18.Wallet
+### 18.1. Listando credenciais na Wallet
 
 Get /credentials
 
@@ -1292,7 +1301,7 @@ curl -X GET "http://172.17.0.1:8031/credentials"
 -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiI0ZjQ4NzRiMS1hY2IxLTRhODUtODE1Ny03YjBiNDgzNzJiZTAifQ.eCQcaIwaJYoAcG-xJ901U5DSJDyvJJiRoRF8FTVTBF8"
 </pre>
 
-### 17.2. Lista as wallets do Agent
+### 18.2. Lista as wallets do Agent
 
 Get /multitenancy/wallets
 
@@ -1327,7 +1336,7 @@ $ curl -X GET "http://172.17.0.1:8031/multitenancy/wallets"
 </pre>
 
 
-### 17.3. Obtendo apenas uma sub wallet
+### 18.3. Obtendo apenas uma sub wallet
 
 Get /multitenancy/wallet/{{ wallet_id }}
 
@@ -1337,7 +1346,7 @@ curl -X GET "http://172.17.0.1:8031/multitenancy/wallet/4f4874b1-acb1-4a85-8157-
 -H "accept: application/json"
 </pre>
 
-### 17.4. Criando uma sub wallet
+### 18.4. Criando uma sub wallet
 
 Post /multitenancy/wallet
 
@@ -1351,9 +1360,9 @@ curl -X POST "http://172.17.0.1:8021/multitenancy/wallet"
 </pre>
 
 
-## 18.Keylist
+## 19.Keylist
 
-### 18.1 Recuperar listas de chaves por conexão ou função
+### 19.1 Recuperar listas de chaves por conexão ou função
 
 Get /mediation/keylists
 
@@ -1367,7 +1376,7 @@ curl -X GET "http://172.17.0.1:8031/mediation/keylists?role=server"
 -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiI0M2Q2YWZhMi04NjQzLTRiMTctYTQzYS03MzNkYjBmODE5MDcifQ.4piqFm98kVs9zh4OdeER_mYbHHCOKw4jhqWGPrSbHLM"
 </pre>
 
-### 18.2 Envie a consulta da lista de chaves para o mediador
+### 19.2 Envie a consulta da lista de chaves para o mediador
 Post /mediation/keylists/{mediation_id}/send-keylist-query
 
 <pre>
@@ -1376,7 +1385,7 @@ curl -X GET "http://{{ Endereço IP }}:{{ Porta }}/mediation/keylists/{mediation
 -H "Authorization: Bearer {{ Token }}"
 </pre>
 
-### 18.3 atualizar a lista de chaves.
+### 19.3 atualizar a lista de chaves.
 Post /mediation/keylists/{mediation_id}/send-keylist-update
 
 <pre>
