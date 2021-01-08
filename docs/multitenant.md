@@ -43,19 +43,22 @@ Post /action-menu/{conn_id}/perform
 
 <pre>
 curl -X POST "http://172.17.0.1:8031/action-menu/f1ad2b46-aff5-4043-8a59-5907124e74d9/perform" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJkMjFjZTNmZi0wNWU5LTRhZWQtYWE0ZS1lNzNhNjQ5NjkzNmIifQ.ncetke6si8Dkzr1wo_PPfAJkMJY4FRaeMQOt03Scew4"
-<pre>
+</pre>
+
 ### 1.4 Solicite o menu ativo
 Post /action-menu/{conn_id}/request
 
 <pre>
 curl -X POST "http://172.17.0.1:8031/action-menu/f1ad2b46-aff5-4043-8a59-5907124e74d9/request" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJkMjFjZTNmZi0wNWU5LTRhZWQtYWE0ZS1lNzNhNjQ5NjkzNmIifQ.ncetke6si8Dkzr1wo_PPfAJkMJY4FRaeMQOt03Scew4"
 </pre>
+
 ### 1..5 Envie um menu de ação para uma conexão
 Post /action-menu/{conn_id}/send-menu 
 
 <pre>
 curl -X POST "http://172.17.0.1:8031/action-menu/f1ad2b46-aff5-4043-8a59-5907124e74d9/send-menu" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJkMjFjZTNmZi0wNWU5LTRhZWQtYWE0ZS1lNzNhNjQ5NjkzNmIifQ.ncetke6si8Dkzr1wo_PPfAJkMJY4FRaeMQOt03Scew4" -H "Content-Type: application/json" -d "{ \"menu\": { \"description\": \"User preferences for window settings\", \"errormsg\": \"Error: item not present\", \"options\": [ { \"description\": \"Window display preferences\", \"disabled\": \"False\", \"form\": { \"description\": \"Window preference settings\", \"params\": [ { \"default\": \"0\", \"description\": \"Delay in seconds before starting\", \"name\": \"delay\", \"required\": \"False\", \"title\": \"Delay in seconds\", \"type\": \"int\" } ], \"submit-label\": \"Send\", \"title\": \"Preferences\" }, \"name\": \"window_prefs\", \"title\": \"Window Preferences\" } ], \"title\": \"My Menu\" }}"
-<pre>
+</pre>
+
 ## 2.basicmessage
 ### 2.1. Enviar mensagem entre conexões Faber e Alice : 
 Post /connections/{{ connection_id }}/send-message
@@ -72,8 +75,6 @@ curl -X POST "http://172.17.0.1:8031/connections/d199d2d6-c164-46a1-b7bb-6062a23
 </pre>
 
 ## 3.Connection
-
-
 ### 3.1 Consultar conexões de agente para agente
 Get /connections
 
@@ -235,7 +236,6 @@ curl -X POST "http://172.17.0.1:8031/connections/8efcea04-f922-4a35-91b5-5827d37
 </pre>
 
 ## 4.Credential definition
-
 ### 4.1 Envia uma definição de credencial para o razão
 Post /credential-definitions
 
@@ -271,7 +271,6 @@ curl -X GET "http://172.17.0.1:8021/credential-definitions/M786j533KXeifEnGd3gQL
 </pre>
 
 ## 5.Credential
-
 ### 5.1 Obter tipos de atributos MIME da carteira
 
 Get /credential/mime-types/{{ credential_id }}
@@ -353,7 +352,6 @@ curl -X GET "http://172.17.0.1:8031/credentials"
 </pre>
 
 ## 6.Did exchange
-
 ### 6.1 Receba um novo convite de conexão
 Post /didexchange/receive-invitation
 
@@ -503,7 +501,6 @@ curl -X POST "http://172.17.0.1:8031/issue-credential/send-proposal"
 
 
 ## 9.Ledger
-
 ### 9.1. Obtenha o ponto de extremidade para um DID do razão
 Get /ledger/did-endpoint
 
@@ -592,7 +589,6 @@ Post /ledger/taa/accept
 </pre>
 
 ## 10.mediation
-
 ### 10.1. Solicitar mediação da conexão
 Post /mediation/request/{conn_id}
 
@@ -649,7 +645,6 @@ Post /mediation/requests/{mediation_id}/grant
 </pre>
 
 ## 11.Multitenancy
-
 ### 11.1. Criar wallet
 Post /multitenancy/wallet
 
@@ -737,7 +732,6 @@ curl -X GET "http://172.17.0.1:8021/multitenancy/wallets"
 </pre>
 
 ## 12.Out of band
-
 ### 12.1 Crie um novo convite de conexão
 Post /out-of-band/create-invitation
 
@@ -763,7 +757,6 @@ curl -X POST "http://172.17.0.1:8031/out-of-band/receive-invitation"
 </pre>
 
 ## 13.Proof presentation
-
 ### 13.1. Cria uma solicitação de apresentação não vinculada a nenhuma proposta ou conexão existente
 Post /present-proof/create-request
 
@@ -1086,7 +1079,6 @@ curl -X GET "http://172.17.0.1:8021/revocation/registry/5k8nbJA5Cx9RbJqb4E7Qw7%3
 </pre>
 
 ## 15.Schema
-
 ### 15.1 Envia um esquema para o razão
 Post /schemas
 
@@ -1132,7 +1124,6 @@ curl -X GET "http://172.17.0.1:8031/schemas/2Y4xCxUYA35FEMSC5ofGTh%3A2%3Adegree%
 </pre>
 
 ## 16.Server
-
 ### 16.1 Query supported features
 Get /features
 
@@ -1294,7 +1285,6 @@ curl -X POST "http://172.17.0.1:8031/status/reset"
 </pre>
 
 ## 17.Trustping 
-
 ### 17.1 Envie um ping de confiança para uma conexão
 Post /connections/{conn_id}/send-ping
 
@@ -1383,7 +1373,6 @@ curl -X POST "http://172.17.0.1:8021/multitenancy/wallet"
 
 
 ## 19.Keylist
-
 ### 19.1 Recuperar listas de chaves por conexão ou função
 
 Get /mediation/keylists
