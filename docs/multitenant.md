@@ -389,6 +389,12 @@ Post /didexchange/{conn_id}/accept-request
 </pre>
 
 ## 7.Introduction
+### 7.1 Comece uma introdução entre duas conexões
+Post /connections/{conn_id}/start-introduction
+
+<pre>
+curl -X POST "http://172.17.0.1:8021/connections/c51c8642-1b24-4862-8e08-a2ab889b6d8d/start-introduction?target_connection_id=c4a0882e-e20c-4ee7-b8bf-3f0903da8b35&message=message" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJlYmVjMmRlNS0zZTllLTQ1NTktYWU5Ny0xY2I3NTU3MTllOGQifQ.V74PkUzN4mCQC-h3WjVGfLtXNqbl4YJIyyx0b_UM88s"
+</pre>
 
 ## 8.Issue credential
 ### 8.1. Envie ao titular uma credencial, automatizando todo o fluxo
