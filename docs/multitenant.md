@@ -28,35 +28,45 @@ http://{{ Endereço IP }}:8021/api/doc
 Post /action-menu/{conn_id}/close
 
 <pre>
-curl -X POST "http://172.17.0.1:8031/action-menu/f1ad2b46-aff5-4043-8a59-5907124e74d9/close" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJkMjFjZTNmZi0wNWU5LTRhZWQtYWE0ZS1lNzNhNjQ5NjkzNmIifQ.ncetke6si8Dkzr1wo_PPfAJkMJY4FRaeMQOt03Scew4"
+curl -X POST "http://172.17.0.1:8031/action-menu/f1ad2b46-aff5-4043-8a59-5907124e74d9/close" 
+-H "accept: application/json" 
+-H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJkMjFjZTNmZi0wNWU5LTRhZWQtYWE0ZS1lNzNhNjQ5NjkzNmIifQ.ncetke6si8Dkzr1wo_PPfAJkMJY4FRaeMQOt03Scew4"
 </pre>
 
 ### 1.2 Busque o menu ativo
 Post /action-menu/{conn_id}/fetch
 
 <pre>
-curl -X POST "http://172.17.0.1:8031/action-menu/f1ad2b46-aff5-4043-8a59-5907124e74d9/fetch" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJkMjFjZTNmZi0wNWU5LTRhZWQtYWE0ZS1lNzNhNjQ5NjkzNmIifQ.ncetke6si8Dkzr1wo_PPfAJkMJY4FRaeMQOt03Scew4"
+curl -X POST "http://172.17.0.1:8031/action-menu/f1ad2b46-aff5-4043-8a59-5907124e74d9/fetch" 
+-H "accept: application/json" 
+-H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJkMjFjZTNmZi0wNWU5LTRhZWQtYWE0ZS1lNzNhNjQ5NjkzNmIifQ.ncetke6si8Dkzr1wo_PPfAJkMJY4FRaeMQOt03Scew4"
 </pre>
 
 ### 1.3 Execute uma ação associada ao menu ativo
 Post /action-menu/{conn_id}/perform
 
 <pre>
-curl -X POST "http://172.17.0.1:8031/action-menu/f1ad2b46-aff5-4043-8a59-5907124e74d9/perform" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJkMjFjZTNmZi0wNWU5LTRhZWQtYWE0ZS1lNzNhNjQ5NjkzNmIifQ.ncetke6si8Dkzr1wo_PPfAJkMJY4FRaeMQOt03Scew4"
+curl -X POST "http://172.17.0.1:8031/action-menu/f1ad2b46-aff5-4043-8a59-5907124e74d9/perform" 
+-H "accept: application/json" 
+-H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJkMjFjZTNmZi0wNWU5LTRhZWQtYWE0ZS1lNzNhNjQ5NjkzNmIifQ.ncetke6si8Dkzr1wo_PPfAJkMJY4FRaeMQOt03Scew4"
 </pre>
 
 ### 1.4 Solicite o menu ativo
 Post /action-menu/{conn_id}/request
 
 <pre>
-curl -X POST "http://172.17.0.1:8031/action-menu/f1ad2b46-aff5-4043-8a59-5907124e74d9/request" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJkMjFjZTNmZi0wNWU5LTRhZWQtYWE0ZS1lNzNhNjQ5NjkzNmIifQ.ncetke6si8Dkzr1wo_PPfAJkMJY4FRaeMQOt03Scew4"
+curl -X POST "http://172.17.0.1:8031/action-menu/f1ad2b46-aff5-4043-8a59-5907124e74d9/request" 
+-H "accept: application/json" 
+-H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJkMjFjZTNmZi0wNWU5LTRhZWQtYWE0ZS1lNzNhNjQ5NjkzNmIifQ.ncetke6si8Dkzr1wo_PPfAJkMJY4FRaeMQOt03Scew4"
 </pre>
 
 ### 1..5 Envie um menu de ação para uma conexão
 Post /action-menu/{conn_id}/send-menu 
 
 <pre>
-curl -X POST "http://172.17.0.1:8031/action-menu/f1ad2b46-aff5-4043-8a59-5907124e74d9/send-menu" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJkMjFjZTNmZi0wNWU5LTRhZWQtYWE0ZS1lNzNhNjQ5NjkzNmIifQ.ncetke6si8Dkzr1wo_PPfAJkMJY4FRaeMQOt03Scew4" -H "Content-Type: application/json" -d "{ \"menu\": { \"description\": \"User preferences for window settings\", \"errormsg\": \"Error: item not present\", \"options\": [ { \"description\": \"Window display preferences\", \"disabled\": \"False\", \"form\": { \"description\": \"Window preference settings\", \"params\": [ { \"default\": \"0\", \"description\": \"Delay in seconds before starting\", \"name\": \"delay\", \"required\": \"False\", \"title\": \"Delay in seconds\", \"type\": \"int\" } ], \"submit-label\": \"Send\", \"title\": \"Preferences\" }, \"name\": \"window_prefs\", \"title\": \"Window Preferences\" } ], \"title\": \"My Menu\" }}"
+curl -X POST "http://172.17.0.1:8031/action-menu/f1ad2b46-aff5-4043-8a59-5907124e74d9/send-menu" 
+-H "accept: application/json" 
+-H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJkMjFjZTNmZi0wNWU5LTRhZWQtYWE0ZS1lNzNhNjQ5NjkzNmIifQ.ncetke6si8Dkzr1wo_PPfAJkMJY4FRaeMQOt03Scew4" -H "Content-Type: application/json" -d "{ \"menu\": { \"description\": \"User preferences for window settings\", \"errormsg\": \"Error: item not present\", \"options\": [ { \"description\": \"Window display preferences\", \"disabled\": \"False\", \"form\": { \"description\": \"Window preference settings\", \"params\": [ { \"default\": \"0\", \"description\": \"Delay in seconds before starting\", \"name\": \"delay\", \"required\": \"False\", \"title\": \"Delay in seconds\", \"type\": \"int\" } ], \"submit-label\": \"Send\", \"title\": \"Preferences\" }, \"name\": \"window_prefs\", \"title\": \"Window Preferences\" } ], \"title\": \"My Menu\" }}"
 </pre>
 
 ## 2.basicmessage
@@ -79,7 +89,9 @@ curl -X POST "http://172.17.0.1:8031/connections/d199d2d6-c164-46a1-b7bb-6062a23
 Get /connections
 
 <pre>
-curl -X GET "http://172.17.0.1:8031/connections?invitation_key=HZfZf1zx1jEzsqFGS7tX1hf9Jw4MBDBZFtvhPK3UGeve" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJmMmEwMDI5NC02NGRmLTRmMzgtYTY2Zi1kNzg3OGE2N2JlNjkifQ.K0hwyvTcFvC3c18reBWTcKG4Fk6mNUSxknVCiUbYjaE"
+curl -X GET "http://172.17.0.1:8031/connections?invitation_key=HZfZf1zx1jEzsqFGS7tX1hf9Jw4MBDBZFtvhPK3UGeve" 
+-H "accept: application/json" 
+-H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJmMmEwMDI5NC02NGRmLTRmMzgtYTY2Zi1kNzg3OGE2N2JlNjkifQ.K0hwyvTcFvC3c18reBWTcKG4Fk6mNUSxknVCiUbYjaE"
 </pre>
 
 **Resultado :**
