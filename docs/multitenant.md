@@ -24,10 +24,32 @@ http://{{ Endereço IP }}:8021/api/doc
 ![Login2](swagger1-1.png)
 
 ## 1.action-menu
-### 1.1
-### 1.2
-### 1.3
-### 1.4
+### 1.1 Fecha o menu ativo associado a uma conexão
+Post /action-menu/{conn_id}/close
+
+<pre>
+curl -X POST "http://172.17.0.1:8031/action-menu/f1ad2b46-aff5-4043-8a59-5907124e74d9/close" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJkMjFjZTNmZi0wNWU5LTRhZWQtYWE0ZS1lNzNhNjQ5NjkzNmIifQ.ncetke6si8Dkzr1wo_PPfAJkMJY4FRaeMQOt03Scew4"
+</pre>
+
+### 1.2 Busque o menu ativo
+Post /action-menu/{conn_id}/fetch
+
+<pre>
+curl -X POST "http://172.17.0.1:8031/action-menu/f1ad2b46-aff5-4043-8a59-5907124e74d9/fetch" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJkMjFjZTNmZi0wNWU5LTRhZWQtYWE0ZS1lNzNhNjQ5NjkzNmIifQ.ncetke6si8Dkzr1wo_PPfAJkMJY4FRaeMQOt03Scew4"
+</pre>
+
+### 1.3 Execute uma ação associada ao menu ativo
+Post /action-menu/{conn_id}/perform
+
+<pre>
+curl -X POST "http://172.17.0.1:8031/action-menu/f1ad2b46-aff5-4043-8a59-5907124e74d9/perform" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJkMjFjZTNmZi0wNWU5LTRhZWQtYWE0ZS1lNzNhNjQ5NjkzNmIifQ.ncetke6si8Dkzr1wo_PPfAJkMJY4FRaeMQOt03Scew4"
+<pre>
+### 1.4 Solicite o menu ativo
+Post /action-menu/{conn_id}/request
+
+<pre>
+curl -X POST "http://172.17.0.1:8031/action-menu/f1ad2b46-aff5-4043-8a59-5907124e74d9/request" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJkMjFjZTNmZi0wNWU5LTRhZWQtYWE0ZS1lNzNhNjQ5NjkzNmIifQ.ncetke6si8Dkzr1wo_PPfAJkMJY4FRaeMQOt03Scew4"
+</pre>
 ### 1..5 Envie um menu de ação para uma conexão
 Post /action-menu/{conn_id}/send-menu 
 
