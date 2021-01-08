@@ -811,7 +811,7 @@ Post /revocation​/clear-pending-revocations
 
 **Exemplo :**
 <pre>
-
+curl -X POST "http://172.17.0.1:8021/revocation/clear-pending-revocations" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiI4ZmQ1YTlhYi01MjlhLTRmNzQtOWNiYS1kYmZjYjEwMTIxYjIifQ.5AXaNQk1P-PO_RHAWr_N_igtYwz0yEq2oaGlWhERcJo" -H "Content-Type: application/json" -d "{ \"purge\": { \"additionalProp1\": [ \"12345\" ], \"additionalProp2\": [ \"12345\" ], \"additionalProp3\": [ \"12345\" ] }}"
 </pre>
 
 ### 13.3. Cria um novo registro de revogação
@@ -819,7 +819,12 @@ Post /revocation​/create-registry
 
 **Exemplo :**
 <pre>
+curl -X POST "http://172.17.0.1:8021/revocation/create-registry" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiI4ZmQ1YTlhYi01MjlhLTRmNzQtOWNiYS1kYmZjYjEwMTIxYjIifQ.5AXaNQk1P-PO_RHAWr_N_igtYwz0yEq2oaGlWhERcJo" -H "Content-Type: application/json" -d "{ \"credential_definition_id\": \"2mArThE9e4QndCZvD7JRCK:3:CL:51:Faber.initial.degree_schema\", \"max_cred_num\": 1000}"
+</pre>
 
+**Resposta :**
+<pre>
+{"result": {"record_id": "03ac1cc3-48c1-4085-8df8-036949246abc", "updated_at": "2021-01-08 12:14:05.535939Z", "state": "generated", "cred_def_id": "2mArThE9e4QndCZvD7JRCK:3:CL:51:Faber.initial.degree_schema", "revoc_reg_def": {"ver": "1.0", "id": "2mArThE9e4QndCZvD7JRCK:4:2mArThE9e4QndCZvD7JRCK:3:CL:51:Faber.initial.degree_schema:CL_ACCUM:03ac1cc3-48c1-4085-8df8-036949246abc", "revocDefType": "CL_ACCUM", "tag": "03ac1cc3-48c1-4085-8df8-036949246abc", "credDefId": "2mArThE9e4QndCZvD7JRCK:3:CL:51:Faber.initial.degree_schema", "value": {"issuanceType": "ISSUANCE_BY_DEFAULT", "maxCredNum": 1000, "publicKeys": {"accumKey": {"z": "1 019C27CCA8A107489B2B4E3A798A86CA2F4C0E7CDE009F531065F217F23B143D 1 1F783F441C694C191F80B42F286CEB2A33B7B389CB68A736D10FF5A1956ED390 1 0F99395E287D8B23ED6BA1C68C2FDF875562AF8936535A5582B0058C1CB90F5A 1 112477EAD2388390D8A5BD32F09E06B74CDE5ABA50578B8A0847DFE5F0E2D2CB"}}, "tailsHash": "5PHTce3vFRgj3h2F6P2SxKywv2JfbA8DTUjkfgfSV1us", "tailsLocation": "/home/indy/.indy_client/tails/.hopper/5PHTce3vFRgj3h2F6P2SxKywv2JfbA8DTUjkfgfSV1us"}}, "created_at": "2021-01-08 12:14:03.249287Z", "tails_local_path": "/home/indy/.indy_client/tails/2mArThE9e4QndCZvD7JRCK:4:2mArThE9e4QndCZvD7JRCK:3:CL:51:Faber.initial.degree_schema:CL_ACCUM:03ac1cc3-48c1-4085-8df8-036949246abc/5PHTce3vFRgj3h2F6P2SxKywv2JfbA8DTUjkfgfSV1us", "revoc_reg_entry": {"ver": "1.0", "value": {"accum": "21 52F2BD277F4A8ACBD760E933E6B57E24AF11F3A9CEC5B89822D3F61308067CA7 4 10ADE1ED92C6128CE79D5EB69468B9C051E39EB7BB5623BF0852D0CA4F7689EB"}}, "tag": "03ac1cc3-48c1-4085-8df8-036949246abc", "revoc_def_type": "CL_ACCUM", "tails_hash": "5PHTce3vFRgj3h2F6P2SxKywv2JfbA8DTUjkfgfSV1us", "revoc_reg_id": "2mArThE9e4QndCZvD7JRCK:4:2mArThE9e4QndCZvD7JRCK:3:CL:51:Faber.initial.degree_schema:CL_ACCUM:03ac1cc3-48c1-4085-8df8-036949246abc", "max_cred_num": 1000, "pending_pub": [], "issuer_did": "2mArThE9e4QndCZvD7JRCK"}}
 </pre>
 
 ### 13.4. Obter status de revogação de credencial
@@ -827,7 +832,12 @@ Get /revocation​/credential-record
 
 **Exemplo :**
 <pre>
+curl -X GET "http://172.17.0.1:8021/revocation/credential-record?cred_rev_id=1&rev_reg_id=2mArThE9e4QndCZvD7JRCK%3A4%3A2mArThE9e4QndCZvD7JRCK%3A3%3ACL%3A51%3AFaber.initial.degree_schema%3ACL_ACCUM%3Aee3784c7-c314-4f47-8127-26b244c030b7" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiI4ZmQ1YTlhYi01MjlhLTRmNzQtOWNiYS1kYmZjYjEwMTIxYjIifQ.5AXaNQk1P-PO_RHAWr_N_igtYwz0yEq2oaGlWhERcJo"
+</pre>
 
+**Resposta :**
+<pre>
+{"result": {"record_id": "aab91121-8713-4415-bf38-31e87d613af2", "updated_at": "2021-01-08 11:43:00.893762Z", "state": "issued", "cred_def_id": "2mArThE9e4QndCZvD7JRCK:3:CL:51:Faber.initial.degree_schema", "cred_rev_id": "1", "created_at": "2021-01-08 11:43:00.893762Z", "cred_ex_id": "e994d940-d387-4835-a71a-f5e041bd3d3c", "rev_reg_id": "2mArThE9e4QndCZvD7JRCK:4:2mArThE9e4QndCZvD7JRCK:3:CL:51:Faber.initial.degree_schema:CL_ACCUM:ee3784c7-c314-4f47-8127-26b244c030b7"}}
 </pre>
 
 ### 13.5. Publicar revogações pendentes no razão
@@ -835,11 +845,11 @@ Post /revocation​/publish-revocations
 
 **Exemplo :**
 <pre>
-
+curl -X POST "http://172.17.0.1:8021/revocation/publish-revocations" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiI4ZmQ1YTlhYi01MjlhLTRmNzQtOWNiYS1kYmZjYjEwMTIxYjIifQ.5AXaNQk1P-PO_RHAWr_N_igtYwz0yEq2oaGlWhERcJo" -H "Content-Type: application/json" -d "{ \"rrid2crid\": { \"additionalProp1\": [ \"12345\" ] }}"
 </pre>
 
 ### 13.6. Pesquisar registros de revogação correspondentes que o agente atual criou
-Get /revocation​/registries​/created
+Get /revocation/registries/created
 
 **Exemplo :**
 <pre>
@@ -856,7 +866,12 @@ Get /revocation​/registry​/{rev_reg_id}
 
 **Exemplo :**
 <pre>
+curl -X GET "http://172.17.0.1:8021/revocation/registries/created" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiI4ZmQ1YTlhYi01MjlhLTRmNzQtOWNiYS1kYmZjYjEwMTIxYjIifQ.5AXaNQk1P-PO_RHAWr_N_igtYwz0yEq2oaGlWhERcJo"
+</pre>
 
+**Resposta :**
+<pre>
+{"rev_reg_ids": ["2mArThE9e4QndCZvD7JRCK:4:2mArThE9e4QndCZvD7JRCK:3:CL:51:Faber.initial.degree_schema:CL_ACCUM:03ac1cc3-48c1-4085-8df8-036949246abc", "2mArThE9e4QndCZvD7JRCK:4:2mArThE9e4QndCZvD7JRCK:3:CL:51:Faber.initial.degree_schema:CL_ACCUM:2933955d-6a2c-472c-9424-23a375b5a137", "2mArThE9e4QndCZvD7JRCK:4:2mArThE9e4QndCZvD7JRCK:3:CL:51:Faber.initial.degree_schema:CL_ACCUM:ee3784c7-c314-4f47-8127-26b244c030b7", "2mArThE9e4QndCZvD7JRCK:4:2mArThE9e4QndCZvD7JRCK:3:CL:51:Faber.initial.degree_schema:CL_ACCUM:5eda3bf6-1c19-4b70-8693-8eb8e542cfbb"]}
 </pre>
 
 ### 13.8. Atualize o registro de revogação com o novo URI público em seu arquivo caudas
@@ -864,15 +879,20 @@ Patch /revocation​/registry​/{rev_reg_id}
 
 **Exemplo :**
 <pre>
+curl -X PATCH "http://172.17.0.1:8021/revocation/registry/2mArThE9e4QndCZvD7JRCK%3A4%3A2mArThE9e4QndCZvD7JRCK%3A3%3ACL%3A51%3AFaber.initial.degree_schema%3ACL_ACCUM%3Aee3784c7-c314-4f47-8127-26b244c030b7" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiI4ZmQ1YTlhYi01MjlhLTRmNzQtOWNiYS1kYmZjYjEwMTIxYjIifQ.5AXaNQk1P-PO_RHAWr_N_igtYwz0yEq2oaGlWhERcJo" -H "Content-Type: application/json" -d "{ \"tails_public_uri\": \"http://192.168.56.133:6543/revocation/registry/WgWxqztrNooG92RXvxSTWv:4:WgWxqztrNooG92RXvxSTWv:3:CL:20:tag:CL_ACCUM:0/tails-file\"}"
+</pre>
 
+**Resposta :**
+<pre>
+{"result": {"record_id": "ee3784c7-c314-4f47-8127-26b244c030b7", "updated_at": "2021-01-08 12:37:53.836873Z", "state": "active", "cred_def_id": "2mArThE9e4QndCZvD7JRCK:3:CL:51:Faber.initial.degree_schema", "revoc_reg_def": {"ver": "1.0", "id": "2mArThE9e4QndCZvD7JRCK:4:2mArThE9e4QndCZvD7JRCK:3:CL:51:Faber.initial.degree_schema:CL_ACCUM:ee3784c7-c314-4f47-8127-26b244c030b7", "revocDefType": "CL_ACCUM", "tag": "ee3784c7-c314-4f47-8127-26b244c030b7", "credDefId": "2mArThE9e4QndCZvD7JRCK:3:CL:51:Faber.initial.degree_schema", "value": {"issuanceType": "ISSUANCE_BY_DEFAULT", "maxCredNum": 100, "publicKeys": {"accumKey": {"z": "1 00D9B88A9AB17C39449247D2926165CA49C8E9B3FD6A63046687FEC8FE788516 1 112F36283FD96F48CD9DD041F19A44B6351FC702E55618974229609EA58FBFDB 1 1C1222B559E2A1415494BF93758BFCDBB059A9789D83747256700440982ABAFC 1 18FFD561CBAE2B27C70A7F796B7AAF2AD7B0EF16B5F5E5C13529A644B768ED6C"}}, "tailsHash": "7kiapiYv4QP96bfC1DLHWBVbNr2VpvR2yPTe4kXa9NsM", "tailsLocation": "http://192.168.56.133:6543/revocation/registry/WgWxqztrNooG92RXvxSTWv:4:WgWxqztrNooG92RXvxSTWv:3:CL:20:tag:CL_ACCUM:0/tails-file"}}, "created_at": "2021-01-08 11:36:37.636679Z", "tails_local_path": "/home/indy/.indy_client/tails/2mArThE9e4QndCZvD7JRCK:4:2mArThE9e4QndCZvD7JRCK:3:CL:51:Faber.initial.degree_schema:CL_ACCUM:ee3784c7-c314-4f47-8127-26b244c030b7/7kiapiYv4QP96bfC1DLHWBVbNr2VpvR2yPTe4kXa9NsM", "revoc_reg_entry": {"ver": "1.0", "value": {"accum": "21 8B852ACB8185E41A6CEA3882B0AF209DB60EC95482AF52A1B6D75DC11783734D 4 12D539945D341522A7B164B25623B4144D76DAD0B8247745DB3DEA3F93B3EE38"}}, "tag": "ee3784c7-c314-4f47-8127-26b244c030b7", "revoc_def_type": "CL_ACCUM", "tails_hash": "7kiapiYv4QP96bfC1DLHWBVbNr2VpvR2yPTe4kXa9NsM", "revoc_reg_id": "2mArThE9e4QndCZvD7JRCK:4:2mArThE9e4QndCZvD7JRCK:3:CL:51:Faber.initial.degree_schema:CL_ACCUM:ee3784c7-c314-4f47-8127-26b244c030b7", "max_cred_num": 100, "pending_pub": [], "issuer_did": "2mArThE9e4QndCZvD7JRCK", "tails_public_uri": "http://192.168.56.133:6543/revocation/registry/WgWxqztrNooG92RXvxSTWv:4:WgWxqztrNooG92RXvxSTWv:3:CL:20:tag:CL_ACCUM:0/tails-file"}}
 </pre>
 
 ### 13.9. Enviar definição de registro de revogação para o razão
-Post /revocation​/registry​/{rev_reg_id}​/definition
+Post /revocation/registry/{rev_reg_id}​/definition
 
 **Exemplo :**
 <pre>
-
+curl -X POST "http://172.17.0.1:8021/revocation/registry/2mArThE9e4QndCZvD7JRCK%3A4%3A2mArThE9e4QndCZvD7JRCK%3A3%3ACL%3A51%3AFaber.initial.degree_schema%3ACL_ACCUM%3Aee3784c7-c314-4f47-8127-26b244c030b7/definition" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiI4ZmQ1YTlhYi01MjlhLTRmNzQtOWNiYS1kYmZjYjEwMTIxYjIifQ.5AXaNQk1P-PO_RHAWr_N_igtYwz0yEq2oaGlWhERcJo"
 </pre>
 
 ### 13.10. Enviar entrada do registro de revogação para o razão
@@ -880,7 +900,7 @@ Post /revocation​/registry​/{rev_reg_id}​/entry
 
 **Exemplo :**
 <pre>
-
+curl -X POST "http://172.17.0.1:8021/revocation/registry/2mArThE9e4QndCZvD7JRCK%3A4%3A2mArThE9e4QndCZvD7JRCK%3A3%3ACL%3A51%3AFaber.initial.degree_schema%3ACL_ACCUM%3Aee3784c7-c314-4f47-8127-26b244c030b7/entry" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiI4ZmQ1YTlhYi01MjlhLTRmNzQtOWNiYS1kYmZjYjEwMTIxYjIifQ.5AXaNQk1P-PO_RHAWr_N_igtYwz0yEq2oaGlWhERcJo"
 </pre>
 
 ### 13.11. Obtenha o número de credenciais emitidas no registro de revogação
