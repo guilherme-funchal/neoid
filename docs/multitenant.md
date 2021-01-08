@@ -73,7 +73,10 @@ curl -X GET "http://172.17.0.1:8031/connections?invitation_key=HZfZf1zx1jEzsqFGS
 Post /connections/create-invitation
 
 <pre>
-curl -X POST "http://172.17.0.1:8021/connections/create-invitation" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiI1MWY1MzAwYS1hZTNkLTQyNjktOGNjMC05MmU5Njc3OGQzMGYifQ.v38pl0TbiKQc_wTkrID1ljJoXkGS-Wm3f7j82LIaDI0" -H "Content-Type: application/json" -d "{ \"metadata\": {}, \"recipient_keys\": [ \"H3C2AVvLMv6gmMNam3uVAjZpfkcJCwDwnZn6z3wXmqPV\" ], \"routing_keys\": [ \"H3C2AVvLMv6gmMNam3uVAjZpfkcJCwDwnZn6z3wXmqPV\" ], \"service_endpoint\": \"http://172.17.0.1:8020\"}"
+curl -X POST "http://172.17.0.1:8021/connections/create-invitation" 
+-H "accept: application/json" 
+-H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiI1MWY1MzAwYS1hZTNkLTQyNjktOGNjMC05MmU5Njc3OGQzMGYifQ.v38pl0TbiKQc_wTkrID1ljJoXkGS-Wm3f7j82LIaDI0" 
+-H "Content-Type: application/json" -d "{ \"metadata\": {}, \"recipient_keys\": [ \"H3C2AVvLMv6gmMNam3uVAjZpfkcJCwDwnZn6z3wXmqPV\" ], \"routing_keys\": [ \"H3C2AVvLMv6gmMNam3uVAjZpfkcJCwDwnZn6z3wXmqPV\" ], \"service_endpoint\": \"http://172.17.0.1:8020\"}"
 </pre>
 
 **Resposta :**
@@ -93,7 +96,10 @@ curl -X POST "http://172.17.0.1:8021/connections/create-invitation" -H "accept: 
 Post /connections/create-static
 
 <pre>
-curl -X POST "http://172.17.0.1:8021/connections/create-static" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiI1MWY1MzAwYS1hZTNkLTQyNjktOGNjMC05MmU5Njc3OGQzMGYifQ.v38pl0TbiKQc_wTkrID1ljJoXkGS-Wm3f7j82LIaDI0" -H "Content-Type: application/json" -d "{ \"alias\": \"alice\", \"my_did\": \"WgWxqztrNooG92RXvxSTWv\", \"my_seed\": \"000000000000000000000000000Alice\", \"their_did\": \"WgWxqztrNooG92RXvxSTWv\", \"their_endpoint\": \"http://172.17.0.1:8021\", \"their_label\": \"alice\", \"their_seed\": \"alice\", \"their_verkey\": \"alice\"}"
+curl -X POST "http://172.17.0.1:8021/connections/create-static" 
+-H "accept: application/json" 
+-H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiI1MWY1MzAwYS1hZTNkLTQyNjktOGNjMC05MmU5Njc3OGQzMGYifQ.v38pl0TbiKQc_wTkrID1ljJoXkGS-Wm3f7j82LIaDI0" 
+-H "Content-Type: application/json" -d "{ \"alias\": \"alice\", \"my_did\": \"WgWxqztrNooG92RXvxSTWv\", \"my_seed\": \"000000000000000000000000000Alice\", \"their_did\": \"WgWxqztrNooG92RXvxSTWv\", \"their_endpoint\": \"http://172.17.0.1:8021\", \"their_label\": \"alice\", \"their_seed\": \"alice\", \"their_verkey\": \"alice\"}"
 </pre>
 
 **Resposta :**
@@ -128,7 +134,9 @@ Post /connections/receive-invitation
 Post /connections/{conn_id}
 
 <pre>
-curl -X GET "http://172.17.0.1:8031/connections/ef9743bd-ddda-44ac-854d-671b522bfdc3" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJmMmEwMDI5NC02NGRmLTRmMzgtYTY2Zi1kNzg3OGE2N2JlNjkifQ.K0hwyvTcFvC3c18reBWTcKG4Fk6mNUSxknVCiUbYjaE"
+curl -X GET "http://172.17.0.1:8031/connections/ef9743bd-ddda-44ac-854d-671b522bfdc3" 
+-H "accept: application/json" 
+-H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJmMmEwMDI5NC02NGRmLTRmMzgtYTY2Zi1kNzg3OGE2N2JlNjkifQ.K0hwyvTcFvC3c18reBWTcKG4Fk6mNUSxknVCiUbYjaE"
 </pre>
 
 **Resultado :**
@@ -152,7 +160,9 @@ curl -X GET "http://172.17.0.1:8031/connections/ef9743bd-ddda-44ac-854d-671b522b
 Delete /connections/{conn_id}
 
 <pre>
-curl -X DELETE "http://172.17.0.1:8031/connections/ef9743bd-ddda-44ac-854d-671b522bfdc3" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJmMmEwMDI5NC02NGRmLTRmMzgtYTY2Zi1kNzg3OGE2N2JlNjkifQ.K0hwyvTcFvC3c18reBWTcKG4Fk6mNUSxknVCiUbYjaE"
+curl -X DELETE "http://172.17.0.1:8031/connections/ef9743bd-ddda-44ac-854d-671b522bfdc3" 
+-H "accept: application/json" 
+-H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJmMmEwMDI5NC02NGRmLTRmMzgtYTY2Zi1kNzg3OGE2N2JlNjkifQ.K0hwyvTcFvC3c18reBWTcKG4Fk6mNUSxknVCiUbYjaE"
 </pre>
 
 ### 2.7 Aceite um convite de conexão armazenado
@@ -178,13 +188,19 @@ Post /connections/{conn_id}/accept-request
 ### 2.10 Buscar metadados da conexão
 
 <pre>
-curl -X GET "http://172.17.0.1:8031/connections/8efcea04-f922-4a35-91b5-5827d37967d0/metadata" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiI0MmM0OTc2OC02ZDM5LTRhZmYtYjliZi04MTlkYzdhZTUxNzYifQ.AbH_NDLt3G5zaKGh6s603IVpWBTXbO3omjM9LxWv-es"
+curl -X GET "http://172.17.0.1:8031/connections/8efcea04-f922-4a35-91b5-5827d37967d0/metadata" 
+-H "accept: application/json" 
+-H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiI0MmM0OTc2OC02ZDM5LTRhZmYtYjliZi04MTlkYzdhZTUxNzYifQ.AbH_NDLt3G5zaKGh6s603IVpWBTXbO3omjM9LxWv-es"
 </pre>
 
 ### 2.11 Definir metadados da conexão
 
 <pre>
-curl -X POST "http://172.17.0.1:8031/connections/8efcea04-f922-4a35-91b5-5827d37967d0/metadata" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiI0MmM0OTc2OC02ZDM5LTRhZmYtYjliZi04MTlkYzdhZTUxNzYifQ.AbH_NDLt3G5zaKGh6s603IVpWBTXbO3omjM9LxWv-es" -H "Content-Type: application/json" -d "{ \"metadata\": {}}
+curl -X POST "http://172.17.0.1:8031/connections/8efcea04-f922-4a35-91b5-5827d37967d0/metadata" 
+-H "accept: application/json" 
+-H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiI0MmM0OTc2OC02ZDM5LTRhZmYtYjliZi04MTlkYzdhZTUxNzYifQ.AbH_NDLt3G5zaKGh6s603IVpWBTXbO3omjM9LxWv-es" 
+-H "Content-Type: application/json" 
+-d "{ \"metadata\": {}}
 </pre>
 
 ## 3.Credential definition
@@ -254,7 +270,9 @@ Get /credential/{{ credential_id }}
 
 **Exemplo :**
 <pre>
-curl -X GET "http://172.17.0.1:8031/credential/b4c8e92e-ec58-4446-8765-ea6c9e077fb3" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJmMmEwMDI5NC02NGRmLTRmMzgtYTY2Zi1kNzg3OGE2N2JlNjkifQ.K0hwyvTcFvC3c18reBWTcKG4Fk6mNUSxknVCiUbYjaE"
+curl -X GET "http://172.17.0.1:8031/credential/b4c8e92e-ec58-4446-8765-ea6c9e077fb3" 
+-H "accept: application/json" 
+-H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJmMmEwMDI5NC02NGRmLTRmMzgtYTY2Zi1kNzg3OGE2N2JlNjkifQ.K0hwyvTcFvC3c18reBWTcKG4Fk6mNUSxknVCiUbYjaE"
 </pre>
 
 **Resultado :**
@@ -284,7 +302,9 @@ Get /credential/mime-types/{{ connection_id }}
 
 **Exemplo :**
 <pre>
-curl -X GET "http://172.17.0.1:8031/credentials" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJmMmEwMDI5NC02NGRmLTRmMzgtYTY2Zi1kNzg3OGE2N2JlNjkifQ.K0hwyvTcFvC3c18reBWTcKG4Fk6mNUSxknVCiUbYjaE"
+curl -X GET "http://172.17.0.1:8031/credentials" 
+-H "accept: application/json" 
+-H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJmMmEwMDI5NC02NGRmLTRmMzgtYTY2Zi1kNzg3OGE2N2JlNjkifQ.K0hwyvTcFvC3c18reBWTcKG4Fk6mNUSxknVCiUbYjaE"
 </pre>
 
 **Resultado :**
@@ -344,7 +364,9 @@ Get /issue-credential/records
 
 **Exemplo :**
 <pre>
-curl -X GET "http://172.17.0.1:8031/issue-credential/records" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiIwMzM0ZTE3OC01OTg4LTQ5YjktYjM0Ni1kMDI4NzE5MDhjYjUifQ.YcWZ3ckVXFP1U6BwSgImfeBdRwPaURvhMno2uyTiIe4"
+curl -X GET "http://172.17.0.1:8031/issue-credential/records" 
+-H "accept: application/json" 
+-H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiIwMzM0ZTE3OC01OTg4LTQ5YjktYjM0Ni1kMDI4NzE5MDhjYjUifQ.YcWZ3ckVXFP1U6BwSgImfeBdRwPaURvhMno2uyTiIe4"
 </pre>
 
 ### 7.3. Buscar um único registro de troca de credencial
@@ -352,7 +374,9 @@ Get /issue-credential/records/{cred_ex_id}
 
 **Exemplo :**
 <pre>
-curl -X GET "http://172.17.0.1:8031/issue-credential/records/c614d249-719c-4302-b272-72d8adc440c4" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiIwMzM0ZTE3OC01OTg4LTQ5YjktYjM0Ni1kMDI4NzE5MDhjYjUifQ.YcWZ3ckVXFP1U6BwSgImfeBdRwPaURvhMno2uyTiIe4"
+curl -X GET "http://172.17.0.1:8031/issue-credential/records/c614d249-719c-4302-b272-72d8adc440c4" 
+-H "accept: application/json" 
+-H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiIwMzM0ZTE3OC01OTg4LTQ5YjktYjM0Ni1kMDI4NzE5MDhjYjUifQ.YcWZ3ckVXFP1U6BwSgImfeBdRwPaURvhMno2uyTiIe4"
 </pre>
 
 ### 7.4. Remover um registro de troca de credencial existente
@@ -360,7 +384,9 @@ Delete /issue-credential/records/{cred_ex_id}
 
 **Exemplo :**
 <pre>
-curl -X DELETE "http://172.17.0.1:8031/issue-credential/records/c614d249-719c-4302-b272-72d8adc440c4" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiIwMzM0ZTE3OC01OTg4LTQ5YjktYjM0Ni1kMDI4NzE5MDhjYjUifQ.YcWZ3ckVXFP1U6BwSgImfeBdRwPaURvhMno2uyTiIe4"
+curl -X DELETE "http://172.17.0.1:8031/issue-credential/records/c614d249-719c-4302-b272-72d8adc440c4" 
+-H "accept: application/json" 
+-H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiIwMzM0ZTE3OC01OTg4LTQ5YjktYjM0Ni1kMDI4NzE5MDhjYjUifQ.YcWZ3ckVXFP1U6BwSgImfeBdRwPaURvhMno2uyTiIe4"
 </pre>
 
 ### 7.5. Enviar uma credencial ao titular
@@ -377,7 +403,10 @@ Post /issue-credential/records/{cred_ex_id}/problem-report
 
 **Exemplo :**
 <pre>
-curl -X POST "http://172.17.0.1:8031/issue-credential/records/c614d249-719c-4302-b272-72d8adc440c4/problem-report" -H "accept: application/json" -H "Content-Type: application/json" -d "{ \"explain_ltxt\": \"string\"}" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiIwMzM0ZTE3OC01OTg4LTQ5YjktYjM0Ni1kMDI4NzE5MDhjYjUifQ.YcWZ3ckVXFP1U6BwSgImfeBdRwPaURvhMno2uyTiIe4"
+curl -X POST "http://172.17.0.1:8031/issue-credential/records/c614d249-719c-4302-b272-72d8adc440c4/problem-report" 
+-H "accept: application/json" 
+-H "Content-Type: application/json" 
+-d "{ \"explain_ltxt\": \"string\"}" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiIwMzM0ZTE3OC01OTg4LTQ5YjktYjM0Ni1kMDI4NzE5MDhjYjUifQ.YcWZ3ckVXFP1U6BwSgImfeBdRwPaURvhMno2uyTiIe4"
 </pre>
 
 ### 7.7. Enviar ao titular uma oferta de credencial em referência a uma proposta com visualização
@@ -403,7 +432,11 @@ Post ​/issue-credential​/records​/{cred_ex_id}​/store
 
 **Exemplo :**
 <pre>
-curl -X POST "http://172.17.0.1:8031/issue-credential/records/3177e7d0-1c0b-4c2a-847e-b170aab858a5/store" -H "accept: application/json" -H "Content-Type: application/json" -d "{ \"credential_id\": \"string\"}" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiIwMzM0ZTE3OC01OTg4LTQ5YjktYjM0Ni1kMDI4NzE5MDhjYjUifQ.YcWZ3ckVXFP1U6BwSgImfeBdRwPaURvhMno2uyTiIe4"
+curl -X POST "http://172.17.0.1:8031/issue-credential/records/3177e7d0-1c0b-4c2a-847e-b170aab858a5/store" 
+-H "accept: application/json" 
+-H "Content-Type: application/json" 
+-d "{ \"credential_id\": \"string\"}" 
+-H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiIwMzM0ZTE3OC01OTg4LTQ5YjktYjM0Ni1kMDI4NzE5MDhjYjUifQ.YcWZ3ckVXFP1U6BwSgImfeBdRwPaURvhMno2uyTiIe4"
 </pre>
 
 ### 7.10. Envie ao titular uma credencial, automatizando todo o fluxo
@@ -488,7 +521,8 @@ Post /ledger/register-nym
 
 **Exemplo :**
 <pre>
-curl -X POST "http://172.17.0.1:8021/ledger/register-nym?did=VWcuij6MDYDLUv8nvMmKP9&verkey=GYHAJG5YovSXBjS1pShdFizePPMswp7rctQBeNga28S5&role=ENDORSER" -H "accept: application/json" 
+curl -X POST "http://172.17.0.1:8021/ledger/register-nym?did=VWcuij6MDYDLUv8nvMmKP9&verkey=GYHAJG5YovSXBjS1pShdFizePPMswp7rctQBeNga28S5&role=ENDORSER" 
+-H "accept: application/json" 
 -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiIwZmFiNGEwMy01MjFiLTRhOTctYmQ4YS02OTA2NDFkN2U2ODEifQ.aBHKbOgQnv3JLE4exhX0RKfF9H20fJLYhXdZUvODwAE"
 </pre>
 
@@ -498,7 +532,8 @@ Patch /ledger/rotate-public-did-keypair
 **Exemplo :**
 <pre>
 curl -X PATCH "http://172.17.0.1:8021/ledger/rotate-public-did-keypair" 
--H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiIwZmFiNGEwMy01MjFiLTRhOTctYmQ4YS02OTA2NDFkN2U2ODEifQ.aBHKbOgQnv3JLE4exhX0RKfF9H20fJLYhXdZUvODwAE"
+-H "accept: application/json" 
+-H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiIwZmFiNGEwMy01MjFiLTRhOTctYmQ4YS02OTA2NDFkN2U2ODEifQ.aBHKbOgQnv3JLE4exhX0RKfF9H20fJLYhXdZUvODwAE"
 </pre>
 
 ### 8.6. Busque o acordo do autor da transação atual, se houver
@@ -589,7 +624,10 @@ Post /multitenancy/wallet
 
 **Exemplo :**
 <pre>
-curl -X POST "http://172.17.0.1:8021/multitenancy/wallet" -H "accept: application/json" -H "Content-Type: application/json" -d "{ \"key_management_mode\": \"managed\", \"label\": \"Alice\", \"wallet_key\": \"MySecretKey123\", \"wallet_name\": \"MyNewWallet\", \"wallet_type\": \"indy\"}"
+curl -X POST "http://172.17.0.1:8021/multitenancy/wallet" 
+-H "accept: application/json" 
+-H "Content-Type: application/json" 
+-d "{ \"key_management_mode\": \"managed\", \"label\": \"Alice\", \"wallet_key\": \"MySecretKey123\", \"wallet_name\": \"MyNewWallet\", \"wallet_type\": \"indy\"}"
 </pre>
 
 **Resposta :**
@@ -602,7 +640,8 @@ Get /multitenancy/wallet/{wallet_id}
 
 **Exemplo :**
 <pre>
-curl -X GET "http://172.17.0.1:8021/multitenancy/wallet/729ecda2-3229-48e3-ac12-7ce7e82e433a" -H "accept: application/json"
+curl -X GET "http://172.17.0.1:8021/multitenancy/wallet/729ecda2-3229-48e3-ac12-7ce7e82e433a" 
+-H "accept: application/json"
 </pre>
 
 **Resposta :**
@@ -615,7 +654,10 @@ Post /multitenancy​/wallet​/{wallet_id}​/remove
 
 **Exemplo :**
 <pre>
-curl -X POST "http://172.17.0.1:8021/multitenancy/wallet/729ecda2-3229-48e3-ac12-7ce7e82e433a/remove" -H "accept: application/json" -H "Content-Type: application/json" -d "{ \"wallet_key\": \"MySecretKey123\"}"
+curl -X POST "http://172.17.0.1:8021/multitenancy/wallet/729ecda2-3229-48e3-ac12-7ce7e82e433a/remove" 
+-H "accept: application/json" 
+-H "Content-Type: application/json" 
+-d "{ \"wallet_key\": \"MySecretKey123\"}"
 </pre>
 
 ### 10.4. Obtenha o token de autenticação para um subwallet
@@ -623,7 +665,10 @@ Post /multitenancy/wallet/{wallet_id}/token
 
 **Exemplo :**
 <pre>
-curl -X POST "http://172.17.0.1:8021/multitenancy/wallet/60fd663c-e246-4dd2-97ca-a3e22ef2385e/token" -H "accept: application/json" -H "Content-Type: application/json" -d "{ \"wallet_key\": \"MySecretKey123\"}"
+curl -X POST "http://172.17.0.1:8021/multitenancy/wallet/60fd663c-e246-4dd2-97ca-a3e22ef2385e/token" 
+-H "accept: application/json" 
+-H "Content-Type: application/json" 
+-d "{ \"wallet_key\": \"MySecretKey123\"}"
 </pre>
 
 **Resposta :**
@@ -636,7 +681,8 @@ Get /multitenancy/wallets
 
 **Exemplo :**
 <pre>
-curl -X GET "http://172.17.0.1:8021/multitenancy/wallets" -H "accept: application/json"
+curl -X GET "http://172.17.0.1:8021/multitenancy/wallets" 
+-H "accept: application/json"
 </pre>
 
 **Resposta :**
@@ -666,7 +712,9 @@ Post /out-of-band/create-invitation
 
 **Exemplo :**
 <pre>
-curl -X POST "http://172.17.0.1:8031/out-of-band/create-invitation" -H "accept: application/json" -H "Authorization: Bearer  eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJmMmEwMDI5NC02NGRmLTRmMzgtYTY2Zi1kNzg3OGE2N2JlNjkifQ.K0hwyvTcFvC3c18reBWTcKG4Fk6mNUSxknVCiUbYjaE" 
+curl -X POST "http://172.17.0.1:8031/out-of-band/create-invitation" 
+-H "accept: application/json" 
+-H "Authorization: Bearer  eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJmMmEwMDI5NC02NGRmLTRmMzgtYTY2Zi1kNzg3OGE2N2JlNjkifQ.K0hwyvTcFvC3c18reBWTcKG4Fk6mNUSxknVCiUbYjaE" 
 -H "Content-Type: application/json" 
 -d "{ \"attachments\": [ { \"id\": \"string\", \"type\": \"string\" } ], \"include_handshake\": true, \"metadata\": {}, \"use_public_did\": true}"
 </pre>
@@ -676,7 +724,9 @@ Post /out-of-band/receive-invitation
 
 **Exemplo :**
 <pre>
-curl -X POST "http://172.17.0.1:8031/out-of-band/receive-invitation" -H "accept: application/json" -H "Authorization: Bearer  eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJmMmEwMDI5NC02NGRmLTRmMzgtYTY2Zi1kNzg3OGE2N2JlNjkifQ.K0hwyvTcFvC3c18reBWTcKG4Fk6mNUSxknVCiUbYjaE" 
+curl -X POST "http://172.17.0.1:8031/out-of-band/receive-invitation" 
+-H "accept: application/json" 
+-H "Authorization: Bearer  eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJmMmEwMDI5NC02NGRmLTRmMzgtYTY2Zi1kNzg3OGE2N2JlNjkifQ.K0hwyvTcFvC3c18reBWTcKG4Fk6mNUSxknVCiUbYjaE" 
 -H "Content-Type: application/json" 
 -d "{ \"attachments\": [ { \"id\": \"string\", \"type\": \"string\" } ], \"include_handshake\": true, \"metadata\": {}, \"use_public_did\": true}"
 </pre>
@@ -696,7 +746,9 @@ Get /present-proof/records
 
 **Exemplo :**
 <pre>
-curl -X GET "http://172.17.0.1:8031/present-proof/records?connection_id=7f91f6fe-4699-4ecf-868d-1aa7d7e24744" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJkZGUwYzdlMS0zOWMwLTQyNGMtOGJlYy02MmZiMmRlMjE4MWQifQ.Kr2l2FFOiY_DoMmZ_N8I_amo1P4kXARMblC1CuwOG4E"
+curl -X GET "http://172.17.0.1:8031/present-proof/records?connection_id=7f91f6fe-4699-4ecf-868d-1aa7d7e24744" 
+-H "accept: application/json" 
+-H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJkZGUwYzdlMS0zOWMwLTQyNGMtOGJlYy02MmZiMmRlMjE4MWQifQ.Kr2l2FFOiY_DoMmZ_N8I_amo1P4kXARMblC1CuwOG4E"
 </pre>
 
 ### 12.3. Buscar um único registro de troca de apresentação
@@ -704,7 +756,9 @@ Get /present-proof/records/{pres_ex_id}
 
 **Exemplo :**
 <pre>
-curl -X GET "http://172.17.0.1:8031/present-proof/records/fd17de3a-5198-4fdc-ab45-a794f2786558" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJkZGUwYzdlMS0zOWMwLTQyNGMtOGJlYy02MmZiMmRlMjE4MWQifQ.Kr2l2FFOiY_DoMmZ_N8I_amo1P4kXARMblC1CuwOG4E"
+curl -X GET "http://172.17.0.1:8031/present-proof/records/fd17de3a-5198-4fdc-ab45-a794f2786558" 
+-H "accept: application/json" 
+-H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJkZGUwYzdlMS0zOWMwLTQyNGMtOGJlYy02MmZiMmRlMjE4MWQifQ.Kr2l2FFOiY_DoMmZ_N8I_amo1P4kXARMblC1CuwOG4E"
 </pre>
 
 ### 12.4. Remover um registro de troca de apresentação existente
@@ -712,7 +766,9 @@ Delete /present-proof/records/{pres_ex_id}
 
 **Exemplo :**
 <pre>
-curl -X DELETE "http://172.17.0.1:8031/present-proof/records/fd17de3a-5198-4fdc-ab45-a794f2786558" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJkZGUwYzdlMS0zOWMwLTQyNGMtOGJlYy02MmZiMmRlMjE4MWQifQ.Kr2l2FFOiY_DoMmZ_N8I_amo1P4kXARMblC1CuwOG4E"
+curl -X DELETE "http://172.17.0.1:8031/present-proof/records/fd17de3a-5198-4fdc-ab45-a794f2786558" 
+-H "accept: application/json" 
+-H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJkZGUwYzdlMS0zOWMwLTQyNGMtOGJlYy02MmZiMmRlMjE4MWQifQ.Kr2l2FFOiY_DoMmZ_N8I_amo1P4kXARMblC1CuwOG4E"
 </pre>
 
 ### 12.5. Obter credenciais para um pedido de apresentação na carteira
@@ -720,7 +776,9 @@ Get /present-proof/records/{pres_ex_id}/credentials
 
 **Exemplo :**
 <pre>
-curl -X GET "http://172.17.0.1:8031/present-proof/records/6f8229d6-86cf-4516-a23e-f1f2014761c0/credentials" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJkZGUwYzdlMS0zOWMwLTQyNGMtOGJlYy02MmZiMmRlMjE4MWQifQ.Kr2l2FFOiY_DoMmZ_N8I_amo1P4kXARMblC1CuwOG4E"
+curl -X GET "http://172.17.0.1:8031/present-proof/records/6f8229d6-86cf-4516-a23e-f1f2014761c0/credentials" 
+-H "accept: application/json" 
+-H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJkZGUwYzdlMS0zOWMwLTQyNGMtOGJlYy02MmZiMmRlMjE4MWQifQ.Kr2l2FFOiY_DoMmZ_N8I_amo1P4kXARMblC1CuwOG4E"
 </pre>
 
 **Resultado :**
@@ -785,7 +843,9 @@ Post /present-proof​/send-request
 Get /revocation​/active-registry​/{cred_def_id}
 
 **Exemplo :**
-<pre>curl -X GET "http://172.17.0.1:8021/revocation/active-registry/LAm2sZX5hgQo57s7TB2HR8%3A3%3ACL%3A40%3AFaber.initial.degree_schema" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJhMWFhY2NjMS05NTBmLTQyYWItODEwMy03MjA1ZWQ1NWU5MTQifQ.HdSf0bufZrmsdB2Tdc22QO1aicC0hU5rR6aA0NnKzSk"
+<pre>curl -X GET "http://172.17.0.1:8021/revocation/active-registry/LAm2sZX5hgQo57s7TB2HR8%3A3%3ACL%3A40%3AFaber.initial.degree_schema" 
+-H "accept: application/json" 
+-H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJhMWFhY2NjMS05NTBmLTQyYWItODEwMy03MjA1ZWQ1NWU5MTQifQ.HdSf0bufZrmsdB2Tdc22QO1aicC0hU5rR6aA0NnKzSk"
 </pre>
 
 **Resultado :**
@@ -811,7 +871,9 @@ Post /revocation​/clear-pending-revocations
 
 **Exemplo :**
 <pre>
-curl -X POST "http://172.17.0.1:8021/revocation/clear-pending-revocations" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiI4ZmQ1YTlhYi01MjlhLTRmNzQtOWNiYS1kYmZjYjEwMTIxYjIifQ.5AXaNQk1P-PO_RHAWr_N_igtYwz0yEq2oaGlWhERcJo" -H "Content-Type: application/json" -d "{ \"purge\": { \"additionalProp1\": [ \"12345\" ], \"additionalProp2\": [ \"12345\" ], \"additionalProp3\": [ \"12345\" ] }}"
+curl -X POST "http://172.17.0.1:8021/revocation/clear-pending-revocations" 
+-H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiI4ZmQ1YTlhYi01MjlhLTRmNzQtOWNiYS1kYmZjYjEwMTIxYjIifQ.5AXaNQk1P-PO_RHAWr_N_igtYwz0yEq2oaGlWhERcJo" -H "Content-Type: application/json" 
+-d "{ \"purge\": { \"additionalProp1\": [ \"12345\" ], \"additionalProp2\": [ \"12345\" ], \"additionalProp3\": [ \"12345\" ] }}"
 </pre>
 
 ### 13.3. Cria um novo registro de revogação
@@ -819,7 +881,11 @@ Post /revocation​/create-registry
 
 **Exemplo :**
 <pre>
-curl -X POST "http://172.17.0.1:8021/revocation/create-registry" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiI4ZmQ1YTlhYi01MjlhLTRmNzQtOWNiYS1kYmZjYjEwMTIxYjIifQ.5AXaNQk1P-PO_RHAWr_N_igtYwz0yEq2oaGlWhERcJo" -H "Content-Type: application/json" -d "{ \"credential_definition_id\": \"2mArThE9e4QndCZvD7JRCK:3:CL:51:Faber.initial.degree_schema\", \"max_cred_num\": 1000}"
+curl -X POST "http://172.17.0.1:8021/revocation/create-registry" 
+-H "accept: application/json" 
+-H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiI4ZmQ1YTlhYi01MjlhLTRmNzQtOWNiYS1kYmZjYjEwMTIxYjIifQ.5AXaNQk1P-PO_RHAWr_N_igtYwz0yEq2oaGlWhERcJo" 
+-H "Content-Type: application/json" 
+-d "{ \"credential_definition_id\": \"2mArThE9e4QndCZvD7JRCK:3:CL:51:Faber.initial.degree_schema\", \"max_cred_num\": 1000}"
 </pre>
 
 **Resposta :**
@@ -832,7 +898,9 @@ Get /revocation​/credential-record
 
 **Exemplo :**
 <pre>
-curl -X GET "http://172.17.0.1:8021/revocation/credential-record?cred_rev_id=1&rev_reg_id=2mArThE9e4QndCZvD7JRCK%3A4%3A2mArThE9e4QndCZvD7JRCK%3A3%3ACL%3A51%3AFaber.initial.degree_schema%3ACL_ACCUM%3Aee3784c7-c314-4f47-8127-26b244c030b7" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiI4ZmQ1YTlhYi01MjlhLTRmNzQtOWNiYS1kYmZjYjEwMTIxYjIifQ.5AXaNQk1P-PO_RHAWr_N_igtYwz0yEq2oaGlWhERcJo"
+curl -X GET "http://172.17.0.1:8021/revocation/credential-record?cred_rev_id=1&rev_reg_id=2mArThE9e4QndCZvD7JRCK%3A4%3A2mArThE9e4QndCZvD7JRCK%3A3%3ACL%3A51%3AFaber.initial.degree_schema%3ACL_ACCUM%3Aee3784c7-c314-4f47-8127-26b244c030b7" 
+-H "accept: application/json" 
+-H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiI4ZmQ1YTlhYi01MjlhLTRmNzQtOWNiYS1kYmZjYjEwMTIxYjIifQ.5AXaNQk1P-PO_RHAWr_N_igtYwz0yEq2oaGlWhERcJo"
 </pre>
 
 **Resposta :**
@@ -845,7 +913,11 @@ Post /revocation​/publish-revocations
 
 **Exemplo :**
 <pre>
-curl -X POST "http://172.17.0.1:8021/revocation/publish-revocations" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiI4ZmQ1YTlhYi01MjlhLTRmNzQtOWNiYS1kYmZjYjEwMTIxYjIifQ.5AXaNQk1P-PO_RHAWr_N_igtYwz0yEq2oaGlWhERcJo" -H "Content-Type: application/json" -d "{ \"rrid2crid\": { \"additionalProp1\": [ \"12345\" ] }}"
+curl -X POST "http://172.17.0.1:8021/revocation/publish-revocations" 
+-H "accept: application/json" 
+-H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiI4ZmQ1YTlhYi01MjlhLTRmNzQtOWNiYS1kYmZjYjEwMTIxYjIifQ.5AXaNQk1P-PO_RHAWr_N_igtYwz0yEq2oaGlWhERcJo" 
+-H "Content-Type: application/json" 
+-d "{ \"rrid2crid\": { \"additionalProp1\": [ \"12345\" ] }}"
 </pre>
 
 ### 13.6. Pesquisar registros de revogação correspondentes que o agente atual criou
@@ -853,7 +925,9 @@ Get /revocation/registries/created
 
 **Exemplo :**
 <pre>
-curl -X GET "http://172.17.0.1:8021/revocation/registries/created?cred_def_id=LAm2sZX5hgQo57s7TB2HR8:3:CL:40:Faber.initial.degree_schema" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJhMWFhY2NjMS05NTBmLTQyYWItODEwMy03MjA1ZWQ1NWU5MTQifQ.HdSf0bufZrmsdB2Tdc22QO1aicC0hU5rR6aA0NnKzSk"
+curl -X GET "http://172.17.0.1:8021/revocation/registries/created?cred_def_id=LAm2sZX5hgQo57s7TB2HR8:3:CL:40:Faber.initial.degree_schema" 
+-H "accept: application/json" 
+-H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJhMWFhY2NjMS05NTBmLTQyYWItODEwMy03MjA1ZWQ1NWU5MTQifQ.HdSf0bufZrmsdB2Tdc22QO1aicC0hU5rR6aA0NnKzSk"
 </pre>
 
 **Resposta :**
@@ -866,7 +940,9 @@ Get /revocation​/registry​/{rev_reg_id}
 
 **Exemplo :**
 <pre>
-curl -X GET "http://172.17.0.1:8021/revocation/registries/created" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiI4ZmQ1YTlhYi01MjlhLTRmNzQtOWNiYS1kYmZjYjEwMTIxYjIifQ.5AXaNQk1P-PO_RHAWr_N_igtYwz0yEq2oaGlWhERcJo"
+curl -X GET "http://172.17.0.1:8021/revocation/registries/created" 
+-H "accept: application/json" 
+-H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiI4ZmQ1YTlhYi01MjlhLTRmNzQtOWNiYS1kYmZjYjEwMTIxYjIifQ.5AXaNQk1P-PO_RHAWr_N_igtYwz0yEq2oaGlWhERcJo"
 </pre>
 
 **Resposta :**
@@ -879,7 +955,11 @@ Patch /revocation​/registry​/{rev_reg_id}
 
 **Exemplo :**
 <pre>
-curl -X PATCH "http://172.17.0.1:8021/revocation/registry/2mArThE9e4QndCZvD7JRCK%3A4%3A2mArThE9e4QndCZvD7JRCK%3A3%3ACL%3A51%3AFaber.initial.degree_schema%3ACL_ACCUM%3Aee3784c7-c314-4f47-8127-26b244c030b7" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiI4ZmQ1YTlhYi01MjlhLTRmNzQtOWNiYS1kYmZjYjEwMTIxYjIifQ.5AXaNQk1P-PO_RHAWr_N_igtYwz0yEq2oaGlWhERcJo" -H "Content-Type: application/json" -d "{ \"tails_public_uri\": \"http://192.168.56.133:6543/revocation/registry/WgWxqztrNooG92RXvxSTWv:4:WgWxqztrNooG92RXvxSTWv:3:CL:20:tag:CL_ACCUM:0/tails-file\"}"
+curl -X PATCH "http://172.17.0.1:8021/revocation/registry/2mArThE9e4QndCZvD7JRCK%3A4%3A2mArThE9e4QndCZvD7JRCK%3A3%3ACL%3A51%3AFaber.initial.degree_schema%3ACL_ACCUM%3Aee3784c7-c314-4f47-8127-26b244c030b7" 
+-H "accept: application/json" 
+-H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiI4ZmQ1YTlhYi01MjlhLTRmNzQtOWNiYS1kYmZjYjEwMTIxYjIifQ.5AXaNQk1P-PO_RHAWr_N_igtYwz0yEq2oaGlWhERcJo" 
+-H "Content-Type: application/json" 
+-d "{ \"tails_public_uri\": \"http://192.168.56.133:6543/revocation/registry/WgWxqztrNooG92RXvxSTWv:4:WgWxqztrNooG92RXvxSTWv:3:CL:20:tag:CL_ACCUM:0/tails-file\"}"
 </pre>
 
 **Resposta :**
@@ -892,7 +972,9 @@ Post /revocation/registry/{rev_reg_id}​/definition
 
 **Exemplo :**
 <pre>
-curl -X POST "http://172.17.0.1:8021/revocation/registry/2mArThE9e4QndCZvD7JRCK%3A4%3A2mArThE9e4QndCZvD7JRCK%3A3%3ACL%3A51%3AFaber.initial.degree_schema%3ACL_ACCUM%3Aee3784c7-c314-4f47-8127-26b244c030b7/definition" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiI4ZmQ1YTlhYi01MjlhLTRmNzQtOWNiYS1kYmZjYjEwMTIxYjIifQ.5AXaNQk1P-PO_RHAWr_N_igtYwz0yEq2oaGlWhERcJo"
+curl -X POST "http://172.17.0.1:8021/revocation/registry/2mArThE9e4QndCZvD7JRCK%3A4%3A2mArThE9e4QndCZvD7JRCK%3A3%3ACL%3A51%3AFaber.initial.degree_schema%3ACL_ACCUM%3Aee3784c7-c314-4f47-8127-26b244c030b7/definition" 
+-H "accept: application/json" 
+-H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiI4ZmQ1YTlhYi01MjlhLTRmNzQtOWNiYS1kYmZjYjEwMTIxYjIifQ.5AXaNQk1P-PO_RHAWr_N_igtYwz0yEq2oaGlWhERcJo"
 </pre>
 
 ### 13.10. Enviar entrada do registro de revogação para o razão
@@ -900,7 +982,9 @@ Post /revocation​/registry​/{rev_reg_id}​/entry
 
 **Exemplo :**
 <pre>
-curl -X POST "http://172.17.0.1:8021/revocation/registry/2mArThE9e4QndCZvD7JRCK%3A4%3A2mArThE9e4QndCZvD7JRCK%3A3%3ACL%3A51%3AFaber.initial.degree_schema%3ACL_ACCUM%3Aee3784c7-c314-4f47-8127-26b244c030b7/entry" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiI4ZmQ1YTlhYi01MjlhLTRmNzQtOWNiYS1kYmZjYjEwMTIxYjIifQ.5AXaNQk1P-PO_RHAWr_N_igtYwz0yEq2oaGlWhERcJo"
+curl -X POST "http://172.17.0.1:8021/revocation/registry/2mArThE9e4QndCZvD7JRCK%3A4%3A2mArThE9e4QndCZvD7JRCK%3A3%3ACL%3A51%3AFaber.initial.degree_schema%3ACL_ACCUM%3Aee3784c7-c314-4f47-8127-26b244c030b7/entry" 
+-H "accept: application/json" 
+-H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiI4ZmQ1YTlhYi01MjlhLTRmNzQtOWNiYS1kYmZjYjEwMTIxYjIifQ.5AXaNQk1P-PO_RHAWr_N_igtYwz0yEq2oaGlWhERcJo"
 </pre>
 
 ### 13.11. Obtenha o número de credenciais emitidas no registro de revogação
@@ -908,15 +992,36 @@ Get /revocation​/registry​/{rev_reg_id}​/issued
 
 **Exemplo :**
 <pre>
+curl -X GET "http://172.17.0.1:8021/revocation/registry/5k8nbJA5Cx9RbJqb4E7Qw7%3A4%3A5k8nbJA5Cx9RbJqb4E7Qw7%3A3%3ACL%3A61%3AFaber.initial.degree_schema%3ACL_ACCUM%3A8bab36e2-5164-4fb9-950a-76d716698deb/issued" 
+-H "accept: application/json" 
+-H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiIyM2RmYjU2NC1mODRhLTRmMTgtYTdkNy02YTg2MGU1NTM0MzMifQ.rrNi_Wyac10aUuZv73E35p5JRt7ivla_3kNKLoGF0mU"
+</pre>
 
+**Resposta :**
+<pre>
+{"result": 2}
 </pre>
 
 ### 13.12. Definir o estado do registro de revogação manualmente
 Patch /revocation​/registry​/{rev_reg_id}​/set-state
 
+**Estados possíveis :**
+* init
+* posted
+* generated
+* active
+* full
+
 **Exemplo :**
 <pre>
+curl -X PATCH "http://172.17.0.1:8021/revocation/registry/5k8nbJA5Cx9RbJqb4E7Qw7%3A4%3A5k8nbJA5Cx9RbJqb4E7Qw7%3A3%3ACL%3A61%3AFaber.initial.degree_schema%3ACL_ACCUM%3A8bab36e2-5164-4fb9-950a-76d716698deb/set-state?state=posted" 
+-H "accept: application/json" 
+-H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiIyM2RmYjU2NC1mODRhLTRmMTgtYTdkNy02YTg2MGU1NTM0MzMifQ.rrNi_Wyac10aUuZv73E35p5JRt7ivla_3kNKLoGF0mU"
+</pre>
 
+**Resultado :**
+<pre>
+{"result": {"tails_hash": "5J441HWb4z7GF9iv2j9x6z19Pi7gZQ4mKkpMVQzXpqMx", "revoc_reg_id": "5k8nbJA5Cx9RbJqb4E7Qw7:4:5k8nbJA5Cx9RbJqb4E7Qw7:3:CL:61:Faber.initial.degree_schema:CL_ACCUM:8bab36e2-5164-4fb9-950a-76d716698deb", "record_id": "8bab36e2-5164-4fb9-950a-76d716698deb", "state": "posted", "updated_at": "2021-01-08 12:48:36.415779Z", "revoc_reg_def": {"ver": "1.0", "id": "5k8nbJA5Cx9RbJqb4E7Qw7:4:5k8nbJA5Cx9RbJqb4E7Qw7:3:CL:61:Faber.initial.degree_schema:CL_ACCUM:8bab36e2-5164-4fb9-950a-76d716698deb", "revocDefType": "CL_ACCUM", "tag": "8bab36e2-5164-4fb9-950a-76d716698deb", "credDefId": "5k8nbJA5Cx9RbJqb4E7Qw7:3:CL:61:Faber.initial.degree_schema", "value": {"issuanceType": "ISSUANCE_BY_DEFAULT", "maxCredNum": 100, "publicKeys": {"accumKey": {"z": "1 1B00F03A074C6208216294C526F1D21B19EFF773973CEBCBB178C0D7B5FC4D92 1 055C0CBEBC308D29ABF6EA349467D009EB4641A67C749C45911929EE6484A186 1 223B80BF315BCB9A2205BAA89A77D5DFC3E570F658B2568BD45D22B77EC62FEC 1 1D85366BD1D96CA1E6D2196189B1124F2E649C78371AE24F9EE76FF3576392A6"}}, "tailsHash": "5J441HWb4z7GF9iv2j9x6z19Pi7gZQ4mKkpMVQzXpqMx", "tailsLocation": "http://73007dd583c4.ngrok.io/5k8nbJA5Cx9RbJqb4E7Qw7:4:5k8nbJA5Cx9RbJqb4E7Qw7:3:CL:61:Faber.initial.degree_schema:CL_ACCUM:8bab36e2-5164-4fb9-950a-76d716698deb"}}, "tails_public_uri": "http://73007dd583c4.ngrok.io/5k8nbJA5Cx9RbJqb4E7Qw7:4:5k8nbJA5Cx9RbJqb4E7Qw7:3:CL:61:Faber.initial.degree_schema:CL_ACCUM:8bab36e2-5164-4fb9-950a-76d716698deb", "pending_pub": [], "max_cred_num": 100, "revoc_def_type": "CL_ACCUM", "created_at": "2021-01-08 12:43:17.889136Z", "revoc_reg_entry": {"ver": "1.0", "value": {"accum": "21 109C12E0E5F8C8D20257B8FC01843B723FA683D1873B2FB835529A8461E990871 21 11DCE82754E37CD01BE08E14FB5EA91C2BE1AD014AC6E072B2EB2DF4E6EF58255 6 6C8507D343F09291DCDB3089D441B4E8F8BAF68AD0D132B24E3B1EF8EF24EE67 4 2F9462E4E38452C7126F11CF93B3923A35CE5446987D91871FD230EF9ECAB667"}}, "tails_local_path": "/home/indy/.indy_client/tails/5k8nbJA5Cx9RbJqb4E7Qw7:4:5k8nbJA5Cx9RbJqb4E7Qw7:3:CL:61:Faber.initial.degree_schema:CL_ACCUM:8bab36e2-5164-4fb9-950a-76d716698deb/5J441HWb4z7GF9iv2j9x6z19Pi7gZQ4mKkpMVQzXpqMx", "tag": "8bab36e2-5164-4fb9-950a-76d716698deb", "issuer_did": "5k8nbJA5Cx9RbJqb4E7Qw7", "cred_def_id": "5k8nbJA5Cx9RbJqb4E7Qw7:3:CL:61:Faber.initial.degree_schema"}}
 </pre>
 
 ### 13.13. Carregar arquivo local tails para o servidor
@@ -924,19 +1029,29 @@ Put /revocation​/registry​/{rev_reg_id}​/tails-file
 
 **Exemplo :**
 <pre>
-
+curl -X PUT "http://172.17.0.1:8021/revocation/registry/5k8nbJA5Cx9RbJqb4E7Qw7%3A4%3A5k8nbJA5Cx9RbJqb4E7Qw7%3A3%3ACL%3A61%3AFaber.initial.degree_schema%3ACL_ACCUM%3A8bab36e2-5164-4fb9-950a-76d716698deb/tails-file" 
+-H "accept: application/json" 
+-H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiIyM2RmYjU2NC1mODRhLTRmMTgtYTdkNy02YTg2MGU1NTM0MzMifQ.rrNi_Wyac10aUuZv73E35p5JRt7ivla_3kNKLoGF0mU"
 </pre>
 
 ### 13.14. Baixar arquivo tails
 Get /revocation​/registry​/{rev_reg_id}​/tails-file
 
+**Exemplo :**
+<pre>
+curl -X GET "http://172.17.0.1:8021/revocation/registry/5k8nbJA5Cx9RbJqb4E7Qw7%3A4%3A5k8nbJA5Cx9RbJqb4E7Qw7%3A3%3ACL%3A61%3AFaber.initial.degree_schema%3ACL_ACCUM%3A8bab36e2-5164-4fb9-950a-76d716698deb/tails-file" 
+-H "accept: application/octet-stream" 
+-H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiIyM2RmYjU2NC1mODRhLTRmMTgtYTdkNy02YTg2MGU1NTM0MzMifQ.rrNi_Wyac10aUuZv73E35p5JRt7ivla_3kNKLoGF0mU" --output teste.tmp
+</pre>
 
 ### 13.15. Revogar uma credencial emitida
 Post /revocation​/revoke
 
 **Exemplo :**
 <pre>
-
+curl -X GET "http://172.17.0.1:8021/revocation/registry/5k8nbJA5Cx9RbJqb4E7Qw7%3A4%3A5k8nbJA5Cx9RbJqb4E7Qw7%3A3%3ACL%3A61%3AFaber.initial.degree_schema%3ACL_ACCUM%3A8bab36e2-5164-4fb9-950a-76d716698deb/tails-file" 
+-H "accept: application/octet-stream" 
+-H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiIyM2RmYjU2NC1mODRhLTRmMTgtYTdkNy02YTg2MGU1NTM0MzMifQ.rrNi_Wyac10aUuZv73E35p5JRt7ivla_3kNKLoGF0mU" --output teste.tmp
 </pre>
 
 ## 14.Schema
@@ -946,7 +1061,10 @@ Post /schemas
 
 **Exemplo :**
 <pre>
-curl -X POST "http://172.17.0.1:8031/schemas" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJmMmEwMDI5NC02NGRmLTRmMzgtYTY2Zi1kNzg3OGE2N2JlNjkifQ.K0hwyvTcFvC3c18reBWTcKG4Fk6mNUSxknVCiUbYjaE" -H "Content-Type: application/json" -d "{ \"attributes\": [ \"score\" ], \"schema_name\": \"prefs\", \"schema_version\": \"1.0\"}"
+curl -X POST "http://172.17.0.1:8031/schemas" 
+-H "accept: application/json" 
+-H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJmMmEwMDI5NC02NGRmLTRmMzgtYTY2Zi1kNzg3OGE2N2JlNjkifQ.K0hwyvTcFvC3c18reBWTcKG4Fk6mNUSxknVCiUbYjaE" -H "Content-Type: application/json" 
+-d "{ \"attributes\": [ \"score\" ], \"schema_name\": \"prefs\", \"schema_version\": \"1.0\"}"
 </pre>
 
 ### 14.2 Pesquise o esquema correspondente que o agente originou
@@ -955,7 +1073,9 @@ Get /schemas/created
 
 **Exemplo :**
 <pre>
-curl -X GET "http://172.17.0.1:8031/schemas/created?schema_id=2Y4xCxUYA35FEMSC5ofGTh%3A2%3Adegree%20schema%3A67.95.15" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJmMmEwMDI5NC02NGRmLTRmMzgtYTY2Zi1kNzg3OGE2N2JlNjkifQ.K0hwyvTcFvC3c18reBWTcKG4Fk6mNUSxknVCiUbYjaE"
+curl -X GET "http://172.17.0.1:8031/schemas/created?schema_id=2Y4xCxUYA35FEMSC5ofGTh%3A2%3Adegree%20schema%3A67.95.15" 
+-H "accept: application/json" 
+-H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJmMmEwMDI5NC02NGRmLTRmMzgtYTY2Zi1kNzg3OGE2N2JlNjkifQ.K0hwyvTcFvC3c18reBWTcKG4Fk6mNUSxknVCiUbYjaE"
 </pre>
 
 ### 14.3 Obtém um esquema do livro-razão
@@ -963,7 +1083,9 @@ Get /schemas/{schema_id}
 
 **Exemplo :**
 <pre>
-curl -X GET "http://172.17.0.1:8031/schemas/2Y4xCxUYA35FEMSC5ofGTh%3A2%3Adegree%20schema%3A67.95.15" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJmMmEwMDI5NC02NGRmLTRmMzgtYTY2Zi1kNzg3OGE2N2JlNjkifQ.K0hwyvTcFvC3c18reBWTcKG4Fk6mNUSxknVCiUbYjaE"
+curl -X GET "http://172.17.0.1:8031/schemas/2Y4xCxUYA35FEMSC5ofGTh%3A2%3Adegree%20schema%3A67.95.15" 
+-H "accept: application/json" 
+-H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJmMmEwMDI5NC02NGRmLTRmMzgtYTY2Zi1kNzg3OGE2N2JlNjkifQ.K0hwyvTcFvC3c18reBWTcKG4Fk6mNUSxknVCiUbYjaE"
 </pre>
 
 **Resposta :**
@@ -985,7 +1107,8 @@ Get /features
 
 **Exemplo :**
 <pre>
-curl -X GET "http://172.17.0.1:8021/features" -H "accept: application/json"
+curl -X GET "http://172.17.0.1:8021/features" 
+-H "accept: application/json"
 </pre>
 
 **Resposta :**
@@ -1029,7 +1152,8 @@ Get /plugins
 
 **Exemplo :**
 <pre>
-curl -X GET "http://172.17.0.1:8031/plugins" -H "accept: application/json"
+curl -X GET "http://172.17.0.1:8031/plugins" 
+-H "accept: application/json"
 </pre>
 
 **Resposta :**
@@ -1065,7 +1189,8 @@ Get /shutdown
 
 **Exemplo :**
 <pre>
-curl -X GET "http://172.17.0.1:8031/shutdown" -H "accept: application/json"
+curl -X GET "http://172.17.0.1:8031/shutdown" 
+-H "accept: application/json"
 </pre>
 
 
@@ -1074,7 +1199,8 @@ Get /status
 
 **Exemplo :**
 <pre>
-curl -X GET "http://172.17.0.1:8031/status" -H "accept: application/json"
+curl -X GET "http://172.17.0.1:8031/status" 
+-H "accept: application/json"
 </pre>
 
 **Resposta :**
@@ -1098,7 +1224,9 @@ Get /status/live
 
 **Exemplo :**
 <pre>
-curl -X GET "http://172.17.0.1:8031/status/live" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJmMmEwMDI5NC02NGRmLTRmMzgtYTY2Zi1kNzg3OGE2N2JlNjkifQ.K0hwyvTcFvC3c18reBWTcKG4Fk6mNUSxknVCiUbYjaE"
+curl -X GET "http://172.17.0.1:8031/status/live" 
+-H "accept: application/json" 
+-H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJmMmEwMDI5NC02NGRmLTRmMzgtYTY2Zi1kNzg3OGE2N2JlNjkifQ.K0hwyvTcFvC3c18reBWTcKG4Fk6mNUSxknVCiUbYjaE"
 </pre>
 
 **Resposta :**
@@ -1113,7 +1241,9 @@ Get /status/ready
 
 **Exemplo :**
 <pre>
-curl -X GET "http://172.17.0.1:8031/status/ready" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJmMmEwMDI5NC02NGRmLTRmMzgtYTY2Zi1kNzg3OGE2N2JlNjkifQ.K0hwyvTcFvC3c18reBWTcKG4Fk6mNUSxknVCiUbYjaE"
+curl -X GET "http://172.17.0.1:8031/status/ready" 
+-H "accept: application/json" 
+-H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJmMmEwMDI5NC02NGRmLTRmMzgtYTY2Zi1kNzg3OGE2N2JlNjkifQ.K0hwyvTcFvC3c18reBWTcKG4Fk6mNUSxknVCiUbYjaE"
 </pre>
 
 **Resposta :**
@@ -1127,7 +1257,9 @@ Post /status/reset
 
 **Exemplo :**
 <pre>
-curl -X POST "http://172.17.0.1:8031/status/reset" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJmMmEwMDI5NC02NGRmLTRmMzgtYTY2Zi1kNzg3OGE2N2JlNjkifQ.K0hwyvTcFvC3c18reBWTcKG4Fk6mNUSxknVCiUbYjaE"
+curl -X POST "http://172.17.0.1:8031/status/reset" 
+-H "accept: application/json" 
+-H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJmMmEwMDI5NC02NGRmLTRmMzgtYTY2Zi1kNzg3OGE2N2JlNjkifQ.K0hwyvTcFvC3c18reBWTcKG4Fk6mNUSxknVCiUbYjaE"
 </pre>
 
 ## 16.Trustping 
@@ -1137,7 +1269,10 @@ Post /connections/{conn_id}/send-ping
 
 **Exemplo :**
 <pre>
-curl -X POST "http://172.17.0.1:8031/connections/1f412482-9b16-4484-b99c-9c7095104f39/send-ping" -H "accept: application/json" -H "Content-Type: application/json" -d "{ \"comment\": \"string\"}" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiI0M2Q2YWZhMi04NjQzLTRiMTctYTQzYS03MzNkYjBmODE5MDcifQ.4piqFm98kVs9zh4OdeER_mYbHHCOKw4jhqWGPrSbHLM"
+curl -X POST "http://172.17.0.1:8031/connections/1f412482-9b16-4484-b99c-9c7095104f39/send-ping" 
+-H "accept: application/json" 
+-H "Content-Type: application/json" 
+-d "{ \"comment\": \"string\"}" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiI0M2Q2YWZhMi04NjQzLTRiMTctYTQzYS03MzNkYjBmODE5MDcifQ.4piqFm98kVs9zh4OdeER_mYbHHCOKw4jhqWGPrSbHLM"
 
 Resposta :
 
@@ -1163,7 +1298,8 @@ Get /multitenancy/wallets
 
 **Exemplo :**
 <pre>
-$ curl -X GET "http://172.17.0.1:8021/multitenancy/wallets" -H "accept: application/json"
+$ curl -X GET "http://172.17.0.1:8021/multitenancy/wallets" 
+-H "accept: application/json"
 
 {"results": [{
 "key_management_mode": "managed", 
@@ -1175,7 +1311,8 @@ $ curl -X GET "http://172.17.0.1:8021/multitenancy/wallets" -H "accept: applicat
 "wallet.id": "5027ba81-c22b-4943-b3de-18b08bcee631"}, 
 "created_at": "2021-01-05 14:04:45.293416Z"}]}
 
-$ curl -X GET "http://172.17.0.1:8031/multitenancy/wallets" -H "accept: application/json"
+$ curl -X GET "http://172.17.0.1:8031/multitenancy/wallets" 
+-H "accept: application/json"
 
 {"results": [{
 "created_at": "2021-01-05 14:04:48.541702Z", 
