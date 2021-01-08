@@ -171,7 +171,26 @@ curl -X POST "http://172.17.0.1:8021/connections/create-static"
 Post /connections/receive-invitation
 
 <pre>
+curl -X POST "http://172.17.0.1:8031/connections/receive-invitation" 
+-H "accept: application/json" 
+-H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiI1ZDk3NDQ2OC00ZTk3LTRiNTMtOGZhZi0wZmQxZjNiYWIwYjgifQ.QCLXyw7KIWhVU7H6NOQ0gM3cFUtl4dIxZnKh3Jx-cqw" -H "Content-Type: application/json" -d "{ \"@type\": \"did:sov:BzCbsNYhMrjHiqZDTUASHg;spec/connections/1.0/invitation\", \"@id\": \"aea87a96-51e6-4b31-b488-f2427ed80e87\", \"recipientKeys\": [\"CbMzqNhvmm3EZVr9GTiFQYUQ8dQG5WfkuiSLcRGsosbh\"], \"label\": \"Faber.initial\", \"serviceEndpoint\": \"http://172.17.0.1:8020\"}"
+</pre>
 
+**Resultado :**
+<pre>
+{
+"their_role": "inviter", 
+"routing_state": "none", 
+"state": "request", 
+"created_at": "2021-01-08 17:48:48.222818Z", 
+"request_id": "149c944a-4303-4b24-8eff-8f3dd0d6a618", 
+"accept": "auto", "my_did": "H1seGcKYF4dzC3zqB7Woj5", 
+"their_label": "Faber.initial", 
+"invitation_mode": "once", 
+"connection_id": "38d6d6a3-018c-49bf-b04f-5eb5e5ce593b", 
+"invitation_key": "CbMzqNhvmm3EZVr9GTiFQYUQ8dQG5WfkuiSLcRGsosbh", 
+"updated_at": "2021-01-08 17:48:48.244098Z"
+}
 </pre>
 
 ### 3.5 Buscar um único registro de conexão
