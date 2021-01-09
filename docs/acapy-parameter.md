@@ -72,7 +72,6 @@
         <td>Regra de convite</td>
         <td></td>
     </tr>
-            
     <tr>
         <td>invite-label <label></td>
         <td>Legenda do convite</td>
@@ -366,6 +365,6 @@
         <td></td>
         <td></td>
     </tr>             
-    <table>
+<table>
 
 
