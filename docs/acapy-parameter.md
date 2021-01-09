@@ -1,7 +1,7 @@
 <table>
     <tr>
         <th>Parâmetro</th>
-        <th>Valor</th>
+        <th>Descrição</th>
         <th>Exemplo</th>
     </tr>
     <tr>
@@ -21,13 +21,13 @@
     </tr>
     <tr>
         <td>admin-insecure-mode</td>
-        <td></td>
+        <td>Define que a porta administrativa pode receber conexões</td>
         <td></td>
     </tr>
     <tr>
         <td>no-receive-invites</td>
-        <td></td>
-        <td></td>
+        <td>Não recebe convites de conexão</td>
+        <td>-</td>
     </tr>
     <tr>
         <td>help-link
@@ -40,46 +40,52 @@
         <td>webhook-url
             <url> debug
         </td>
-        <td></td>
+        <td>Endereço do Webhook</td>
         <td></td>
     </tr>
     <tr>
         <td>debug-seed
             <debug-did-seed>
         </td>
-        <td></td>
+        <td>Seed para debug</td>
         <td></td>
     </tr>
     <tr>
-        <td>debug-connections debug-credentials</td>
-        <td></td>
+        <td>debug-connections</td>
+        <td>Modo debug para conexões</td>
         <td></td>
     </tr>
+    <tr>
+        <td>debug-credentials</td>
+        <td>Modo debug para credenciais</td>
+        <td></td>
+    </tr>        
     <tr>
         <td>debug-presentations</td>
-        <td></td>
+        <td>Modo debug para provas</td>
         <td></td>
     </tr>
     <tr>
         <td>invite invite-role
             <role>
         </td>
-        <td></td>
+        <td>Regra de convite</td>
         <td></td>
     </tr>
+            
     <tr>
         <td>invite-label <label></td>
-        <td></td>
+        <td>Legenda do convite</td>
         <td></td>
     </tr>
     <tr>
         <td>invite-multi-use</td>
-        <td></td>
+        <td>Permite multiplos usuários</td>
         <td></td>
     </tr>
     <tr>
         <td>invite-public</td>
-        <td></td>
+        <td>Permite convite publico</td>
         <td></td>
     </tr>
     <tr>
@@ -91,54 +97,54 @@
     </tr>
     <tr>
         <td>auto-accept-invites</td>
-        <td></td>
+        <td>Auto aceita convites</td>
         <td></td>
     </tr>
     <tr>
         <td>auto-accept-requests</td>
-        <td></td>
+        <td>Auto aceita requisições</td>
         <td></td>
     </tr>
     <tr>
         <td>auto-respond-messages</td>
-        <td></td>
+        <td>Auto aceita mensagens</td>
         <td></td>
     </tr>
     <tr>
         <td>auto-respond-credential-proposal</td>
-        <td></td>
+        <td>Auto aceita propostas de credencial</td>
         <td></td>
     </tr>
     <tr>
         <td>auto-respond-credential-offer</td>
-        <td></td>
+        <td>Auto aceita oferta de credencial</td>
         <td></td>
     </tr>
     <tr>
         <td>auto-respond-credential-request</td>
-        <td></td>
+        <td>Auto pedido de credencial</td>
         <td></td>
     </tr>
     <tr>
         <td>auto-respond-presentation-proposal</td>
-        <td></td>
+        <td>Auto responde proposta de prova</td>
         <td></td>
     </tr>
     <tr>
         <td>auto-respond-presentation-request</td>
-        <td></td>
+        <td>uto responde proposta de requisição</td>
         <td></td>
     </tr>
     <tr>
         <td>auto-store-credential</td>
-        <td></td>
+        <td>uto armazena credencial</td>
         <td></td>
     </tr>
     <tr>
         <td>auto-verify-presentation plugin
             <module>
         </td>
-        <td></td>
+        <td>uto verifica apresentação</td>
         <td></td>
     </tr>
     <tr>
@@ -147,12 +153,12 @@
                 <endpoint>
                     <endpoint> ...
         </td>
-        <td></td>
+        <td>Tipo de armazenamento</td>
         <td></td>
     </tr>
     <tr>
         <td>read-only-ledger</td>
-        <td></td>
+        <td>Somente leitura</td>
         <td></td>
     </tr>
     <tr>
@@ -173,42 +179,47 @@
         <td>genesis-file
             <genesis-file>
         </td>
-        <td></td>
+        <td>Arquivo de gênese</td>
         <td></td>
     </tr>
     <tr>
         <td>genesis-url
             <genesis-url>
         </td>
-        <td></td>
+        <td>URL de gênese</td>
         <td></td>
     </tr>
     <tr>
         <td>log-config
             <path-to-config>
         </td>
-        <td></td>
+        <td>Configuração de log</td>
         <td></td>
     </tr>
     <tr>
         <td>log-file
             <log-file>
         </td>
-        <td></td>
+        <td>Arquivo de log</td>
         <td></td>
     </tr>
     <tr>
         <td>log-level
             <log-level>
         </td>
-        <td></td>
+        <td>Nível de log</td>
         <td></td>
     </tr>
     <tr>
         <td>auto-ping-connection</td>
-        <td></td>
+        <td>Auto ping</td>
         <td></td>
     </tr>
+    <tr>
+        <td>auto-provision</td>
+        <td>Auto proviciona credencial</td>
+        <td></td>
+    </tr>  
     <tr>
         <td>invite-base-url
             <base-url>
@@ -223,40 +234,40 @@
     </tr>
     <tr>
         <td>public-invites</td>
-        <td></td>
+        <td>Convites publicos</td>
         <td></td>
     </tr>
     <tr>
         <td>timing</td>
-        <td></td>
+        <td>Tempo</td>
         <td></td>
     </tr>
     <tr>
         <td>timing-log
             <log-path> trace
         </td>
-        <td></td>
+        <td>Temp de log</td>
         <td></td>
     </tr>
     <tr>
         <td>trace-target
             <trace-target>
         </td>
-        <td></td>
+        <td><Trace/td>
         <td></td>
     </tr>
     <tr>
         <td>trace-tag
             <trace-tag>
         </td>
-        <td></td>
+        <td>Etiqueta do trace</td>
         <td></td>
     </tr>
     <tr>
         <td>trace-label
             <trace-label>
         </td>
-        <td></td>
+        <td>Legenda do trace</td>
         <td></td>
     </tr>
     <tr>
@@ -278,35 +289,35 @@
     </tr>
     <tr>
         <td>enable-undelivered-queue</td>
-        <td></td>
+        <td>Habilita fila de não entregues</td>
         <td></td>
     </tr>
     <tr>
         <td>seed
             <wallet-seed>
         </td>
-        <td></td>
+        <td>Seed da Wallet</td>
         <td></td>
     </tr>
     <tr>
         <td>wallet-key
             <wallet-key>
         </td>
-        <td></td>
+        <td>Chave da wallet</td>
         <td></td>
     </tr>
     <tr>
         <td>wallet-name
             <wallet-name>
         </td>
-        <td></td>
+        <td>Nome da wallet</td>
         <td></td>
     </tr>
     <tr>
         <td>wallet-type
             <wallet-type>
         </td>
-        <td></td>
+        <td>Tipo da wallet</td>
         <td></td>
     </tr>
     <tr>
@@ -320,7 +331,7 @@
         <td>wallet-storage-config
             <storage-config>
         </td>
-        <td></td>
+        <td>Tipo do armazenamento da wallet</td>
         <td></td>
     </tr>
     <tr>
@@ -332,34 +343,29 @@
     </tr>
     <tr>
         <td>replace-public-did</td>
-        <td></td>
+        <td>Altera DID públicos</td>
         <td></td>
     </tr>
     <tr>
         <td>multitenant</td>
-        <td></td>
+        <td>Habilita multitenant</td>
         <td></td>
     </tr>
     <tr>
         <td>multitenant-admin</td>
-        <td></td>
+        <td>Administrador do multitenant</td>
         <td></td>
     </tr>
     <tr>
         <td>jwt-secret</td>
-        <td></td>
+        <td>Habilita token jwt</td>
         <td></td>
     </tr>
     <tr>
         <td>very_secret_secret</td>
         <td></td>
         <td></td>
-    </tr>     
-    <tr>
-        <td>auto-provision</td>
-        <td></td>
-        <td></td>
-    </tr>          
+    </tr>             
     <table>
 
 
