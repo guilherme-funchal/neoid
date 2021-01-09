@@ -354,16 +354,12 @@
         <td>very_secret_secret</td>
         <td></td>
         <td></td>
-    </tr>
+    </tr>     
+    <tr>
         <td>auto-provision</td>
         <td></td>
         <td></td>
-    </tr>
-        </tr>
-        <td>preserve-exchange-records</td>
-        <td></td>
-        <td></td>
-    </tr>            
+    </tr>          
     <table>
 
 
