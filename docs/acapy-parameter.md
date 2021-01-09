@@ -335,4 +335,35 @@
         <td></td>
         <td></td>
     </tr>
+    <tr>
+        <td>multitenant</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>multitenant-admin</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>jwt-secret</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>very_secret_secret</td>
+        <td></td>
+        <td></td>
+    </tr>
+        <td>auto-provision</td>
+        <td></td>
+        <td></td>
+    </tr>
+        </tr>
+        <td>preserve-exchange-records</td>
+        <td></td>
+        <td></td>
+    </tr>            
     <table>
+
+
