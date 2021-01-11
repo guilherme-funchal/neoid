@@ -631,8 +631,22 @@ Post /mediation/request/{conn_id}
 
 **Exemplo :**
 <pre>
+ curl -X POST "http://172.17.0.1:8031/mediation/request/4e85c556-c891-404f-9207-706b01517474" -H "accept: application/json" -H "Content-Type: application/json" -d "{ \"mediator_terms\": [ \"string\" ], \"recipient_terms\": [ \"string\" ]}" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiI1NzljZmE3Ny0zNzQzLTQ4YWEtYTI0OS0wNTJhNjYwOGNkYzQifQ.RhYZoNSP5sLBoiM5TFJDB6aPIcHbXgLqZxb7RLB1Lbw"
+</pre>
 
-
+**Resposta :**
+<pre>
+{
+"updated_at": "2021-01-11 13:54:49.553616Z", 
+"created_at": "2021-01-11 13:54:49.553616Z", 
+"recipient_terms": ["string"], 
+"state": "request", 
+"mediation_id": "cd58ef93-2b59-4d90-befb-39be04f3a7c8", 
+"routing_keys": [], 
+"connection_id": "4e85c556-c891-404f-9207-706b01517474", 
+"role": "client", 
+"mediator_terms": ["string"]
+}
 </pre>
 
 ### 10.2. Solicitações de mediação de consulta, lista de retorno de todos os registros de mediação
@@ -640,8 +654,7 @@ Get /mediation/requests
 
 **Exemplo :**
 <pre>
-
-
+ curl -X GET "http://172.17.0.1:8021/mediation/requests" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiIyM2ZjNjI5Zi1hMjQxLTRmZmUtYWQyOC1jOGZhNWYyOTNlNDcifQ.efThQchCSPO3ue_P7flrQRVfnh_Vz0YU8EjzmuJrJqw"
 </pre>
 
 ### 10.3. Recuperar registro de solicitação de mediação
@@ -649,18 +662,27 @@ Get /mediation/requests/{mediation_id}
 
 **Exemplo :**
 <pre>
-
-
+ curl -X DELETE "http://172.17.0.1:8021/mediation/requests/cd58ef93-2b59-4d90-befb-39be04f3a7c8" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiI1NzljZmE3Ny0zNzQzLTQ4YWEtYTI0OS0wNTJhNjYwOGNkYzQifQ.RhYZoNSP5sLBoiM5TFJDB6aPIcHbXgLqZxb7RLB1Lbw"
 </pre>
 
+**Resposta :**
+<pre>
+{
+"updated_at": "2021-01-11 13:54:49.553616Z", 
+"created_at": "2021-01-11 13:54:49.553616Z", 
+"recipient_terms": ["string"], 
+"state": "request", "mediation_id": "cd58ef93-2b59-4d90-befb-39be04f3a7c8", 
+"routing_keys": [], "connection_id": "4e85c556-c891-404f-9207-706b01517474", 
+"role": "client", "mediator_terms": ["string"]
+}
+</pre>
 
 ### 10.4. Excluir solicitação de mediação por ID
 Delete /mediation/requests/{mediation_id}
 
 **Exemplo :**
 <pre>
-
-
+curl -X DELETE "http://172.17.0.1:8031/mediation/requests/cd58ef93-2b59-4d90-befb-39be04f3a7c8" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiI1NzljZmE3Ny0zNzQzLTQ4YWEtYTI0OS0wNTJhNjYwOGNkYzQifQ.RhYZoNSP5sLBoiM5TFJDB6aPIcHbXgLqZxb7RLB1Lbw"
 </pre>
 
 ### 10.5. Negar um pedido de mediação armazenado
