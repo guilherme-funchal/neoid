@@ -628,13 +628,18 @@ curl -X POST "http://172.17.0.1:8031/ledger/taa/accept"
 -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiI1NzljZmE3Ny0zNzQzLTQ4YWEtYTI0OS0wNTJhNjYwOGNkYzQifQ.RhYZoNSP5sLBoiM5TFJDB6aPIcHbXgLqZxb7RLB1Lbw"
 </pre>
 
+**Observação :** É necessário que o arquivo taa.json tenha sido criado nos ledgers para que o contrato exista.
+
 ## 10.mediation
 ### 10.1. Solicitar mediação da conexão
 Post /mediation/request/{conn_id}
 
 **Exemplo :**
 <pre>
- curl -X POST "http://172.17.0.1:8031/mediation/request/4e85c556-c891-404f-9207-706b01517474" -H "accept: application/json" -H "Content-Type: application/json" -d "{ \"mediator_terms\": [ \"string\" ], \"recipient_terms\": [ \"string\" ]}" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiI1NzljZmE3Ny0zNzQzLTQ4YWEtYTI0OS0wNTJhNjYwOGNkYzQifQ.RhYZoNSP5sLBoiM5TFJDB6aPIcHbXgLqZxb7RLB1Lbw"
+ curl -X POST "http://172.17.0.1:8031/mediation/request/4e85c556-c891-404f-9207-706b01517474" 
+ -H "accept: application/json" 
+ -H "Content-Type: application/json" 
+ -d "{ \"mediator_terms\": [ \"string\" ], \"recipient_terms\": [ \"string\" ]}" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiI1NzljZmE3Ny0zNzQzLTQ4YWEtYTI0OS0wNTJhNjYwOGNkYzQifQ.RhYZoNSP5sLBoiM5TFJDB6aPIcHbXgLqZxb7RLB1Lbw"
 </pre>
 
 **Resposta :**
@@ -657,7 +662,9 @@ Get /mediation/requests
 
 **Exemplo :**
 <pre>
- curl -X GET "http://172.17.0.1:8021/mediation/requests" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiIyM2ZjNjI5Zi1hMjQxLTRmZmUtYWQyOC1jOGZhNWYyOTNlNDcifQ.efThQchCSPO3ue_P7flrQRVfnh_Vz0YU8EjzmuJrJqw"
+ curl -X GET "http://172.17.0.1:8021/mediation/requests" 
+ -H "accept: application/json" 
+ -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiIyM2ZjNjI5Zi1hMjQxLTRmZmUtYWQyOC1jOGZhNWYyOTNlNDcifQ.efThQchCSPO3ue_P7flrQRVfnh_Vz0YU8EjzmuJrJqw"
 </pre>
 
 ### 10.3. Recuperar registro de solicitação de mediação
@@ -665,7 +672,9 @@ Get /mediation/requests/{mediation_id}
 
 **Exemplo :**
 <pre>
- curl -X DELETE "http://172.17.0.1:8021/mediation/requests/cd58ef93-2b59-4d90-befb-39be04f3a7c8" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiI1NzljZmE3Ny0zNzQzLTQ4YWEtYTI0OS0wNTJhNjYwOGNkYzQifQ.RhYZoNSP5sLBoiM5TFJDB6aPIcHbXgLqZxb7RLB1Lbw"
+ curl -X DELETE "http://172.17.0.1:8021/mediation/requests/cd58ef93-2b59-4d90-befb-39be04f3a7c8" 
+ -H "accept: application/json" 
+ -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiI1NzljZmE3Ny0zNzQzLTQ4YWEtYTI0OS0wNTJhNjYwOGNkYzQifQ.RhYZoNSP5sLBoiM5TFJDB6aPIcHbXgLqZxb7RLB1Lbw"
 </pre>
 
 **Resposta :**
