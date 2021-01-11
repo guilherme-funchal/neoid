@@ -421,9 +421,10 @@ Post /issue-credential/create
 
 **Exemplo :**
 <pre>
-
-
+curl -X POST "http://172.17.0.1:8021/issue-credential/create" -H "accept: application/json" -H "Content-Type: application/json" -d "{ \"auto_remove\": true, \"comment\": \"string\", \"cred_def_id\": \"EsJ3Yf37JZhEYVsYcRqVc3:3:CL:121:default\", \"credential_proposal\": { \"@type\": \"issue-credential/1.0/credential-preview\", \"attributes\": [ { \"name\": \"score\", \"value\": \"10\" } ] }, \"issuer_did\": \"EsJ3Yf37JZhEYVsYcRqVc3\", \"schema_id\": \"EsJ3Yf37JZhEYVsYcRqVc3:2:prefs:1.0\", \"schema_issuer_did\": \"EsJ3Yf37JZhEYVsYcRqVc3\", \"schema_name\": \"prefs\", \"schema_version\": \"1.0\", \"trace\": false}" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiIyM2ZjNjI5Zi1hMjQxLTRmZmUtYWQyOC1jOGZhNWYyOTNlNDcifQ.efThQchCSPO3ue_P7flrQRVfnh_Vz0YU8EjzmuJrJqw"
 </pre>
+
+Observação : É necessário criar o esquema e a definição da credencial.
 
 ### 8.2. Obter todos os registros de troca de credenciais
 Get /issue-credential/records
