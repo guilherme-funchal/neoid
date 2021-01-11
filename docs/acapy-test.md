@@ -621,8 +621,11 @@ Post /ledger/taa/accept
 
 **Exemplo :**
 <pre>
-
-
+curl -X POST "http://172.17.0.1:8031/ledger/taa/accept" 
+-H "accept: application/json" 
+-H "Content-Type: application/json" 
+-d "{ \"mechanism\": \"string\", \"text\": \"string\", \"version\": \"string\"}"  
+-H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiI1NzljZmE3Ny0zNzQzLTQ4YWEtYTI0OS0wNTJhNjYwOGNkYzQifQ.RhYZoNSP5sLBoiM5TFJDB6aPIcHbXgLqZxb7RLB1Lbw"
 </pre>
 
 ## 10.mediation
