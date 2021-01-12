@@ -232,14 +232,16 @@ curl -X DELETE "http://172.17.0.1:8031/connections/ef9743bd-ddda-44ac-854d-671b5
 Post /connections/{conn_id}/accept-invitation
 
 <pre>
-
+curl -X POST "http://172.17.0.1:8031/connections/6b929cc7-a146-4cb7-9be7-74bff7aeb87f/accept-invitation" 
+-H "accept: application/json"
 </pre>
 
 ### 3.8 Aceite uma solicitação de conexão armazenada
 Post /connections/{conn_id}/accept-request
 
 <pre>
-
+curl -X POST "http://172.17.0.1:8031/connections/6b929cc7-a146-4cb7-9be7-74bff7aeb87f/accept-request" 
+-H "accept: application/json"
 </pre>
 
 ### 3.9 Atribuir outra conexão como a conexão de entrada
@@ -412,7 +414,9 @@ Post /didexchange/{conn_id}/accept-request
 Post /connections/{conn_id}/start-introduction
 
 <pre>
-curl -X POST "http://172.17.0.1:8021/connections/c51c8642-1b24-4862-8e08-a2ab889b6d8d/start-introduction?target_connection_id=c4a0882e-e20c-4ee7-b8bf-3f0903da8b35&message=message" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJlYmVjMmRlNS0zZTllLTQ1NTktYWU5Ny0xY2I3NTU3MTllOGQifQ.V74PkUzN4mCQC-h3WjVGfLtXNqbl4YJIyyx0b_UM88s"
+curl -X POST "http://172.17.0.1:8021/connections/c51c8642-1b24-4862-8e08-a2ab889b6d8d/start-introduction?target_connection_id=c4a0882e-e20c-4ee7-b8bf-3f0903da8b35&message=message" 
+-H "accept: application/json" 
+-H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJlYmVjMmRlNS0zZTllLTQ1NTktYWU5Ny0xY2I3NTU3MTllOGQifQ.V74PkUzN4mCQC-h3WjVGfLtXNqbl4YJIyyx0b_UM88s"
 </pre>
 
 ## 8.Issue credential
@@ -421,7 +425,11 @@ Post /issue-credential/create
 
 **Exemplo :**
 <pre>
-curl -X POST "http://172.17.0.1:8021/issue-credential/create" -H "accept: application/json" -H "Content-Type: application/json" -d "{ \"auto_remove\": true, \"comment\": \"string\", \"cred_def_id\": \"EsJ3Yf37JZhEYVsYcRqVc3:3:CL:121:default\", \"credential_proposal\": { \"@type\": \"issue-credential/1.0/credential-preview\", \"attributes\": [ { \"name\": \"score\", \"value\": \"10\" } ] }, \"issuer_did\": \"EsJ3Yf37JZhEYVsYcRqVc3\", \"schema_id\": \"EsJ3Yf37JZhEYVsYcRqVc3:2:prefs:1.0\", \"schema_issuer_did\": \"EsJ3Yf37JZhEYVsYcRqVc3\", \"schema_name\": \"prefs\", \"schema_version\": \"1.0\", \"trace\": false}" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiIyM2ZjNjI5Zi1hMjQxLTRmZmUtYWQyOC1jOGZhNWYyOTNlNDcifQ.efThQchCSPO3ue_P7flrQRVfnh_Vz0YU8EjzmuJrJqw"
+curl -X POST "http://172.17.0.1:8021/issue-credential/create" 
+-H "accept: application/json" -H "Content-Type: application/json" 
+-d "{ \"auto_remove\": true, \"comment\": \"string\", \"cred_def_id\": \"EsJ3Yf37JZhEYVsYcRqVc3:3:CL:121:default\", \"credential_proposal\": { \"@type\": \"issue-credential/1.0/credential-preview\", \"attributes\": [ { \"name\": \"score\", \"value\": \"10\" } ] }, \"issuer_did\": \"EsJ3Yf37JZhEYVsYcRqVc3\", \"schema_id\": \"EsJ3Yf37JZhEYVsYcRqVc3:2:prefs:1.0\", \"schema_issuer_did\": \"EsJ3Yf37JZhEYVsYcRqVc3\", \"schema_name\": \"prefs\", \"schema_version\": \"1.0\", \"trace\": false}" 
+-H "accept: application/json" 
+-H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiIyM2ZjNjI5Zi1hMjQxLTRmZmUtYWQyOC1jOGZhNWYyOTNlNDcifQ.efThQchCSPO3ue_P7flrQRVfnh_Vz0YU8EjzmuJrJqw"
 </pre>
 
 Observação : É necessário criar o esquema e a definição da credencial.
@@ -968,7 +976,8 @@ Post /revocation​/clear-pending-revocations
 **Exemplo :**
 <pre>
 curl -X POST "http://172.17.0.1:8021/revocation/clear-pending-revocations" 
--H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiI4ZmQ1YTlhYi01MjlhLTRmNzQtOWNiYS1kYmZjYjEwMTIxYjIifQ.5AXaNQk1P-PO_RHAWr_N_igtYwz0yEq2oaGlWhERcJo" -H "Content-Type: application/json" 
+-H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiI4ZmQ1YTlhYi01MjlhLTRmNzQtOWNiYS1kYmZjYjEwMTIxYjIifQ.5AXaNQk1P-PO_RHAWr_N_igtYwz0yEq2oaGlWhERcJo" 
+-H "Content-Type: application/json" 
 -d "{ \"purge\": { \"additionalProp1\": [ \"12345\" ], \"additionalProp2\": [ \"12345\" ], \"additionalProp3\": [ \"12345\" ] }}"
 </pre>
 
