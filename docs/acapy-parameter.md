@@ -729,3 +729,176 @@ Multitenant:
                         var: ACAPY_MULTITENANT_JWT_SECRET]
   --multitenant-admin   Specify whether to enable the multitenant admin api.
                         [env var: ACAPY_MULTITENANT_ADMIN]
+
+usage: aca-py provision [-h] [--arg-file ARG_FILE] [--plugin <module>]
+                        [--storage-type <storage-type>]
+                        [-e <endpoint> [<endpoint> ...]]
+                        [--profile-endpoint <profile_endpoint>]
+                        [--read-only-ledger]
+                        [--tails-server-base-url <tails-server-base-url>]
+                        [--tails-server-upload-url <tails-server-upload-url>]
+                        [--ledger-pool-name <ledger-pool-name>]
+                        [--genesis-transactions <genesis-transactions>]
+                        [--genesis-file <genesis-file>]
+                        [--genesis-url <genesis-url>] [--no-ledger]
+                        [--log-config <path-to-config>]
+                        [--log-file <log-file>] [--log-level <log-level>]
+                        [--seed <wallet-seed>] [--wallet-local-did]
+                        [--wallet-key <wallet-key>]
+                        [--wallet-rekey <wallet-rekey>]
+                        [--wallet-name <wallet-name>]
+                        [--wallet-type <wallet-type>]
+                        [--wallet-storage-type <storage-type>]
+                        [--wallet-storage-config <storage-config>]
+                        [--wallet-storage-creds <storage-creds>]
+                        [--replace-public-did] [--recreate-wallet]
+
+Args that start with '--' (eg. --plugin) can also be set in a config file
+(specified via --arg-file). The config file uses YAML syntax and must
+represent a YAML 'mapping' (for details, see
+http://learn.getgrav.org/advanced/yaml). If an arg is specified in more than
+one place, then commandline values override environment variables which
+override config file values which override defaults.
+
+optional arguments:
+  -h, --help            show this help message and exit
+
+General:
+  --arg-file ARG_FILE   Load aca-py arguments from the specified file. Note
+                        that this file *must* be in YAML format.
+  --plugin <module>     Load <module> as external plugin module. Multiple
+                        instances of this parameter can be specified. [env
+                        var: ACAPY_PLUGIN]
+  --storage-type <storage-type>
+                        Specifies the type of storage provider to use for the
+                        internal storage engine. This storage interface is
+                        used to store internal state. Supported internal
+                        storage types are 'basic' (memory) and 'indy'. The
+                        default (if not specified) is 'indy' if the wallet
+                        type is set to 'indy', otherwise 'basic'. [env var:
+                        ACAPY_STORAGE_TYPE]
+  -e <endpoint> [<endpoint> ...], --endpoint <endpoint> [<endpoint> ...]
+                        Specifies the endpoints to put into DIDDocs to inform
+                        other agents of where they should send messages
+                        destined for this agent. Each endpoint could be one of
+                        the specified inbound transports for this agent, or
+                        the endpoint could be that of another agent (e.g.
+                        'https://example.com/agent-endpoint') if the routing
+                        of messages to this agent by a mediator is configured.
+                        The first endpoint specified will be used in
+                        invitations. The endpoints are used in the formation
+                        of a connection with another agent. [env var:
+                        ACAPY_ENDPOINT]
+  --profile-endpoint <profile_endpoint>
+                        Specifies the profile endpoint for the (public) DID.
+                        [env var: ACAPY_PROFILE_ENDPOINT]
+  --read-only-ledger    Sets ledger to read-only to prevent updates. Default:
+                        false. [env var: ACAPY_READ_ONLY_LEDGER]
+  --tails-server-base-url <tails-server-base-url>
+                        Sets the base url of the tails server in use. [env
+                        var: ACAPY_TAILS_SERVER_BASE_URL]
+  --tails-server-upload-url <tails-server-upload-url>
+                        Sets the base url of the tails server for upload,
+                        defaulting to the tails server base url. [env var:
+                        ACAPY_TAILS_SERVER_UPLOAD_URL]
+
+Ledger:
+  --ledger-pool-name <ledger-pool-name>
+                        Specifies the name of the indy pool to be opened. This
+                        is useful if you have multiple pool configurations.
+                        [env var: ACAPY_LEDGER_POOL_NAME]
+  --genesis-transactions <genesis-transactions>
+                        Specifies the genesis transactions to use to connect
+                        to an Hyperledger Indy ledger. The transactions are
+                        provided as string of JSON e.g.
+                        '{"reqSignature":{},"txn":{"data":{"d... <snip>' [env
+                        var: ACAPY_GENESIS_TRANSACTIONS]
+  --genesis-file <genesis-file>
+                        Specifies a local file from which to read the genesis
+                        transactions. [env var: ACAPY_GENESIS_FILE]
+  --genesis-url <genesis-url>
+                        Specifies the url from which to download the genesis
+                        transactions. For example, if you are using 'von-
+                        network', the URL might be
+                        'http://localhost:9000/genesis'. Genesis transactions
+                        URLs are available for the Sovrin test/main networks.
+                        [env var: ACAPY_GENESIS_URL]
+  --no-ledger           Specifies that aca-py will run with no ledger
+                        configured. This must be set if running in no-ledger
+                        mode. Overrides any specified ledger or genesis
+                        configurations. Default: false. [env var:
+                        ACAPY_NO_LEDGER]
+
+Logging:
+  --log-config <path-to-config>
+                        Specifies a custom logging configuration file [env
+                        var: ACAPY_LOG_CONFIG]
+  --log-file <log-file>
+                        Overrides the output destination for the root logger
+                        (as defined by the log config file) to the named <log-
+                        file>. [env var: ACAPY_LOG_FILE]
+  --log-level <log-level>
+                        Specifies a custom logging level as one of: ('debug',
+                        'info', 'warning', 'error', 'critical') [env var:
+                        ACAPY_LOG_LEVEL]
+
+Wallet:
+  --seed <wallet-seed>  Specifies the seed to use for the creation of a public
+                        DID for the agent to use with a Hyperledger Indy
+                        ledger, or a local ('--wallet-local-did') DID. If
+                        public, the DID must already exist on the ledger. [env
+                        var: ACAPY_WALLET_SEED]
+  --wallet-local-did    If this parameter is set, provisions the wallet with a
+                        local DID from the '--seed' parameter, instead of a
+                        public DID to use with a Hyperledger Indy ledger. [env
+                        var: ACAPY_WALLET_LOCAL_DID]
+  --wallet-key <wallet-key>
+                        Specifies the master key value to use to open the
+                        wallet. [env var: ACAPY_WALLET_KEY]
+  --wallet-rekey <wallet-rekey>
+                        Specifies a new master key value to which to rotate
+                        and to open the wallet next time. [env var:
+                        ACAPY_WALLET_REKEY]
+  --wallet-name <wallet-name>
+                        Specifies the wallet name to be used by the agent.
+                        This is useful if your deployment has multiple
+                        wallets. [env var: ACAPY_WALLET_NAME]
+  --wallet-type <wallet-type>
+                        Specifies the type of Indy wallet provider to use.
+                        Supported internal storage types are 'basic' (memory)
+                        and 'indy'. The default (if not specified) is 'basic'.
+                        [env var: ACAPY_WALLET_TYPE]
+  --wallet-storage-type <storage-type>
+                        Specifies the type of Indy wallet backend to use.
+                        Supported internal storage types are 'basic' (memory),
+                        'default' (sqlite), and 'postgres_storage'. The
+                        default, if not specified, is 'default'. [env var:
+                        ACAPY_WALLET_STORAGE_TYPE]
+  --wallet-storage-config <storage-config>
+                        Specifies the storage configuration to use for the
+                        wallet. This is required if you are for using
+                        'postgres_storage' wallet storage type. For example,
+                        '{"url":"localhost:5432",
+                        "wallet_scheme":"MultiWalletSingleTable"}'. This
+                        configuration maps to the indy sdk postgres plugin
+                        (PostgresConfig). [env var:
+                        ACAPY_WALLET_STORAGE_CONFIG]
+  --wallet-storage-creds <storage-creds>
+                        Specifies the storage credentials to use for the
+                        wallet. This is required if you are for using
+                        'postgres_storage' wallet For example,
+                        '{"account":"postgres","password":
+                        "mysecretpassword","admin_account":"postgres",
+                        "admin_password":"mysecretpassword"}'. This
+                        configuration maps to the indy sdk postgres plugin
+                        (PostgresCredentials). NOTE: admin_user must have the
+                        CREATEDB role or else initialization will fail. [env
+                        var: ACAPY_WALLET_STORAGE_CREDS]
+  --replace-public-did  If this parameter is set and an agent already has a
+                        public DID, and the '--seed' parameter specifies a new
+                        DID, the agent will use the new DID in place of the
+                        existing DID. Default: false. [env var:
+                        ACAPY_REPLACE_PUBLIC_DID]
+  --recreate-wallet     If an existing wallet exists with the same name,
+                        remove and recreate it during provisioning. [env var:
+                        ACAPY_RECREATE_WALLET]
