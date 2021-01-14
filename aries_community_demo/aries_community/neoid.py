@@ -4,6 +4,9 @@ from .indy_utils import *
 import OpenSSL
 from .agent_utils import *
 from .models import *
+from dateutil import parser
+from pyasn1_modules import pem, rfc2459
+from pyasn1.codec.der import decoder
 
 def get_id_from_neoid(code, client_id, code_verifier, redirect_uri, client_secret, address):
     """
@@ -121,27 +124,48 @@ def get_pubkey_neoid(access_token, address, cpf):
         cpf = compost[1]
         val = cert.get_extension(4).get_data()
         val = str(val)
-        date_birth = val[48:56]
-#        print(date_birth)
-        email = val[234:-1]
-#        print(email)
-        rg = val[67:93]
-#        print(rg)
-        emissao = val[93:98]
-#        print(emissao)
-        estado_emissao = val[96:98]
-#        print(estado_emissao)
-        inss = val[144:156]
-#        print(inss)
-        titulo = val[193:205]
-#        print(titulo)
-        zona = val[205:208]
-#        print(zona)
-        secao = val[208:212]
-#        print(secao)
-        natural = val[212:224]
-#        print(natural)
-        estado = val[224:226]
+
+        
+        substrate = pem.readPemFromFile(open(filename))
+        cert_parser = decoder.decode(substrate, asn1Spec=rfc2459.Certificate())[0]
+        core = cert_parser['tbsCertificate']
+
+
+        for extension in core['extensions']:
+            if extension['extnID'] == rfc2459.id_ce_subjectAltName:
+                octet_string = decoder.decode(extension.getComponentByName('extnValue'), rfc2459.SubjectAltName())[0]
+#           print(octet_string[0])
+            for general_name in octet_string:
+                subject_alt_name_type = general_name.getName()
+                subject_alt_name_value = general_name.getComponent()
+
+                if subject_alt_name_type == 'otherName':
+                    value = subject_alt_name_value.getComponentByName('value')
+#                   print('value->', value)
+
+# Dados  ObjectIdentifier: 2.16.76.1.3.1              
+            tmp = octet_string[0].getComponent()
+            octeto1 = tmp.getComponentByName('value')
+            data_nasc = octeto1[2:10]
+            cpf = octeto1[10:21]
+            rg = octeto1[37:47]
+            emissao = octeto1[47:50]
+            estado_emissao = octeto1[50:52]
+# Dados ObjectIdentifier: 2.16.76.1.3.6
+            tmp = octet_string[1].getComponent()
+            octeto1 = tmp.getComponentByName('value')
+            inss = octeto1[2:15]
+            
+#  Dados ObjectIdentifier: 2.16.76.1.3.5
+            tmp = octet_string[2].getComponent()
+            octeto3 = tmp.getComponentByName('value')
+            titulo = octeto3[2:14]
+            zona = octeto3[14:17]
+            secao = octeto3[17:21]
+            natural = octeto3[21:33]
+            estado = octeto3[33:35]
+
+
 
         dict = {
             "first_name": first_name,
