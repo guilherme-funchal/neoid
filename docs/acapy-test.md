@@ -711,8 +711,7 @@ Post /mediation/requests/{mediation_id}/deny
 
 **Exemplo :**
 <pre>
-
-
+curl -X DELETE "http://172.17.0.1:8031/mediation/requests/cd58ef93-2b59-4d90-befb-39be04f3a7c8/deny" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiI1NzljZmE3Ny0zNzQzLTQ4YWEtYTI0OS0wNTJhNjYwOGNkYzQifQ.RhYZoNSP5sLBoiM5TFJDB6aPIcHbXgLqZxb7RLB1Lbw"
 </pre>
 
 ### 10.6. Conceder mediação recebida
@@ -720,8 +719,7 @@ Post /mediation/requests/{mediation_id}/grant
 
 **Exemplo :**
 <pre>
-
-
+curl -X DELETE "http://172.17.0.1:8031/mediation/requests/cd58ef93-2b59-4d90-befb-39be04f3a7c8/grant" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiI1NzljZmE3Ny0zNzQzLTQ4YWEtYTI0OS0wNTJhNjYwOGNkYzQifQ.RhYZoNSP5sLBoiM5TFJDB6aPIcHbXgLqZxb7RLB1Lbw"
 </pre>
 
 ## 11.Multitenancy
