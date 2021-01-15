@@ -244,13 +244,8 @@ curl -X POST "http://172.17.0.1:8031/connections/6b929cc7-a146-4cb7-9be7-74bff7a
 -H "accept: application/json"
 </pre>
 
-### 3.9 Atribuir outra conexão como a conexão de entrada
 
-<pre>
-
-</pre>
-
-### 3.10 Buscar metadados da conexão
+### 3.9 Buscar metadados da conexão
 
 <pre>
 curl -X GET "http://172.17.0.1:8031/connections/8efcea04-f922-4a35-91b5-5827d37967d0/metadata" 
@@ -258,7 +253,7 @@ curl -X GET "http://172.17.0.1:8031/connections/8efcea04-f922-4a35-91b5-5827d379
 -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiI0MmM0OTc2OC02ZDM5LTRhZmYtYjliZi04MTlkYzdhZTUxNzYifQ.AbH_NDLt3G5zaKGh6s603IVpWBTXbO3omjM9LxWv-es"
 </pre>
 
-### 3.11 Definir metadados da conexão
+### 3.10 Definir metadados da conexão
 
 <pre>
 curl -X POST "http://172.17.0.1:8031/connections/8efcea04-f922-4a35-91b5-5827d37967d0/metadata" 
