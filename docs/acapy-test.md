@@ -481,7 +481,8 @@ Post /issue-credential/records/{cred_ex_id}/problem-report
 curl -X POST "http://172.17.0.1:8031/issue-credential/records/c614d249-719c-4302-b272-72d8adc440c4/problem-report" 
 -H "accept: application/json" 
 -H "Content-Type: application/json" 
--d "{ \"explain_ltxt\": \"string\"}" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiIwMzM0ZTE3OC01OTg4LTQ5YjktYjM0Ni1kMDI4NzE5MDhjYjUifQ.YcWZ3ckVXFP1U6BwSgImfeBdRwPaURvhMno2uyTiIe4"
+-d "{ \"explain_ltxt\": \"string\"}" 
+-H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiIwMzM0ZTE3OC01OTg4LTQ5YjktYjM0Ni1kMDI4NzE5MDhjYjUifQ.YcWZ3ckVXFP1U6BwSgImfeBdRwPaURvhMno2uyTiIe4"
 </pre>
 
 ### 8.7. Enviar ao titular uma oferta de credencial em referência a uma proposta com visualização
@@ -553,7 +554,8 @@ Get /ledger/did-endpoint
 **Exemplo :**
 <pre>
 curl -X GET "http://172.17.0.1:8021/ledger/did-endpoint?did=VWcuij6MDYDLUv8nvMmKP9" 
--H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiIwZmFiNGEwMy01MjFiLTRhOTctYmQ4YS02OTA2NDFkN2U2ODEifQ.aBHKbOgQnv3JLE4exhX0RKfF9H20fJLYhXdZUvODwAE"
+-H "accept: application/json" 
+-H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiIwZmFiNGEwMy01MjFiLTRhOTctYmQ4YS02OTA2NDFkN2U2ODEifQ.aBHKbOgQnv3JLE4exhX0RKfF9H20fJLYhXdZUvODwAE"
 </pre>
 
 **Resposta :**
@@ -567,7 +569,8 @@ Get /ledger/did-verkey
 **Exemplo :**
 <pre>
 curl -X GET "http://172.17.0.1:8021/ledger/did-verkey?did=VWcuij6MDYDLUv8nvMmKP9" 
--H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiIwZmFiNGEwMy01MjFiLTRhOTctYmQ4YS02OTA2NDFkN2U2ODEifQ.aBHKbOgQnv3JLE4exhX0RKfF9H20fJLYhXdZUvODwAE"
+-H "accept: application/json" 
+-H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiIwZmFiNGEwMy01MjFiLTRhOTctYmQ4YS02OTA2NDFkN2U2ODEifQ.aBHKbOgQnv3JLE4exhX0RKfF9H20fJLYhXdZUvODwAE"
 </pre>
 
 **Resposta :**
@@ -703,7 +706,9 @@ Delete /mediation/requests/{mediation_id}
 
 **Exemplo :**
 <pre>
-curl -X DELETE "http://172.17.0.1:8031/mediation/requests/cd58ef93-2b59-4d90-befb-39be04f3a7c8" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiI1NzljZmE3Ny0zNzQzLTQ4YWEtYTI0OS0wNTJhNjYwOGNkYzQifQ.RhYZoNSP5sLBoiM5TFJDB6aPIcHbXgLqZxb7RLB1Lbw"
+curl -X DELETE "http://172.17.0.1:8031/mediation/requests/cd58ef93-2b59-4d90-befb-39be04f3a7c8" 
+-H "accept: application/json" 
+-H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiI1NzljZmE3Ny0zNzQzLTQ4YWEtYTI0OS0wNTJhNjYwOGNkYzQifQ.RhYZoNSP5sLBoiM5TFJDB6aPIcHbXgLqZxb7RLB1Lbw"
 </pre>
 
 ### 10.5. Negar um pedido de mediação armazenado
@@ -711,7 +716,9 @@ Post /mediation/requests/{mediation_id}/deny
 
 **Exemplo :**
 <pre>
-curl -X DELETE "http://172.17.0.1:8031/mediation/requests/cd58ef93-2b59-4d90-befb-39be04f3a7c8/deny" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiI1NzljZmE3Ny0zNzQzLTQ4YWEtYTI0OS0wNTJhNjYwOGNkYzQifQ.RhYZoNSP5sLBoiM5TFJDB6aPIcHbXgLqZxb7RLB1Lbw"
+curl -X DELETE "http://172.17.0.1:8031/mediation/requests/cd58ef93-2b59-4d90-befb-39be04f3a7c8/deny" 
+-H "accept: application/json" 
+-H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiI1NzljZmE3Ny0zNzQzLTQ4YWEtYTI0OS0wNTJhNjYwOGNkYzQifQ.RhYZoNSP5sLBoiM5TFJDB6aPIcHbXgLqZxb7RLB1Lbw"
 </pre>
 
 ### 10.6. Conceder mediação recebida
@@ -719,7 +726,9 @@ Post /mediation/requests/{mediation_id}/grant
 
 **Exemplo :**
 <pre>
-curl -X DELETE "http://172.17.0.1:8031/mediation/requests/cd58ef93-2b59-4d90-befb-39be04f3a7c8/grant" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiI1NzljZmE3Ny0zNzQzLTQ4YWEtYTI0OS0wNTJhNjYwOGNkYzQifQ.RhYZoNSP5sLBoiM5TFJDB6aPIcHbXgLqZxb7RLB1Lbw"
+curl -X DELETE "http://172.17.0.1:8031/mediation/requests/cd58ef93-2b59-4d90-befb-39be04f3a7c8/grant" 
+-H "accept: application/json" 
+-H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiI1NzljZmE3Ny0zNzQzLTQ4YWEtYTI0OS0wNTJhNjYwOGNkYzQifQ.RhYZoNSP5sLBoiM5TFJDB6aPIcHbXgLqZxb7RLB1Lbw"
 </pre>
 
 ## 11.Multitenancy
