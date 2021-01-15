@@ -469,8 +469,9 @@ Post /issue-credential/records/{cred_ex_id}/issue
 
 **Exemplo :**
 <pre>
-
-
+curl -X POST "http://172.17.0.1:8031/issue-credential/records/c614d249-719c-4302-b272-72d8adc440c4/issue" 
+-H "accept: application/json" 
+-H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiIwMzM0ZTE3OC01OTg4LTQ5YjktYjM0Ni1kMDI4NzE5MDhjYjUifQ.YcWZ3ckVXFP1U6BwSgImfeBdRwPaURvhMno2uyTiIe4"
 </pre>
 
 ### 8.6. Envie um relatório de problema para troca de credencial
@@ -684,7 +685,7 @@ Get /mediation/requests/{mediation_id}
 
 **Exemplo :**
 <pre>
- curl -X DELETE "http://172.17.0.1:8021/mediation/requests/cd58ef93-2b59-4d90-befb-39be04f3a7c8" 
+ curl -X GET "http://172.17.0.1:8021/mediation/requests/cd58ef93-2b59-4d90-befb-39be04f3a7c8" 
  -H "accept: application/json" 
  -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiI1NzljZmE3Ny0zNzQzLTQ4YWEtYTI0OS0wNTJhNjYwOGNkYzQifQ.RhYZoNSP5sLBoiM5TFJDB6aPIcHbXgLqZxb7RLB1Lbw"
 </pre>
@@ -716,7 +717,7 @@ Post /mediation/requests/{mediation_id}/deny
 
 **Exemplo :**
 <pre>
-curl -X DELETE "http://172.17.0.1:8031/mediation/requests/cd58ef93-2b59-4d90-befb-39be04f3a7c8/deny" 
+curl -X POST "http://172.17.0.1:8031/mediation/requests/cd58ef93-2b59-4d90-befb-39be04f3a7c8/deny" 
 -H "accept: application/json" 
 -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiI1NzljZmE3Ny0zNzQzLTQ4YWEtYTI0OS0wNTJhNjYwOGNkYzQifQ.RhYZoNSP5sLBoiM5TFJDB6aPIcHbXgLqZxb7RLB1Lbw"
 </pre>
@@ -726,7 +727,7 @@ Post /mediation/requests/{mediation_id}/grant
 
 **Exemplo :**
 <pre>
-curl -X DELETE "http://172.17.0.1:8031/mediation/requests/cd58ef93-2b59-4d90-befb-39be04f3a7c8/grant" 
+curl -X POST "http://172.17.0.1:8031/mediation/requests/cd58ef93-2b59-4d90-befb-39be04f3a7c8/grant" 
 -H "accept: application/json" 
 -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiI1NzljZmE3Ny0zNzQzLTQ4YWEtYTI0OS0wNTJhNjYwOGNkYzQifQ.RhYZoNSP5sLBoiM5TFJDB6aPIcHbXgLqZxb7RLB1Lbw"
 </pre>
