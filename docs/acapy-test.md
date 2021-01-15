@@ -521,9 +521,23 @@ Post /issue-credential/send
 
 **Exemplo :**
 <pre>
-
-
+curl -X POST "http://172.17.0.1:8021/issue-credential/send" 
+-H "accept: application/json" 
+-H "Content-Type: application/json" 
+-d "{ \"auto_remove\": true, \"comment\": \"string\", \"connection_id\": \"3a167ff0-e337-499d-bcaa-1db4c886380c\", \"cred_def_id\": \"V1frstKADpJ1GvR5wUW9sN:3:CL:159:default\", \"credential_proposal\": { \"@type\": \"issue-credential/1.0/credential-preview\", \"attributes\": [ { \"name\": \"score\", \"value\": \"10\" } ] }, \"issuer_did\": \"V1frstKADpJ1GvR5wUW9sN\", \"schema_id\": \"V1frstKADpJ1GvR5wUW9sN:2:prefs:1.0\", \"schema_name\": \"prefs\", \"schema_version\": \"1.0\", \"trace\": false}" 
+-H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiIzMDQ3NDU1Zi1hOGY1LTQ4YzItYjAwNy05NjJhMDdkZmVhYWEifQ.D5nBAakpb5rT3BMzfOGVa-waq9odzq1av6wYluyPFR4"
 </pre>
+
+**Resposta :**
+<pre>
+{"updated_at": "2021-01-15 13:29:17.878428Z", "state": "offer_sent", "auto_issue": true, "credential_proposal_dict": {"@type": "did:sov:BzCbsNYhMrjHiqZDTUASHg;spec/issue-credential/1.0/propose-credential", "@id": "c405739b-b861-4814-9015-0c68af6b9ab1", "schema_version": "1.0", "comment": "string", "cred_def_id": "V1frstKADpJ1GvR5wUW9sN:3:CL:159:default", "issuer_did": "V1frstKADpJ1GvR5wUW9sN", "schema_id": "V1frstKADpJ1GvR5wUW9sN:2:prefs:1.0", "schema_name": "prefs", "credential_proposal": {"@type": "did:sov:BzCbsNYhMrjHiqZDTUASHg;spec/issue-credential/1.0/credential-preview", "attributes": [{"name": "score", "value": "10"}]}}, "credential_offer_dict": {"@type": "did:sov:BzCbsNYhMrjHiqZDTUASHg;spec/issue-credential/1.0/offer-credential", "@id": "c237d182-acb2-4d43-a82d-ddfdfcabf5b3", "~thread": {}, "comment": "create automated credential exchange", "credential_preview": {"@type": "did:sov:BzCbsNYhMrjHiqZDTUASHg;spec/issue-credential/1.0/credential-preview", "attributes": [{"name": "score", "value": "10"}]}, "offers~attach": [{"@id": "libindy-cred-offer-0", "mime-type": "application/json", "data":...}
+</pre>
+
+**Pré-requisitos :**
+
+1)Schema criado;
+2)Dfinição de credencial;
+3)Criar a credencial;
 
 ### 8.11. Envio de proposta de credencial
 Post /issue-credential/records/{{ connection_id }}/send-offer
