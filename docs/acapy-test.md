@@ -390,7 +390,10 @@ Post /didexchange/receive-invitation
 
 **Exemplo :**
 <pre>
-
+curl -X POST "http://172.17.0.1:8021/didexchange/receive-invitation" 
+-H "accept: application/json" 
+-H "Content-Type: application/json" 
+-d "{ \"@id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\", \"handshake_protocols\": [ \"string\" ], \"label\": \"Bob\", \"request~attach\": [ { \"@id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\", \"byte_count\": 1234, \"data\": { \"base64\": \"ey4uLn0=\", \"json\": \"{\\\"sample\\\": \\\"content\\\"}\", \"jws\": { \"header\": { \"kid\": \"did:sov:LjgpST2rjsoxYegQDRm7EL#keys-4\" }, \"protected\": \"ey4uLn0\", \"signature\": \"ey4uLn0\", \"signatures\": [ { \"header\": { \"kid\": \"did:sov:LjgpST2rjsoxYegQDRm7EL#keys-4\" }, \"protected\": \"ey4uLn0\", \"signature\": \"ey4uLn0\" } ] }, \"links\": [ \"https://link.to/data\" ], \"sha256\": \"617a48c7c8afe0521efdc03e5bb0ad9e655893e6b4b51f0e794d70fba132aacb\" }, \"description\": \"view from doorway, facing east, with lights off\", \"filename\": \"IMG1092348.png\", \"lastmod_time\": \"2021-01-15 12:41:14Z\", \"mime-type\": \"image/png\" } ], \"service_blocks\": [ { \"did\": \"WgWxqztrNooG92RXvxSTWv\", \"id\": \"string\", \"recipientKeys\": [ \"did:key:z6MkpTHR8VNsBxYAAWHut2Geadd9jSwuBV8xRoAnwWsdvktH\" ], \"routingKeys\": [ \"did:key:z6MkpTHR8VNsBxYAAWHut2Geadd9jSwuBV8xRoAnwWsdvktH\" ], \"serviceEndpoint\": \"http://192.168.56.101:8020\", \"type\": \"string\" } ], \"service_dids\": [ \"string\" ]}"
 </pre>
 
 ### 6.2 Aceite um convite de conexão armazenado
@@ -398,7 +401,7 @@ Post /didexchange/{conn_id}/accept-invitation
 
 **Exemplo :**
 <pre>
-
+curl -X POST "http://172.17.0.1:8021/didexchange/bddfe03b-4cf7-468d-9ac4-79a93500cb31/accept-invitation" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiIzMDQ3NDU1Zi1hOGY1LTQ4YzItYjAwNy05NjJhMDdkZmVhYWEifQ.D5nBAakpb5rT3BMzfOGVa-waq9odzq1av6wYluyPFR4"
 </pre>
 
 ### 6.3 Aceite uma solicitação de conexão armazenada
@@ -406,7 +409,7 @@ Post /didexchange/{conn_id}/accept-request
 
 **Exemplo :**
 <pre>
-
+curl -X POST "http://172.17.0.1:8021/didexchange/bddfe03b-4cf7-468d-9ac4-79a93500cb31/accept-request" -H "accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiIzMDQ3NDU1Zi1hOGY1LTQ4YzItYjAwNy05NjJhMDdkZmVhYWEifQ.D5nBAakpb5rT3BMzfOGVa-waq9odzq1av6wYluyPFR4"
 </pre>
 
 ## 7.Introduction
