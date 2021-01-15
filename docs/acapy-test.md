@@ -491,8 +491,9 @@ Post /issue-credential/records/{cred_ex_id}/send-offer
 
 **Exemplo :**
 <pre>
-
-
+curl -X POST "http://172.17.0.1:8021/issue-credential/records/0ba4d317-75ce-4419-ad7b-fd5e5c765b3e/send-offer" 
+-H "accept: application/json" 
+-H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiIzMDQ3NDU1Zi1hOGY1LTQ4YzItYjAwNy05NjJhMDdkZmVhYWEifQ.D5nBAakpb5rT3BMzfOGVa-waq9odzq1av6wYluyPFR4"
 </pre>
 
 ### 8.8. Enviar ao emissor um pedido de credencial
@@ -500,8 +501,9 @@ Post /issue-credential/records/{cred_ex_id}/send-request
 
 **Exemplo :**
 <pre>
-
-
+curl -X POST "http://172.17.0.1:8021/issue-credential/records/a230a93a-d7a2-432d-b598-91f895f53dca/send-request" 
+-H "accept: application/json" 
+-H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiIzMDQ3NDU1Zi1hOGY1LTQ4YzItYjAwNy05NjJhMDdkZmVhYWEifQ.D5nBAakpb5rT3BMzfOGVa-waq9odzq1av6wYluyPFR4"
 </pre>
 
 ### 8.9. Armazene uma credencial recebida
