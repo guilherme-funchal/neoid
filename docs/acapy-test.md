@@ -929,7 +929,10 @@ Post /present-proof/records/{pres_ex_id}/send-presentation
 
 **Exemplo :**
 <pre>
-
+curl -X POST "http://172.17.0.1:8031/present-proof/records/56c6431d-43c0-48a7-9299-8b43decfff53/send-presentation" 
+-H "accept: application/json" -H "Content-Type: application/json" 
+-d "{ \"requested_attributes\": 
+{ \"additionalProp1\": { \"cred_id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\", \"revealed\": true }, \"additionalProp2\": { \"cred_id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\", \"revealed\": true }, \"additionalProp3\": { \"cred_id\": \"6c4bd381-08d1-4074-8690-d8136e2ab801\", \"revealed\": true } }, \"requested_predicates\": { \"additionalProp1\": { \"cred_id\": \"6c4bd381-08d1-4074-8690-d8136e2ab801\", \"timestamp\": 1610750558 }, \"additionalProp2\": { \"cred_id\": \"6c4bd381-08d1-4074-8690-d8136e2ab801\", \"timestamp\": 1610750558 }, \"additionalProp3\": { \"cred_id\": \"6c4bd381-08d1-4074-8690-d8136e2ab801\", \"timestamp\": 1610750558 } }, \"self_attested_attributes\": { \"additionalProp1\": \"self_attested_value\", \"additionalProp2\": \"self_attested_value\", \"additionalProp3\": \"self_attested_value\" }, \"trace\": false}"
 </pre>
 
 ### 13.7. Envia um pedido de apresentação em referência a uma proposta
@@ -937,7 +940,10 @@ Post /present-proof/records/{pres_ex_id}/send-request
 
 **Exemplo :**
 <pre>
-
+curl -X POST "http://172.17.0.1:8031/present-proof/records/56c6431d-43c0-48a7-9299-8b43decfff53/send-request" 
+-H "accept: application/json" 
+-H "Content-Type: application/json" 
+-d "{ \"trace\": true}"
 </pre>
 
 ### 13.8. Verifique uma apresentação recebida
@@ -945,7 +951,9 @@ Post /present-proof/records/{pres_ex_id}/verify-presentation
 
 **Exemplo :**
 <pre>
-
+curl -X POST "http://172.17.0.1:8021/present-proof/records/6d14ede4-4261-400d-a3ab-004fcb8b190c/verify-presentation" 
+-H "accept: application/json" 
+-H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiJhY2I1OWEyYS02OTBiLTQ4MDYtOTc1ZS1kYjkyNTlmN2YxNTcifQ.6bKj3uHKE3KHNQDacjqjPJuM9O9-TS4YJ89Q0OUrAYE"
 </pre>
 
 ### 13.9. Envia uma proposta de apresentação
@@ -965,7 +973,7 @@ curl -X POST "http://172.17.0.1:8021/present-proof/send-proposal"
 </pre>
 
 ### 13.10. Envia uma solicitação de apresentação gratuita não vinculada a nenhuma proposta
-Post /present-proof​/send-request
+Post /present-proof/send-request
 
 **Exemplo :**
 <pre>
