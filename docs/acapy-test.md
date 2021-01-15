@@ -1496,16 +1496,15 @@ curl -X GET "http://172.17.0.1:8031/mediation/keylists?role=server"
 Post /mediation/keylists/{mediation_id}/send-keylist-query
 
 <pre>
-curl -X GET "http://{{ Endereço IP }}:{{ Porta }}/mediation/keylists/{mediation_id}/send-keylist-query" 
+curl -X POST "http://172.17.0.1:8031/mediation/keylists/40042097-7b16-4043-9c0b-12fbd1f57efa/send-keylist-query" 
 -H "accept: application/json" 
--H "Authorization: Bearer {{ Token }}"
+-H "Content-Type: application/json" 
+-d "{ \"filter\": {}}"
 </pre>
 
 ### 19.3 atualizar a lista de chaves.
 Post /mediation/keylists/{mediation_id}/send-keylist-update
 
 <pre>
-curl -X GET "http://{{ Endereço IP }}:{{ Porta }}/mediation/keylists/{mediation_id}/send-keylist-update" 
--H "accept: application/json" 
--H "Authorization: Bearer {{ Token }}"
+curl -X POST "http://172.17.0.1:8031/mediation/keylists/40042097-7b16-4043-9c0b-12fbd1f57efa/send-keylist-update" -H "accept: application/json" -H "Content-Type: application/json" -d "{ \"updates\": [ { \"action\": \"add\", \"recipient_key\": \"H3C2AVvLMv6gmMNam3uVAjZpfkcJCwDwnZn6z3wXmqPV\" } ]}"
 </pre>
