@@ -953,7 +953,15 @@ Post /present-proof/send-proposal
 
 **Exemplo :**
 <pre>
+curl -X POST "http://172.17.0.1:8021/present-proof/send-proposal" 
+-H "accept: application/json" 
+-H "Content-Type: application/json" 
+-d "{ \"auto_present\": true, \"comment\": \"string\", \"connection_id\": \"6f0adf7c-91b7-4488-b97b-f38f42409ca5\", \"presentation_proposal\": { \"@type\": \"did:sov:BzCbsNYhMrjHiqZDTUASHg;spec/present-proof/1.0/presentation-preview\", \"attributes\": [ { \"cred_def_id\": \"6NhFfZyVx7dAyhrgL49yJq:3:CL:179:Faber.initial.degree_schema\", \"name\": \"degree\", \"referent\": \"0\", \"value\": \"10\" } ], \"predicates\": [ { \"cred_def_id\": \"6NhFfZyVx7dAyhrgL49yJq:3:CL:179:Faber.initial.degree_schema\", \"name\": \"high_score\", \"predicate\": \">=\", \"threshold\": 0 } ] }, \"trace\": false}" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3YWxsZXRfaWQiOiI3ZTU3ZWM4MC0wZmJhLTQ3MjMtOWY4Zi1iOGQ2YmNiMDY5OTgifQ.L1U2cEYPZ4s4jyHMIDhbiktB0J-kKH61VDKX2JEio3M"
+</pre>
 
+**Resposta :**
+<pre>
+{"presentation_exchange_id": "0c42ed69-d670-4208-97da-8c95395dc56f", "initiator": "self", "state": "proposal_sent", "presentation_proposal_dict": {"@type": "did:sov:BzCbsNYhMrjHiqZDTUASHg;spec/present-proof/1.0/propose-presentation", "@id": "b0b11350-32fb-4cf5-b0e4-369d84e871d6", "presentation_proposal": {"@type": "did:sov:BzCbsNYhMrjHiqZDTUASHg;spec/present-proof/1.0/presentation-preview", "attributes": [{"name": "degree", "cred_def_id": "6NhFfZyVx7dAyhrgL49yJq:3:CL:179:Faber.initial.degree_schema", "value": "10", "referent": "0"}], "predicates": [{"name": "high_score", "cred_def_id": "6NhFfZyVx7dAyhrgL49yJq:3:CL:179:Faber.initial.degree_schema", "predicate": ">=", "threshold": 0}]}, "comment": "string"}, "connection_id": "6f0adf7c-91b7-4488-b97b-f38f42409ca5", "trace": false, "created_at": "2021-01-15 19:57:52.946515Z", "auto_present": true, "updated_at": "2021-01-15 19:57:52.946515Z", "role": "prover", "thread_id": "b0b11350-32fb-4cf5-b0e4-369d84e871d6"}
 </pre>
 
 ### 13.10. Envia uma solicitação de apresentação gratuita não vinculada a nenhuma proposta
