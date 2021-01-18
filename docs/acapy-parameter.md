@@ -301,7 +301,7 @@
     </tr>             
 </table>
 
-
+<pre>
   --admin <host> <port>
                         Specify the host and port on which to run the
                         administrative server. If not provided, no admin
@@ -836,3 +836,4 @@ Wallet:
   --recreate-wallet     If an existing wallet exists with the same name,
                         remove and recreate it during provisioning. [env var:
                         ACAPY_RECREATE_WALLET]
+</pre>
