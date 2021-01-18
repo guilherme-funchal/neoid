@@ -15,11 +15,11 @@
         <td>Define que a porta administrativa pode receber conexões</td>
     </tr>    
     <tr>
-        <td>admin"<host>""<port>"</td>
+        <td>admin <host><port></td>
         <td>Especifique o host e a porta nos quais executar o servidor administrativo. Se não for fornecido, nenhum servidor admin será disponibilizado.</td>
     </tr>
     <tr>
-        <td>admin-api-key"<api-key>"</td> 
+        <td>admin-api-key <api-key></td> 
         <td>Define api-key</td>          
     </tr>
     <tr>
