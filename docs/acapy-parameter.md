@@ -2,7 +2,6 @@
     <tr>
         <th>Parâmetro</th>
         <th>Descrição</th>
-        <th>Exemplo</th>
     </tr>
     <tr>
         <td>admin
@@ -10,38 +9,30 @@
                 <port>
         </td>
         <td>Especifique o host e a porta nos quais executar o servidor administrativo. Se não for fornecido, nenhum servidor admin será disponibilizado.</td>
-        <td></td>
     </tr>
     <tr>
         <td>admin-insecure-mode</td>
         <td>Define que a porta administrativa pode receber conexões</td>
-        <td></td>
     </tr>    
     <tr>
-        <td>admin
-            <host>
-                <port>
-        </td>
+        <td>admin"<host>""<port>"</td>
         <td>Especifique o host e a porta nos quais executar o servidor administrativo. Se não for fornecido, nenhum servidor admin será disponibilizado.</td>
     </tr>
     <tr>
-        <td>admin-api-key
-            <api-key>
-        </td>  
+        <td>admin-api-key"<api-key>"</td> 
+        <td>Define api-key</td>          
     </tr>
     <tr>
         <td>admin-insecure-mode</td>
-        <td>Define que a porta administrativa pode receber conexões</td>
-        
+        <td>Define que a porta administrativa pode receber conexões</td>       
     </tr>
     <tr>
         <td>no-receive-invites</td>
         <td>Não recebe convites de conexão</td>
     </tr>
     <tr>
-        <td>help-link
-            <help-url>
-        </td>
+        <td>help-link"<help-url>"</td>
+        <td></td>    
     </tr>
     <tr>
         <td>webhook-url
