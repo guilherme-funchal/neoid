@@ -13,20 +13,10 @@
         <td></td>
     </tr>
     <tr>
-        <td>admin-api-key
-            <api-key>
-        </td>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
         <td>admin-insecure-mode</td>
         <td>Define que a porta administrativa pode receber conexões</td>
         <td></td>
-    <tr>
-        <th>Parâmetro</th>
-        <th>Descrição</th>
-    </tr>
+    </tr>    
     <tr>
         <td>admin
             <host>
@@ -37,8 +27,7 @@
     <tr>
         <td>admin-api-key
             <api-key>
-        </td>
-        
+        </td>  
     </tr>
     <tr>
         <td>admin-insecure-mode</td>
