@@ -332,7 +332,7 @@
     <tr>
         <td>very_secret_secret</td>
     </tr>             
-<table>
+</table>
 
 
   --admin <host> <port>
