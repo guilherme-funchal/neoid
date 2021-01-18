@@ -67,17 +67,14 @@
     <tr>
         <td>invite-label <label></td>
         <td>Legenda do convite</td>
-        
     </tr>
     <tr>
         <td>invite-multi-use</td>
-        <td>Permite multiplos usuários</td>
-        
+        <td>Permite multiplos usuários</td>      
     </tr>
     <tr>
         <td>invite-public</td>
         <td>Permite convite publico</td>
-        
     </tr>
     <tr>
         <td>test-suite-endpoint
@@ -87,7 +84,6 @@
     <tr>
         <td>auto-accept-invites</td>
         <td>Auto aceita convites</td>
-        
     </tr>
     <tr>
         <td>auto-accept-requests</td>
@@ -104,7 +100,6 @@
     <tr>
         <td>auto-respond-credential-offer</td>
         <td>Auto aceita oferta de credencial</td>
-        
     </tr>
     <tr>
         <td>auto-respond-credential-request</td>
@@ -121,7 +116,6 @@
     <tr>
         <td>auto-store-credential</td>
         <td>uto armazena credencial</td>
-        
     </tr>
     <tr>
         <td>auto-verify-presentation plugin
@@ -150,15 +144,12 @@
         <td>genesis-transactions
             <genesis-transactions>
         </td>
-        
-        
     </tr>
     <tr>
         <td>genesis-file
             <genesis-file>
         </td>
         <td>Arquivo de gênese</td>
-        
     </tr>
     <tr>
         <td>genesis-url
@@ -203,12 +194,10 @@
     <tr>
         <td>public-invites</td>
         <td>Convites publicos</td>
-        
     </tr>
     <tr>
         <td>timing</td>
         <td>Tempo</td>
-        
     </tr>
     <tr>
         <td>timing-log
@@ -262,7 +251,6 @@
             <wallet-key>
         </td>
         <td>Chave da wallet</td>
-        
     </tr>
     <tr>
         <td>wallet-name
