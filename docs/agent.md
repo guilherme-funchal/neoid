@@ -1,5 +1,6 @@
 ## Start agent
 
+<pre>
 --endpoint http://172.17.0.1:8020 
 --label Faber.Agent 
 --auto-accept-invites 
@@ -22,3 +23,4 @@
 --seed <SEED>
 --webhook-url http://172.17.0.1:8022/webhooks 
 --tails-server-base-url https://ff934cffeb2c.ngrok.io 
+</pre>
